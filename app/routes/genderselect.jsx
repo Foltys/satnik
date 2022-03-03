@@ -37,18 +37,24 @@ export default function GenderSelect() {
                                 </div>
                             </div>
                             <div className="flex space-x-2">
-                                <div className="rounded-2xl bg-white w-1/3 h-80 p-2 border border-[#957D5E] flex flex-col hover:border-[#0A9DBF] hover:bg-[#F8EBDB] items-center">
-                                    <img src="woman.svg" alt="man" className="my-4" />
+                                <button className="rounded-2xl group bg-white w-1/3 h-80 p-2 border border-[#957D5E] flex flex-col hover:border-[#0A9DBF] hover:bg-[#F8EBDB] items-center">
+                                    <img src="woman.svg" alt="man" className="my-4 " />
                                     <span className="text-2xl font-bold">Žena</span>
-                                    <button className="text-[#0A9DBF] font-semibold mt-4">Vybrat</button>
+                                    <span className="text-[#0A9DBF] font-semibold mt-4">Vybrat</span>
 
-                                </div>
-                                <div className="rounded-lg bg-white w-1/3 h-80 p-8 border border-[#957D5E] ">
-                                    AAA
-                                </div>
-                                <div className="rounded-lg bg-white w-1/3 h-80 p-8 border border-[#957D5E] ">
-                                    AAA
-                                </div>
+                                </button>
+                                <button className="rounded-2xl group bg-white w-1/3 h-80 p-2 border border-[#957D5E] flex flex-col hover:border-[#0A9DBF] hover:bg-[#F8EBDB] items-center">
+                                    <img src="man.svg" alt="man" className="my-4 " />
+                                    <span className="text-2xl font-bold">Muž</span>
+                                    <span className="text-[#0A9DBF] font-semibold mt-4">Vybrat</span>
+
+                                </button>
+                                <button className="rounded-2xl group bg-white w-1/3 h-80 p-2 border border-[#957D5E] flex flex-col hover:border-[#0A9DBF] hover:bg-[#F8EBDB] items-center">
+                                    <img src="kid.svg" alt="man" className="my-4 " />
+                                    <span className="text-2xl font-bold">Dítě</span>
+                                    <span className="text-[#0A9DBF] font-semibold mt-4">Vybrat</span>
+
+                                </button>
                             </div>
                         </div>
                     </div>
