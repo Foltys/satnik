@@ -163,9 +163,17 @@ export default function OrderOne() {
                             </div>
                             <div className="py-2 my-10 mx-2 w-full md:w-1/2">
                                 <button
-                                    className="items-center  text-[#0A9DBF] border-0 py-2 px-4 focus:outline-none outline  outline-[#0A9DBF] rounded-full  font-semibold text-lg hover:bg-[#eb2f06] hover:text-white hover:outline-[#eb2f06]"
+                                    className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-[#eb2f06] text-[#F8EBDB] outline-[#eb2f06] hover:text-[#eb2f06] hover:bg-[#F8EBDB]"
                                 >
                                     Přidat další osobu
+                                </button>
+                            </div>
+                            <hr className="w-full my-4 border border-[#957D5E] opacity-20" />
+                            <div className="py-2 my-10 mx-2 w-full md:w-1/2">
+                                <button
+                                    className="items-center  text-[#0A9DBF] border-0 py-2 px-4 focus:outline-none outline  outline-[#0A9DBF] rounded-full  font-semibold text-lg hover:bg-[#eb2f06] hover:text-[#F8EBDB] hover:outline-[#eb2f06]"
+                                >
+                                    Pokračovat
                                 </button>
                             </div>
                         </div>
