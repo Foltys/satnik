@@ -8,6 +8,7 @@ const mongoDatabase = 'wardrobe'
 const mongoCollection = 'orders'
 
 let mongo
+
 async function getMongo () {
 	if (mongo) return mongo
 	mongo = new MongoClient(mongoConnstring);
@@ -15,6 +16,7 @@ async function getMongo () {
 	// await client.close()
 	return mongo
 }
+
 async function getMongoCollection () {
 	const mongo = await getMongo();
 	const database = mongo.db(mongoDatabase)
@@ -115,6 +117,26 @@ const findOrder = async function (filter) {
 	return await collection.findOne(filter)
 }
 
+const listOrders = async function (
+	filter = undefined,
+	sort = undefined,
+	skip = undefined,
+	limit = undefined
+) {
+	const collection = await getMongoCollection()
+	const cursor = await collection.find(filter)
+	if (sort) {
+		cursor.sort(sort)
+	}
+	if (skip) {
+		cursor.skip(skip)
+	}
+	if (limit) {
+		cursor.limit(limit)
+	}
+	return await cursor.toArray()
+}
+
 const updateOrder = async function (_id, order) {
 	const collection = await getMongoCollection()
 	order.updated_at = new Date()
@@ -128,4 +150,4 @@ const updateOrder = async function (_id, order) {
 	return await collection.updateOne({_id}, {$set: order})
 }
 
-exports.default = {saveNewOrder, findOrder, updateOrder}
+exports.default = {saveNewOrder, findOrder, listOrders, updateOrder}
