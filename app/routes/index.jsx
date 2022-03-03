@@ -66,9 +66,9 @@ export default function Index() {
                   <h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-900 ml-1">Adresa pro doručení</h1>
                 </div>
                 <div className="flex flex-wrap -m-2">
-                  <div className="flex">
-                    <button className="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button> <span className="mr-3">Doručení na adresu</span>
-                    <button className="border-2 border-gray-300 ml-1 bg-indigo-500 rounded-full w-6 h-6 focus:outline-none"></button> <span className="mr-3">Osobní vyzvednutí</span>
+                  <div className="flex mx-3 my-5 font-bold space-x-2 text-[#0A9DBF]">
+                    <button className="border-4 border-[#0A9DBF] rounded-full w-6 h-6 focus:outline-none"></button> <span>Doručení na adresu</span>
+                    <button className="border-4 border-[#0A9DBF] rounded-full w-6 h-6 focus:outline-none"></button> <span>Osobní vyzvednutí</span>
                   </div>
                   <div className="p-2 w-full">
                     <div className="relative my-2 mx-1">
