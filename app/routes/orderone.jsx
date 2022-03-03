@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useOutletContext, useNavigate } from "remix";
 
 export default function OrderOne() {
-    const { translate, setOrderItem } = useOutletContext();
+    const { translator, setOrderItem } = useOutletContext();
     const adult = false; //je potřeba nastavit jestli je to dítě nebo dospělý
     return (
         <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
@@ -19,7 +19,7 @@ export default function OrderOne() {
                         <svg fill="none" className="w-4 h-4 mr-1" viewBox="0 0 24 24">
                             <rect width="24" height="12" fill="#005BBB" />
                             <rect width="24" height="12" y="12" fill="#FFD500" />
-                        </svg><span className="hidden md:flex">{translate("language")}</span>
+                        </svg><span className="hidden md:flex">{translator("language")}</span>
                     </button>
                 </div>
             </header>
