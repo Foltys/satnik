@@ -614,6 +614,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 1rem;
 }
 
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
 .flex {
   display: flex;
 }
@@ -656,6 +664,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-1\/2 {
   width: 50%;
+}
+
+.w-44 {
+  width: 11rem;
 }
 
 .grow {
@@ -773,6 +785,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(99 102 241 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#0A9DBF\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(10 157 191 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-80 {
   --tw-bg-opacity: 0.8;
 }
@@ -789,6 +806,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .p-2 {
   padding: 0.5rem;
+}
+
+.p-5 {
+  padding: 1.25rem;
 }
 
 .py-2 {
@@ -895,6 +916,24 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(149 125 94 / var(--tw-text-opacity));
 }
 
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-\[\#F8EBDB\] {
+  --tw-text-opacity: 1;
+  color: rgb(248 235 219 / var(--tw-text-opacity));
+}
+
+.accent-violet-500 {
+  accent-color: #8b5cf6;
+}
+
+.accent-\[\#0A9DBF\] {
+  accent-color: #0A9DBF;
+}
+
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -910,6 +949,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .outline-\[\#0A9DBF\] {
   outline-color: #0A9DBF;
+}
+
+.outline-\[\#F8EBDB\] {
+  outline-color: #F8EBDB;
 }
 
 .transition-colors {
@@ -933,6 +976,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(235 47 6 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-\[\#F8EBDB\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 235 219 / var(--tw-bg-opacity));
+}
+
 .hover\:text-gray-900:hover {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
@@ -943,8 +991,17 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.hover\:text-\[\#eb2f06\]:hover {
+  --tw-text-opacity: 1;
+  color: rgb(235 47 6 / var(--tw-text-opacity));
+}
+
 .hover\:outline-\[\#eb2f06\]:hover {
   outline-color: #eb2f06;
+}
+
+.hover\:outline-\[\#F8EBDB\]:hover {
+  outline-color: #F8EBDB;
 }
 
 .focus\:border-white:focus {
@@ -1033,6 +1090,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .md\:w-1\/2 {
     width: 50%;
+  }
+
+  .md\:w-2\/3 {
+    width: 66.666667%;
   }
 
   .md\:py-24 {
