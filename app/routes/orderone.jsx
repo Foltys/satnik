@@ -33,7 +33,7 @@ export default function OrderOne() {
                                     <h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-900 ml-1">Objednávka</h1>
                                 </div>
                             </div>
-                            <div className="flex p-3">
+                            <div className="flex">
                                 <div className="rounded-2xl group bg-[#0A9DBF] text-[#F8EBDB] w-full h-80 p-2 border border-[#0A9DBF] flex flex-col hover:bg-[#F8EBDB] items-center">
                                     <img src="woman.svg" alt="man" className="my-4 " />
                                     <span className="text-2xl font-bold group-hover:text-[#0A9DBF]">Žena</span>
@@ -41,7 +41,7 @@ export default function OrderOne() {
                                 </div>
                             </div>
                             <div className="flex">
-                                <div className="p-2 w-1/5">
+                                <div className="py-2 w-1/5">
                                     <div className="relative my-2 mx-1">
                                         <label
                                             htmlFor="name"
@@ -59,7 +59,7 @@ export default function OrderOne() {
                                         />
                                     </div>
                                 </div>
-                                <div className="p-2 w-4/5">
+                                <div className="py-2 w-4/5">
                                     <div className="relative my-2 mx-1">
                                         <label
                                             htmlFor="name"
@@ -84,7 +84,7 @@ export default function OrderOne() {
                                 </div>
                             </div>
                             <div className="flex flex-col">
-                                <div className="p-2 w-full">
+                                <div className="py-2 w-full">
                                     <div className="relative my-2 mx-1">
                                         <label
                                             htmlFor="name"
@@ -102,7 +102,7 @@ export default function OrderOne() {
                                     </div>
                                 </div>
                                 <div className="flex">
-                                    <div className="p-2 w-2/5">
+                                    <div className="py-2 w-2/5">
                                         <div className="relative my-2 mx-1">
                                             <label
                                                 htmlFor="name"
@@ -119,7 +119,7 @@ export default function OrderOne() {
                                             />
                                         </div>
                                     </div>
-                                    <div className="p-2 w-2/5">
+                                    <div className="py-2 w-2/5">
                                         <div className="relative my-2 mx-1">
                                             <label
                                                 htmlFor="name"
@@ -138,7 +138,7 @@ export default function OrderOne() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="p-2 my-10 mx-2 w-full md:w-1/2">
+                            <div className="py-2 my-10 mx-2 w-full md:w-1/2">
                                 <button
                                     className="items-center  text-[#0A9DBF] border-0 py-2 px-4 focus:outline-none outline  outline-[#0A9DBF] rounded-full  font-semibold text-lg hover:bg-[#eb2f06] hover:text-white hover:outline-[#eb2f06]"
                                 >
