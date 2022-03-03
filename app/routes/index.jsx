@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { useOutletContext, useNavigate } from "remix";
+import { useOutletContext, useNavigate, useSubmit } from "remix";
 
 export default function Index() {
-  const { translate, setOrderItem } = useOutletContext();
+  const { translator, setOrderItem, switchLanguage } = useOutletContext();
   const navigate = useNavigate();
   const [delivery, setDelivery] = useState(true);
 
@@ -16,8 +16,9 @@ export default function Index() {
     };
   };
 
-  const submitForm = (e) => {
+  const nextForm = (e) => {
     e.preventDefault();
+    navigate("genderselect", { replace: false });
   };
 
   useEffect(() => {
@@ -44,12 +45,14 @@ export default function Index() {
               First Link
             </a>
           </nav>
-          <button className="inline-flex items-center text-[#0A9DBF] font-semibold  border-0 py-2 px-5 focus:outline-[#eb2f06] outline outline-offset-2 outline-[#0A9DBF] rounded-full text-base mr-5 hover:outline-[#eb2f06]">
+          <button onClick={(e) => {
+            translator.switch()
+          }} className="inline-flex items-center text-[#0A9DBF] font-semibold  border-0 py-2 px-5 focus:outline-[#eb2f06] outline outline-offset-2 outline-[#0A9DBF] rounded-full text-base mr-5 hover:outline-[#eb2f06]">
             <svg fill="none" className="w-4 h-4 mr-1" viewBox="0 0 24 24">
               <rect width="24" height="12" fill="#005BBB" />
               <rect width="24" height="12" y="12" fill="#FFD500" />
             </svg>
-            <span className="hidden md:flex">{translate("language")}</span>
+            <span className="hidden md:flex">{translator.translate("language")}</span>
           </button>
         </div>
       </header>
@@ -61,7 +64,7 @@ export default function Index() {
               <div className="w-full mx-auto">
                 <div className="flex flex-col md:mb-12">
                   <h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-900 ml-1">
-                    Kontaktní informace
+                    {translator.translate("contact")}
                   </h1>
                 </div>
                 <div className="flex flex-wrap -m-2">
@@ -71,7 +74,7 @@ export default function Index() {
                         htmlFor="name"
                         className="leading-7 font-semibold text-base text-gray-600"
                       >
-                        Jméno a příjmení
+                        {translator.translate("name_and_surname")}
                       </label>
                       <input
                         onChange={handleChange("fullname")}
@@ -89,7 +92,7 @@ export default function Index() {
                         htmlFor="phone"
                         className="leading-7 font-semibold text-base text-gray-600"
                       >
-                        Telefon
+                        {translator.translate("phone")}
                       </label>
                       <input
                         onChange={handleChange("phone")}
@@ -113,7 +116,7 @@ export default function Index() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      Telefonní číslo na kterém vás zastihneme
+                      {translator.translate("phone_to_find_you")}
                     </div>
                   </div>
                   <div className="p-2 w-full">
@@ -123,10 +126,10 @@ export default function Index() {
                           htmlFor="email"
                           className="leading-7 grow font-semibold text-base text-gray-600"
                         >
-                          Email
+                          {translator.translate("email")}
                         </label>
                         <span className="text-[#957D5E] font-bold text-sm">
-                          volitelné
+                          {translator.translate("optional")}
                         </span>
                       </div>
                       <input
@@ -145,7 +148,7 @@ export default function Index() {
               <div className="w-full mx-auto mt-14">
                 <div className="flex flex-col md:mb-12">
                   <h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-900 ml-1">
-                    Adresa pro doručení
+                    {translator.translate("delivery_address")}
                   </h1>
                 </div>
                 <div className="flex flex-wrap -m-2">
@@ -159,7 +162,7 @@ export default function Index() {
                       checked={delivery == true}
                       onChange={handleDelivery}
                     />
-                    <label htmlFor="radiodelivery">Doručení na adresu</label>
+                    <label htmlFor="radiodelivery">{translator.translate("deliver_to_adress")}</label>
                     <input
                       className="accent-[#0A9DBF]"
                       type="radio"
@@ -169,7 +172,7 @@ export default function Index() {
                       checked={delivery == false}
                       onChange={handleDelivery}
                     />
-                    <label htmlFor="radiopickup">Osobní vyzvednutí</label>
+                    <label htmlFor="radiopickup">{translator.translate("pickup")}</label>
                   </div>
                   {delivery == true ? (
                     <>
@@ -179,7 +182,7 @@ export default function Index() {
                             htmlFor="name"
                             className="leading-7 font-semibold text-base text-gray-600"
                           >
-                            Jméno a příjmení
+                            {translator.translate("name_and_surname")}
                           </label>
                           <input
                             onChange={handleChange("delivery_fullname")}
@@ -203,7 +206,7 @@ export default function Index() {
                               clipRule="evenodd"
                             />
                           </svg>
-                          Uveďte jméno osoby, která bude zásilku přebírat
+                          {translator.translate("picker_name")}
                         </div>
                       </div>
                       <div className="p-2 w-full">
@@ -212,7 +215,7 @@ export default function Index() {
                             htmlFor="street"
                             className="leading-7 font-semibold text-base text-gray-600"
                           >
-                            Ulice a číslo popisné
+                            {translator.translate("street_and_number")}
                           </label>
                           <input
                             onChange={handleChange("delivery_street")}
@@ -230,7 +233,7 @@ export default function Index() {
                             htmlFor="city"
                             className="leading-7 font-semibold text-base text-gray-600"
                           >
-                            Město
+                            {translator.translate("city")}
                           </label>
                           <input
                             onChange={handleChange("delivery_city")}
@@ -248,7 +251,7 @@ export default function Index() {
                             htmlFor="city"
                             className="leading-7 font-semibold text-base text-gray-600"
                           >
-                            PSČ
+                            {translator.translate("zip")}
                           </label>
                           <input
                             onChange={handleChange("delivery_zip")}
@@ -267,10 +270,10 @@ export default function Index() {
                               htmlFor="phone2"
                               className="leading-7 grow font-semibold text-base text-gray-600"
                             >
-                              Telefon
+                              {translator.translate("phone")}
                             </label>
                             <span className="text-[#957D5E] font-bold text-sm">
-                              volitelné
+                              {translator.translate("optional")}
                             </span>
                           </div>
                           <input
@@ -295,7 +298,7 @@ export default function Index() {
                               clipRule="evenodd"
                             />
                           </svg>
-                          Uveďte pokud se liší od telefonního čísla výše
+                          {translator.translate("phone_if_other")}
                         </div>
                       </div>
                     </>
@@ -318,7 +321,7 @@ export default function Index() {
                           rel="noreferrer"
                         >
                           <button className="w-44 text-base mt-10 text-[#F8EBDB] border-0 py-2 px-3 focus:outline-none outline  outline-[#F8EBDB] rounded-full  hover:text-[#eb2f06] hover:bg-[#F8EBDB]  hover:outline-[#F8EBDB] font-semibold">
-                            Ukázat na mapě
+                            {translator.translate("show_on_map")}
                           </button>
                         </a>
                       </div>
@@ -326,10 +329,10 @@ export default function Index() {
                   )}
                   <div className="p-2 my-10 mx-2 w-full md:w-1/2">
                     <button
-                      onClick={submitForm}
+                      onClick={nextForm}
                       className="inline-flex items-center w-full  text-[#0A9DBF] border-0 py-4 px-6 focus:outline-none outline  outline-[#0A9DBF] rounded-full text-xl hover:bg-[#eb2f06] hover:text-white hover:outline-[#eb2f06]"
                     >
-                      Pokračovat na výběr oblečení
+                      {translator.translate("continue_to_cloth_selection")}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6 ml-2"

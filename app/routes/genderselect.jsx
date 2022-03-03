@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useOutletContext, useNavigate } from "remix";
 
 export default function GenderSelect() {
-  const { translate, setOrderItem } = useOutletContext();
+  const { translator, setOrderItem } = useOutletContext();
     return (
         <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
             <header className="text-gray-600 body-font sticky top-0 bg-[#F8EBDB] z-10 pb-2">
@@ -18,7 +18,7 @@ export default function GenderSelect() {
                         <svg fill="none" className="w-4 h-4 mr-1" viewBox="0 0 24 24">
                             <rect width="24" height="12" fill="#005BBB" />
                             <rect width="24" height="12" y="12" fill="#FFD500" />
-                        </svg><span className="hidden md:flex">{translate("language")}</span>
+                        </svg><span className="hidden md:flex">{translator.translate("language")}</span>
                     </button>
                 </div>
             </header>
