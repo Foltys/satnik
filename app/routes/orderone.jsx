@@ -3,6 +3,7 @@ import { useOutletContext, useNavigate } from "remix";
 
 export default function OrderOne() {
     const { translate, setOrderItem } = useOutletContext();
+    const adult = false; //je potřeba nastavit jestli je to dítě nebo dospělý
     return (
         <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
             <header className="text-gray-600 body-font sticky top-0 bg-[#F8EBDB] z-10 pb-2">
@@ -40,6 +41,28 @@ export default function OrderOne() {
                                     <button className="font-semibold group-hover:text-[#0A9DBF] mt-4 border-0 py-2 px-5 outline outline-[#F8EBDB] group-hover:outline-[#0A9DBF] rounded-full">Odebrat</button>
                                 </div>
                             </div>
+                            {!adult&&(
+                            <div className="flex">
+                                <div className="flex mx-3 my-5 font-bold space-x-2 text-[#0A9DBF]">
+                                    <input
+                                        className="accent-[#0A9DBF]"
+                                        type="radio"
+                                        id="girl"
+                                        name="kidgenderselector"
+                                        value="boy"
+                                    />
+                                    <label htmlFor="boy">Chlapec</label>
+                                    <input
+                                        className="accent-[#0A9DBF]"
+                                        type="radio"
+                                        id="girl"
+                                        name="kidgenderselector"
+                                        value="girl"
+                                    />
+                                    <label htmlFor="girl">Dívka</label>
+                                </div>
+                            </div>
+                            )}
                             <div className="flex">
                                 <div className="py-2 w-1/5">
                                     <div className="relative my-2 mx-1">
