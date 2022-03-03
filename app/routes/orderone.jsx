@@ -32,11 +32,8 @@ export default function OrderOne() {
                                 <div className="flex flex-col md:mb-12">
                                     <h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-900 ml-1">Objednávka</h1>
                                 </div>
-                                <div className="text-[#0A9DBF] font-medium my-5 hidden">Kdo bude oblečení nosit?
-                                    V dalších krocích můžete objednat oblečení i pro další osoby.
-                                </div>
                             </div>
-                            <div className="flex">
+                            <div className="flex p-3">
                                 <div className="rounded-2xl group bg-[#0A9DBF] text-[#F8EBDB] w-full h-80 p-2 border border-[#0A9DBF] flex flex-col hover:bg-[#F8EBDB] items-center">
                                     <img src="woman.svg" alt="man" className="my-4 " />
                                     <span className="text-2xl font-bold group-hover:text-[#0A9DBF]">Žena</span>
@@ -83,7 +80,7 @@ export default function OrderOne() {
                             </div>
                             <div className="w-full mx-auto">
                                 <div className="flex flex-col md:mb-12">
-                                    <h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-900 ml-1">Výběr oblečení</h1>
+                                    <h1 className="sm:text-3xl text-2xl font-bold title-font my-4 text-gray-900 ml-1">Výběr oblečení</h1>
                                 </div>
                             </div>
                             <div className="flex flex-col">
