@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useOutletContext, useNavigate } from "remix";
 
 export default function Index() {
@@ -9,14 +9,21 @@ export default function Index() {
   const handleDelivery = (e) => {
     setDelivery(!delivery);
   };
+
   const handleChange = (identificator) => {
     return (event) => {
       setOrderItem([identificator], event.target.value);
     };
   };
+
   const submitForm = (e) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
+
+  useEffect(() => {
+    setOrderItem("delivery_type", delivery ? "delivery" : "pickup");
+  }, [delivery, setOrderItem]);
+
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
       <header className="text-gray-600 body-font sticky top-0 bg-[#F8EBDB] z-10 pb-2">
@@ -67,7 +74,7 @@ export default function Index() {
                         Jméno a příjmení
                       </label>
                       <input
-                        onChange={handleChange("contact_name")}
+                        onChange={handleChange("fullname")}
                         type="text"
                         id="name"
                         name="name"
@@ -85,7 +92,7 @@ export default function Index() {
                         Telefon
                       </label>
                       <input
-                        onChange={handleChange("contact_phone")}
+                        onChange={handleChange("phone")}
                         type="tel"
                         id="phone"
                         name="phone"
@@ -123,7 +130,7 @@ export default function Index() {
                         </span>
                       </div>
                       <input
-                        onChange={handleChange("contact_email")}
+                        onChange={handleChange("email")}
                         type="email"
                         id="email"
                         name="email"
@@ -175,7 +182,7 @@ export default function Index() {
                             Jméno a příjmení
                           </label>
                           <input
-                            onChange={handleChange("adress_name")}
+                            onChange={handleChange("delivery_fullname")}
                             type="text"
                             id="name"
                             name="name"
@@ -208,7 +215,7 @@ export default function Index() {
                             Ulice a číslo popisné
                           </label>
                           <input
-                            onChange={handleChange("adress_street")}
+                            onChange={handleChange("delivery_street")}
                             type="text"
                             id="street"
                             name="street"
@@ -226,7 +233,7 @@ export default function Index() {
                             Město
                           </label>
                           <input
-                            onChange={handleChange("adress_city")}
+                            onChange={handleChange("delivery_city")}
                             type="text"
                             id="city"
                             name="city"
@@ -244,7 +251,7 @@ export default function Index() {
                             PSČ
                           </label>
                           <input
-                            onChange={handleChange("adress_psc")}
+                            onChange={handleChange("delivery_zip")}
                             type="text"
                             id="psc"
                             name="psc"
@@ -257,21 +264,21 @@ export default function Index() {
                         <div className="relative my-2 mx-1">
                           <div className="flex">
                             <label
-                              htmlFor="email2"
+                              htmlFor="phone2"
                               className="leading-7 grow font-semibold text-base text-gray-600"
                             >
-                              Email
+                              Telefon
                             </label>
                             <span className="text-[#957D5E] font-bold text-sm">
                               volitelné
                             </span>
                           </div>
                           <input
-                            onChange={handleChange("adress_email")}
+                            onChange={handleChange("delivery_phone")}
                             type="tel"
-                            id="email2"
-                            name="email2"
-                            placeholder="@"
+                            id="phone2"
+                            name="phone2"
+                            placeholder="+380 111 111 111"
                             className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
                           />
                         </div>
@@ -318,7 +325,10 @@ export default function Index() {
                     </div>
                   )}
                   <div className="p-2 my-10 mx-2 w-full md:w-1/2">
-                    <button onClick={submitForm} className="inline-flex items-center w-full  text-[#0A9DBF] border-0 py-4 px-6 focus:outline-none outline  outline-[#0A9DBF] rounded-full text-xl hover:bg-[#eb2f06] hover:text-white hover:outline-[#eb2f06]">
+                    <button
+                      onClick={submitForm}
+                      className="inline-flex items-center w-full  text-[#0A9DBF] border-0 py-4 px-6 focus:outline-none outline  outline-[#0A9DBF] rounded-full text-xl hover:bg-[#eb2f06] hover:text-white hover:outline-[#eb2f06]"
+                    >
                       Pokračovat na výběr oblečení
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

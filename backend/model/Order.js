@@ -1,8 +1,9 @@
-import { MongoClient } from 'mongodb'
-import { Ajv } from 'ajv'
+const {MongoClient, ObjectID} = require('mongodb')
+const Ajv = require('ajv')
+
 const ajv = new Ajv()
 
-const mongoConnstring = ''
+const mongoConnstring = 'mongodb://localhost:27017'
 const mongoDatabase = 'wardrobe'
 const mongoCollection = 'orders'
 
@@ -39,12 +40,16 @@ const personSchema = {
 		type: {enum: ["man", "woman", "child"]},
 		fullname: {type: "string"},
 		age: {type: "integer"},
+		clothing_size: {type: "string"},
+		shoe_size: {type: "string"},
 		requirements: {type: "array", items: requirementSchema},
 	},
 	required: [
 		"type",
 		"fullname",
 		"age",
+		"clothing_size",
+		"shoe_size",
 		"requirements",
 	],
 	additionalProperties: false,
@@ -61,8 +66,11 @@ const orderSchema = {
 		delivery_city: {type: "string"},
 		delivery_zip: {type: "string"},
 		delivery_phone: {type: "string"},
-		delivery_time: {type: "timestamp"},
-		persons: {type: "array", items: personSchema}
+		delivery_time: {},
+		persons: {type: "array", items: personSchema},
+		state: {enum: ["open"]},
+		created_at: {},
+		updated_at: {},
 	},
 	required: [
 		"fullname",
@@ -74,21 +82,46 @@ const orderSchema = {
 		"delivery_city",
 		"delivery_zip",
 		"delivery_phone",
-		"delivery_time",
+		// "delivery_time",
 		"persons",
+		"state",
+		"created_at",
+		"updated_at",
 	],
 	additionalProperties: false,
 }
 
 const validateOrder = ajv.compile(orderSchema)
 
-export default function createOrder (order) {
+const saveNewOrder = async function (order) {
+	order.created_at = new Date()
+	order.updated_at = new Date()
+	order.state = 'open'
+
 	if (!validateOrder(order)) throw new Error(validateOrder.errors)
-	return {
-		save: async function () {
-			const collection = await getMongoCollection()
-			await collection.insertOne(order)
-		},
+
+	const collection = await getMongoCollection()
+	const result = await collection.insertOne(order)
+	order._id = result.insertedId
+	return order
+}
+
+const findOrder = async function (filter) {
+	const collection = await getMongoCollection()
+	return await collection.findOne(filter)
+}
+
+const updateOrder = async function (_id, order) {
+	const collection = await getMongoCollection()
+	order.updated_at = new Date()
+
+	delete order._id
+
+	if (!validateOrder(order)) {
+		throw new Error(validateOrder.errors)
 	}
 
+	return await collection.updateOne({_id}, {$set: order})
 }
+
+exports.default = {saveNewOrder, findOrder, updateOrder}
