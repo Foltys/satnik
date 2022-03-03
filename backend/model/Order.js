@@ -37,7 +37,8 @@ const requirementSchema = {
 const personSchema = {
 	type: "object",
 	properties: {
-		type: {enum: ["man", "woman", "child"]},
+		sex: {enum: ["man", "woman"]},
+		adult: {type: "boolean"},
 		fullname: {type: "string"},
 		age: {type: "integer"},
 		clothing_size: {type: "string"},
@@ -45,7 +46,8 @@ const personSchema = {
 		requirements: {type: "array", items: requirementSchema},
 	},
 	required: [
-		"type",
+		"sex",
+		"adult",
 		"fullname",
 		"age",
 		"clothing_size",
@@ -98,7 +100,9 @@ const saveNewOrder = async function (order) {
 	order.updated_at = new Date()
 	order.state = 'open'
 
-	if (!validateOrder(order)) throw new Error(validateOrder.errors)
+	if (!validateOrder(order)) {
+		throw new Error(validateOrder.errors)
+	}
 
 	const collection = await getMongoCollection()
 	const result = await collection.insertOne(order)
