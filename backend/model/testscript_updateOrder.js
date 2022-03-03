@@ -5,11 +5,7 @@ async function run () {
 
 	order.phone = '766111222'
 
-	try {
-		await updateOrder(order._id, order)
-	} catch (e) {
-		console.error(e)
-	}
+	await updateOrder(order._id, order)
 }
 
 run()
