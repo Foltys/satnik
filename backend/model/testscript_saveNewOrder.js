@@ -13,7 +13,8 @@ const order = {
 	delivery_time: new Date('2022-03-01'),
 	persons: [
 		{
-			type: 'woman',
+			sex: "woman",
+			adult: true,
 			fullname: 'Anna Koroljenko',
 			age: 30,
 			clothing_size: 'm',
@@ -30,7 +31,8 @@ const order = {
 			],
 		},
 		{
-			type: 'child',
+			sex: "man",
+			adult: false,
 			fullname: 'Pavel Koroljenko',
 			age: 10,
 			clothing_size: 's',
