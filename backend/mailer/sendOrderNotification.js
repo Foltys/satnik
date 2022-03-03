@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer'
+const nodemailer = require('nodemailer')
 
 const transporter = nodemailer.createTransport({
 
@@ -8,12 +8,12 @@ const transporter = nodemailer.createTransport({
 
 	service: 'gmail',
 	auth: {
-		user: 'prahasatnik@gmail.com',
-		pass: 'KwAEer8triU4qgU'
+		user: 'prahasatnik',
+		pass: 'KwAEer8triU4qgU',
 	}
 })
 
-function getMailOptions(order) {
+function getMailOptions (order) {
 	return {
 		from: 'prahasatnik@gmail.com',
 		to: order.email,
@@ -21,16 +21,18 @@ function getMailOptions(order) {
 	}
 }
 
-function format(order) {
+function format (order) {
 	return `Nova objednavka ze systemu uasatnik.cz:
 	==============================================
 	${JSON.stringify(order)}
 	`
 }
 
-export default async function sendOrderNotification(order) {
+const sendOrderNotification = async function (order) {
 	const mailOptions = getMailOptions(order)
 	mailOptions.text = format(order)
 	const info = await transporter.sendMail(mailOptions)
 	return info
 }
+
+exports.default = {sendOrderNotification}

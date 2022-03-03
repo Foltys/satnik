@@ -3,7 +3,7 @@ const {saveNewOrder} = require('./Order').default
 const order = {
 	fullname: 'Olena Shevchenko',
 	phone: '777777777',
-	email: 'name@email.com',
+	email: 'michal.palma@gmail.com',
 	delivery_type: 'pickup',
 	delivery_fullname: 'Petr Pavel',
 	delivery_street: 'Jecna 22',
