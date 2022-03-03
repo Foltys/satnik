@@ -7,6 +7,8 @@ import {
   ScrollRestoration,
 } from "remix";
 
+import { useState } from "react";
+
 import translation from "./locale/translation";
 
 import styles from "./styles/app.css";
@@ -20,6 +22,13 @@ export function meta() {
 }
 
 export default function App() {
+  const [order, setOrder] = useState({});
+  const setOrderItem = (key, value) => {
+    const newOrder = order;
+    newOrder[key] = value;
+    setOrder(newOrder);
+    console.log(order);
+  };
   const translate = translation("ua");
   return (
     <html lang="en">
@@ -30,7 +39,7 @@ export default function App() {
         <Links />
       </head>
       <body className="bg-[#F8EBDB]">
-        <Outlet context={[translate]} />
+        <Outlet context={{ translate, setOrderItem, order}} />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
