@@ -8,16 +8,18 @@ const transporter = nodemailer.createTransport({
 
 	service: 'gmail',
 	auth: {
-		user: 'order@uasatnik.cz',
-		pass: 'yourpassword'
+		user: 'prahasatnik@gmail.com',
+		pass: 'KwAEer8triU4qgU'
 	}
 })
 
-const mailOptions = {
-	from: 'order@uasatnik.cz',
-	to: 'admin@uasatnik.cz',
-	subject: 'Nova objednavka ze satniku',
-};
+function getMailOptions(order) {
+	return {
+		from: 'prahasatnik@gmail.com',
+		to: order.email,
+		subject: 'Nova objednavka ze satniku',
+	}
+}
 
 function format(order) {
 	return `Nova objednavka ze systemu uasatnik.cz:
@@ -27,7 +29,8 @@ function format(order) {
 }
 
 export default async function sendOrderNotification(order) {
-	mailOptions.text= format(order)
+	const mailOptions = getMailOptions(order)
+	mailOptions.text = format(order)
 	const info = await transporter.sendMail(mailOptions)
 	return info
 }
