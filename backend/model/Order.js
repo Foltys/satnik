@@ -115,9 +115,13 @@ const updateOrder = async function (_id, order) {
 	const collection = await getMongoCollection()
 	order.updated_at = new Date()
 
-	if (!validateOrder(order)) throw new Error(validateOrder.errors)
+	delete order._id
 
-	return await collection.updateOne({_id: ObjectID(_id)}, order)
+	if (!validateOrder(order)) {
+		throw new Error(validateOrder.errors)
+	}
+
+	return await collection.updateOne({_id}, {$set: order})
 }
 
 exports.default = {saveNewOrder, findOrder, updateOrder}
