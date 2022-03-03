@@ -37,7 +37,7 @@ export default function GenderSelect() {
                                 </div>
                             </div>
                             <div className="flex space-x-2">
-                                <div className="rounded-2xl bg-white w-1/3 h-80 p-2 border border-[#957D5E] flex flex-col hover:border-[#0A9DBF] items-center">
+                                <div className="rounded-2xl bg-white w-1/3 h-80 p-2 border border-[#957D5E] flex flex-col hover:border-[#0A9DBF] hover:bg-[#F8EBDB] items-center">
                                     <img src="woman.svg" alt="man" className="my-4" />
                                     <span className="text-2xl font-bold">Žena</span>
                                     <button className="text-[#0A9DBF] font-semibold mt-4">Vybrat</button>
