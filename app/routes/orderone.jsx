@@ -32,7 +32,7 @@ export default function OrderOne() {
                                 <div className="flex flex-col md:mb-12">
                                     <h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-900 ml-1">Objednávka</h1>
                                 </div>
-                                <div className="text-[#0A9DBF] font-medium my-5">Kdo bude oblečení nosit?
+                                <div className="text-[#0A9DBF] font-medium my-5 hidden">Kdo bude oblečení nosit?
                                     V dalších krocích můžete objednat oblečení i pro další osoby.
                                 </div>
                             </div>
