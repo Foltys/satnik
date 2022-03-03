@@ -19,7 +19,7 @@ export default function OrderOne() {
                         <svg fill="none" className="w-4 h-4 mr-1" viewBox="0 0 24 24">
                             <rect width="24" height="12" fill="#005BBB" />
                             <rect width="24" height="12" y="12" fill="#FFD500" />
-                        </svg><span className="hidden md:flex">{translator("language")}</span>
+                        </svg><span className="hidden md:flex">{translator.translate("language")}</span>
                     </button>
                 </div>
             </header>
