@@ -1,8 +1,8 @@
-import { useOutletContext } from "remix";
 import { useState } from "react";
+import { useOutletContext, useNavigate } from "remix";
 
 export default function GenderSelect() {
-    const [translate] = useOutletContext();
+  const { translate, setOrderItem } = useOutletContext();
     return (
         <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
             <header className="text-gray-600 body-font sticky top-0 bg-[#F8EBDB] z-10 pb-2">
