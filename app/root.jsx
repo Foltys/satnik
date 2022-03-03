@@ -7,6 +7,8 @@ import {
   ScrollRestoration,
 } from "remix";
 
+import translation from "./locale/translation";
+
 import styles from "./styles/app.css";
 
 export function links() {
@@ -18,6 +20,7 @@ export function meta() {
 }
 
 export default function App() {
+  const translate = translation("ua");
   return (
     <html lang="en">
       <head>
@@ -27,7 +30,7 @@ export default function App() {
         <Links />
       </head>
       <body className="bg-[#F8EBDB]">
-        <Outlet />
+        <Outlet context={[translate]} />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

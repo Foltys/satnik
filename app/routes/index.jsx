@@ -1,5 +1,7 @@
+import { useOutletContext } from "remix";
+
 export default function Index() {
-  console.log("nejlepší konzole je xbox")
+  const [translate] = useOutletContext();
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
       <header className="text-gray-600 body-font sticky top-0 bg-[#F8EBDB] z-10 pb-2">
@@ -15,7 +17,7 @@ export default function Index() {
             <svg fill="none" className="w-4 h-4 mr-1" viewBox="0 0 24 24">
               <rect width="24" height="12" fill="#005BBB" />
               <rect width="24" height="12" y="12" fill="#FFD500" />
-            </svg><span className="hidden md:flex">Український</span>
+            </svg><span className="hidden md:flex">{translate("language")}</span>
           </button>
         </div>
       </header>
@@ -61,15 +63,19 @@ export default function Index() {
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
-                    Pokračovat na výběr oblečení</button>
+                    Pokračovat na výběr oblečení
+                  </button>
                 </div>
               </div>
             </div>
           </div>
           <div className="lg:w-1/3 md:w-1/2 flex flex-col md:ml-auto w-full  mt-8 md:mt-0">
-            <img src="https://images.unsplash.com/photo-1582719188393-bb71ca45dbb9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80" className="rounded-lg w-full object-cover object-center" alt="illustration" />
+            <img
+              src="https://images.unsplash.com/photo-1582719188393-bb71ca45dbb9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80"
+              className="rounded-lg w-full object-cover object-center"
+              alt="illustration"
+            />
           </div>
-
         </div>
       </section>
     </div>
