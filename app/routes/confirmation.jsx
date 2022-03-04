@@ -31,7 +31,7 @@ export default function Confirmation() {
                 <div className="container px-5 py-14 md:py-24 mx-auto flex sm:flex-nowrap flex-wrap">
                     <div className="lg:w-2/3 md:w-1/2 rounded-lg overflow-hidden sm:mr-10 flex items-start justify-start relative">
                         <div className="flex flex-col">
-                            <img className="flex rounded-2xl w-full h-72 p-2 " src="https://images.unsplash.com/photo-1573376670774-4427757f7963?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80" alt="delivery" />
+                            <img className="flex rounded-2xl w-full h-72 p-2 " src="https://images.unsplash.com/photo-1485286162995-aa63d31c06cb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="delivery" />
                             <div className="w-full mx-auto">
                                 <div className="flex flex-col md:mb-12">
                                     <h1 className="sm:text-5xl  text-5xl font-bold title-font my-12 text-[#eb2f06] ml-1">Úspěšně jste si objednali oblečení</h1>
