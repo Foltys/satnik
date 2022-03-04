@@ -6,6 +6,7 @@ export default function Summary() {
     const submitForm = (e) => {
         e.preventDefault();
         //    odeslat data na server
+        //    pokud se to podarilo, zobrazit /confirmation
     };
     return (
         <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
