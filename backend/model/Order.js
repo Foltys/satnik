@@ -27,11 +27,9 @@ async function getMongoCollection () {
 const requirementSchema = {
 	type: "object",
 	properties: {
-		type: {type: "string"},
 		description: {type: "string"},
 	},
 	required: [
-		"type",
 		"description",
 	],
 	additionalProperties: false,
@@ -87,7 +85,6 @@ const orderSchema = {
 		"delivery_city",
 		"delivery_zip",
 		"delivery_phone",
-		// "delivery_time",
 		"persons",
 		"state",
 		"created_at",
