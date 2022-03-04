@@ -84,6 +84,13 @@ export default function AddPerson() {
                             </div>
                         </div>
                     </div>
+                    <div className="lg:w-1/3 md:w-1/2 hidden md:flex flex-col md:ml-auto w-full  mt-8 md:mt-0">
+                        <img
+                            src="https://images.unsplash.com/photo-1582719188393-bb71ca45dbb9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80"
+                            className="rounded-lg w-full object-cover object-center"
+                            alt="illustration"
+                        />
+                    </div>
                 </div>
             </section>
         </div>
