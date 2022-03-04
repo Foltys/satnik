@@ -20,13 +20,13 @@ export default function OrderOne() {
                         <div className="flex flex-col">
                             <div className="w-full mx-auto">
                                 <div className="flex flex-col md:mb-12">
-                                    <h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-900 ml-1">Objednávka</h1>
+                                    <h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-900 ml-1">{translator.translate("order")}</h1>
                                 </div>
                             </div>
                             <div className="flex">
                                 <div className="rounded-2xl group bg-[#0A9DBF] text-[#F8EBDB] w-full h-80 p-2 border border-[#0A9DBF] flex flex-col hover:bg-[#F8EBDB] items-center">
                                     <img src="woman.svg" alt="man" className="my-4 " />
-                                    <span className="text-2xl font-bold group-hover:text-[#0A9DBF]">Žena</span>
+                                    <span className="text-2xl font-bold group-hover:text-[#0A9DBF]">{translator.translate("woman")}</span>
                                     <button className="font-semibold group-hover:text-[#0A9DBF] mt-4 border-0 py-2 px-5 outline outline-[#F8EBDB] group-hover:outline-[#0A9DBF] rounded-full">Odebrat</button>
                                 </div>
                             </div>
@@ -40,7 +40,7 @@ export default function OrderOne() {
                                             name="kidgenderselector"
                                             value="boy"
                                         />
-                                        <label htmlFor="boy">Chlapec</label>
+                                        <label htmlFor="boy">{translator.translate("boy")}</label>
                                         <input
                                             className="accent-[#0A9DBF]"
                                             type="radio"
@@ -48,7 +48,7 @@ export default function OrderOne() {
                                             name="kidgenderselector"
                                             value="girl"
                                         />
-                                        <label htmlFor="girl">Dívka</label>
+                                        <label htmlFor="girl">{translator.translate("girl")}</label>
                                     </div>
                                 </div>
                             )}
@@ -59,7 +59,7 @@ export default function OrderOne() {
                                             htmlFor="name"
                                             className="leading-7 font-semibold text-base text-gray-600"
                                         >
-                                            Věk
+                                            {translator.translate("age")}
                                         </label>
                                         <input
 
@@ -77,7 +77,7 @@ export default function OrderOne() {
                                             htmlFor="name"
                                             className="leading-7 font-semibold text-base text-gray-600"
                                         >
-                                            Jméno
+                                            {translator.translate("name")}
                                         </label>
                                         <input
 
@@ -92,7 +92,7 @@ export default function OrderOne() {
                             </div>
                             <div className="w-full mx-auto">
                                 <div className="flex flex-col md:mb-12">
-                                    <h1 className="sm:text-3xl text-2xl font-bold title-font my-4 text-gray-900 ml-1">Výběr oblečení</h1>
+                                    <h1 className="sm:text-3xl text-2xl font-bold title-font my-4 text-gray-900 ml-1">{translator.translate("select_clothes")}</h1>
                                 </div>
                             </div>
                             <div className="flex flex-col">
@@ -120,7 +120,7 @@ export default function OrderOne() {
                                                 htmlFor="name"
                                                 className="leading-7 font-semibold text-base text-gray-600"
                                             >
-                                                Velikost oblečení
+                                                {translator.translate("cloth_size")}
                                             </label>
                                             <input
                                                 type="text"
@@ -137,7 +137,7 @@ export default function OrderOne() {
                                                 htmlFor="name"
                                                 className="leading-7 font-semibold text-base text-gray-600"
                                             >
-                                                Velikost bot
+                                                {translator.translate("shoes_size")}
                                             </label>
                                             <input
                                                 type="text"
@@ -155,7 +155,7 @@ export default function OrderOne() {
                                     <button
                                         className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-[#eb2f06] text-[#F8EBDB] outline-[#eb2f06] hover:text-[#eb2f06] hover:bg-[#F8EBDB]"
                                     >
-                                        Přidat další osobu
+                                        {translator.translate("add_person")}
                                     </button>
                                 </Link>
                             </div>
@@ -165,7 +165,7 @@ export default function OrderOne() {
                                     onClick={nextForm}
                                     className="items-center  text-[#0A9DBF] border-0 py-2 px-4 focus:outline-none outline  outline-[#0A9DBF] rounded-full  font-semibold text-lg hover:bg-[#eb2f06] hover:text-[#F8EBDB] hover:outline-[#eb2f06]"
                                 >
-                                    Pokračovat
+                                    {translator.translate("continue")}
                                 </button>
                             </div>
                         </div>

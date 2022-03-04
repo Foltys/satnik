@@ -23,7 +23,7 @@ export default function AddPerson() {
             <div className="w-full mx-auto">
               <div className="flex flex-col md:mb-12">
                 <h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-900 ml-1">
-                  Objednávka
+                  {translator.translate("order")}
                 </h1>
               </div>
             </div>
@@ -32,20 +32,20 @@ export default function AddPerson() {
               <div className=" flex flex-col justify-center mx-4">
                 <span className="text-2xl font-bold">Olena Kyashenko</span>
                 <span className="py-2">
-                  Svrchní oblečení (Vel. M - 2 ks trika, 2 ks mikina, 1ks svetr)
+                  {translator.translate("cloth_example")}
                 </span>
                 <button
                   onClick={editItem}
                   className="font-semibold hover:text-[#eb2f06] hover:bg-[#F8EBDB] mt-4 border-0 py-2 px-5 outline outline-[#F8EBDB] rounded-full"
                 >
-                  Upravit
+                  {translator.translate("edit")}
                 </button>
               </div>
             </div>
             <div className="w-full mx-auto">
               <div className="flex flex-col md:mb-12">
                 <h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 mt-12 text-gray-900 ml-1">
-                  Přidat další osobu
+                  {translator.translate("add_person")}
                 </h1>
               </div>
             </div>
@@ -55,9 +55,11 @@ export default function AddPerson() {
                 className="rounded-2xl group bg-white w-1/3 h-80 p-2 border border-[#957D5E] flex flex-col hover:border-[#0A9DBF] hover:bg-[#F8EBDB] items-center"
               >
                 <img src="woman.svg" alt="man" className="my-4 " />
-                <span className="text-2xl font-bold">Žena</span>
+                <span className="text-2xl font-bold">
+                  {translator.translate("woman")}
+                </span>
                 <span className="text-[#0A9DBF] font-semibold mt-4">
-                  Vybrat
+                  {translator.translate("pick")}
                 </span>
               </button>
               <button
@@ -65,9 +67,11 @@ export default function AddPerson() {
                 className="rounded-2xl group bg-white w-1/3 h-80 p-2 border border-[#957D5E] flex flex-col hover:border-[#0A9DBF] hover:bg-[#F8EBDB] items-center"
               >
                 <img src="man.svg" alt="man" className="my-4 " />
-                <span className="text-2xl font-bold">Muž</span>
+                <span className="text-2xl font-bold">
+                  {translator.translate("man")}
+                </span>
                 <span className="text-[#0A9DBF] font-semibold mt-4">
-                  Vybrat
+                  {translator.translate("pick")}
                 </span>
               </button>
               <button
@@ -75,9 +79,11 @@ export default function AddPerson() {
                 className="rounded-2xl group bg-white w-1/3 h-80 p-2 border border-[#957D5E] flex flex-col hover:border-[#0A9DBF] hover:bg-[#F8EBDB] items-center"
               >
                 <img src="kid.svg" alt="man" className="my-4 " />
-                <span className="text-2xl font-bold">Dítě</span>
+                <span className="text-2xl font-bold">
+                  {translator.translate("kid")}
+                </span>
                 <span className="text-[#0A9DBF] font-semibold mt-4">
-                  Vybrat
+                  {translator.translate("pick")}
                 </span>
               </button>
             </div>
