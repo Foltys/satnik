@@ -58,7 +58,7 @@ export default function Summary() {
                                     <h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 mt-12 text-gray-900 ml-1">Shrnutí objednávky</h1>
                                 </div>
                             </div>
-                            <a href="/" className="text-[#0A9DBF] font-semibold ml-1 underline">Upravit kontaktní údaje</a>
+                            <Link to="/?edit" className="text-[#0A9DBF] font-semibold ml-1 underline">Upravit kontaktní údaje</Link>
                             <div className="flex">
                                 <div className="flex flex-col w-1/2 px-1">
                                     <span className="font-semibold mt-4">Objednávající</span>
