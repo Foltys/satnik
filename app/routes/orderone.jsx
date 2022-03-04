@@ -32,7 +32,7 @@ export default function OrderOne() {
                             </div>
                             {!adult && (
                                 <div className="flex">
-                                    <div className="flex mx-3 my-5 font-bold space-x-2 text-[#0A9DBF]">
+                                    <div className="flex mx-3 my-6 font-bold space-x-2 text-[#0A9DBF] items-center">
                                         <input
                                             className="accent-[#0A9DBF]"
                                             type="radio"
