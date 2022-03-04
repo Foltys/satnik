@@ -123,7 +123,7 @@ export default function Index() {
                   </h1>
                 </div>
                 <div className="flex flex-wrap -m-2">
-                  <div className="flex mx-3 my-5 font-bold space-x-2 text-[#0A9DBF]">
+                  <div className="flex mx-3 my-6 items-center font-bold space-x-2 text-[#0A9DBF]">
                     <input
                       className="accent-[#0A9DBF]"
                       type="radio"
