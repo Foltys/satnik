@@ -19,7 +19,7 @@ export function links() {
 }
 
 export function meta() {
-  return { title: "New Remix App" };
+  return { title: "Šatník Praha - App for Ukraine" };
 }
 
 function getFromSupported(language) {
