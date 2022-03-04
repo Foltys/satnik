@@ -85,7 +85,6 @@ const orderSchema = {
 		"delivery_city",
 		"delivery_zip",
 		"delivery_phone",
-		// "delivery_time",
 		"persons",
 		"state",
 		"created_at",
