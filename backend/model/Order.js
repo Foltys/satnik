@@ -27,11 +27,9 @@ async function getMongoCollection () {
 const requirementSchema = {
 	type: "object",
 	properties: {
-		type: {type: "string"},
 		description: {type: "string"},
 	},
 	required: [
-		"type",
 		"description",
 	],
 	additionalProperties: false,

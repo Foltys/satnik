@@ -21,12 +21,10 @@ const order = {
 			shoe_size: '41',
 			requirements: [
 				{
-					type: 'jacket',
-					description: 'libovolny popisek',
+					description: 'cerna bunda',
 				},
 				{
-					type: 'pants',
-					description: 'libovolny popisek',
+					description: 'modre boty',
 				}
 			],
 		},
@@ -39,8 +37,7 @@ const order = {
 			shoe_size: '30',
 			requirements: [
 				{
-					type: 'shoes',
-					description: 'libovolny popisek',
+					description: 'nejake kalhoty',
 				}
 			],
 		},
