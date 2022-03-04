@@ -73,6 +73,7 @@ const orderSchema = {
 		delivery_time: {},
 		persons: {type: "array", items: personSchema},
 		state: {enum: ["open"]},
+		lang: {enum: ["ua", "cs"]},
 		created_at: {},
 		updated_at: {},
 	},
