@@ -132,7 +132,7 @@ export default function App() {
               </nav>
               <button
                 onClick={translator.language == "cs" ? setUkrainian : setCzech}
-                className="inline-flex items-center text-[#0A9DBF] font-semibold  border-0 py-2 px-5 focus:outline-[#eb2f06] outline outline-offset-2 outline-[#0A9DBF] rounded-full text-base mr-5 hover:outline-[#eb2f06]"
+                className="w-40  justify-center inline-flex items-center text-[#0A9DBF] font-semibold  border-0 py-2 px-5 focus:outline-[#eb2f06] outline outline-offset-2 outline-[#0A9DBF] rounded-full text-base mr-5 hover:outline-[#eb2f06]"
               >
                 {translator.language == "cs" ? (
                   <svg

@@ -730,6 +730,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 40%;
 }
 
+.w-40 {
+  width: 10rem;
+}
+
 .grow {
   flex-grow: 1;
 }
