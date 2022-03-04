@@ -3,11 +3,14 @@ import { useOutletContext, useNavigate, Link } from "remix";
 
 export default function Summary() {
     const { translator, order } = useOutletContext();
+    const navigate = useNavigate();
     const submitForm = (e) => {
         e.preventDefault();
         console.log(order)
         //    odeslat data na server
         //    pokud se to podarilo, zobrazit /confirmation
+
+        navigate("/confirmation", { replace: false });
     };
     return (
        
