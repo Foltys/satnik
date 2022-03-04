@@ -16,11 +16,19 @@ import translation from "./locale/translation";
 import styles from "./styles/app.css";
 
 export function links() {
-  return [{ rel: "stylesheet", href: styles }];
+  return [{ rel: "stylesheet", href: styles }, { rel: "icon", href: "/icons/favicon-32x32.png" }];
 }
 
 export function meta() {
-  return { title: "Šatník Praha - App for Ukraine" };
+  const description = `Šatník Praha - Pomoc Ukrajině`;
+  return {
+    description,
+    keywords: "ukraine,help,ukrajina,válka",
+    "twitter:image": "https://app.satnikpraha.cz/ogshare.png",
+    "twitter:card": "summary_large_image",
+    "twitter:title": description,
+    "twitter:description": "Pomáháme Ukrajině s Šatníkem Praha",
+  };
 }
 
 function getFromSupported(language) {
