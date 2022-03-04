@@ -27,10 +27,16 @@ export function meta() {
   return {
     description,
     keywords: "ukraine,help,ukrajina,válka",
-    "twitter:image": "https://app.satnikpraha.cz/ogshare.png",
+    "name": "Šatník - Pomoc Ukrajině",
+    "twitter:image": "https://app.satnikpraha.cz/og_share.png",
     "twitter:card": "summary_large_image",
     "twitter:title": description,
     "twitter:description": "Pomáháme Ukrajině s Šatníkem Praha",
+    "og:url": "https://app.satnikpraha.cz/",
+    "og:type": "website",
+    "og:title": "Šatník - Pomoc Ukrajině",
+    "og:description": "Šatník Praha - Pomoc Ukrajině",
+    "og:image": "https://app.satnikpraha.cz/og_share.png",
   };
 }
 
