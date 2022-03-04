@@ -30,29 +30,28 @@ export default function GenderSelect() {
                         <div className="flex flex-col">
                             <div className="w-full mx-auto">
                                 <div className="flex flex-col md:mb-12">
-                                    <h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-900 ml-1">Objednávka</h1>
+                                    <h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-900 ml-1">{translator.translate("order")}</h1>
                                 </div>
-                                <div className="text-[#0A9DBF] font-medium my-5">Kdo bude oblečení nosit?
-                                    V dalších krocích můžete objednat oblečení i pro další osoby.
+                                <div className="text-[#0A9DBF] font-medium my-5">{translator.translate("who_is_wearing")}
                                 </div>
                             </div>
                             <div className="flex space-x-2">
                                 <button className="rounded-2xl group bg-white w-1/3 h-80 p-2 border border-[#957D5E] flex flex-col hover:border-[#0A9DBF] hover:bg-[#F8EBDB] items-center">
                                     <img src="woman.svg" alt="man" className="my-4 " />
-                                    <span className="text-2xl font-bold">Žena</span>
-                                    <span className="text-[#0A9DBF] font-semibold mt-4">Vybrat</span>
+                                    <span className="text-2xl font-bold">{translator.translate("woman")}</span>
+                                    <span className="text-[#0A9DBF] font-semibold mt-4">{translator.translate("pick")}</span>
 
                                 </button>
                                 <button className="rounded-2xl group bg-white w-1/3 h-80 p-2 border border-[#957D5E] flex flex-col hover:border-[#0A9DBF] hover:bg-[#F8EBDB] items-center">
                                     <img src="man.svg" alt="man" className="my-4 " />
-                                    <span className="text-2xl font-bold">Muž</span>
-                                    <span className="text-[#0A9DBF] font-semibold mt-4">Vybrat</span>
+                                    <span className="text-2xl font-bold">{translator.translate("man")}</span>
+                                    <span className="text-[#0A9DBF] font-semibold mt-4">{translator.translate("pick")}</span>
 
                                 </button>
                                 <button className="rounded-2xl group bg-white w-1/3 h-80 p-2 border border-[#957D5E] flex flex-col hover:border-[#0A9DBF] hover:bg-[#F8EBDB] items-center">
                                     <img src="kid.svg" alt="man" className="my-4 " />
-                                    <span className="text-2xl font-bold">Dítě</span>
-                                    <span className="text-[#0A9DBF] font-semibold mt-4">Vybrat</span>
+                                    <span className="text-2xl font-bold">{translator.translate("kid")}</span>
+                                    <span className="text-[#0A9DBF] font-semibold mt-4">{translator.translate("pick")}</span>
 
                                 </button>
                             </div>
