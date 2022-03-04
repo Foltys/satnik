@@ -8,16 +8,16 @@ export default function GenderSelect() {
     const nextForm = (e) => {
         e.preventDefault();
         //    setOrderItem("něco");
-        navigate("addperson", { replace: false });
+        navigate("/orderone", { replace: false });
     };
     return (
         <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
             <header className="text-gray-600 body-font sticky top-0 bg-[#F8EBDB] z-10 pb-2">
                 <div className="container mx-auto flex flex-wrap flex-row items-center">
-                    <a className="flex title-font font-medium items-center text-gray-900 ml-5 md:ml-0" href="/">
+                    <Link className="flex title-font font-medium items-center text-gray-900 ml-5 md:ml-0" to="/">
                         <img src="red.svg" className="w-16 h-16 md:w-32 md:h-32" alt="Šatník Praha" />
                         <span className="ml-3 text-xl hidden">Šatník</span>
-                    </a>
+                    </Link>
                     <nav className="ml-auto flex flex-wrap items-center text-base justify-center">
                         <a className="mr-5 hover:text-gray-900 hidden" href="/">First Link</a>
                     </nav>

@@ -1,8 +1,14 @@
 import { useState } from "react";
-import { useOutletContext, useNavigate } from "remix";
+import { useOutletContext, useNavigate, Link } from "remix";
 
 export default function OrderOne() {
     const { translator, setOrderItem } = useOutletContext();
+    const navigate = useNavigate();
+    const nextForm = (e) => {
+        e.preventDefault();
+        //    setOrderItem("něco");
+        navigate("/summary", { replace: false });
+    };
     const adult = false; //je potřeba nastavit jestli je to dítě nebo dospělý
     return (
         <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
@@ -41,27 +47,27 @@ export default function OrderOne() {
                                     <button className="font-semibold group-hover:text-[#0A9DBF] mt-4 border-0 py-2 px-5 outline outline-[#F8EBDB] group-hover:outline-[#0A9DBF] rounded-full">Odebrat</button>
                                 </div>
                             </div>
-                            {!adult&&(
-                            <div className="flex">
-                                <div className="flex mx-3 my-5 font-bold space-x-2 text-[#0A9DBF]">
-                                    <input
-                                        className="accent-[#0A9DBF]"
-                                        type="radio"
-                                        id="girl"
-                                        name="kidgenderselector"
-                                        value="boy"
-                                    />
-                                    <label htmlFor="boy">Chlapec</label>
-                                    <input
-                                        className="accent-[#0A9DBF]"
-                                        type="radio"
-                                        id="girl"
-                                        name="kidgenderselector"
-                                        value="girl"
-                                    />
-                                    <label htmlFor="girl">Dívka</label>
+                            {!adult && (
+                                <div className="flex">
+                                    <div className="flex mx-3 my-5 font-bold space-x-2 text-[#0A9DBF]">
+                                        <input
+                                            className="accent-[#0A9DBF]"
+                                            type="radio"
+                                            id="girl"
+                                            name="kidgenderselector"
+                                            value="boy"
+                                        />
+                                        <label htmlFor="boy">Chlapec</label>
+                                        <input
+                                            className="accent-[#0A9DBF]"
+                                            type="radio"
+                                            id="girl"
+                                            name="kidgenderselector"
+                                            value="girl"
+                                        />
+                                        <label htmlFor="girl">Dívka</label>
+                                    </div>
                                 </div>
-                            </div>
                             )}
                             <div className="flex">
                                 <div className="py-2 w-1/5">
@@ -162,15 +168,18 @@ export default function OrderOne() {
                                 </div>
                             </div>
                             <div className="py-2 my-10 mx-2 w-full md:w-1/2">
-                                <button
-                                    className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-[#eb2f06] text-[#F8EBDB] outline-[#eb2f06] hover:text-[#eb2f06] hover:bg-[#F8EBDB]"
-                                >
-                                    Přidat další osobu
-                                </button>
+                                <Link to="/addperson">
+                                    <button
+                                        className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-[#eb2f06] text-[#F8EBDB] outline-[#eb2f06] hover:text-[#eb2f06] hover:bg-[#F8EBDB]"
+                                    >
+                                        Přidat další osobu
+                                    </button>
+                                </Link>
                             </div>
                             <hr className="w-full my-4 border border-[#957D5E] opacity-20" />
                             <div className="py-2 my-10 mx-2 w-full md:w-1/2">
                                 <button
+                                    onClick={nextForm}
                                     className="items-center  text-[#0A9DBF] border-0 py-2 px-4 focus:outline-none outline  outline-[#0A9DBF] rounded-full  font-semibold text-lg hover:bg-[#eb2f06] hover:text-[#F8EBDB] hover:outline-[#eb2f06]"
                                 >
                                     Pokračovat

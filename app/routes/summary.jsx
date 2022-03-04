@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useOutletContext, useNavigate } from "remix";
+import { useOutletContext, useNavigate, Link } from "remix";
 
 export default function Summary() {
     const { translator, setOrderItem } = useOutletContext();
@@ -11,10 +11,10 @@ export default function Summary() {
         <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
             <header className="text-gray-600 body-font sticky top-0 bg-[#F8EBDB] z-10 pb-2">
                 <div className="container mx-auto flex flex-wrap flex-row items-center">
-                    <a className="flex title-font font-medium items-center text-gray-900 ml-5 md:ml-0" href="/">
+                    <Link className="flex title-font font-medium items-center text-gray-900 ml-5 md:ml-0" to="/">
                         <img src="red.svg" className="w-16 h-16 md:w-32 md:h-32" alt="Šatník Praha" />
                         <span className="ml-3 text-xl hidden">Šatník</span>
-                    </a>
+                    </Link>
                     <nav className="ml-auto flex flex-wrap items-center text-base justify-center">
                         <a className="mr-5 hover:text-gray-900 hidden" href="/">First Link</a>
                     </nav>
@@ -81,7 +81,7 @@ export default function Summary() {
                             <hr className="w-full my-10 border border-[#957D5E] opacity-20" />
                             <div className="py-2 mx-2 w-full md:w-1/2">
                                 <button
-                                onClick={submitForm}
+                                    onClick={submitForm}
                                     className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-[#eb2f06] text-[#F8EBDB] outline-[#eb2f06] hover:text-[#eb2f06] hover:bg-[#F8EBDB]"
                                 >
                                     Objednat
