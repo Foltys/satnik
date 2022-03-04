@@ -9,7 +9,7 @@ export default function OrderOne() {
         //    setOrderItem("něco");
         navigate("/summary", { replace: false });
     };
-    const adult = false; //je potřeba nastavit jestli je to dítě nebo dospělý
+    const adult = true; //je potřeba nastavit jestli je to dítě nebo dospělý
     return (
        
 
