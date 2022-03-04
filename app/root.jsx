@@ -123,11 +123,11 @@ export default function App() {
                 onClick={translator.language == 'cs' ? setUkrainian : setCzech}
                 className="inline-flex items-center text-[#0A9DBF] font-semibold  border-0 py-2 px-5 focus:outline-[#eb2f06] outline outline-offset-2 outline-[#0A9DBF] rounded-full text-base mr-5 hover:outline-[#eb2f06]"
               >
-                <svg fill="none" className="w-4 h-4 mr-1" viewBox="0 0 24 24">
+                <svg fill="none" className="w-4 h-4" viewBox="0 0 24 24">
                   <rect width="24" height="12" fill="#005BBB" />
                   <rect width="24" height="12" y="12" fill="#FFD500" />
                 </svg>
-                <span className="hidden md:flex">
+                <span className="hidden md:flex ml-2">
                   {translator.translate("language")}
                 </span>
               </button>
