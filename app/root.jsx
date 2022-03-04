@@ -16,7 +16,10 @@ import translation from "./locale/translation";
 import styles from "./styles/app.css";
 
 export function links() {
-  return [{ rel: "stylesheet", href: styles }, { rel: "icon", href: "/icons/favicon-32x32.png" }];
+  return [
+    { rel: "stylesheet", href: styles },
+    { rel: "icon", href: "/icons/favicon-32x32.png" },
+  ];
 }
 
 export function meta() {
@@ -128,13 +131,27 @@ export default function App() {
                 </a>
               </nav>
               <button
-                onClick={translator.language == 'cs' ? setUkrainian : setCzech}
+                onClick={translator.language == "cs" ? setUkrainian : setCzech}
                 className="inline-flex items-center text-[#0A9DBF] font-semibold  border-0 py-2 px-5 focus:outline-[#eb2f06] outline outline-offset-2 outline-[#0A9DBF] rounded-full text-base mr-5 hover:outline-[#eb2f06]"
               >
-                <svg fill="none" className="w-4 h-4" viewBox="0 0 24 24">
-                  <rect width="24" height="12" fill="#005BBB" />
-                  <rect width="24" height="12" y="12" fill="#FFD500" />
-                </svg>
+                {translator.language == "cs" ? (
+                  <svg fill="none" className="w-4 h-4" viewBox="0 0 24 24">
+                    <rect width="24" height="12" fill="#005BBB" />
+                    <rect width="24" height="12" y="12" fill="#FFD500" />
+                  </svg>
+                ) : (
+                  <svg
+                    width="25"
+                    height="19"
+                    viewBox="0 0 25 19"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0 0H25V9.5H0V0Z" fill="white" />
+                    <path d="M0 9.5H25V19H0V9.5Z" fill="#D7141A" />
+                    <path d="M14.0625 9.5L0 0V19L14.0625 9.5Z" fill="#11457E" />
+                  </svg>
+                )}
                 <span className="hidden md:flex ml-2">
                   {translator.translate("language")}
                 </span>
