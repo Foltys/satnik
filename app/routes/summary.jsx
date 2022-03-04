@@ -3,6 +3,10 @@ import { useOutletContext, useNavigate } from "remix";
 
 export default function Summary() {
     const { translator, setOrderItem } = useOutletContext();
+    const submitForm = (e) => {
+        e.preventDefault();
+        //    odeslat data na server
+    };
     return (
         <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
             <header className="text-gray-600 body-font sticky top-0 bg-[#F8EBDB] z-10 pb-2">
@@ -77,6 +81,7 @@ export default function Summary() {
                             <hr className="w-full my-10 border border-[#957D5E] opacity-20" />
                             <div className="py-2 mx-2 w-full md:w-1/2">
                                 <button
+                                onClick={submitForm}
                                     className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-[#eb2f06] text-[#F8EBDB] outline-[#eb2f06] hover:text-[#eb2f06] hover:bg-[#F8EBDB]"
                                 >
                                     Objednat

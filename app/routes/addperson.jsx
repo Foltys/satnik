@@ -1,8 +1,16 @@
 import { useState } from "react";
-import { useOutletContext, useNavigate } from "remix";
+import { useOutletContext, useNavigate, Link } from "remix";
 
 export default function AddPerson() {
     const { translator, setOrderItem } = useOutletContext();
+    const navigate = useNavigate();
+    const nextForm = (e) => {
+        e.preventDefault();
+        //    setOrderItem("něco");
+        navigate("summary", { replace: false });
+    };
+
+    
     return (
         <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
             <header className="text-gray-600 body-font sticky top-0 bg-[#F8EBDB] z-10 pb-2">
