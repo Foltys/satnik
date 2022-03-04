@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useOutletContext, useNavigate, useSubmit, Link } from "remix";
 
 export default function Index() {
-  const { translator, setOrderItem, switchLanguage } = useOutletContext();
+  const { translator, setOrderItem } = useOutletContext();
   const navigate = useNavigate();
   const [delivery, setDelivery] = useState(true);
 
@@ -26,36 +26,7 @@ export default function Index() {
   }, [delivery, setOrderItem]);
 
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <header className="text-gray-600 body-font sticky top-0 bg-[#F8EBDB] z-10 pb-2">
-        <div className="container mx-auto flex flex-wrap flex-row items-center">
-          <Link
-            className="flex title-font font-medium items-center text-gray-900 ml-5 md:ml-0"
-            to="/"
-          >
-            <img
-              src="red.svg"
-              className="w-16 h-16 md:w-32 md:h-32"
-              alt="Šatník Praha"
-            />
-            <span className="ml-3 text-xl hidden">Šatník</span>
-          </Link>
-          <nav className="ml-auto flex flex-wrap items-center text-base justify-center">
-            <a className="mr-5 hover:text-gray-900 hidden" href="/">
-              First Link
-            </a>
-          </nav>
-          <button onClick={(e) => {
-            translator.switch()
-          }} className="inline-flex items-center text-[#0A9DBF] font-semibold  border-0 py-2 px-5 focus:outline-[#eb2f06] outline outline-offset-2 outline-[#0A9DBF] rounded-full text-base mr-5 hover:outline-[#eb2f06]">
-            <svg fill="none" className="w-4 h-4 mr-1" viewBox="0 0 24 24">
-              <rect width="24" height="12" fill="#005BBB" />
-              <rect width="24" height="12" y="12" fill="#FFD500" />
-            </svg>
-            <span className="hidden md:flex">{translator.translate("language")}</span>
-          </button>
-        </div>
-      </header>
+    
 
       <section className="text-gray-600 body-font relative">
         <div className="container px-5 py-14 md:py-24 mx-auto flex sm:flex-nowrap flex-wrap">
@@ -162,7 +133,9 @@ export default function Index() {
                       checked={delivery == true}
                       onChange={handleDelivery}
                     />
-                    <label htmlFor="radiodelivery">{translator.translate("deliver_to_adress")}</label>
+                    <label htmlFor="radiodelivery">
+                      {translator.translate("deliver_to_adress")}
+                    </label>
                     <input
                       className="accent-[#0A9DBF]"
                       type="radio"
@@ -172,7 +145,9 @@ export default function Index() {
                       checked={delivery == false}
                       onChange={handleDelivery}
                     />
-                    <label htmlFor="radiopickup">{translator.translate("pickup")}</label>
+                    <label htmlFor="radiopickup">
+                      {translator.translate("pickup")}
+                    </label>
                   </div>
                   {delivery == true ? (
                     <>
@@ -328,7 +303,6 @@ export default function Index() {
                     </div>
                   )}
                   <div className="p-2 my-10 mx-2 w-full md:w-1/2">
-
                     <button
                       onClick={nextForm}
                       className="inline-flex items-center w-full  text-[#0A9DBF] border-0 py-4 px-6 focus:outline-none outline  outline-[#0A9DBF] rounded-full text-xl hover:bg-[#eb2f06] hover:text-white hover:outline-[#eb2f06]"
@@ -363,6 +337,6 @@ export default function Index() {
           </div>
         </div>
       </section>
-    </div>
+    
   );
 }

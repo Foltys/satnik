@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  Link,
 } from "remix";
 
 import { useEffect, useState } from "react";
@@ -56,20 +57,22 @@ export default function App() {
   const locale = useLoaderData();
   const [order, setOrder] = useState({});
 
-  const switchLanguage = () => {
-    const newLocale = translator.language == "ua" ? "cs" : "ua";
-    
+  const setCzech = (e) => {
     setTranslator({
-      translate: translation(newLocale),
-      language: newLocale,
-      switch: switchLanguage,
+      translate: translation("cs"),
+      language: "cs",
     });
-  }
+  };
+  const setUkrainian = (e) => {
+    setTranslator({
+      translate: translation("ua"),
+      language: "ua",
+    });
+  };
 
   const [translator, setTranslator] = useState({
     translate: translation(locale),
     language: locale,
-    switch: switchLanguage,
   });
 
   useEffect(() => {
@@ -97,14 +100,50 @@ export default function App() {
         <Links />
       </head>
       <body className="bg-[#F8EBDB]">
-        <Outlet
-          context={{
-            translator,
-            setOrderItem,
-            order,
-            submitOrder,
-          }}
-        />
+        <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
+          <header className="text-gray-600 body-font sticky top-0 bg-[#F8EBDB] z-10 pb-2">
+            <div className="container mx-auto flex flex-wrap flex-row items-center">
+              <Link
+                className="flex title-font font-medium items-center text-gray-900 ml-5 md:ml-0"
+                to="/"
+              >
+                <img
+                  src="red.svg"
+                  className="w-16 h-16 md:w-32 md:h-32"
+                  alt="Šatník Praha"
+                />
+                <span className="ml-3 text-xl hidden">Šatník</span>
+              </Link>
+              <nav className="ml-auto flex flex-wrap items-center text-base justify-center">
+                <a className="mr-5 hover:text-gray-900 hidden" href="/">
+                  First Link
+                </a>
+              </nav>
+              <button
+                onClick={translator.language == 'cs' ? setUkrainian : setCzech}
+                className="inline-flex items-center text-[#0A9DBF] font-semibold  border-0 py-2 px-5 focus:outline-[#eb2f06] outline outline-offset-2 outline-[#0A9DBF] rounded-full text-base mr-5 hover:outline-[#eb2f06]"
+              >
+                <svg fill="none" className="w-4 h-4 mr-1" viewBox="0 0 24 24">
+                  <rect width="24" height="12" fill="#005BBB" />
+                  <rect width="24" height="12" y="12" fill="#FFD500" />
+                </svg>
+                <span className="hidden md:flex">
+                  {translator.translate("language")}
+                </span>
+              </button>
+            </div>
+          </header>
+          <Outlet
+            context={{
+              translator,
+              setOrderItem,
+              order,
+              submitOrder,
+              setCzech,
+              setUkrainian,
+            }}
+          />
+        </div>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
