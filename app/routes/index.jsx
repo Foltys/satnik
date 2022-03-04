@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useOutletContext, useNavigate, useSubmit } from "remix";
+import { useOutletContext, useNavigate, useSubmit, Link } from "remix";
 
 export default function Index() {
   const { translator, setOrderItem, switchLanguage } = useOutletContext();
@@ -82,6 +82,7 @@ export default function Index() {
                         id="name"
                         name="name"
                         placeholder="Aa"
+                        required
                         className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
                       />
                     </div>
@@ -100,6 +101,7 @@ export default function Index() {
                         id="phone"
                         name="phone"
                         placeholder="+380 111 111 111"
+                        required
                         className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
                       />
                     </div>
@@ -328,26 +330,27 @@ export default function Index() {
                     </div>
                   )}
                   <div className="p-2 my-10 mx-2 w-full md:w-1/2">
-                    <button
-                      onClick={nextForm}
-                      className="inline-flex items-center w-full  text-[#0A9DBF] border-0 py-4 px-6 focus:outline-none outline  outline-[#0A9DBF] rounded-full text-xl hover:bg-[#eb2f06] hover:text-white hover:outline-[#eb2f06]"
-                    >
-                      {translator.translate("continue_to_cloth_selection")}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 ml-2"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
+                    <Link to="/genderselect">
+                      <button
+                        className="inline-flex items-center w-full  text-[#0A9DBF] border-0 py-4 px-6 focus:outline-none outline  outline-[#0A9DBF] rounded-full text-xl hover:bg-[#eb2f06] hover:text-white hover:outline-[#eb2f06]"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M13 7l5 5m0 0l-5 5m5-5H6"
-                        />
-                      </svg>
-                    </button>
+                        {translator.translate("continue_to_cloth_selection")}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-6 w-6 ml-2"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M13 7l5 5m0 0l-5 5m5-5H6"
+                          />
+                        </svg>
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
