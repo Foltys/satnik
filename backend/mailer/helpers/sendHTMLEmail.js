@@ -28,7 +28,7 @@ const transporter = nodemailer.createTransport({
 	},
 })
 
-exports.default = async function (data, subject, lang, templatePath) {
+exports.default = async function (data, subject, lang, templatePath, attachmentsPath) {
 	const handlebarOptions = {
 		viewEngine: {
 			partialsDir: [templatePath, lang].join('/'),
@@ -43,7 +43,7 @@ exports.default = async function (data, subject, lang, templatePath) {
 		to: data.email,
 		subject: subject,
 		template: 'index',
-		attachments: await getImagesAttachments([templatePath, 'images'].join('/')),
+		attachments: await getImagesAttachments(attachmentsPath),
 		context: {order: data},
 	}
 
