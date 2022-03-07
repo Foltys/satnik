@@ -195,7 +195,9 @@ a[x-apple-data-detectors='true'] {
             style="color: #eb2f06; font-size: 14px; line-height: 19.6px;"><strong><span
             style="font-size: 16px; line-height: 22.4px;">Osoba {{@index_1}}:</span></strong></span><br/><span
             style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{this.fullname}}</span><br/><span
-            style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{this.sex}}, Věk {{this.age}}</span><br/><span
+            style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">
+            {{#if this.isMan}}muž{{/if}}{{#if this.isWoman}}žena{{/if}},
+            Věk {{this.age}}</span><br/><span
             style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">Oblečeni:
               {{#each this.requirements}}<strong>{{this.description}}</strong>{{#unless @last}}, {{/unless}}{{/each}}
             </span><br/><span

@@ -37,10 +37,6 @@
                 vertical-align: top;
             }
 
-            .u-row .u-col-50 {
-                width: 250px !important;
-            }
-
             .u-row .u-col-100 {
                 width: 500px !important;
             }
@@ -181,7 +177,6 @@
                 </div>
             </div>
 
-
             <div class="u-row-container" style="padding: 0px 24px;background-color: #f3f3f5">
                 <div class="u-row"
                      style="Margin: 0 auto;min-width: 320px;max-width: 500px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;">
@@ -208,11 +203,13 @@
                                            cellpadding="0" cellspacing="0" width="100%" border="0">
                                         <tbody>
                                         <tr>
-                                            <td style="overflow-wrap:break-word;word-break:break-word;padding:10px 24px;font-family:arial,helvetica,sans-serif;"
+                                            <td style="overflow-wrap:break-word;word-break:break-word;padding:10px 24px 24px;font-family:arial,helvetica,sans-serif;"
                                                 align="left">
 
-                                                <h1 style="margin: 0px; color: #1a1f26; line-height: 140%; text-align: left; word-wrap: break-word; font-weight: normal; font-family: arial,helvetica,sans-serif; font-size: 28px;">
-                                                    Obsah objedn&aacute;vky
+                                                <h1 style="margin: 0px; color: #1a1f26; line-height: 140%; text-align: left; word-wrap: break-word; font-weight: normal; font-family: arial,helvetica,sans-serif; font-size: 24px;">
+                                                    Dobr&yacute; den, <br/>va&scaron;e objedn&aacute;vka byla před&aacute;na
+                                                    dopravci a bude v n&aacute;sleduj&iacute;c&iacute;ch
+                                                    dnech doručov&aacute;na na adresu:
                                                 </h1>
 
                                             </td>
@@ -229,6 +226,61 @@
                 </div>
             </div>
 
+            <div class="u-row-container" style="padding: 0px;background-color: #f3f3f5">
+                <div class="u-row"
+                     style="Margin: 0 auto;min-width: 320px;max-width: 500px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;">
+                    <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
+                        <!--[if (mso)|(IE)]>
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td style="padding: 0px;background-color: #f3f3f5;" align="center">
+                                    <table cellpadding="0" cellspacing="0" border="0" style="width:500px;">
+                                        <tr style="background-color: transparent;"><![endif]-->
+
+                        <!--[if (mso)|(IE)]>
+                        <td align="center" width="500"
+                            style="background-color: #0a9dbf;width: 500px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;"
+                            valign="top"><![endif]-->
+                        <div class="u-col u-col-100"
+                             style="max-width: 320px;min-width: 500px;display: table-cell;vertical-align: top;">
+                            <div style="background-color: #0a9dbf;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
+                                <!--[if (!mso)&(!IE)]><!-->
+                                <div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
+                                    <!--<![endif]-->
+
+                                    <table style="font-family:arial,helvetica,sans-serif;" role="presentation"
+                                           cellpadding="0" cellspacing="0" width="100%" border="0">
+                                        <tbody>
+                                        <tr>
+                                            <td style="overflow-wrap:break-word;word-break:break-word;padding:24px;font-family:arial,helvetica,sans-serif;"
+                                                align="left">
+
+                                                <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
+                                                    <p style="font-size: 14px; line-height: 140%;"><span
+                                                            style="font-size: 18px; line-height: 25.2px; color: #ffffff;">{{order.delivery_fullname}}</span><br/><span
+                                                            style="font-size: 18px; line-height: 25.2px; color: #ffffff;">{{order.delivery_street}}</span><br/><span
+                                                            style="font-size: 18px; line-height: 25.2px; color: #ffffff;">{{order.delivery_city}}</span><br/><span
+                                                            style="font-size: 18px; line-height: 25.2px; color: #ffffff;">{{order.delivery_zip}}</span>
+                                                    </p>
+                                                    <p style="font-size: 14px; line-height: 140%;">&nbsp;</p>
+                                                    <p style="font-size: 14px; line-height: 140%;"><span
+                                                            style="font-size: 18px; line-height: 25.2px; color: #ffffff;">{{order.delivery_phone}}</span>
+                                                    </p>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
+                            </div>
+                        </div>
+                        <!--[if (mso)|(IE)]></td><![endif]-->
+                        <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+                    </div>
+                </div>
+            </div>
 
             <div class="u-row-container" style="padding: 0px;background-color: #f3f3f5">
                 <div class="u-row"
@@ -252,6 +304,30 @@
                                 <div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
                                     <!--<![endif]-->
 
+                                    <table style="font-family:arial,helvetica,sans-serif;" role="presentation"
+                                           cellpadding="0" cellspacing="0" width="100%" border="0">
+                                        <tbody>
+                                        <tr>
+                                            <td style="overflow-wrap:break-word;word-break:break-word;padding:24px 24px 10px;font-family:arial,helvetica,sans-serif;"
+                                                align="left">
+
+                                                <div style="color: #1a1f26; line-height: 140%; text-align: left; word-wrap: break-word;">
+                                                    <p style="font-size: 14px; line-height: 140%;"><span
+                                                            style="font-size: 16px; line-height: 22.4px; color: #2c2e32;">N&iacute;že pos&iacute;l&aacute;me detaily va&scaron;&iacute; objedn&aacute;vky.</span>
+                                                    </p>
+                                                    <p style="font-size: 14px; line-height: 140%;">&nbsp;</p>
+                                                    <p style="font-size: 14px; line-height: 140%;"><span
+                                                            style="font-size: 16px; line-height: 22.4px; color: #2c2e32;">Mysl&iacute;me na v&aacute;s,</span><br/><span
+                                                            style="font-size: 16px; line-height: 22.4px; color: #2c2e32;">t&yacute;m &Scaron;atn&iacute;ku</span>
+                                                    </p>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+{{#each order.persons}}
                                     <table style="font-family:arial,helvetica,sans-serif;" role="presentation"
                                            cellpadding="0" cellspacing="0" width="100%" border="0">
                                         <tbody>
@@ -261,67 +337,17 @@
 
                                                 <div style="color: #1a1f26; line-height: 140%; text-align: left; word-wrap: break-word;">
                                                     <p style="font-size: 14px; line-height: 140%;"><span
-                                                            style="font-size: 16px; line-height: 22.4px;">Počet osob v objedn&aacute;vce: <strong>{{order.persons.length}}</strong></span>
-                                                    </p>
-                                                </div>
-
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-
-                                    <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
-                            </div>
-                        </div>
-                        <!--[if (mso)|(IE)]></td><![endif]-->
-                        <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
-                    </div>
-                </div>
-            </div>
-
-        {{#each order.persons}}
-            <div class="u-row-container" style="padding: 0px;background-color: #f3f3f5">
-                <div class="u-row"
-                     style="Margin: 0 auto;min-width: 320px;max-width: 500px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;">
-                    <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
-                        <!--[if (mso)|(IE)]>
-                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                            <tr>
-                                <td style="padding: 0px;background-color: #f3f3f5;" align="center">
-                                    <table cellpadding="0" cellspacing="0" border="0" style="width:500px;">
-                                        <tr style="background-color: transparent;"><![endif]-->
-
-                        <!--[if (mso)|(IE)]>
-                        <td align="center" width="500"
-                            style="background-color: #ffffff;width: 500px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;"
-                            valign="top"><![endif]-->
-                        <div class="u-col u-col-100"
-                             style="max-width: 320px;min-width: 500px;display: table-cell;vertical-align: top;">
-                            <div style="background-color: #ffffff;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
-                                <!--[if (!mso)&(!IE)]><!-->
-                                <div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
-                                    <!--<![endif]-->
-
-                                    <table style="font-family:arial,helvetica,sans-serif;" role="presentation"
-                                           cellpadding="0" cellspacing="0" width="100%" border="0">
-                                        <tbody>
-                                        <tr>
-                                            <td style="overflow-wrap:break-word;word-break:break-word;padding:10px 24px;font-family:arial,helvetica,sans-serif;"
-                                                align="left">
-
-                                                <div style="color: #1a1f26; line-height: 140%; text-align: left; word-wrap: break-word;">
-                                                    <p style="font-size: 14px; line-height: 140%;"><strong><span
-                                                            style="font-size: 16px; line-height: 22.4px; color: #eb2f06;">Osoba {{@index_1}}:</span></strong><br/><span
-                                                            style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{this.fullname}}</span><br/><span
-                                                            style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">
+                                                            style="color: #eb2f06; font-size: 14px; line-height: 19.6px;"><strong><span
+                                                            style="font-size: 16px; line-height: 22.4px;">Osoba {{@index_1}}:</span></strong></span><br/><span
+                                                            style="font-size: 16px; line-height: 22.4px;">{{this.fullname}}</span><br/><span
+                                                            style="font-size: 16px; line-height: 22.4px;">
                                                             {{#if this.isMan}}muž{{/if}}{{#if this.isWoman}}žena{{/if}},
                                                             Věk {{this.age}}</span><br/><span
-                                                            style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">
-                                                        Oblečeni:
-                                                        {{#each this.requirements}}<strong>{{this.description}}</strong>{{#unless @last}}, {{/unless}}{{/each}}
-                                                        </span><br/><span
-                                                            style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">Velikost oblečen&iacute;: {{this.clothing_size}}</span><br/><span
-                                                            style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">Velikost bot: {{this.shoe_size}}</span>
+                                                            style="font-size: 16px; line-height: 22.4px;">Oblečeni:
+                                                {{#each this.requirements}}<strong>{{this.description}}</strong>{{#unless @last}}, {{/unless}}{{/each}}
+                                                            </span><br/><span
+                                                            style="font-size: 16px; line-height: 22.4px;">Velikost oblečen&iacute;: {{this.clothing_size}}</span><br/><span
+                                                            style="font-size: 16px; line-height: 22.4px;">Velikost bot: {{this.shoe_size}}</span>
                                                     </p>
                                                 </div>
 
@@ -329,6 +355,7 @@
                                         </tr>
                                         </tbody>
                                     </table>
+{{/each}}
 
                                     <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
                             </div>
@@ -338,25 +365,25 @@
                     </div>
                 </div>
             </div>
-        {{/each}}
 
-            <div class="u-row-container" style="padding: 0px 0px 24px;background-color: #f3f3f5">
+
+            <div class="u-row-container" style="padding: 0px;background-color: #f3f3f5">
                 <div class="u-row"
                      style="Margin: 0 auto;min-width: 320px;max-width: 500px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #f8ebdb;">
                     <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
                         <!--[if (mso)|(IE)]>
                         <table width="100%" cellpadding="0" cellspacing="0" border="0">
                             <tr>
-                                <td style="padding: 0px 0px 24px;background-color: #f3f3f5;" align="center">
+                                <td style="padding: 0px;background-color: #f3f3f5;" align="center">
                                     <table cellpadding="0" cellspacing="0" border="0" style="width:500px;">
                                         <tr style="background-color: #f8ebdb;"><![endif]-->
 
                         <!--[if (mso)|(IE)]>
-                        <td align="center" width="250"
-                            style="width: 250px;padding: 24px 12px 24px 24px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;"
+                        <td align="center" width="500"
+                            style="width: 500px;padding: 24px 12px 24px 24px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;"
                             valign="top"><![endif]-->
-                        <div class="u-col u-col-50"
-                             style="max-width: 320px;min-width: 250px;display: table-cell;vertical-align: top;">
+                        <div class="u-col u-col-100"
+                             style="max-width: 320px;min-width: 500px;display: table-cell;vertical-align: top;">
                             <div style="width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
                                 <!--[if (!mso)&(!IE)]><!-->
                                 <div style="padding: 24px 12px 24px 24px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
@@ -375,50 +402,7 @@
                                                             style="font-size: 16px; line-height: 22.4px;">Objedn&aacute;v&aacute;:</span></strong></span><br/><strong><span
                                                             style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.fullname}}</span></strong><br/><span
                                                             style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.phone}}</span><br/><span
-                                                            style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.email}}</span>
-                                                    </p>
-                                                </div>
-
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-
-                                    <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
-                            </div>
-                        </div>
-                        <!--[if (mso)|(IE)]></td><![endif]-->
-                        <!--[if (mso)|(IE)]>
-                        <td align="center" width="250"
-                            style="width: 250px;padding: 24px 24px 24px 12px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;"
-                            valign="top"><![endif]-->
-                        <div class="u-col u-col-50"
-                             style="max-width: 320px;min-width: 250px;display: table-cell;vertical-align: top;">
-                            <div style="width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
-                                <!--[if (!mso)&(!IE)]><!-->
-                                <div style="padding: 24px 24px 24px 12px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
-                                    <!--<![endif]-->
-
-                                    <table style="font-family:arial,helvetica,sans-serif;" role="presentation"
-                                           cellpadding="0" cellspacing="0" width="100%" border="0">
-                                        <tbody>
-                                        <tr>
-                                            <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;"
-                                                align="left">
-
-                                                <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                                    <p style="font-size: 14px; line-height: 140%;"><span
-                                                            style="color: #0a9dbf; font-size: 14px; line-height: 19.6px;"><strong><span
-                                                            style="font-size: 16px; line-height: 22.4px;">Doručovac&iacute; adresa </span></strong></span><br/><span
-                                                            style="color: #0a9dbf; font-size: 14px; line-height: 19.6px;"><strong><span
-                                                            style="font-size: 16px; line-height: 22.4px;">/
-                                                        {{#if order.isDeliveryPickup}}Osobn&iacute; vyzvednut&iacute;{{/if}}
-                                                        {{#if order.isDeliveryDelivery}}Poslat na adresu{{/if}}
-                                                        :</span></strong></span><br/><strong><span
-                                                            style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_fullname}}</span></strong><br/><span
-                                                            style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_street}}</span><br/><span
-                                                            style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_city}} {{order.delivery_zip}}</span><br/><span
-                                                            style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_phone}}</span>
+                                                            style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.email}}</span></p>
                                                     </p>
                                                 </div>
 
@@ -512,9 +496,8 @@
                                                                     style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
                                                                     <a href="https://www.instagram.com/jezisekzlafabriky/"
                                                                        title="Instagram" target="_blank">
-                                                                        <img src="cid:logo-ig.png"
-                                                                             alt="Instagram" title="Instagram"
-                                                                             width="32"
+                                                                        <img src="cid:logo-ig.png" alt="Instagram"
+                                                                             title="Instagram" width="32"
                                                                              style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
                                                                     </a>
                                                                 </td>
