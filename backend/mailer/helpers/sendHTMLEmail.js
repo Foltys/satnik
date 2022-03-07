@@ -33,6 +33,11 @@ exports.default = async function (data, subject, lang, templatePath, attachments
 		viewEngine: {
 			partialsDir: [templatePath, lang].join('/'),
 			defaultLayout: false,
+			helpers: {
+				inc: function (value, options) {
+					return parseInt(value) + 1
+				},
+			},
 		},
 		viewPath: [templatePath, lang].join('/'),
 	}
