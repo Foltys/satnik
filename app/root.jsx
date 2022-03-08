@@ -6,7 +6,6 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
-  Link,
 } from "remix";
 
 import { useEffect, useState } from "react";
@@ -14,6 +13,7 @@ import { useEffect, useState } from "react";
 import translation from "./locale/translation";
 
 import styles from "./styles/app.css";
+import Header from "./components/Header";
 
 export function links() {
   return [
@@ -27,7 +27,7 @@ export function meta() {
   return {
     description,
     keywords: "ukraine,help,ukrajina,válka",
-    "name": "Šatník - Pomoc Ukrajině",
+    name: "Šatník - Pomoc Ukrajině",
     "twitter:image": "https://app.satnikpraha.cz/og_share.png",
     "twitter:card": "summary_large_image",
     "twitter:title": description,
@@ -72,30 +72,13 @@ export const loader = async ({ request }) => {
 
 export default function App() {
   const locale = useLoaderData();
-  const [order, setOrder] = useState({});
-
-  const setCzech = (e) => {
-    setTranslator({
-      translate: translation("cs"),
-      language: "cs",
-    });
-  };
-  const setUkrainian = (e) => {
-    setTranslator({
-      translate: translation("ua"),
-      language: "ua",
-    });
-  };
+  const [order, setOrder] = useState({ delivery: "delivery", persons: [] });
+  // const [genderSelected, setCurrentGender] = useState();
 
   const [translator, setTranslator] = useState({
     translate: translation(locale),
     language: locale,
   });
-
-  useEffect(() => {
-    console.log(translator);
-  }, [translator]);
-
   const setOrderItem = (key, value) => {
     const newOrder = order;
     newOrder[key] = value;
@@ -104,9 +87,22 @@ export default function App() {
   const submitOrder = () => {
     console.log({ order });
   };
-  // const switchLanguage = (language) => {
-  //   setLanguage({ translate: translation(getFromSupported(language)) });
-  // };
+
+  const switchLanguage = (currentLanguage) => (e) => {
+    const newLanguage = currentLanguage == "cs" ? "ua" : "cs";
+    setTranslator({
+      translate: translation(newLanguage),
+      language: newLanguage,
+    });
+  };
+
+  const addPersonToOrder = (details, id) => {
+    if (id) {
+      order.persons[id] = details;
+    } else {
+      order.persons.push(details);
+    }
+  };
 
   return (
     <html lang="en">
@@ -118,78 +114,34 @@ export default function App() {
       </head>
       <body className="bg-[#F8EBDB]">
         <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-          <header className="text-gray-600 body-font sticky top-0 bg-[#F8EBDB] z-10 pb-2">
-            <div className="container mx-auto flex flex-wrap flex-row items-center">
-              <Link
-                className="flex title-font font-medium items-center text-gray-900 ml-5 md:ml-0"
-                to="/"
-              >
-                <img
-                  src="red.svg"
-                  className="w-16 h-16 md:w-32 md:h-32"
-                  alt="Šatník Praha"
-                />
-                <span className="ml-3 text-xl hidden">Šatník</span>
-              </Link>
-              <nav className="ml-auto flex flex-wrap items-center text-base justify-center">
-                <a className="mr-5 hover:text-gray-900 hidden" href="/">
-                  First Link
-                </a>
-              </nav>
-              <button
-                onClick={translator.language == "cs" ? setUkrainian : setCzech}
-                className="w-40  justify-center inline-flex items-center text-[#0A9DBF] font-semibold  border-0 py-2 px-5 focus:outline-[#eb2f06] outline outline-offset-2 outline-[#0A9DBF] rounded-full text-base mr-5 hover:outline-[#eb2f06]"
-              >
-                {translator.language == "cs" ? (
-                  <svg
-                    width="25"
-                    height="19"
-                    viewBox="0 0 25 19"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M0 0H25V19H0V0Z"
-                      fill="#FFD500"
-                    />
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M0 0H25V9.5H0V0Z"
-                      fill="#005BBB"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    width="25"
-                    height="19"
-                    viewBox="0 0 25 19"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M0 0H25V9.5H0V0Z" fill="white" />
-                    <path d="M0 9.5H25V19H0V9.5Z" fill="#D7141A" />
-                    <path d="M14.0625 9.5L0 0V19L14.0625 9.5Z" fill="#11457E" />
-                  </svg>
-                )}
-                <span className="hidden md:flex ml-2">
-                  {translator.translate("language")}
-                </span>
-              </button>
-            </div>
-          </header>
-          <Outlet
-            context={{
-              translator,
-              setOrderItem,
-              order,
-              submitOrder,
-              setCzech,
-              setUkrainian,
-            }}
+          <Header
+            translator={translator}
+            switchLanguage={switchLanguage(translator.language)}
           />
+          <section className="text-gray-600 body-font relative">
+            <div className="container px-5 py-14 md:py-24 mx-auto flex sm:flex-nowrap flex-wrap">
+              <div className="lg:w-2/3 md:w-1/2 rounded-lg overflow-hidden sm:mr-10 flex items-start justify-start relative">
+                <Outlet
+                  context={{
+                    translator,
+                    setOrderItem,
+                    order,
+                    submitOrder,
+                    // setCurrentGender,
+                    // genderSelected,
+                    addPersonToOrder,
+                  }}
+                />
+              </div>
+              <div className="lg:w-1/3 md:w-1/2 hidden md:flex flex-col md:ml-auto w-full  mt-8 md:mt-0">
+                <img
+                  src="https://images.unsplash.com/photo-1582719188393-bb71ca45dbb9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80"
+                  className="rounded-lg w-full object-cover object-center"
+                  alt="illustration"
+                />
+              </div>
+            </div>
+          </section>
         </div>
         <ScrollRestoration />
         <Scripts />
