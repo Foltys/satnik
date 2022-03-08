@@ -69,7 +69,7 @@ const orderSchema = {
 		fullname: {type: 'string'},
 		phone: {type: 'string'},
 		email: {type: 'string'},
-		delivery_type: {type: 'string'},
+		delivery_type: {enum: ['delivery', 'pickup']},
 		delivery_fullname: {type: 'string'},
 		delivery_street: {type: 'string'},
 		delivery_city: {type: 'string'},
