@@ -198,7 +198,7 @@ export default function DeliveryInfo({
               </div>
             </div>
           )}
-          <div className="p-2 my-10 mx-2 w-full md:w-1/2">
+          <div className="p-2 my-10 mx-2">
             <button
               onClick={nextForm}
               className="inline-flex items-center w-full  text-[#0A9DBF] border-0 py-4 px-6 focus:outline-none outline  outline-[#0A9DBF] rounded-full text-xl hover:bg-[#eb2f06] hover:text-white hover:outline-[#eb2f06]"
