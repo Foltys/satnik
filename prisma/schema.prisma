@@ -1,0 +1,44 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["mongoDb"]
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+type OrdersPersons {
+  adult         Boolean
+  age           Int
+  clothing_size String
+  fullname      String
+  requirements  OrdersPersonsRequirements[]
+  sex           String
+  shoe_size     String
+}
+
+type OrdersPersonsRequirements {
+  description String
+}
+
+model orders {
+  id                String          @id @default(auto()) @map("_id") @db.ObjectId
+  created_at        DateTime        @db.Date
+  delivery_city     String
+  delivery_fullname String
+  delivery_phone    String
+  delivery_street   String
+  delivery_time     DateTime        @db.Date
+  delivery_type     String
+  delivery_zip      String
+  email             String
+  fullname          String
+  lang              String
+  persons           OrdersPersons[]
+  phone             String
+  state             String
+  updated_at        DateTime        @db.Date
+
+  @@index([created_at], map: "created_at_-1")
+}
