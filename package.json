@@ -4,6 +4,9 @@
   "description": "",
   "license": "",
   "sideEffects": false,
+  "prisma": {
+    "seed": "node prisma/seed"
+  },
   "scripts": {
     "postinstall": "remix setup node",
     "build": "cross-env NODE_ENV=production npm run build:css && remix build",
@@ -22,7 +25,6 @@
     "compression": "^1.7.4",
     "dotenv": "^16.0.0",
     "handlebars-helpers": "^0.10.0",
-    "mongodb": "^4.4.1",
     "morgan": "^1.10.0",
     "nodemailer": "^6.7.2",
     "nodemailer-express-handlebars": "^5.0.0",
