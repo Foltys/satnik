@@ -1,13 +1,12 @@
 const {PrismaClient} = require('@prisma/client')
+const {getDB} = require('./getDB')
 const {prepareOrderForPrismaInsert} = require('./helpers')
-
-const db = new PrismaClient()
 
 async function seed () {
 	const rets = await Promise.all(
 		getOrders().map(order => {
 			order = prepareOrderForPrismaInsert(order)
-			return db.order.create({data: order})
+			return getDB().order.create({data: order})
 		}),
 	)
 }
@@ -21,7 +20,7 @@ function getOrders () {
 			phone: '777777777',
 			email: 'michal.palma@gmail.com',
 			delivery_type: 'pickup',
-			delivery_fullname: 'Petr Pavel',
+			delivery_fullname: 'This is just TESTING Order / Toto je pouze TESTOVACI objednavka',
 			delivery_street: 'Jecna 22',
 			delivery_city: 'Praha',
 			delivery_zip: '12000',
