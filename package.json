@@ -12,7 +12,7 @@
     "dev:node": "cross-env NODE_ENV=development nodemon ./build/index.js --watch ./build/index.js",
     "dev:remix": "cross-env NODE_ENV=development remix watch",
     "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
-    "start": "cross-env NODE_ENV=production npm run dev:wrangler"
+    "start": "cross-env NODE_ENV=production node ./build/index.js"
   },
   "dependencies": {
     "@prisma/client": "^3.10.0",
