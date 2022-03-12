@@ -26,4 +26,4 @@ jobs:
           git reset origin/main --hard
           npm ci
           npm run build
-          PORT=8080 npm run start
+          supervisorctl restart satnik
