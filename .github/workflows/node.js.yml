@@ -19,7 +19,7 @@ jobs:
         key: ${{secrets.SSH_PRIVATE_KEY}}
         script: |
           cd ~/satnik
-          git reset origin/master --hard
+          git reset origin/main --hard
           npm ci
           npm run build
           PORT=8080 npm run start
