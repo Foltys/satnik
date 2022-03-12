@@ -94,14 +94,30 @@ const getOrderByID = async function (id) {
 const findUniqueOrder = async function (query) {
 	return await getOrderModel().findUnique({
 		where: query,
-		include: {
-			persons: {
-				include: {
-					requirements: true,
-				},
+		include: getIncludes(),
+	})
+}
+
+/**
+ * for query read https://www.prisma.io/docs/concepts/components/prisma-client/crud#read
+ * @param query
+ * @returns {Promise<*>}
+ */
+const findFirst = async function (query) {
+	return await getOrderModel().findFirst({
+		where: query,
+		include: getIncludes(),
+	})
+}
+
+function getIncludes () {
+	return {
+		persons: {
+			include: {
+				requirements: true,
 			},
 		},
-	})
+	}
 }
 
 /**
@@ -111,4 +127,4 @@ const getOrderModel = function () {
 	return getDB().order
 }
 
-module.exports = {getOrderModel, saveNewOrder, findUniqueOrder, getOrderByID}
+module.exports = {getOrderModel, saveNewOrder, findUniqueOrder, findFirst, getOrderByID}
