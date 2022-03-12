@@ -13,6 +13,21 @@ $ npm run dev
 
 Open up [http://127.0.0.1:8788](http://127.0.0.1:8788) and you should be ready to go!
 
+## DB
+```sh
+# create your local db
+# you will find it in prisma folder
+$ npx prisma db push
+
+# create sample order
+$ node prisma/seed.js
+
+# open db browser client
+# there is also sqlite support for vscode or idea
+$ npx prisma studio
+
+```
+
 ## Deployment
 
 Cloudflare Pages are currently only deployable through their Git provider integrations.

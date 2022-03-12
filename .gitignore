@@ -1,5 +1,6 @@
 node_modules
 
+/prisma/db.sqlite
 /.cache
 /functions/\[\[path\]\].js
 /public/build

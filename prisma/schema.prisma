@@ -1,44 +1,47 @@
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["mongoDb"]
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
-type OrdersPersons {
-  adult         Boolean
-  age           Int
-  clothing_size String
-  fullname      String
-  requirements  OrdersPersonsRequirements[]
-  sex           String
-  shoe_size     String
+model Requirement {
+    id              Int             @id @default(autoincrement())
+    person          Person          @relation(fields: [person_id], references: [id])
+    person_id       Int
+    description     String
 }
 
-type OrdersPersonsRequirements {
-  description String
+model Person {
+    id              Int             @id @default(autoincrement())
+    order           Order           @relation(fields: [order_id], references: [id])
+    order_id        Int
+    requirements    Requirement[]
+    sex             String
+    adult           Boolean
+    fullname        String
+    age             Int
+    clothing_size   String
+    shoe_size       String
 }
 
-model orders {
-  id                String          @id @default(auto()) @map("_id") @db.ObjectId
-  created_at        DateTime        @db.Date
-  delivery_city     String
-  delivery_fullname String
-  delivery_phone    String
-  delivery_street   String
-  delivery_time     DateTime        @db.Date
-  delivery_type     String
-  delivery_zip      String
-  email             String
-  fullname          String
-  lang              String
-  persons           OrdersPersons[]
-  phone             String
-  state             String
-  updated_at        DateTime        @db.Date
-
-  @@index([created_at], map: "created_at_-1")
+model Order {
+    id                      Int         @id @default(autoincrement())
+    persons                 Person[]
+    fullname                String
+    phone                   String
+    email                   String
+    delivery_type           String
+    delivery_fullname       String
+    delivery_street         String
+    delivery_city           String
+    delivery_zip            String
+    delivery_phone          String
+    delivery_time           DateTime
+    state                   String
+    lang                    String
+    created_at              DateTime  @default(now())
+    updated_at              DateTime  @updatedAt
 }
