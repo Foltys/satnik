@@ -12,15 +12,11 @@ jobs:
     steps:
     - name: Deploy app
       uses: appleboy/ssh-action@v0.1.2
-      env:
-        DATABASE_URL: ${{secrets.DATABASE_URL}}
-        PORT: 8080
       with:
         host: ${{secrets.SSH_HOST}}
         port: ${{secrets.SSH_PORT}}
         username: ${{secrets.SSH_USERNAME}}
         key: ${{secrets.SSH_PRIVATE_KEY}}
-        envs: DATABASE_URL,PORT
         script: |
           cd ~/satnik
           git reset origin/main --hard
