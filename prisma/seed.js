@@ -1,13 +1,8 @@
-const {PrismaClient} = require('@prisma/client')
-const {getDB} = require('./getDB')
-const {prepareOrderForPrismaInsert} = require('./helpers')
+const {saveNewOrder} = require('./api/Order')
 
 async function seed () {
-	const rets = await Promise.all(
-		getOrders().map(order => {
-			order = prepareOrderForPrismaInsert(order)
-			return getDB().order.create({data: order})
-		}),
+	await Promise.all(
+		getOrders().map(order => saveNewOrder(order)),
 	)
 }
 
