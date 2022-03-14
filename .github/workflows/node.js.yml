@@ -21,7 +21,6 @@ jobs:
           cd ~/satnik
           git fetch
           git reset origin/main --hard
-          rm -rf node_modules
           npm i
           npm run build
           supervisorctl restart satnik
