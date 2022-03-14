@@ -9,6 +9,7 @@ import {
 } from "remix";
 
 import { useEffect, useState } from "react";
+import ReactGA from 'react-ga';
 
 import translation from "./locale/translation";
 
@@ -104,6 +105,15 @@ export default function App() {
     }
   };
 
+  const setGA = () => {
+    ReactGA.initialize('G-B82SVEWMJ2');
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  };
+
+  const componentDidMount = () => {
+    this.setGA();
+  }
+
   return (
     <html lang="en">
       <head>
@@ -111,13 +121,6 @@ export default function App() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-B82SVEWMJ2"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments)};
-          gtag('js', new Date());
-          gtag('config', 'G-B82SVEWMJ2');
-        </script>
       </head>
       <body className="bg-[#F8EBDB]">
         <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
