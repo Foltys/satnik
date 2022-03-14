@@ -111,6 +111,14 @@ export default function App() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2R9SR20X42"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-2R9SR20X42');
+        </script>
       </head>
       <body className="bg-[#F8EBDB]">
         <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
