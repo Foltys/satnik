@@ -111,13 +111,12 @@ export default function App() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2R9SR20X42"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-B82SVEWMJ2"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
+          function gtag(){window.dataLayer.push(arguments)};
           gtag('js', new Date());
-
-          gtag('config', 'G-2R9SR20X42');
+          gtag('config', 'G-B82SVEWMJ2');
         </script>
       </head>
       <body className="bg-[#F8EBDB]">
