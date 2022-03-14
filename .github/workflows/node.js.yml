@@ -19,6 +19,7 @@ jobs:
         key: ${{secrets.SSH_PRIVATE_KEY}}
         script: |
           cd ~/satnik
+          git fetch
           git reset origin/main --hard
           rm -rf node_modules
           npm i
