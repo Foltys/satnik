@@ -16,7 +16,7 @@ Open up [http://127.0.0.1:8788](http://127.0.0.1:8788) and you should be ready t
 ## DB
 ```sh
 # Generate artifacts (e.g. Prisma Client)
-$ prisma generate
+$ npx prisma generate
   
 # create your local db
 # you will find it in prisma folder
