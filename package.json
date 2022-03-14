@@ -21,6 +21,7 @@
     "@prisma/client": "^3.10.0",
     "@remix-run/express": "^1.2.3",
     "@remix-run/react": "^1.2.3",
+    "@types/react": "^17.0.40",
     "ajv": "^8.10.0",
     "compression": "^1.7.4",
     "dotenv": "^16.0.0",
@@ -30,7 +31,10 @@
     "nodemailer-express-handlebars": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "remix": "^1.2.3"
+    "remix": "^1.2.3",
+    "cross-env": "^7.0.3",
+    "express": "^4.17.1",
+    "npm-run-all": "^4.1.5"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.2.3",
@@ -44,7 +48,9 @@
     "postcss": "^8.4.7",
     "prisma": "^3.10.0",
     "tailwindcss": "^3.0.23",
-    "wrangler": "beta"
+    "typescript": "^4.6.2",
+    "@types/react": "^17.0.24",
+    "@types/react-dom": "^17.0.9"
   },
   "engines": {
     "node": ">=16"
