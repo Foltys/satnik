@@ -18,8 +18,8 @@ const send = async function (order) {
 		order,
 		translations.subject[lang],
 		lang,
-		path.resolve('./'),
-		path.resolve('../images'),
+		path.join(__dirname, './'),
+		path.join(__dirname, '../images'),
 	)
 }
 

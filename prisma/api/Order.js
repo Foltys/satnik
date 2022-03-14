@@ -76,7 +76,8 @@ const saveNewOrder = async function (order) {
 	order.state = 'open'
 
 	if (!validateOrder(order)) {
-		throw new Error(validateOrder.errors)
+		console.log(validateOrder.errors)
+		throw new Error(JSON.stringify(validateOrder.errors))
 	}
 
 	order = prepareOrderForPrismaInsert(order)
