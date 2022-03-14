@@ -1,16 +1,17 @@
 import { useState } from "react";
-import { useOutletContext, useNavigate, Link } from "remix";
+import { useOutletContext, useNavigate } from "remix"
 
 export default function AddPerson() {
-  const { translator, setOrderItem } = useOutletContext<{translator: any, setOrderItem: any}>();
+  const { translator, setOrderItem } =
+    useOutletContext<{ translator: any; setOrderItem: any }>();
   const navigate = useNavigate();
-  const nextForm = (e: { preventDefault: () => void; }) => {
+  const nextForm = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     //    setOrderItem("něco");
     navigate("/orderone", { replace: false });
   };
 
-  const editItem = (e: { preventDefault: () => void; }) => {
+  const editItem = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     //nevim, mock
     navigate("/orderone", { replace: false });
