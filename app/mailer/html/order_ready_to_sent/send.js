@@ -14,13 +14,7 @@ const send = async function (order) {
 	normalizeOrder(order)
 	const lang = order.lang === 'cs' ? 'cs' : 'ua'
 
-	return sendHTMLEmail(
-		order,
-		translations.subject[lang],
-		lang,
-		path.resolve('./'),
-		path.resolve('../images'),
-	)
+	return sendHTMLEmail(order, translations.subject[lang], lang, path.resolve('./'), path.resolve('../images'))
 }
 
-exports.default = {send}
+exports.default = { send }

@@ -23,4 +23,4 @@ const send = async function (order) {
 	)
 }
 
-exports.default = {send}
+exports.default = { send }

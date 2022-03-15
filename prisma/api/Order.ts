@@ -1,12 +1,14 @@
+import { Order } from "~/root"
+
 const Ajv = require('ajv')
-const {prepareOrderForPrismaInsert} = require('../helpers')
-const {getDB} = require('../getDB')
+const { prepareOrderForPrismaInsert } = require('../helpers')
+const { getDB } = require('../getDB')
 const ajv = new Ajv()
 
 const requirementSchema = {
 	type: 'object',
 	properties: {
-		description: {type: 'string'},
+		description: { type: 'string' },
 	},
 	required: ['description'],
 	additionalProperties: false,
@@ -14,41 +16,33 @@ const requirementSchema = {
 const personSchema = {
 	type: 'object',
 	properties: {
-		sex: {enum: ['man', 'woman']},
-		adult: {type: 'boolean'},
-		fullname: {type: 'string'},
-		age: {type: 'integer'},
-		clothing_size: {type: 'string'},
-		shoe_size: {type: 'string'},
-		requirements: {type: 'array', items: requirementSchema},
+		sex: { enum: ['man', 'woman'] },
+		adult: { type: 'boolean' },
+		fullname: { type: 'string' },
+		age: { type: 'integer' },
+		clothing_size: { type: 'string' },
+		shoe_size: { type: 'string' },
+		requirements: { type: 'array', items: requirementSchema },
 	},
-	required: [
-		'sex',
-		'adult',
-		'fullname',
-		'age',
-		'clothing_size',
-		'shoe_size',
-		'requirements',
-	],
+	required: ['sex', 'adult', 'fullname', 'age', 'clothing_size', 'shoe_size', 'requirements'],
 	additionalProperties: false,
 }
 const orderSchema = {
 	type: 'object',
 	properties: {
-		fullname: {type: 'string'},
-		phone: {type: 'string'},
-		email: {type: 'string'},
-		delivery_type: {enum: ['delivery', 'pickup']},
-		delivery_fullname: {type: 'string'},
-		delivery_street: {type: 'string'},
-		delivery_city: {type: 'string'},
-		delivery_zip: {type: 'string'},
-		delivery_phone: {type: 'string'},
+		fullname: { type: 'string' },
+		phone: { type: 'string' },
+		email: { type: 'string' },
+		delivery_type: { enum: ['delivery', 'pickup'] },
+		delivery_fullname: { type: 'string' },
+		delivery_street: { type: 'string' },
+		delivery_city: { type: 'string' },
+		delivery_zip: { type: 'string' },
+		delivery_phone: { type: 'string' },
 		delivery_time: {},
-		persons: {type: 'array', items: personSchema},
-		state: {enum: ['open']},
-		lang: {enum: ['ua', 'cs']},
+		persons: { type: 'array', items: personSchema },
+		state: { enum: ['open'] },
+		lang: { enum: ['ua', 'cs'] },
 		created_at: {},
 		updated_at: {},
 	},
@@ -72,7 +66,7 @@ const orderSchema = {
 
 const validateOrder = ajv.compile(orderSchema)
 
-const saveNewOrder = async function (order) {
+const saveNewOrder = async function (order: Order) {
 	order.state = 'open'
 
 	if (!validateOrder(order)) {
@@ -81,10 +75,10 @@ const saveNewOrder = async function (order) {
 	}
 
 	order = prepareOrderForPrismaInsert(order)
-	return await getOrderModel().create({data: order})
+	return await getOrderModel().create({ data: order })
 }
-const getOrderByID = async function (id) {
-	return await findUniqueOrder({id})
+const getOrderByID = async function (id: number) {
+	return await findUniqueOrder({ id })
 }
 
 /**
@@ -92,7 +86,7 @@ const getOrderByID = async function (id) {
  * @param query
  * @returns {Promise<*>}
  */
-const findUniqueOrder = async function (query) {
+const findUniqueOrder = async function (query: any) {
 	return await getOrderModel().findUnique({
 		where: query,
 		include: getIncludes(),
@@ -104,14 +98,14 @@ const findUniqueOrder = async function (query) {
  * @param query
  * @returns {Promise<*>}
  */
-const findFirst = async function (query) {
+const findFirst = async function (query: any) {
 	return await getOrderModel().findFirst({
 		where: query,
 		include: getIncludes(),
 	})
 }
 
-function getIncludes () {
+function getIncludes() {
 	return {
 		persons: {
 			include: {
@@ -128,4 +122,4 @@ const getOrderModel = function () {
 	return getDB().order
 }
 
-module.exports = {getOrderModel, saveNewOrder, findUniqueOrder, findFirst, getOrderByID}
+export { getOrderModel, saveNewOrder, findUniqueOrder, findFirst, getOrderByID }

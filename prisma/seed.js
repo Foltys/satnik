@@ -1,14 +1,12 @@
-const {saveNewOrder} = require('./api/Order')
+const { saveNewOrder } = require('./api/Order')
 
-async function seed () {
-	await Promise.all(
-		getOrders().map(order => saveNewOrder(order)),
-	)
+async function seed() {
+	await Promise.all(getOrders().map((order) => saveNewOrder(order)))
 }
 
 seed()
 
-function getOrders () {
+function getOrders() {
 	return [
 		{
 			fullname: 'Olena Shevchenko',

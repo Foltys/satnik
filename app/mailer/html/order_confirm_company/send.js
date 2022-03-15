@@ -6,13 +6,7 @@ const send = async function (order) {
 	order = JSON.parse(JSON.stringify(order))
 	normalizeOrder(order)
 
-	return sendHTMLEmail(
-		order,
-		'Nova objednavka v satniku',
-		'cs',
-		path.resolve('./'),
-		path.resolve('../images'),
-	)
+	return sendHTMLEmail(order, 'Nova objednavka v satniku', 'cs', path.resolve('./'), path.resolve('../images'))
 }
 
-exports.default = {send}
+exports.default = { send }

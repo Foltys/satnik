@@ -3,19 +3,20 @@ const fsna = require('fs')
 const nodemailer = require('nodemailer')
 const fs = fsna.promises
 
-async function getImagesAttachments (path) {
+async function getImagesAttachments(path) {
 	const files = await fs.readdir(path)
-	return files.filter(f => !['.', '..'].includes(f)).map(f => {
-		return {
-			filename: f,
-			cid: f,
-			path: [path, f].join('/'),
-		}
-	})
+	return files
+		.filter((f) => !['.', '..'].includes(f))
+		.map((f) => {
+			return {
+				filename: f,
+				cid: f,
+				path: [path, f].join('/'),
+			}
+		})
 }
 
 const transporter = nodemailer.createTransport({
-
 	// setting up gmail sender is best against antispam filters
 	// tutorial for setting up gmail account allowance:
 	// for better security with OAuth2 we need redirect page at our app
@@ -49,7 +50,7 @@ exports.default = async function (data, subject, lang, templatePath, attachments
 		subject: subject,
 		template: 'index',
 		attachments: await getImagesAttachments(attachmentsPath),
-		context: {order: data},
+		context: { order: data },
 	}
 
 	const info = await transporter.sendMail(mailOptions)

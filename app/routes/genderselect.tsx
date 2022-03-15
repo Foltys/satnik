@@ -1,19 +1,13 @@
-import { useState } from 'react'
-import { useOutletContext, useNavigate } from 'remix'
+import React, { useState } from 'react'
+import { useOutletContext, useNavigate, Link } from 'remix'
 import { OutletContext } from '~/root'
 
-export default function AddPerson() {
+export default function GenderSelect() {
 	const { translator, setOrderItem } = useOutletContext<OutletContext>()
 	const navigate = useNavigate()
-	const nextForm = (e: { preventDefault: () => void }) => {
+	const nextForm: React.MouseEventHandler = (e) => {
 		e.preventDefault()
 		//    setOrderItem("něco");
-		navigate('/orderone', { replace: false })
-	}
-
-	const editItem = (e: { preventDefault: () => void }) => {
-		e.preventDefault()
-		//nevim, mock
 		navigate('/orderone', { replace: false })
 	}
 	return (
@@ -27,26 +21,7 @@ export default function AddPerson() {
 									{translator.translate('order')}
 								</h1>
 							</div>
-						</div>
-						<div className="flex rounded-2xl group bg-[#eb2f06] text-[#F8EBDB] w-full h-72 p-2 border border-[#eb2f06]">
-							<img src="woman.svg" alt="man" className="my-4 mx-2" />
-							<div className=" flex flex-col justify-center mx-4">
-								<span className="text-2xl font-bold">Olena Kyashenko</span>
-								<span className="py-2">{translator.translate('cloth_example')}</span>
-								<button
-									onClick={editItem}
-									className="font-semibold hover:text-[#eb2f06] hover:bg-[#F8EBDB] mt-4 border-0 py-2 px-5 outline outline-[#F8EBDB] rounded-full"
-								>
-									{translator.translate('edit')}
-								</button>
-							</div>
-						</div>
-						<div className="w-full mx-auto">
-							<div className="flex flex-col md:mb-12">
-								<h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 mt-12 text-gray-900 ml-1">
-									{translator.translate('add_person')}
-								</h1>
-							</div>
+							<div className="text-[#0A9DBF] font-medium my-5">{translator.translate('who_is_wearing')}</div>
 						</div>
 						<div className="flex space-x-2">
 							<button

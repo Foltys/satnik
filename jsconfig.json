@@ -1,9 +1,9 @@
 {
-  "compilerOptions": {
-    "jsx": "preserve",
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./app/*"]
-    }
-  }
+	"compilerOptions": {
+		"jsx": "preserve",
+		"baseUrl": ".",
+		"paths": {
+			"~/*": ["./app/*"]
+		}
+	}
 }

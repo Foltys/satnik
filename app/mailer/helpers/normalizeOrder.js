@@ -1,4 +1,3 @@
-
 exports.default = function (order) {
 	order.persons.map((p) => {
 		p.isMan = p.sex === 'man'
