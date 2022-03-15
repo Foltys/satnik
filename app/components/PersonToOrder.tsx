@@ -1,9 +1,9 @@
-export default function PersonToOrder({
-  translator,
-  selectedGender,
-  handleInputChange,
+export default function PersonToOrder(props: {
+  translator: any;
+  selectedGender: any;
+  handleInputChange: any;
 }) {
-
+  const { translator, selectedGender, handleInputChange } = props;
   const isKid = selectedGender == "kid";
   return (
     <div className="flex flex-col">
@@ -27,7 +27,7 @@ export default function PersonToOrder({
               id="girl"
               name="kidgenderselector"
               value="man"
-              onChange={handleInputChange('sex')}
+              onChange={handleInputChange("sex")}
             />
             <label htmlFor="boy">{translator.translate("boy")}</label>
             <input
@@ -36,7 +36,7 @@ export default function PersonToOrder({
               id="girl"
               name="kidgenderselector"
               value="woman"
-              onChange={handleInputChange('sex')}
+              onChange={handleInputChange("sex")}
             />
             <label htmlFor="girl">{translator.translate("girl")}</label>
           </div>
@@ -57,7 +57,7 @@ export default function PersonToOrder({
               name="age"
               placeholder="22"
               className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              onChange={handleInputChange('age')}
+              onChange={handleInputChange("age")}
             />
           </div>
         </div>
@@ -75,7 +75,7 @@ export default function PersonToOrder({
               name="name"
               placeholder="Aa"
               className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              onChange={handleInputChange('fullname')}
+              onChange={handleInputChange("fullname")}
             />
           </div>
         </div>
@@ -97,12 +97,11 @@ export default function PersonToOrder({
               Jaké oblečení potřebujete?
             </label>
             <textarea
-              type="text"
               id="name"
               name="name"
               placeholder="5 ks trika, 2 ks kalhoty"
               className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              onChange={handleInputChange('description')}
+              onChange={handleInputChange("description")}
             />
           </div>
         </div>
@@ -121,7 +120,7 @@ export default function PersonToOrder({
                 name="name"
                 placeholder="S"
                 className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                onChange={handleInputChange('clothing_size')}
+                onChange={handleInputChange("clothing_size")}
               />
             </div>
           </div>
@@ -139,7 +138,7 @@ export default function PersonToOrder({
                 name="name"
                 placeholder="44"
                 className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                onChange={handleInputChange('shoe_size')}
+                onChange={handleInputChange("shoe_size")}
               />
             </div>
           </div>

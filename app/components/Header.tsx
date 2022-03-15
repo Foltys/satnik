@@ -1,6 +1,13 @@
+import { MouseEventHandler } from "react";
 import { Link } from "remix";
+import { Translator } from "~/locale/translation";
 
-export default function Header({translator, switchLanguage}) {
+type HeaderParams = {
+  translator: Translator
+  switchLanguage: MouseEventHandler<HTMLButtonElement>
+}
+
+export default function Header({translator, switchLanguage}: HeaderParams) {
   return (
     <header className="text-gray-600 body-font sticky top-0 bg-[#F8EBDB] z-10 pb-2">
       <div className="container mx-auto flex flex-wrap flex-row items-center">

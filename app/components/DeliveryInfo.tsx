@@ -1,3 +1,16 @@
+import { MouseEventHandler } from "react";
+import { Translator } from "~/locale/translation";
+import { Order } from "~/root";
+
+type DeliveryInfoParams = {
+  translator: Translator
+  order: Order
+  handleDelivery: React.ChangeEventHandler
+  handleChange: (string:string) => React.ChangeEventHandler
+  delivery: boolean
+  nextForm: MouseEventHandler
+}
+
 export default function DeliveryInfo({
   translator,
   order,
@@ -5,7 +18,7 @@ export default function DeliveryInfo({
   handleChange,
   delivery,
   nextForm
-}) {
+}: DeliveryInfoParams) {
   return (
     <div className="w-full mx-auto mt-14">
         <div className="flex flex-col md:mb-12">

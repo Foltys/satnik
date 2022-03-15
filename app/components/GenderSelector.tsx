@@ -1,4 +1,12 @@
-export default function GenderSelector({ translator, selectGender }) {
+import { MouseEventHandler } from "react";
+import { Translator } from "~/locale/translation";
+
+export type GenderSelectorParams = {
+  translator: Translator
+  selectGender: (gender: string) => MouseEventHandler
+}
+
+export default function GenderSelector({ translator, selectGender }: GenderSelectorParams) {
   return (
     <div className="flex space-x-2">
       <button

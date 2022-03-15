@@ -1,4 +1,17 @@
-export default function ContactInfo({ translator, handleChange, order }) {
+import { Translator } from "~/locale/translation";
+import { Order } from "~/root";
+
+type ContactInfoParams = {
+  translator: Translator;
+  handleChange: (identificator: string) => React.ChangeEventHandler;
+  order: Order;
+};
+
+export default function ContactInfo({
+  translator,
+  handleChange,
+  order,
+}: ContactInfoParams) {
   return (
     <div className="w-full mx-auto">
       <div className="flex flex-col md:mb-12">

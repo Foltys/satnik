@@ -8,12 +8,52 @@ import {
   useLoaderData,
 } from "remix";
 
-import { useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 
-import translation from "./locale/translation";
-
-import styles from "./styles/app.css";
+import translation, { Translator } from "./locale/translation";
 import Header from "./components/Header";
+
+const styles = require("./styles/app.css");
+
+export interface OutletContext {
+  translator: any;
+  setOrderItem: any;
+  order: any;
+  submitOrder: any;
+  addPersonToOrder: any;
+}
+
+export type Order = {
+  fullname: string;
+  phone: string;
+  email: string;
+  delivery_type: "delivery" | "pickup";
+  delivery_fullname: string;
+  delivery_street: string;
+  delivery_city: string;
+  delivery_zip: string;
+  delivery_phone: string;
+  delivery_time: {};
+  persons: Person[];
+  state: "open";
+  lang: "ua" | "cs";
+  created_at: {};
+  updated_at: {};
+};
+
+export type Person = {
+  sex: "man" | "woman";
+  adult: boolean;
+  fullname: string;
+  age: number;
+  clothing_size: string;
+  shoe_size: string;
+  requirements: Requirement[];
+};
+
+type Requirement = {
+  description: string;
+};
 
 export function links() {
   return [
@@ -40,14 +80,14 @@ export function meta() {
   };
 }
 
-function getFromSupported(language) {
+function getFromSupported(language: string) {
   return ["ua", "cs"].includes(language) ? language : "cs";
 }
 
-export const loader = async ({ request }) => {
+export const loader = async ({ request }: { request: Request }) => {
   let url = new URL(request.url);
   if (url.searchParams.has("lng")) {
-    return getFromSupported(url.searchParams.get("lng"));
+    return getFromSupported(url.searchParams.get("lng") as string);
   }
 
   // then we use the cookie, using this cookie we can store the user preference with a form
@@ -65,22 +105,26 @@ export const loader = async ({ request }) => {
   // and then we check the Accept-Language header and use that, this will have the value
   // of the language the user use for their OS
   if (request.headers.has("accept-language")) {
-    return getFromSupported(request.headers.get("accept-language"));
+    return getFromSupported(request.headers.get("accept-language") as string);
   }
   return "cs";
 };
 
 export default function App() {
   const locale = useLoaderData();
-  const [order, setOrder] = useState({ delivery: "delivery", persons: [] });
+  const [order, setOrder] = useState({
+    delivery: "delivery",
+    persons: [],
+  } as any);
   // const [genderSelected, setCurrentGender] = useState();
 
-  const [translator, setTranslator] = useState({
+  const [translator, setTranslator] = useState<Translator>({
     translate: translation(locale),
     language: locale,
   });
-  const setOrderItem = (key, value) => {
-    const newOrder = order;
+
+  const setOrderItem = (key: string, value: any) => {
+    const newOrder = order as any;
     newOrder[key] = value;
     setOrder(newOrder);
   };
@@ -88,15 +132,18 @@ export default function App() {
     console.log({ order });
   };
 
-  const switchLanguage = (currentLanguage) => (e) => {
-    const newLanguage = currentLanguage == "cs" ? "ua" : "cs";
-    setTranslator({
-      translate: translation(newLanguage),
-      language: newLanguage,
-    });
-  };
+  const switchLanguage =
+    (currentLanguage: string): MouseEventHandler =>
+    (e) => {
+      const newLanguage = currentLanguage == "cs" ? "ua" : "cs";
+      setTranslator({
+        translate: translation(newLanguage),
+        language: newLanguage,
+      });
+    };
 
-  const addPersonToOrder = (details, id) => {
+  type PersonDetails = {};
+  const addPersonToOrder = (details: PersonDetails, id?: number) => {
     if (id) {
       order.persons[id] = details;
     } else {
@@ -111,7 +158,10 @@ export default function App() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-B82SVEWMJ2"></script>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-B82SVEWMJ2"
+        ></script>
         <script async src="/ga.js"></script>
       </head>
       <body className="bg-[#F8EBDB]">
