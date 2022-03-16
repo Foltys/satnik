@@ -16,7 +16,7 @@ export interface OutletContext {
 }
 
 export interface Order {
-  [key: string]: any
+	[key: string]: any
 	fullname: string
 	phone: string
 	email: string
@@ -35,7 +35,7 @@ export interface Order {
 }
 
 export type Person = {
-  [key: string] : any
+	[key: string]: any
 	sex: 'man' | 'woman'
 	adult: boolean
 	fullname: string
@@ -118,20 +118,20 @@ export default function App() {
 	})
 
 	const setOrderItem = (key: keyof Order, value: any) => {
-    const newOrder = Object.assign({},order) as Order
+		const newOrder = Object.assign({}, order) as Order
 		newOrder[key] = value
 		setOrder(newOrder)
 	}
 
 	const switchLanguage =
 		(currentLanguage: string): MouseEventHandler =>
-		(e) => {
-			const newLanguage = currentLanguage == 'cs' ? 'ua' : 'cs'
-			setTranslator({
-				translate: translation(newLanguage),
-				language: newLanguage,
-			})
-		}
+			(e) => {
+				const newLanguage = currentLanguage == 'cs' ? 'ua' : 'cs'
+				setTranslator({
+					translate: translation(newLanguage),
+					language: newLanguage,
+				})
+			}
 
 	return (
 		<html lang="en">
@@ -148,15 +148,18 @@ export default function App() {
 					<Header translator={translator} switchLanguage={switchLanguage(translator.language)} />
 					<section className="text-gray-600 body-font relative">
 						<div className="container px-5 py-14 md:py-24 mx-auto flex sm:flex-nowrap flex-wrap">
-							<div className="lg:w-2/3 md:w-1/2 rounded-lg overflow-hidden sm:mr-10 flex items-start justify-start relative">
+							<div className="lg:w-2/3 md:w-1/2 rounded-lg overflow-hidden sm:mr-10 flex justify-center relative">
+								<div className="max-w-sm md:max-w-md lg:max-w-lg">
 								<Outlet
+
 									context={{
 										translator,
 										setOrderItem,
 										order,
-                    setOrder,
+										setOrder,
 									}}
 								/>
+								</div>
 							</div>
 							<div className="lg:w-1/3 md:w-1/2 hidden md:flex flex-col md:ml-auto w-full  mt-8 md:mt-0">
 								<img
