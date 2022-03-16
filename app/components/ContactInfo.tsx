@@ -15,7 +15,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 					{translator.translate('contact')}
 				</h1>
 			</div>
-			<div className="flex flex-wrap -m-2">
+			<div className="flex flex-wrap -m-2 text-gray-800">
 				<div className="p-2 w-full">
 					<div className="relative my-2 mx-1">
 						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-600">
@@ -28,7 +28,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							name="fullname"
 							placeholder="Aa"
 							required
-							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 invalid:border-2"
+							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none placeholder:text-[#C6B49D] py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500"
 							defaultValue={order.fullname}
 						/>
 					</div>
@@ -43,8 +43,9 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							type="tel"
 							id="phone"
 							name="phone"
+							required
 							placeholder="+380 111 111 111"
-							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 invalid:border-2"
+							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none placeholder:text-[#C6B49D] py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 "
 							defaultValue={order.phone}
 						/>
 					</div>
@@ -73,7 +74,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							id="email"
 							name="email"
 							placeholder="@"
-							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 invalid:border-2"
+							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none placeholder:text-[#C6B49D] py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500"
 							defaultValue={order.email}
 						/>
 					</div>

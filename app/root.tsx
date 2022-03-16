@@ -146,7 +146,7 @@ export default function App() {
 			<body className="bg-[#F8EBDB]">
 				<>
 					<Header translator={translator} switchLanguage={switchLanguage(translator.language)} />
-					<section className="text-gray-600 body-font relative">
+					<section className="text-[#C6B49D] body-font relative">
 						<div className="container px-5 py-14 md:py-24 mx-auto flex flex-row sm:flex-nowrap flex-wrap gap-12 justify-center h-[1000px]">
 							<div className="basis-full md:basis-1/2">
 								<Outlet
