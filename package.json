@@ -14,7 +14,8 @@
 		"dev": "cross-env NODE_ENV=development remix build && run-p dev:*",
 		"dev:node": "cross-env NODE_ENV=development nodemon ./build/index.js --watch ./build/index.js",
 		"dev:remix": "cross-env NODE_ENV=development remix watch",
-		"dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
+		"dev:css": "npm run generate:css -- --watch",
+		"generate:css": "npx tailwindcss -o ./app/tailwind.css",
 		"start": "cross-env NODE_ENV=production node ./build/index.js"
 	},
 	"dependencies": {

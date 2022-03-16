@@ -8,3 +8,5 @@ node_modules
 .idea
 .env
 /build/index.js
+
+/app/tailwind.css

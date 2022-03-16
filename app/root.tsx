@@ -5,7 +5,7 @@ import { MouseEventHandler, useEffect, useState } from 'react'
 import translation, { Translator } from './locale/translation'
 import Header from './components/Header'
 
-const styles = require('./styles/app.css')
+import styles from "./tailwind.css";
 
 export interface OutletContext {
 	translator: Translator
