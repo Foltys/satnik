@@ -125,13 +125,13 @@ export default function App() {
 
 	const switchLanguage =
 		(currentLanguage: string): MouseEventHandler =>
-		(e) => {
-			const newLanguage = currentLanguage == 'cs' ? 'ua' : 'cs'
-			setTranslator({
-				translate: translation(newLanguage),
-				language: newLanguage,
-			})
-		}
+			(e) => {
+				const newLanguage = currentLanguage == 'cs' ? 'ua' : 'cs'
+				setTranslator({
+					translate: translation(newLanguage),
+					language: newLanguage,
+				})
+			}
 
 	return (
 		<html lang="en">
@@ -144,11 +144,11 @@ export default function App() {
 				<script async src="/ga.js"></script>
 			</head>
 			<body className="bg-[#F8EBDB]">
-				<div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.4' }}>
+				<>
 					<Header translator={translator} switchLanguage={switchLanguage(translator.language)} />
 					<section className="text-gray-600 body-font relative">
 						<div className="container px-5 py-14 md:py-24 mx-auto flex flex-row sm:flex-nowrap flex-wrap gap-12 justify-center">
-							<div className="basis-1/2">
+							<div className="basis-full md:basis-1/2">
 								<Outlet
 									context={{
 										translator,
@@ -168,7 +168,7 @@ export default function App() {
 							</div>
 						</div>
 					</section>
-				</div>
+				</>
 				<ScrollRestoration />
 				<Scripts />
 				<LiveReload />
