@@ -8,7 +8,7 @@ import { send } from '~/mailer/html/order_confirm/send'
 export async function action({ request }: { request: Request }) {
 	const order = (await request.formData()).get('order')
 	const { id } = await saveNewOrder(JSON.parse(order as string) as Order)
-	console.log(await send(await getOrderByID(id) as Order))
+	console.log(await send(await getOrderByID(id) as any as Order))
 	return redirect('/confirmation')
 }
 
