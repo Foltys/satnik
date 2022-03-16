@@ -19,7 +19,7 @@ const personSchema = {
 		sex: { enum: ['man', 'woman'] },
 		adult: { type: 'boolean' },
 		fullname: { type: 'string' },
-		age: { type: 'integer' },
+		age: { type: 'string' },
 		clothing_size: { type: 'string' },
 		shoe_size: { type: 'string' },
 		requirements: { type: 'array', items: requirementSchema },
@@ -58,8 +58,6 @@ const orderSchema = {
 		'delivery_phone',
 		'persons',
 		'state',
-		'created_at',
-		'updated_at',
 	],
 	additionalProperties: false,
 }
@@ -67,6 +65,7 @@ const orderSchema = {
 const validateOrder = ajv.compile(orderSchema)
 
 const saveNewOrder = async function (order: Order) {
+	console.log(order)
 	order.state = 'open'
 
 	if (!validateOrder(order)) {

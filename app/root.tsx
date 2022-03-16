@@ -118,8 +118,9 @@ export default function App() {
 	})
 
 	const setOrderItem = (key: keyof Order, value: any) => {
-		order[key] = value
-		setOrder(order)
+    const newOrder = Object.assign({},order) as Order
+		newOrder[key] = value
+		setOrder(newOrder)
 	}
 
 	const switchLanguage =

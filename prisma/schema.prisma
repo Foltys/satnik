@@ -22,7 +22,7 @@ model Person {
     sex             String
     adult           Boolean
     fullname        String
-    age             Int
+    age             String
     clothing_size   String
     shoe_size       String
 }
