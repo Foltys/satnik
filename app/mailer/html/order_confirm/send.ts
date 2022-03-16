@@ -1,6 +1,7 @@
-const path = require('path')
-const sendHTMLEmail = require('../../helpers/sendHTMLEmail').default
-const normalizeOrder = require('../../helpers/normalizeOrder').default
+import path from 'path'
+import { Order } from '~/root'
+import sendHTMLEmail from '../../helpers/sendHTMLEmail'
+import normalizeOrder from '../../helpers/normalizeOrder'
 
 const translations = {
 	subject: {
@@ -9,7 +10,7 @@ const translations = {
 	},
 }
 
-const send = async function (order) {
+export const send = async function (order: Order) {
 	order = JSON.parse(JSON.stringify(order))
 	normalizeOrder(order)
 	const lang = order.lang === 'cs' ? 'cs' : 'ua'
@@ -18,9 +19,8 @@ const send = async function (order) {
 		order,
 		translations.subject[lang],
 		lang,
-		path.join(__dirname, './'),
-		path.join(__dirname, '../images'),
+		path.join('./app/mailer/html/order_confirm'),
+		path.join('./app/mailer/html/images'),
 	)
 }
 
-exports.default = { send }

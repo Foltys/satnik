@@ -1,8 +1,8 @@
-import { Order } from "~/root"
-
-const Ajv = require('ajv')
-const { prepareOrderForPrismaInsert } = require('../helpers')
-const { getDB } = require('../getDB')
+import { getDB } from '~/../prisma/getDB'
+import { Order } from '~/root'
+import { prepareOrderForPrismaInsert } from '~/../prisma/helpers'
+import Ajv from 'ajv'
+// const { getDB } = require('../getDB')
 const ajv = new Ajv()
 
 const requirementSchema = {
@@ -75,7 +75,7 @@ const saveNewOrder = async function (order: Order) {
 	}
 
 	order = prepareOrderForPrismaInsert(order)
-	return await getOrderModel().create({ data: order })
+	return (await getOrderModel()).create({ data: order as any })
 }
 const getOrderByID = async function (id: number) {
 	return await findUniqueOrder({ id })
@@ -87,7 +87,7 @@ const getOrderByID = async function (id: number) {
  * @returns {Promise<*>}
  */
 const findUniqueOrder = async function (query: any) {
-	return await getOrderModel().findUnique({
+	return (await getOrderModel()).findUnique({
 		where: query,
 		include: getIncludes(),
 	})
@@ -99,7 +99,7 @@ const findUniqueOrder = async function (query: any) {
  * @returns {Promise<*>}
  */
 const findFirst = async function (query: any) {
-	return await getOrderModel().findFirst({
+	return (await getOrderModel()).findFirst({
 		where: query,
 		include: getIncludes(),
 	})
@@ -118,8 +118,8 @@ function getIncludes() {
 /**
  * for model usage read https://www.prisma.io/docs/concepts/components/prisma-client/crud#read
  */
-const getOrderModel = function () {
-	return getDB().order
+const getOrderModel = async function () {
+	return (await getDB()).order
 }
 
 export { getOrderModel, saveNewOrder, findUniqueOrder, findFirst, getOrderByID }

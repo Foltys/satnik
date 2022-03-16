@@ -1,9 +1,9 @@
-const hbs = require('nodemailer-express-handlebars')
-const fsna = require('fs')
-const nodemailer = require('nodemailer')
+import hbs, { NodemailerExpressHandlebarsOptions } from 'nodemailer-express-handlebars'
+import fsna from 'fs'
+import nodemailer from 'nodemailer'
 const fs = fsna.promises
 
-async function getImagesAttachments(path) {
+async function getImagesAttachments(path: string) {
 	const files = await fs.readdir(path)
 	return files
 		.filter((f) => !['.', '..'].includes(f))
@@ -29,19 +29,20 @@ const transporter = nodemailer.createTransport({
 	},
 })
 
-exports.default = async function (data, subject, lang, templatePath, attachmentsPath) {
-	const handlebarOptions = {
+export default async function (data:any, subject:string, lang:string, templatePath:string, attachmentsPath:string) {
+	const handlebarOptions: NodemailerExpressHandlebarsOptions = {
 		viewEngine: {
 			partialsDir: [templatePath, lang].join('/'),
 			defaultLayout: false,
 			helpers: {
-				inc: function (value, options) {
+				inc: function (value:any, options:any) {
 					return parseInt(value) + 1
 				},
 			},
 		},
 		viewPath: [templatePath, lang].join('/'),
 	}
+	console.log(handlebarOptions)
 
 	transporter.use('compile', hbs(handlebarOptions))
 	const mailOptions = {

@@ -1,5 +1,7 @@
-exports.default = function (order) {
-	order.persons.map((p) => {
+import { Person } from "~/root"
+
+export default function (order: any) {
+	order.persons.map((p: Person) => {
 		p.isMan = p.sex === 'man'
 		p.isWoman = p.sex === 'woman'
 		p.requirements.map((r) => {
