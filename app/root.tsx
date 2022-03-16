@@ -5,7 +5,7 @@ import { MouseEventHandler, useEffect, useState } from 'react'
 import translation, { Translator } from './locale/translation'
 import Header from './components/Header'
 
-import styles from "./tailwind.css";
+import styles from './tailwind.css'
 
 export interface OutletContext {
 	translator: Translator
@@ -125,13 +125,13 @@ export default function App() {
 
 	const switchLanguage =
 		(currentLanguage: string): MouseEventHandler =>
-			(e) => {
-				const newLanguage = currentLanguage == 'cs' ? 'ua' : 'cs'
-				setTranslator({
-					translate: translation(newLanguage),
-					language: newLanguage,
-				})
-			}
+		(e) => {
+			const newLanguage = currentLanguage == 'cs' ? 'ua' : 'cs'
+			setTranslator({
+				translate: translation(newLanguage),
+				language: newLanguage,
+			})
+		}
 
 	return (
 		<html lang="en">
@@ -147,11 +147,9 @@ export default function App() {
 				<div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.4' }}>
 					<Header translator={translator} switchLanguage={switchLanguage(translator.language)} />
 					<section className="text-gray-600 body-font relative">
-						<div className="container px-5 py-14 md:py-24 mx-auto flex sm:flex-nowrap flex-wrap">
-							<div className="lg:w-2/3 md:w-1/2 rounded-lg overflow-hidden sm:mr-10 flex justify-center relative">
-								<div className="w-sm md:w-md lg:w-lg">
+						<div className="container px-5 py-14 md:py-24 mx-auto flex flex-row sm:flex-nowrap flex-wrap gap-12 justify-center">
+							<div className="basis-1/2">
 								<Outlet
-
 									context={{
 										translator,
 										setOrderItem,
@@ -159,9 +157,9 @@ export default function App() {
 										setOrder,
 									}}
 								/>
-								</div>
 							</div>
-							<div className="lg:w-1/3 md:w-1/2 hidden md:flex flex-col md:ml-auto w-full  mt-8 md:mt-0">
+
+							<div className="hidden md:flex basis-1/4 ">
 								<img
 									src="https://images.unsplash.com/photo-1582719188393-bb71ca45dbb9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80"
 									className="rounded-lg w-full object-cover object-center"
