@@ -13,19 +13,30 @@ import { OutletContext, Person } from '~/root'
 */
 
 export default function NewOrder() {
-	const { translator, order, addPersonToOrder } = useOutletContext<OutletContext>()
+	const { translator, order, setOrder } = useOutletContext<OutletContext>()
 	const [selectedGender, selectGender] = useState<Gender>()
-	const [newPersonInfo, setNewPersonInfo] = useState<any>({})
+	const [newPersonInfo, setNewPersonInfo] = useState<Person>({ requirements: [] } as unknown as Person)
 	const [editingPerson, setEditingPerson] = useState<number>()
 
-	const handleInputChange =
-		(fieldName: keyof Person): ChangeEventHandler<HTMLInputElement> =>
-		(e) => {
-			newPersonInfo[fieldName] = e.target.value
-			setNewPersonInfo(newPersonInfo)
+	const handleInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+		if (e.target.name == 'requirements') {
+			if (!newPersonInfo.requirements) newPersonInfo.requirements = []
+			newPersonInfo.requirements[0] = { description: e.target.value }
+		} else {
+			newPersonInfo[e.target.name] = e.target.value
 		}
+		setNewPersonInfo(newPersonInfo)
+	}
 
-	const navigate = useNavigate()
+	const savePerson = (details: Person, id?: number) => {
+		if (id) {
+			order.persons[id] = details
+		} else {
+			order.persons.push(details)
+		}
+		setOrder(order)
+	}
+
 	const pickGender =
 		(gender: Gender): MouseEventHandler =>
 		(e) => {
@@ -41,27 +52,32 @@ export default function NewOrder() {
 			}
 			setNewPersonInfo(newPersonInfo)
 		}
+	const navigate = useNavigate()
 
 	const nextForm = () => {
-		navigate('/summary', { replace: true })
+		navigate('/summary', { replace: false })
 	}
 
 	const addNextPerson: MouseEventHandler = (event) => {
 		event.preventDefault()
-		// if (!validatePerson(newPersonInfo)) {
-		//   console.log(validatePerson.errors);
-		// }
-		addPersonToOrder(newPersonInfo, editingPerson)
+		console.log(newPersonInfo, editingPerson)
+		savePerson(newPersonInfo, editingPerson)
 		cleanPersonForm()
 	}
 
 	const cleanPersonForm = () => {
 		selectGender(undefined)
 		setEditingPerson(undefined)
-		setNewPersonInfo({})
+		setNewPersonInfo({ requirements: [] } as unknown as Person)
 	}
 
 	useEffect(() => {
+		if (editingPerson !== undefined) {
+			selectGender(!order.persons[editingPerson].adult ? 'kid' : order.persons[editingPerson].sex)
+			setNewPersonInfo(order.persons[editingPerson])
+			delete order.persons[editingPerson]
+			setOrder(order)
+		}
 		console.log(editingPerson)
 	}, [editingPerson])
 
@@ -94,7 +110,13 @@ export default function NewOrder() {
 			{!selectedGender ? (
 				<GenderSelector translator={translator} selectGender={pickGender} />
 			) : (
-				<PersonToOrder translator={translator} selectedGender={selectedGender} handleInputChange={handleInputChange} />
+				<PersonToOrder
+					currentPerson={newPersonInfo}
+					translator={translator}
+					selectedGender={selectedGender}
+					handleInputChange={handleInputChange}
+					discardPerson={cleanPersonForm}
+				/>
 			)}
 			<div className="py-2 my-10 mx-2 w-full md:w-1/2">
 				<button

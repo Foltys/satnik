@@ -3,7 +3,7 @@ import { Order } from '~/root'
 
 type ContactInfoParams = {
 	translator: Translator
-	handleChange: (identificator: string) => React.ChangeEventHandler
+	handleChange: React.ChangeEventHandler
 	order: Order
 }
 
@@ -22,10 +22,10 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							{translator.translate('name_and_surname')}
 						</label>
 						<input
-							onChange={handleChange('fullname')}
+							onChange={handleChange}
 							type="text"
 							id="name"
-							name="name"
+							name="fullname"
 							placeholder="Aa"
 							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
 							defaultValue={order.fullname}
@@ -38,7 +38,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							{translator.translate('phone')}
 						</label>
 						<input
-							onChange={handleChange('phone')}
+							onChange={handleChange}
 							type="tel"
 							id="phone"
 							name="phone"
@@ -67,7 +67,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							<span className="text-[#957D5E] font-bold text-sm">{translator.translate('optional')}</span>
 						</div>
 						<input
-							onChange={handleChange('email')}
+							onChange={handleChange}
 							type="email"
 							id="email"
 							name="email"

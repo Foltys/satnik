@@ -5,18 +5,14 @@ import { Order } from '~/root'
 type DeliveryInfoParams = {
 	translator: Translator
 	order: Order
-	handleDelivery: React.ChangeEventHandler
-	handleChange: (string: string) => React.ChangeEventHandler
-	delivery: boolean
+	handleChange: React.ChangeEventHandler
 	nextForm: MouseEventHandler
 }
 
 export default function DeliveryInfo({
 	translator,
 	order,
-	handleDelivery,
 	handleChange,
-	delivery,
 	nextForm,
 }: DeliveryInfoParams) {
 	return (
@@ -32,24 +28,24 @@ export default function DeliveryInfo({
 						className="accent-[#0A9DBF]"
 						type="radio"
 						id="radiodelivery"
-						name="radioselector"
-						value="radiodelivery"
-						checked={delivery == true}
-						onChange={handleDelivery}
+						name="delivery_type"
+						value="delivery"
+						defaultChecked={order.delivery_type == 'delivery'}
+						onChange={handleChange}
 					/>
 					<label htmlFor="radiodelivery">{translator.translate('deliver_to_adress')}</label>
 					<input
 						className="accent-[#0A9DBF]"
 						type="radio"
 						id="radiopickup"
-						name="radioselector"
-						value="radiopickup"
-						checked={delivery == false}
-						onChange={handleDelivery}
+						name="delivery_type"
+						value="pickup"
+						defaultChecked={order.delivery_type == 'pickup'}
+						onChange={handleChange}
 					/>
 					<label htmlFor="radiopickup">{translator.translate('pickup')}</label>
 				</div>
-				{delivery == true ? (
+				{order.delivery_type == 'delivery' ? (
 					<>
 						<div className="p-2 w-full">
 							<div className="relative my-2 mx-1">
@@ -57,10 +53,10 @@ export default function DeliveryInfo({
 									{translator.translate('name_and_surname')}
 								</label>
 								<input
-									onChange={handleChange('delivery_fullname')}
+									onChange={handleChange}
 									type="text"
 									id="name"
-									name="name"
+									name="delivery_fullname"
 									placeholder="Aa"
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
 									defaultValue={order.delivery_fullname}
@@ -88,10 +84,10 @@ export default function DeliveryInfo({
 									{translator.translate('street_and_number')}
 								</label>
 								<input
-									onChange={handleChange('delivery_street')}
+									onChange={handleChange}
 									type="text"
 									id="street"
-									name="street"
+									name="delivery_street"
 									placeholder="Strašnická 12"
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
 									defaultValue={order.delivery_street}
@@ -104,10 +100,10 @@ export default function DeliveryInfo({
 									{translator.translate('city')}
 								</label>
 								<input
-									onChange={handleChange('delivery_city')}
+									onChange={handleChange}
 									type="text"
 									id="city"
-									name="city"
+									name="delivery_city"
 									placeholder="Praha"
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
 									defaultValue={order.delivery_city}
@@ -120,10 +116,10 @@ export default function DeliveryInfo({
 									{translator.translate('zip')}
 								</label>
 								<input
-									onChange={handleChange('delivery_zip')}
+									onChange={handleChange}
 									type="text"
 									id="psc"
-									name="psc"
+									name="delivery_zip"
 									placeholder="14000"
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
 									defaultValue={order.delivery_zip}
@@ -139,10 +135,10 @@ export default function DeliveryInfo({
 									<span className="text-[#957D5E] font-bold text-sm">{translator.translate('optional')}</span>
 								</div>
 								<input
-									onChange={handleChange('delivery_phone')}
+									onChange={handleChange}
 									type="tel"
 									id="phone2"
-									name="phone2"
+									name="delivery_phone"
 									placeholder="+380 111 111 111"
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
 									defaultValue={order.delivery_phone}

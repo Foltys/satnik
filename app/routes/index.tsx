@@ -1,22 +1,19 @@
-import { useState, useEffect, MouseEventHandler, ChangeEventHandler } from 'react'
-import { useOutletContext, useNavigate, useSubmit, Link } from 'remix'
+import { MouseEventHandler, ChangeEventHandler } from 'react'
+import { useOutletContext, useNavigate } from 'remix'
 import ContactInfo from '~/components/ContactInfo'
 import DeliveryInfo from '~/components/DeliveryInfo'
 import { OutletContext } from '~/root'
 
+export function action ({request}: {request: Request}) {
+}
+
 export default function Index() {
 	const { translator, setOrderItem, order } = useOutletContext<OutletContext>()
 	const navigate = useNavigate()
-	const [delivery, setDelivery] = useState(order.delivery_type == 'delivery')
 
-	const handleDelivery: ChangeEventHandler = (e) => {
-		setDelivery(!delivery)
-	}
-
-	const handleChange = (identificator: string): ChangeEventHandler<HTMLInputElement> => {
-		return (event) => {
-			setOrderItem([identificator], event.target.value)
-		}
+	const handleFormInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+		console.log(event.target.name, event.target.value)
+		setOrderItem(event.target.name, event.target.value)
 	}
 
 	const nextForm: MouseEventHandler = (e) => {
@@ -24,19 +21,13 @@ export default function Index() {
 		navigate('/newOrder', { replace: false })
 	}
 
-	useEffect(() => {
-		setOrderItem('delivery_type', delivery ? 'delivery' : 'pickup')
-	}, [delivery, setOrderItem])
-
 	return (
 		<div className="flex flex-col">
-			<ContactInfo translator={translator} order={order} handleChange={handleChange} />
+			<ContactInfo translator={translator} order={order} handleChange={handleFormInputChange} />
 			<DeliveryInfo
 				translator={translator}
-				handleDelivery={handleDelivery}
-				handleChange={handleChange}
+				handleChange={handleFormInputChange}
 				order={order}
-				delivery={delivery}
 				nextForm={nextForm}
 			/>
 		</div>

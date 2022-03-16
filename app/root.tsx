@@ -12,10 +12,11 @@ export interface OutletContext {
 	setOrderItem: any
 	order: Order
 	submitOrder: any
-	addPersonToOrder: any
+	setOrder: (order: Order) => void
 }
 
-export type Order = {
+export interface Order {
+  [key: string]: any
 	fullname: string
 	phone: string
 	email: string
@@ -34,6 +35,7 @@ export type Order = {
 }
 
 export type Person = {
+  [key: string] : any
 	sex: 'man' | 'woman'
 	adult: boolean
 	fullname: string
@@ -105,9 +107,9 @@ export const loader = async ({ request }: { request: Request }) => {
 export default function App() {
 	const locale = useLoaderData()
 	const [order, setOrder] = useState({
-		delivery: 'delivery',
+		delivery_type: 'delivery',
 		persons: [],
-	} as any)
+	} as unknown as Order)
 	// const [genderSelected, setCurrentGender] = useState();
 
 	const [translator, setTranslator] = useState<Translator>({
@@ -115,13 +117,9 @@ export default function App() {
 		language: locale,
 	})
 
-	const setOrderItem = (key: string, value: any) => {
-		const newOrder = order as any
-		newOrder[key] = value
-		setOrder(newOrder)
-	}
-	const submitOrder = () => {
-		console.log({ order })
+	const setOrderItem = (key: keyof Order, value: any) => {
+		order[key] = value
+		setOrder(order)
 	}
 
 	const switchLanguage =
@@ -133,15 +131,6 @@ export default function App() {
 				language: newLanguage,
 			})
 		}
-
-	type PersonDetails = {}
-	const addPersonToOrder = (details: PersonDetails, id?: number) => {
-		if (id) {
-			order.persons[id] = details
-		} else {
-			order.persons.push(details)
-		}
-	}
 
 	return (
 		<html lang="en">
@@ -164,10 +153,7 @@ export default function App() {
 										translator,
 										setOrderItem,
 										order,
-										submitOrder,
-										// setCurrentGender,
-										// genderSelected,
-										addPersonToOrder,
+                    setOrder,
 									}}
 								/>
 							</div>
