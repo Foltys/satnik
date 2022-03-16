@@ -1,8 +1,10 @@
-import { FormEventHandler } from 'react'
+import { FormEventHandler, useState } from 'react'
 import { useOutletContext, useNavigate, Link, useSubmit, redirect, Form } from 'remix'
 import { Order, OutletContext } from '~/root'
 import { saveNewOrder, getOrderByID } from '../../prisma/api/Order'
 import { send } from '~/mailer/html/order_confirm/send'
+import PersonOnOrder from '~/components/PersonOnOrder'
+
 
 
 export async function action({ request }: { request: Request }) {
@@ -13,15 +15,25 @@ export async function action({ request }: { request: Request }) {
 }
 
 export default function Summary() {
+	const [editingPerson, setEditingPerson] = useState<number>()
 	const submit = useSubmit()
 	const { translator, order } = useOutletContext<OutletContext>()
-	const fullOrder = Object.assign({}, {lang: translator.language, delivery_time: new Date()}, order)
+	const fullOrder = Object.assign({}, { lang: translator.language, delivery_time: new Date() }, order)
 	const submitForm: FormEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault()
 		submit(e.currentTarget)
 	}
 	return (
 		<div className="flex flex-col">
+			{order.persons && order.persons.length ? (
+				order.persons.map((item, key) => {
+					return (
+						<PersonOnOrder key={key} details={item} editItem={() => setEditingPerson(key)} translator={translator} />
+					)
+				})
+			) : (
+				<div className="text-[#0A9DBF] font-medium my-5">error</div>
+			)}
 			<div className="flex">
 				<div className="flex flex-col w-1/2 px-1">
 					<span className="font-semibold mt-4">{translator.translate('orderer')}</span>

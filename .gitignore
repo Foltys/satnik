@@ -7,6 +7,6 @@ node_modules
 /app/styles
 .idea
 .env
-/build/index.js
+/build
 
 /app/tailwind.css

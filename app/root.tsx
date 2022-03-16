@@ -149,7 +149,7 @@ export default function App() {
 					<section className="text-gray-600 body-font relative">
 						<div className="container px-5 py-14 md:py-24 mx-auto flex sm:flex-nowrap flex-wrap">
 							<div className="lg:w-2/3 md:w-1/2 rounded-lg overflow-hidden sm:mr-10 flex justify-center relative">
-								<div className="max-w-sm md:max-w-md lg:max-w-lg">
+								<div className="w-sm md:w-md lg:w-lg">
 								<Outlet
 
 									context={{
