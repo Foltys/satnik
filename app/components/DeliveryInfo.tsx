@@ -15,6 +15,7 @@ export default function DeliveryInfo({
 	handleChange,
 	nextForm,
 }: DeliveryInfoParams) {
+	console.log('DeliveryInfo', order)
 	return (
 		<div className="w-full mx-auto mt-14">
 			<div className="flex flex-col md:mb-12">
@@ -58,6 +59,7 @@ export default function DeliveryInfo({
 									id="name"
 									name="delivery_fullname"
 									placeholder="Aa"
+									required
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
 									defaultValue={order.delivery_fullname}
 								/>
@@ -88,6 +90,7 @@ export default function DeliveryInfo({
 									type="text"
 									id="street"
 									name="delivery_street"
+									required
 									placeholder="Strašnická 12"
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
 									defaultValue={order.delivery_street}
@@ -105,6 +108,7 @@ export default function DeliveryInfo({
 									id="city"
 									name="delivery_city"
 									placeholder="Praha"
+									required
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
 									defaultValue={order.delivery_city}
 								/>
@@ -121,6 +125,7 @@ export default function DeliveryInfo({
 									id="psc"
 									name="delivery_zip"
 									placeholder="14000"
+									required
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
 									defaultValue={order.delivery_zip}
 								/>
@@ -182,8 +187,9 @@ export default function DeliveryInfo({
 				)}
 				<div className="p-2 my-10 mx-2">
 					<button
+						disabled={!order.fullname || !order.phone}
 						onClick={nextForm}
-						className="inline-flex items-center w-full  text-[#0A9DBF] border-0 py-4 px-6 focus:outline-none outline  outline-[#0A9DBF] rounded-full md:text-xl hover:bg-[#eb2f06] hover:text-white hover:outline-[#eb2f06]"
+						className="inline-flex items-center w-full  text-[#0A9DBF] border-0 py-4 px-6 focus:outline-none outline  outline-[#0A9DBF] disabled:outline-[#eb2f06] disabled:bg-[#eb2f06] disabled:text-white disabled:opacity-20 rounded-full md:text-xl hover:bg-[#eb2f06] hover:text-white hover:outline-[#eb2f06]"
 					>
 						{translator.translate('continue_to_cloth_selection')}
 						<svg
