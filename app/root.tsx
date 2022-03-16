@@ -147,7 +147,7 @@ export default function App() {
 				<>
 					<Header translator={translator} switchLanguage={switchLanguage(translator.language)} />
 					<section className="text-gray-600 body-font relative">
-						<div className="container px-5 py-14 md:py-24 mx-auto flex flex-row sm:flex-nowrap flex-wrap gap-12 justify-center">
+						<div className="container px-5 py-14 md:py-24 mx-auto flex flex-row sm:flex-nowrap flex-wrap gap-12 justify-center h-[1000px]">
 							<div className="basis-full md:basis-1/2">
 								<Outlet
 									context={{

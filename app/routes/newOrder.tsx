@@ -84,7 +84,7 @@ export default function NewOrder() {
 	return (
 		<div className="flex flex-col">
 			<div className="w-full mx-auto">
-				<div className="flex items-center md:mb-12">
+				<div className="flex items-center mb-6 md:mb-12">
 					<button
 						onClick={() => navigate('/')}
 						className="items-center ml-1 mt-1 text-[#0A9DBF] border-0 py-2 px-4 focus:outline-none outline  outline-[#0A9DBF] rounded-full  font-semibold text-lg hover:bg-[#eb2f06] hover:text-[#F8EBDB] hover:outline-[#eb2f06] fill-[#0A9DBF] hover:fill-[#F8EBDB]"
@@ -93,17 +93,18 @@ export default function NewOrder() {
 							<path d="m.293 8.293 4-4a1 1 0 1 1 1.414 1.414L3.415 8H15a1 1 0 1 1 0 2H3.415l2.294 2.294a1 1 0 1 1-1.414 1.414l-4-4a.997.997 0 0 1-.002-1.414Z" />
 						</svg>
 					</button>
-					<h1 className="sm:text-3xl text-2xl font-bold title-font text-gray-900 ml-5">
+					<h1 className="sm:text-3xl text-2xl font-bold title-font text-gray-900 ml-6">
 						{translator.translate('order')}
 					</h1>
 				</div>
 			</div>
 			{order.persons && order.persons.length ? (
-				order.persons.map((item, key) => {
+				//hele sem potřebuju narvat h1 "přidat další osobu"
+				(order.persons.map((item, key) => {
 					return (
 						<PersonOnOrder key={key} details={item} editItem={() => setEditingPerson(key)} translator={translator} />
 					)
-				})
+				}))
 			) : (
 				<div className="text-[#0A9DBF] font-medium my-5">{translator.translate('who_is_wearing')}</div>
 			)}
