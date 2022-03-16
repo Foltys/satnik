@@ -9,13 +9,25 @@ type DeliveryInfoParams = {
 	nextForm: MouseEventHandler
 }
 
-export default function DeliveryInfo({
-	translator,
-	order,
-	handleChange,
-	nextForm,
-}: DeliveryInfoParams) {
-	console.log('DeliveryInfo', order)
+export default function DeliveryInfo({ translator, order, handleChange, nextForm }: DeliveryInfoParams) {
+	//console.log('DeliveryInfo', order)
+	function checkForm(): boolean {
+		if (
+			order.delivery_type === 'delivery' &&
+			order.fullname &&
+			order.phone &&
+			order.delivery_fullname &&
+			order.delivery_street &&
+			order.delivery_city &&
+			order.delivery_zip
+		) {
+			return false
+		} else if (order.delivery_type === 'pickup' && order.fullname && order.phone) {
+			return false
+		}
+		return true
+	}
+
 	return (
 		<div className="w-full mx-auto mt-14">
 			<div className="flex flex-col md:mb-12">
@@ -187,7 +199,7 @@ export default function DeliveryInfo({
 				)}
 				<div className="p-2 my-10 mx-2">
 					<button
-						disabled={!order.fullname || !order.phone}
+						disabled={checkForm()}
 						onClick={nextForm}
 						className="inline-flex items-center w-full  text-[#0A9DBF] border-0 py-4 px-6 focus:outline-none outline  outline-[#0A9DBF] disabled:outline-[#eb2f06] disabled:bg-[#eb2f06] disabled:text-white disabled:opacity-20 rounded-full md:text-xl hover:bg-[#eb2f06] hover:text-white hover:outline-[#eb2f06]"
 					>
