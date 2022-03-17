@@ -27,13 +27,13 @@ const personSchema = {
 	required: ['sex', 'adult', 'fullname', 'age', 'clothing_size', 'shoe_size', 'requirements'],
 	additionalProperties: false,
 }
-const orderSchema = {
+const orderSchemaTypeDelivery = {
 	type: 'object',
-	properties: {
+		properties: {
 		fullname: { type: 'string' },
 		phone: { type: 'string' },
 		email: { type: 'string' },
-		delivery_type: { enum: ['delivery', 'pickup'] },
+		delivery_type: { const: 'delivery' },
 		delivery_fullname: { type: 'string' },
 		delivery_street: { type: 'string' },
 		delivery_city: { type: 'string' },
@@ -59,7 +59,35 @@ const orderSchema = {
 		'persons',
 		'state',
 	],
+		additionalProperties: false,
+}
+const orderSchemaTypePickup = {
+	type: 'object',
+	properties: {
+		fullname: { type: 'string' },
+		phone: { type: 'string' },
+		email: { type: 'string' },
+		delivery_type: { const: 'pickup' },
+		delivery_time: {},
+		persons: { type: 'array', items: personSchema },
+		state: { enum: ['open'] },
+		lang: { enum: ['ua', 'cs'] },
+		created_at: {},
+		updated_at: {},
+	},
+	required: [
+		'fullname',
+		'phone',
+		'email',
+		'delivery_type',
+		'persons',
+		'state',
+	],
 	additionalProperties: false,
+}
+const orderSchema = {
+	type: 'object',
+	anyOf: [orderSchemaTypeDelivery, orderSchemaTypePickup]
 }
 
 const validateOrder = ajv.compile(orderSchema)
