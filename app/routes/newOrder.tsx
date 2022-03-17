@@ -121,6 +121,7 @@ export default function NewOrder() {
 					</h1>
 				</div>
 			</div>
+
 			{order.persons && order.persons.length ? (
 				//hele sem potřebuju narvat h1 "přidat další osobu", něco jako
 				//{return (<></>)}
@@ -131,6 +132,11 @@ export default function NewOrder() {
 				})
 			) : (
 				<div className="text-[#0A9DBF] font-medium my-5">{translator.translate('who_is_wearing')}</div>
+			)}
+			{order.persons && order.persons.length > 0 && (
+				<h1 className="sm:text-3xl text-2xl font-bold title-font text-gray-800 ml-6 py-6">
+					{translator.translate("add_person_to_order")} 
+				</h1>
 			)}
 			{!selectedGender ? (
 				<GenderSelector translator={translator} selectGender={pickGender} />
