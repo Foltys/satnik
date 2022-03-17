@@ -18,7 +18,6 @@ function getOrders() {
 			delivery_city: 'Praha',
 			delivery_zip: '12000',
 			delivery_phone: '777111111',
-			delivery_time: new Date('2022-03-01'),
 			persons: [
 				{
 					sex: 'woman',
