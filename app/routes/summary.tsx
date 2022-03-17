@@ -16,7 +16,6 @@ export async function action({ request }: { request: Request }) {
 }
 
 export default function Summary() {
-
 	const [editingPerson, setEditingPerson] = useState<number>()
 	const submit = useSubmit()
 	const { translator, order } = useOutletContext<OutletContext>()
@@ -32,7 +31,7 @@ export default function Summary() {
 	}, [translator.language])
 
 	useEffect(() => {
-		console.log({order})
+		console.log({ order })
 		if (order.persons.length < 1) redirect('/') //not a nice thing to do, not sure what else would work
 	}, [order])
 	return (
@@ -54,12 +53,24 @@ export default function Summary() {
 					<span>{order.phone}</span>
 					<span>{order.email}</span>
 					<span className="font-semibold mt-4">{translator.translate('delivery_address')}</span>
-					<span>{order.delivery_fullname}</span>
-					<span>
-						{order.delivery_street},{order.delivery_city}
-					</span>
-					<span>{order.delivery_zip}</span>
-					<span>{order.delivery_phone}</span>
+					{order.delivery_type === 'pickup' ? (
+						<>
+							<span>Hala 13 v Pražské tržnici</span>
+							<span>Bubenské nábřeží 306</span>
+							<span>170 00 Praha 7</span>
+							<span>Mobil: 737 59 70 70</span>
+							<span>E-mail: info@satnikpraha.cz</span>
+						</>
+					) : (
+						<>
+							<span>{order.delivery_fullname}</span>
+							<span>
+								{order.delivery_street},{order.delivery_city}
+							</span>
+							<span>{order.delivery_zip}</span>
+							<span>{order.delivery_phone}</span>
+						</>
+					)}
 				</div>
 				<div className="flex flex-col w-1/2">
 					<span className="font-semibold mt-4">{translator.translate('for_who_and_what')}</span>
