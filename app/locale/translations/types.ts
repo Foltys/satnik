@@ -54,5 +54,6 @@ export type Translation = {
   wait_for_email: string,
   woman: string,
   think_of_you: string,
-  regards: string
+  regards: string,
+  to_confirm: string
 }

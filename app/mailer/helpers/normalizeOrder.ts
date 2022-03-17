@@ -1,10 +1,10 @@
 import { Person } from "~/root"
 
 export default function (order: any) {
-	order.persons.map((p: Person) => {
+	order.persons.forEach((p: Person) => {
 		p.isMan = p.sex === 'man'
 		p.isWoman = p.sex === 'woman'
-		p.requirements.map((r) => {
+		p.requirements.forEach((r) => {
 			r.description.replace('\n', ', ')
 			r.description.replace(/ +/g, ' ')
 		})
