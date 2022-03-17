@@ -68,7 +68,7 @@ export default function PersonToOrder({
 						</label>
 						<input
 							required
-							type="text"
+							type="number"
 							id="age"
 							name="age"
 							placeholder="22"
@@ -149,7 +149,7 @@ export default function PersonToOrder({
 							</label>
 							<input
 								required
-								type="text"
+								type="number"
 								id="shoe_size"
 								name="shoe_size"
 								placeholder="44"
