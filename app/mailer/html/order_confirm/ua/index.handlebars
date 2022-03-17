@@ -305,18 +305,17 @@ a[x-apple-data-detectors='true'] {
     <tr>
       <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
 
+  {{#if order.isDeliveryDelivery}}
   <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
       <p style="font-size: 14px; line-height: 140%;"><span
               style="color: #0a9dbf; font-size: 14px; line-height: 19.6px;"><strong><span
-              style="font-size: 16px; line-height: 22.4px;">Адреса доставки /
-          {{#if order.isDeliveryPickup}}Самовивіз{{/if}}
-          {{#if order.isDeliveryDelivery}}За адресою{{/if}}
-              :</span></strong></span><br/>
+              style="font-size: 16px; line-height: 22.4px;">Адреса доставки:</span></strong></span><br/>
           <strong><span style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_fullname}}</span></strong><br/><span
                   style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_street}}</span><br/><span
                   style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_city}} {{order.delivery_zip}}</span><br/><span
                   style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_phone}}</span></p>
   </div>
+  {{/if}}
 
       </td>
     </tr>
