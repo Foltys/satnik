@@ -16,31 +16,36 @@ export async function action({ request }: { request: Request }) {
 }
 
 export default function Summary() {
-	const [editingPerson, setEditingPerson] = useState<number>()
+	const navigate = useNavigate()
+	// const [editingPerson, setEditingPerson] = useState<number>()
 	const submit = useSubmit()
-	const { translator, order } = useOutletContext<OutletContext>()
-	console.log(order)
+	const { translator, order, setEditingPerson } = useOutletContext<OutletContext>()
+
 	const fullOrder = Object.assign({}, { lang: translator.language }, order)
 	const submitForm: FormEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault()
 		submit(e.currentTarget)
 	}
 
-	useEffect(() => {
-		Object.assign(fullOrder, { lang: translator.language })
-	}, [translator.language])
+	function editPerson(key: number) {
+		setEditingPerson(key)
+		navigate('/newOrder', {replace: true})
+	}
 
 	useEffect(() => {
-		console.log({ order })
-		if (order.persons.length < 1) redirect('/') //not a nice thing to do, not sure what else would work
-	}, [order])
+		Object.assign(fullOrder, { lang: translator.language })
+	}, [translator.language, fullOrder])
+
+	useEffect(() => {
+		if (order.persons.length < 1) navigate('/') //not a nice thing to do, not sure what else would work
+	}, [order, navigate])
 	return (
 		<div className="flex flex-col text-gray-800	">
 			{order.persons &&
 				order.persons.length &&
 				order.persons.map((item, key) => {
 					return (
-						<PersonOnOrder key={key} details={item} editItem={() => setEditingPerson(key)} translator={translator} />
+						<PersonOnOrder key={key} details={item} editItem={() => editPerson(key)} translator={translator} />
 					)
 				})}
 			<h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-800 ml-1">

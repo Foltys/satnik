@@ -13,6 +13,8 @@ export interface OutletContext {
 	order: Order
 	submitOrder: any
 	setOrder: (order: Order) => void
+  editingPerson: number
+  setEditingPerson: (key?: number) => void
 }
 
 export interface Order {
@@ -132,6 +134,9 @@ export default function App() {
 				})
 			}
 
+	const [editingPerson, setEditingPerson] = useState<number>()
+  
+
 	return (
 		<html lang="en">
 			<head>
@@ -154,6 +159,8 @@ export default function App() {
 										setOrderItem,
 										order,
 										setOrder,
+                    editingPerson,
+                    setEditingPerson
 									}}
 								/>
 							</div>

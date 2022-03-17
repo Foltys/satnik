@@ -13,10 +13,9 @@ import { OutletContext, Person } from '~/root'
 */
 
 export default function NewOrder() {
-	const { translator, order, setOrder } = useOutletContext<OutletContext>()
+	const { translator, order, setOrder, setEditingPerson, editingPerson } = useOutletContext<OutletContext>()
 	const [selectedGender, selectGender] = useState<Gender>()
 	const [newPersonInfo, setNewPersonInfo] = useState<Person>({ requirements: [] } as unknown as Person)
-	const [editingPerson, setEditingPerson] = useState<number>()
 
 	const handleInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
 		if (e.target.name == 'requirements') {
@@ -26,6 +25,17 @@ export default function NewOrder() {
 			newPersonInfo[e.target.name] = e.target.value
 		}
 		setNewPersonInfo({ ...newPersonInfo }) //mutuju to aby se mi ta hodnota hned přepsala (kvůli valiaci) - připadá mi že to ničemu nevadí @foly
+	}
+
+	function editPerson(key: number) {
+		if (editingPerson) {
+			if (!checkAddForm) {
+				savePerson(newPersonInfo, editingPerson)
+			}
+			setEditingPerson(key)
+		} else {
+			setEditingPerson(key)
+		}
 	}
 
 	const savePerson = (details: Person, id?: number) => {
@@ -122,9 +132,7 @@ export default function NewOrder() {
 
 			{order.persons && order.persons.length ? (
 				order.persons.map((item, key) => {
-					return (
-						<PersonOnOrder key={key} details={item} editItem={() => setEditingPerson(key)} translator={translator} />
-					)
+					return <PersonOnOrder key={key} details={item} editItem={() => editPerson(key)} translator={translator} />
 				})
 			) : (
 				<div className="text-[#0A9DBF] font-medium my-5">{translator.translate('who_is_wearing')}</div>
