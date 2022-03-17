@@ -56,5 +56,6 @@ export type Translation = {
   woman: string,
   think_of_you: string,
   regards: string,
-  to_confirm: string
+  to_confirm: string,
+  share:string
 }
