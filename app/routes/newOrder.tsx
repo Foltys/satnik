@@ -29,7 +29,7 @@ export default function NewOrder() {
 	}
 
 	const savePerson = (details: Person, id?: number) => {
-		if (id) {
+		if (id !== undefined) {
 			order.persons[id] = details
 		} else {
 			order.persons.push(details)
@@ -61,7 +61,6 @@ export default function NewOrder() {
 
 	const addNextPerson: MouseEventHandler = (event) => {
 		event.preventDefault()
-		console.log(newPersonInfo, editingPerson)
 		savePerson(newPersonInfo, editingPerson)
 		cleanPersonForm()
 	}
@@ -77,9 +76,8 @@ export default function NewOrder() {
 			selectGender(!order.persons[editingPerson].adult ? 'kid' : order.persons[editingPerson].sex)
 			setNewPersonInfo(order.persons[editingPerson])
 			delete order.persons[editingPerson]
-			setOrder(order)
+			setOrder({...order})
 		}
-		console.log(editingPerson)
 	}, [editingPerson])
 
 	function checkAddForm(): boolean {

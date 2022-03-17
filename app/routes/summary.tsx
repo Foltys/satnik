@@ -30,6 +30,7 @@ export default function Summary() {
 	}, [translator.language])
 	
 	useEffect(() => {
+		console.log({order})
 		if (order.persons.length < 1) redirect('/') //not a nice thing to do, not sure what else would work
 	}, [order])
 	return (
