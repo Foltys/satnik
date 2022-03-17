@@ -19,7 +19,7 @@ export default function Summary() {
 	const [editingPerson, setEditingPerson] = useState<number>()
 	const submit = useSubmit()
 	const { translator, order } = useOutletContext<OutletContext>()
-	const fullOrder = Object.assign({}, { lang: translator.language, delivery_time: new Date() }, order)
+	const fullOrder = Object.assign({}, { lang: translator.language }, order)
 	const submitForm: FormEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault()
 		submit(e.currentTarget)

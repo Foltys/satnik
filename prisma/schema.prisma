@@ -39,7 +39,6 @@ model Order {
     delivery_city           String
     delivery_zip            String
     delivery_phone          String
-    delivery_time           DateTime
     state                   String
     lang                    String
     created_at              DateTime  @default(now())
