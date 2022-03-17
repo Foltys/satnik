@@ -29,7 +29,7 @@ export default function Summary() {
 
 	function editPerson(key: number) {
 		setEditingPerson(key)
-		navigate('/newOrder', {replace: true})
+		navigate('/newOrder', { replace: true })
 	}
 
 	useEffect(() => {
@@ -39,14 +39,13 @@ export default function Summary() {
 	useEffect(() => {
 		if (order.persons.length < 1) navigate('/') //not a nice thing to do, not sure what else would work
 	}, [order, navigate])
+
 	return (
 		<div className="flex flex-col text-gray-800	">
 			{order.persons &&
 				order.persons.length &&
 				order.persons.map((item, key) => {
-					return (
-						<PersonOnOrder key={key} details={item} editItem={() => editPerson(key)} translator={translator} />
-					)
+					return <PersonOnOrder key={key} details={item} editItem={() => editPerson(key)} translator={translator} />
 				})}
 			<h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-800 ml-1">
 				{translator.translate('order_check')}

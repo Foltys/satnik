@@ -44,7 +44,7 @@ export default function NewOrder() {
 		} else {
 			order.persons.push(details)
 		}
-		setOrder(order)
+		setOrder({...order})
 	}
 
 	const pickGender =
@@ -65,8 +65,12 @@ export default function NewOrder() {
 	const navigate = useNavigate()
 
 	const nextForm = () => {
-		savePerson(newPersonInfo, editingPerson)
-		navigate('/summary', { replace: false })
+		if (!checkAddForm()) {
+			savePerson(newPersonInfo, editingPerson)
+		}
+		order.persons = order.persons.filter((item) => item !== null)
+		setOrder({...order})
+		navigate('/summary', { replace: true })
 	}
 
 	const addNextPerson: MouseEventHandler = (event) => {
@@ -85,7 +89,9 @@ export default function NewOrder() {
 		if (editingPerson !== undefined) {
 			selectGender(!order.persons[editingPerson].adult ? 'kid' : order.persons[editingPerson].sex)
 			setNewPersonInfo(order.persons[editingPerson])
-			delete order.persons[editingPerson]
+			// delete order.persons[editingPerson]
+			order.persons.splice(editingPerson, 1)
+			setEditingPerson(undefined)
 			setOrder({ ...order })
 		}
 	}, [editingPerson])
