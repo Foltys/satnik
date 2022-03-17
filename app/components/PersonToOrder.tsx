@@ -6,19 +6,28 @@ type PersonToOrderProps = {
 	translator: Translator
 	selectedGender: 'man' | 'woman' | 'kid'
 	handleInputChange: React.ChangeEventHandler
-  currentPerson: Person
-  discardPerson: MouseEventHandler
+	currentPerson: Person
+	discardPerson: MouseEventHandler
 }
 
-export default function PersonToOrder({ translator, selectedGender, handleInputChange, currentPerson, discardPerson }: PersonToOrderProps) {
+export default function PersonToOrder({
+	translator,
+	selectedGender,
+	handleInputChange,
+	currentPerson,
+	discardPerson,
+}: PersonToOrderProps) {
 	const isKid = selectedGender == 'kid'
 	return (
-		<div className="flex flex-col">
+		<div className="flex flex-col text-gray-800">
 			<div className="flex">
 				<div className="rounded-2xl group bg-[#0A9DBF] text-[#F8EBDB] w-full h-80 p-2 border border-[#0A9DBF] flex flex-col hover:bg-[#F8EBDB] items-center">
 					<img src={`${selectedGender}.svg`} alt="man" className="my-4 " />
 					<span className="text-2xl font-bold group-hover:text-[#0A9DBF]">{translator.translate(selectedGender)}</span>
-					<button onClick={discardPerson} className="font-semibold group-hover:text-[#0A9DBF] mt-4 border-0 py-2 px-5 outline outline-[#F8EBDB] group-hover:outline-[#0A9DBF] rounded-full">
+					<button
+						onClick={discardPerson}
+						className="font-semibold group-hover:text-[#0A9DBF] mt-4 border-0 py-2 px-5 outline outline-[#F8EBDB] group-hover:outline-[#0A9DBF] rounded-full"
+					>
 						{translator.translate('remove')}
 					</button>
 				</div>
@@ -27,22 +36,24 @@ export default function PersonToOrder({ translator, selectedGender, handleInputC
 				<div className="flex">
 					<div className="flex mx-3 my-6 font-bold space-x-2 text-[#0A9DBF] items-center">
 						<input
+							required
 							className="accent-[#0A9DBF]"
 							type="radio"
 							id="boy"
 							name="sex"
 							value="man"
-              defaultChecked={currentPerson.sex == 'man'}
+							defaultChecked={currentPerson.sex == 'man'}
 							onChange={handleInputChange}
 						/>
 						<label htmlFor="boy">{translator.translate('boy')}</label>
 						<input
+							required
 							className="accent-[#0A9DBF]"
 							type="radio"
 							id="girl"
 							name="sex"
 							value="woman"
-              defaultChecked={currentPerson.sex == 'woman'}
+							defaultChecked={currentPerson.sex == 'woman'}
 							onChange={handleInputChange}
 						/>
 						<label htmlFor="girl">{translator.translate('girl')}</label>
@@ -56,12 +67,15 @@ export default function PersonToOrder({ translator, selectedGender, handleInputC
 							{translator.translate('age')}
 						</label>
 						<input
+							required
+							
 							type="text"
 							id="age"
 							name="age"
 							placeholder="22"
-							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              defaultValue={currentPerson.age}
+							autoComplete='number'
+							className=" autofill:bg-white w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+							defaultValue={currentPerson.age}
 							onChange={handleInputChange}
 						/>
 					</div>
@@ -72,12 +86,14 @@ export default function PersonToOrder({ translator, selectedGender, handleInputC
 							{translator.translate('name')}
 						</label>
 						<input
+							required
 							type="text"
 							id="name"
 							name="fullname"
 							placeholder="Aa"
-							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              defaultValue={currentPerson.fullname}
+							autoComplete='name'
+							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+							defaultValue={currentPerson.fullname}
 							onChange={handleInputChange}
 						/>
 					</div>
@@ -99,9 +115,10 @@ export default function PersonToOrder({ translator, selectedGender, handleInputC
 						<textarea
 							id="requirements"
 							name="requirements"
+							required
 							placeholder="5 ks trika, 2 ks kalhoty"
-							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              defaultValue={currentPerson.requirements[0]?.description}
+							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+							defaultValue={currentPerson.requirements[0]?.description}
 							onChange={handleInputChange}
 						/>
 					</div>
@@ -113,12 +130,14 @@ export default function PersonToOrder({ translator, selectedGender, handleInputC
 								{translator.translate('cloth_size')}
 							</label>
 							<input
+								required
 								type="text"
 								id="clothing_size"
 								name="clothing_size"
 								placeholder="S"
-								className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                defaultValue={currentPerson.clothing_size}
+								autoComplete='text'
+								className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+								defaultValue={currentPerson.clothing_size}
 								onChange={handleInputChange}
 							/>
 						</div>
@@ -129,13 +148,16 @@ export default function PersonToOrder({ translator, selectedGender, handleInputC
 								{translator.translate('shoes_size')}
 							</label>
 							<input
+								required
+								minLength={5}
 								type="text"
 								id="shoe_size"
 								name="shoe_size"
 								placeholder="44"
-								className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                defaultValue={currentPerson.shoe_size}
-                onChange={handleInputChange}
+								autoComplete='number'
+								className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+								defaultValue={currentPerson.shoe_size}
+								onChange={handleInputChange}
 							/>
 						</div>
 					</div>

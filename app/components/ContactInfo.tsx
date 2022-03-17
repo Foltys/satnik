@@ -28,6 +28,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							name="fullname"
 							placeholder="Aa"
 							required
+							autoComplete='name'
 							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none placeholder:text-[#C6B49D] py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500"
 							defaultValue={order.fullname}
 						/>
@@ -44,6 +45,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							id="phone"
 							name="phone"
 							required
+							autoComplete='tel'
 							placeholder="+380 111 111 111"
 							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none placeholder:text-[#C6B49D] py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 "
 							defaultValue={order.phone}
@@ -74,6 +76,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							id="email"
 							name="email"
 							placeholder="@"
+							autoComplete='email'
 							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none placeholder:text-[#C6B49D] py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500"
 							defaultValue={order.email}
 						/>
