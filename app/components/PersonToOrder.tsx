@@ -109,7 +109,7 @@ export default function PersonToOrder({
 				<div className="py-2 w-full">
 					<div className="relative my-2 mx-1">
 						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-800">
-							Jaké oblečení potřebujete?
+							{translator.translate("what_do_you_need")}
 						</label>
 						<textarea
 							id="requirements"

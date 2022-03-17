@@ -1,14 +1,17 @@
-import { FormEventHandler, useState, useEffect } from 'react'
+import { FormEventHandler, useEffect, useState } from 'react'
 import { useOutletContext, useNavigate, Link, useSubmit, redirect, Form } from 'remix'
 import { Order, OutletContext } from '~/root'
 import { saveNewOrder, getOrderByID } from '../../prisma/api/Order'
-import { send } from '~/mailer/html/order_confirm/send'
+import { send as send_client } from '~/mailer/html/order_confirm_company/send'
+import { send as send_satnik } from '~/mailer/html/order_confirm/send'
 import PersonOnOrder from '~/components/PersonOnOrder'
 
 export async function action({ request }: { request: Request }) {
 	const order = (await request.formData()).get('order')
 	const { id } = await saveNewOrder(JSON.parse(order as string) as Order)
-	console.log(await send((await getOrderByID(id)) as any as Order))
+	const orderToSend = (await getOrderByID(id)) as any as Order
+	await send_client(orderToSend)
+	await send_satnik(orderToSend)
 	return redirect('/confirmation')
 }
 
@@ -21,9 +24,10 @@ export default function Summary() {
 		e.preventDefault()
 		submit(e.currentTarget)
 	}
+
 	useEffect(() => {
-		if (order.persons.length < 1) redirect('/') //idk, bad UX bud unless we store data in session this may happen
-	}, [order])
+		Object.assign(fullOrder, { lang: translator.language })
+	}, [translator.language])
 	return (
 		<div className="flex flex-col text-gray-800	">
 			{order.persons &&

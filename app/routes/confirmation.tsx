@@ -1,9 +1,8 @@
-import { useState } from 'react'
-import { useOutletContext, useNavigate, Link } from 'remix'
+import { useOutletContext } from 'remix'
 import { OutletContext } from '~/root'
 
 export default function Confirmation() {
-	const { translator, setOrderItem } = useOutletContext<OutletContext>()
+	const { translator } = useOutletContext<OutletContext>()
 	return (
 		<section className="text-gray-800 body-font relative">
 			<div className="container px-5 py-14 md:py-24 mx-auto flex sm:flex-nowrap flex-wrap">
@@ -17,15 +16,15 @@ export default function Confirmation() {
 						<div className="w-full mx-auto">
 							<div className="flex flex-col md:mb-12">
 								<h1 className="sm:text-5xl  text-5xl font-bold title-font my-12 text-[#eb2f06] ml-1">
-									Úspěšně jste si objednali oblečení
+									{translator.translate("order_success")}
 								</h1>
 							</div>
 						</div>
 						<div className="w-full mx-auto text-lg font-semibold text-[#eb2f06] ml-1 ">
-							Dobrovolnící dělají, co můžou, aby k vám objednané oblečení co nejdříve dorazilo.
+							{translator.translate("volunteer_info")}
 						</div>
 						<div className="w-full mx-auto text-xl my-12 mb-6 bg-[#eb2f06] text-[#F8EBDB] py-6 px-4 ml-1">
-							Vyčkejte na e-mail s dalšími informacemi.
+							{translator.translate("wait_for_email")}
 						</div>
 						<span className="inline-flex mt-8 justify-center space-x-8 md:space-x-12">
 							<a
