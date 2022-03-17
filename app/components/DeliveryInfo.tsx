@@ -73,7 +73,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									name="delivery_fullname"
 									placeholder="Aa"
 									required
-									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF] placeholder:text-[#C6B49D]"
 									defaultValue={order.delivery_fullname}
 								/>
 							</div>
@@ -106,7 +106,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									required
 									autoComplete='street-address'
 									placeholder="Strašnická 12"
-									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF] placeholder:text-[#C6B49D]"
 									defaultValue={order.delivery_street}
 								/>
 							</div>
@@ -124,7 +124,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									placeholder="Praha"
 									required
 									autoComplete='address-level2'
-									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF] placeholder:text-[#C6B49D]"
 									defaultValue={order.delivery_city}
 								/>
 							</div>
@@ -142,7 +142,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									placeholder="14000"
 									required
 									autoComplete='postal-code'
-									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF] placeholder:text-[#C6B49D]"
 									defaultValue={order.delivery_zip}
 								/>
 							</div>
@@ -162,7 +162,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									name="delivery_phone"
 									placeholder="+380 111 111 111"
 									autoComplete='tel'
-									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF] placeholder:text-[#C6B49D]"
 									defaultValue={order.delivery_phone}
 								/>
 							</div>

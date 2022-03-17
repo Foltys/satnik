@@ -29,7 +29,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							placeholder="Aa"
 							required
 							autoComplete='name'
-							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none placeholder:text-[#C6B49D] py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500"
+							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none placeholder:text-[#C6B49D] py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF]"
 							defaultValue={order.fullname}
 						/>
 					</div>
@@ -47,7 +47,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							required
 							autoComplete='tel'
 							placeholder="+380 111 111 111"
-							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none placeholder:text-[#C6B49D] py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 "
+							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none placeholder:text-[#C6B49D] py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF] "
 							defaultValue={order.phone}
 						/>
 					</div>
@@ -77,7 +77,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							name="email"
 							placeholder="@"
 							autoComplete='email'
-							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none placeholder:text-[#C6B49D] py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500"
+							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none placeholder:text-[#C6B49D] py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF]"
 							defaultValue={order.email}
 						/>
 					</div>

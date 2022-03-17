@@ -68,13 +68,12 @@ export default function PersonToOrder({
 						</label>
 						<input
 							required
-							
 							type="text"
 							id="age"
 							name="age"
 							placeholder="22"
-							autoComplete='number'
-							className=" autofill:bg-white w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+							autoComplete="number"
+							className=" autofill:bg-white w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF]  placeholder:text-[#C6B49D]"
 							defaultValue={currentPerson.age}
 							onChange={handleInputChange}
 						/>
@@ -91,8 +90,8 @@ export default function PersonToOrder({
 							id="name"
 							name="fullname"
 							placeholder="Aa"
-							autoComplete='name'
-							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+							autoComplete="name"
+							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF]  placeholder:text-[#C6B49D]"
 							defaultValue={currentPerson.fullname}
 							onChange={handleInputChange}
 						/>
@@ -118,7 +117,7 @@ export default function PersonToOrder({
 							minLength={5}
 							required
 							placeholder="5 ks trika, 2 ks kalhoty"
-							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF]  placeholder:text-[#C6B49D]"
 							defaultValue={currentPerson.requirements[0]?.description}
 							onChange={handleInputChange}
 						/>
@@ -136,8 +135,8 @@ export default function PersonToOrder({
 								id="clothing_size"
 								name="clothing_size"
 								placeholder="S"
-								autoComplete='text'
-								className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+								autoComplete="text"
+								className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF]  placeholder:text-[#C6B49D]"
 								defaultValue={currentPerson.clothing_size}
 								onChange={handleInputChange}
 							/>
@@ -154,8 +153,8 @@ export default function PersonToOrder({
 								id="shoe_size"
 								name="shoe_size"
 								placeholder="44"
-								autoComplete='number'
-								className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+								autoComplete="number"
+								className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF]  placeholder:text-[#C6B49D]"
 								defaultValue={currentPerson.shoe_size}
 								onChange={handleInputChange}
 							/>
