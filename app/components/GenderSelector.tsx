@@ -10,7 +10,7 @@ export type Gender = 'man' | 'woman' | 'kid'
 
 export default function GenderSelector({ translator, selectGender }: GenderSelectorParams) {
 	return (
-		<div className="flex space-x-2  text-gray-800">
+		<div className="flex space-x-2 mb-16 md:mb-12 text-gray-800">
 			<button
 				onClick={selectGender('woman')}
 				className="rounded-2xl group bg-white w-1/3 lg:w-1/4 h-80 p-2 border border-[#957D5E] flex flex-col hover:border-[#0A9DBF] hover:bg-[#F8EBDB] items-center"
