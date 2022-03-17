@@ -26,9 +26,12 @@ export default function Summary() {
 	}
 
 	useEffect(() => {
-		if (order.persons.length < 1) redirect('/') //not a nice thing to do, not sure what else would work
 		Object.assign(fullOrder, { lang: translator.language })
 	}, [translator.language])
+	
+	useEffect(() => {
+		if (order.persons.length < 1) redirect('/') //not a nice thing to do, not sure what else would work
+	}, [order])
 	return (
 		<div className="flex flex-col text-gray-800	">
 			{order.persons &&
