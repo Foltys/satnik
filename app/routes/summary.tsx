@@ -1,16 +1,14 @@
-import { FormEventHandler, useState } from 'react'
+import { FormEventHandler, useState, useEffect } from 'react'
 import { useOutletContext, useNavigate, Link, useSubmit, redirect, Form } from 'remix'
 import { Order, OutletContext } from '~/root'
 import { saveNewOrder, getOrderByID } from '../../prisma/api/Order'
 import { send } from '~/mailer/html/order_confirm/send'
 import PersonOnOrder from '~/components/PersonOnOrder'
 
-
-
 export async function action({ request }: { request: Request }) {
 	const order = (await request.formData()).get('order')
 	const { id } = await saveNewOrder(JSON.parse(order as string) as Order)
-	console.log(await send(await getOrderByID(id) as any as Order))
+	console.log(await send((await getOrderByID(id)) as any as Order))
 	return redirect('/confirmation')
 }
 
@@ -23,36 +21,40 @@ export default function Summary() {
 		e.preventDefault()
 		submit(e.currentTarget)
 	}
+	useEffect(() => {
+		if (order.persons.length < 1) redirect('/') //idk, bad UX bud unless we store data in session this may happen
+	}, [order])
 	return (
-		<div className="flex flex-col">
-			{order.persons && order.persons.length ? (
+		<div className="flex flex-col text-gray-800	">
+			{order.persons &&
+				order.persons.length &&
 				order.persons.map((item, key) => {
 					return (
 						<PersonOnOrder key={key} details={item} editItem={() => setEditingPerson(key)} translator={translator} />
 					)
-				})
-			) : (
-				<div className="text-[#0A9DBF] font-medium my-5">error</div>
-			)}
+				})}
+			<h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-800 ml-1">
+				{translator.translate('order_check')}
+			</h1>
 			<div className="flex">
 				<div className="flex flex-col w-1/2 px-1">
 					<span className="font-semibold mt-4">{translator.translate('orderer')}</span>
-					<span>Olena Kyashenko</span>
-					<span>+38 0503 20 20 46</span>
-					<span>Olena.K@gmail.com</span>
+					<span>{order.fullname}</span>
+					<span>{order.phone}</span>
+					<span>{order.email}</span>
 					<span className="font-semibold mt-4">{translator.translate('delivery_address')}</span>
-					<span>Jakub Hertl</span>
-					<span>U Uranie 27, Praha 7</span>
-					<span>17000</span>
-					<span>+420 776 764 221</span>
+					<span>{order.delivery_fullname}</span>
+					<span>{order.delivery_street},{order.delivery_city}</span>
+					<span>{order.delivery_zip}</span>
+					<span>{order.delivery_phone}</span>
 				</div>
 				<div className="flex flex-col w-1/2">
 					<span className="font-semibold mt-4">{translator.translate('for_who_and_what')}</span>
 					{order.persons.map((person, index) => {
 						return (
 							<div key={index}>
-								<span>{person.fullname}</span>
-								<span>{person.requirements[0]?.description}</span>
+								<div>{person.fullname}</div>
+								<div>{person.requirements[0]?.description}</div>
 							</div>
 						)
 					})}
