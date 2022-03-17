@@ -55,6 +55,7 @@ export default function NewOrder() {
 	const navigate = useNavigate()
 
 	const nextForm = () => {
+		savePerson(newPersonInfo, editingPerson)
 		navigate('/summary', { replace: false })
 	}
 
@@ -90,6 +91,14 @@ export default function NewOrder() {
 			newPersonInfo.requirements &&
 			newPersonInfo.shoe_size
 		) {
+			return false
+		}
+		return true
+	}
+	function checkNextButton(): boolean {
+		const addform: boolean = checkAddForm()
+		if (order.persons.length > 0 || !addform) {
+			//sorry, weird logic I know
 			return false
 		}
 		return true
@@ -145,7 +154,7 @@ export default function NewOrder() {
 							</button>
 						)}
 						<button
-							disabled={order.persons.length < 1}
+							disabled={checkNextButton()}
 							onClick={nextForm}
 							className="text-[#0A9DBF] disabled:text-[#0A9DBF] border-0 py-2 px-4 focus:outline-none outline  outline-[#0A9DBF] disabled:outline-[#0A9DBF] rounded-full  font-semibold text-lg hover:bg-[#eb2f06] disabled:bg-[#F8EBDB] hover:text-[#F8EBDB] hover:outline-[#eb2f06] disabled:opacity-20"
 						>
