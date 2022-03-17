@@ -137,34 +137,32 @@ export default function NewOrder() {
 			{!selectedGender ? (
 				<GenderSelector translator={translator} selectGender={pickGender} />
 			) : (
-				<>
-					<PersonToOrder
-						currentPerson={newPersonInfo}
-						translator={translator}
-						selectedGender={selectedGender}
-						handleInputChange={handleInputChange}
-						discardPerson={cleanPersonForm}
-					/>
-					<div className="py-2 my-10 w-full flex flex-wrap gap-8 justify-center md:justify-start">
-						{newPersonInfo?.fullname && (
-							<button
-								onClick={addNextPerson}
-								disabled={checkAddForm()}
-								className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-[#eb2f06] disabled:bg-[#eb2f06] text-[#F8EBDB] outline-[#eb2f06] hover:text-[#eb2f06] hover:bg-[#F8EBDB] disabled:opacity-20 disabled:text-[#F8EBDB] disabled:outline-[#eb2f06]"
-							>
-								{translator.translate('add_person')}
-							</button>
-						)}
-						<button
-							disabled={checkNextButton()}
-							onClick={nextForm}
-							className="text-[#0A9DBF] disabled:text-[#0A9DBF] border-0 py-2 px-4 focus:outline-none outline  outline-[#0A9DBF] disabled:outline-[#0A9DBF] rounded-full  font-semibold text-lg hover:bg-[#eb2f06] disabled:bg-[#F8EBDB] hover:text-[#F8EBDB] hover:outline-[#eb2f06] disabled:opacity-20"
-						>
-							{translator.translate('to_confirm')}
-						</button>
-					</div>
-				</>
+				<PersonToOrder
+					currentPerson={newPersonInfo}
+					translator={translator}
+					selectedGender={selectedGender}
+					handleInputChange={handleInputChange}
+					discardPerson={cleanPersonForm}
+				/>
 			)}
+			<div className="py-2 my-10 w-full flex flex-wrap gap-8 justify-center md:justify-start">
+				{newPersonInfo?.fullname && (
+					<button
+						onClick={addNextPerson}
+						disabled={checkAddForm()}
+						className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-[#eb2f06] disabled:bg-[#eb2f06] text-[#F8EBDB] outline-[#eb2f06] hover:text-[#eb2f06] hover:bg-[#F8EBDB] disabled:opacity-20 disabled:text-[#F8EBDB] disabled:outline-[#eb2f06]"
+					>
+						{translator.translate('add_person')}
+					</button>
+				)}
+				<button
+					disabled={checkNextButton()}
+					onClick={nextForm}
+					className="text-[#0A9DBF] disabled:text-[#0A9DBF] border-0 py-2 px-4 focus:outline-none outline  outline-[#0A9DBF] disabled:outline-[#0A9DBF] rounded-full  font-semibold text-lg hover:bg-[#eb2f06] disabled:bg-[#F8EBDB] hover:text-[#F8EBDB] hover:outline-[#eb2f06] disabled:opacity-20"
+				>
+					{translator.translate('to_confirm')}
+				</button>
+			</div>
 		</div>
 	)
 }
