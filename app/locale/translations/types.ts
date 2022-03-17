@@ -31,6 +31,7 @@ export type Translation = {
   continue_to_cloth_selection: string,
   cloth_enquiry: string,
   add_person: string,
+  add_person_to_order: string,
   for_who_and_what: string,
   zip: string,
   order_check: string,
