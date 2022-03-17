@@ -38,7 +38,7 @@ export type Person = {
 	sex: 'man' | 'woman'
 	adult: boolean
 	fullname: string
-	age: number
+	age: string
 	clothing_size: string
 	shoe_size: string
 	requirements: Requirement[]

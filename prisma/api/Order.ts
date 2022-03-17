@@ -1,5 +1,5 @@
 import { getDB } from '~/../prisma/getDB'
-import { Order } from '~/root'
+import { Order, Person } from '~/root'
 import { prepareOrderForPrismaInsert } from '~/../prisma/helpers'
 import Ajv from 'ajv'
 // const { getDB } = require('../getDB')
@@ -90,9 +90,16 @@ const orderSchema = {
 
 const validateOrder = ajv.compile(orderSchema)
 
+const normaliseOrder = function (order: Order) {
+	order.persons.map((person: Person) => {
+		person.age = person.age+''
+	})
+}
 const saveNewOrder = async function (order: Order) {
 	console.log(order)
 	order.state = 'open'
+
+	normaliseOrder(order)
 
 	if (!validateOrder(order)) {
 		console.log(validateOrder.errors)
