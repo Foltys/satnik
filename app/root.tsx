@@ -26,7 +26,6 @@ export interface Order {
 	delivery_city: string
 	delivery_zip: string
 	delivery_phone: string
-	delivery_time: {}
 	persons: Person[]
 	state: 'open'
 	lang: 'ua' | 'cs'

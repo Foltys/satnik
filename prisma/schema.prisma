@@ -34,12 +34,11 @@ model Order {
     phone                   String
     email                   String
     delivery_type           String
-    delivery_fullname       String
-    delivery_street         String
-    delivery_city           String
-    delivery_zip            String
-    delivery_phone          String
-    delivery_time           DateTime
+    delivery_fullname       String?
+    delivery_street         String?
+    delivery_city           String?
+    delivery_zip            String?
+    delivery_phone          String?
     state                   String
     lang                    String
     created_at              DateTime  @default(now())
