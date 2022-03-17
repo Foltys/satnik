@@ -149,7 +149,7 @@ export default function NewOrder() {
 							onClick={nextForm}
 							className="text-[#0A9DBF] disabled:text-[#0A9DBF] border-0 py-2 px-4 focus:outline-none outline  outline-[#0A9DBF] disabled:outline-[#0A9DBF] rounded-full  font-semibold text-lg hover:bg-[#eb2f06] disabled:bg-[#F8EBDB] hover:text-[#F8EBDB] hover:outline-[#eb2f06] disabled:opacity-20"
 						>
-							{translator.translate('continue')}
+							{translator.translate('to_confirm')}
 						</button>
 					</div>
 				</>
