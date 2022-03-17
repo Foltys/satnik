@@ -76,7 +76,7 @@ export default function NewOrder() {
 			selectGender(!order.persons[editingPerson].adult ? 'kid' : order.persons[editingPerson].sex)
 			setNewPersonInfo(order.persons[editingPerson])
 			delete order.persons[editingPerson]
-			setOrder({...order})
+			setOrder({ ...order })
 		}
 	}, [editingPerson])
 
@@ -131,7 +131,7 @@ export default function NewOrder() {
 			)}
 			{order.persons && order.persons.length > 0 && (
 				<h1 className="sm:text-3xl text-2xl font-bold title-font text-gray-800 ml-6 py-6">
-					{translator.translate("add_person_to_order")} 
+					{translator.translate('add_person_to_order')}
 				</h1>
 			)}
 			{!selectedGender ? (
@@ -152,7 +152,7 @@ export default function NewOrder() {
 								disabled={checkAddForm()}
 								className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-[#eb2f06] disabled:bg-[#eb2f06] text-[#F8EBDB] outline-[#eb2f06] hover:text-[#eb2f06] hover:bg-[#F8EBDB] disabled:opacity-20 disabled:text-[#F8EBDB] disabled:outline-[#eb2f06]"
 							>
-								{translator.translate('add_person') + ' ' + newPersonInfo.fullname}
+								{translator.translate('add_person')}
 							</button>
 						)}
 						<button
