@@ -26,6 +26,7 @@ export default function Summary() {
 	}
 
 	useEffect(() => {
+		if (order.persons.length < 1) redirect('/') //not a nice thing to do, not sure what else would work
 		Object.assign(fullOrder, { lang: translator.language })
 	}, [translator.language])
 	return (
