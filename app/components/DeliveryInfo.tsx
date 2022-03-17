@@ -204,11 +204,11 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 				)}
 
 			</div>
-			<nav className="p-4 w-full flex flex-wrap gap-8 justify-center md:justify-start fixed bottom-0 inset-x-0 bg-[#F8EBDB]">
+			<nav className="p-4 w-full flex flex-wrap gap-8 justify-center fixed md:relative bottom-0 inset-x-0 bg-[#F8EBDB]">
 					<button
 						disabled={checkForm()}
 						onClick={nextForm}
-						className="inline-flex items-center  text-[#0A9DBF] border-0 py-4 px-6 focus:outline-none outline  outline-[#0A9DBF] disabled:outline-[#eb2f06] disabled:bg-[#eb2f06] disabled:text-white disabled:opacity-20 rounded-full md:text-xl hover:bg-[#eb2f06] hover:text-white hover:outline-[#eb2f06]"
+						className="inline-flex items-center text-[#0A9DBF] border-0 py-4 px-6 focus:outline-none outline  outline-[#0A9DBF] disabled:outline-[#eb2f06] disabled:bg-[#eb2f06] disabled:text-white disabled:opacity-20 rounded-full md:text-xl hover:bg-[#eb2f06] hover:text-white hover:outline-[#eb2f06]"
 					>
 						{translator.translate('continue_to_cloth_selection')}
 						<svg

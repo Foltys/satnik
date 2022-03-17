@@ -145,7 +145,7 @@ export default function NewOrder() {
 					discardPerson={cleanPersonForm}
 				/>
 			)}
-			<nav className="p-4 w-full flex flex-wrap gap-8 justify-center md:justify-start fixed bottom-0 inset-x-0 bg-[#F8EBDB]">
+			<nav className="p-4 w-full flex flex-wrap gap-8 justify-center fixed md:relative bottom-0 inset-x-0 bg-[#F8EBDB]">
 				{newPersonInfo?.fullname && (
 					<button
 						onClick={addNextPerson}
