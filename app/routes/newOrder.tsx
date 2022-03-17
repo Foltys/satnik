@@ -145,7 +145,7 @@ export default function NewOrder() {
 					discardPerson={cleanPersonForm}
 				/>
 			)}
-			<div className="py-2 my-10 w-full flex flex-wrap gap-8 justify-center md:justify-start">
+			<nav className="p-4 w-full flex flex-wrap gap-8 justify-center md:justify-start fixed bottom-0 inset-x-0 bg-[#F8EBDB]">
 				{newPersonInfo?.fullname && (
 					<button
 						onClick={addNextPerson}
@@ -162,7 +162,7 @@ export default function NewOrder() {
 				>
 					{translator.translate('to_confirm')}
 				</button>
-			</div>
+			</nav>
 		</div>
 	)
 }
