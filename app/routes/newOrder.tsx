@@ -25,7 +25,7 @@ export default function NewOrder() {
 		} else {
 			newPersonInfo[e.target.name] = e.target.value
 		}
-		setNewPersonInfo({...newPersonInfo}) //mutuju to aby se mi ta hodnota hned přepsala (kvůli valiaci) - připadá mi že to ničemu nevadí @foly
+		setNewPersonInfo({ ...newPersonInfo }) //mutuju to aby se mi ta hodnota hned přepsala (kvůli valiaci) - připadá mi že to ničemu nevadí @foly
 	}
 
 	const savePerson = (details: Person, id?: number) => {
@@ -134,17 +134,20 @@ export default function NewOrder() {
 						handleInputChange={handleInputChange}
 						discardPerson={cleanPersonForm}
 					/>
-					<div className="py-2 my-10 w-full flex flex-wrap gap-8 justify-center">
+					<div className="py-2 my-10 w-full flex flex-wrap gap-8 justify-center md:justify-start">
+						{newPersonInfo?.fullname && (
+							<button
+								onClick={addNextPerson}
+								disabled={checkAddForm()}
+								className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-[#eb2f06] disabled:bg-[#eb2f06] text-[#F8EBDB] outline-[#eb2f06] hover:text-[#eb2f06] hover:bg-[#F8EBDB] disabled:opacity-20 disabled:text-[#F8EBDB] disabled:outline-[#eb2f06]"
+							>
+								{translator.translate('add_person') + ' ' + newPersonInfo.fullname}
+							</button>
+						)}
 						<button
-							onClick={addNextPerson}
-							disabled={checkAddForm()}
-							className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-[#eb2f06] text-[#F8EBDB] outline-[#eb2f06] hover:text-[#eb2f06] hover:bg-[#F8EBDB] disabled:opacity-20"
-						>
-							{translator.translate('add_person') + ' ' + newPersonInfo.fullname} 
-						</button>
-						<button
+							disabled={order.persons.length < 1}
 							onClick={nextForm}
-							className="text-[#0A9DBF] border-0 py-2 px-4 focus:outline-none outline  outline-[#0A9DBF] rounded-full  font-semibold text-lg hover:bg-[#eb2f06] hover:text-[#F8EBDB] hover:outline-[#eb2f06]"
+							className="text-[#0A9DBF] disabled:text-[#0A9DBF] border-0 py-2 px-4 focus:outline-none outline  outline-[#0A9DBF] disabled:outline-[#0A9DBF] rounded-full  font-semibold text-lg hover:bg-[#eb2f06] disabled:bg-[#F8EBDB] hover:text-[#F8EBDB] hover:outline-[#eb2f06] disabled:opacity-20"
 						>
 							{translator.translate('continue')}
 						</button>
