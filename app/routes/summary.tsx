@@ -16,9 +16,11 @@ export async function action({ request }: { request: Request }) {
 }
 
 export default function Summary() {
+
 	const [editingPerson, setEditingPerson] = useState<number>()
 	const submit = useSubmit()
 	const { translator, order } = useOutletContext<OutletContext>()
+	console.log(order)
 	const fullOrder = Object.assign({}, { lang: translator.language }, order)
 	const submitForm: FormEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault()
@@ -28,7 +30,7 @@ export default function Summary() {
 	useEffect(() => {
 		Object.assign(fullOrder, { lang: translator.language })
 	}, [translator.language])
-	
+
 	useEffect(() => {
 		if (order.persons.length < 1) redirect('/') //not a nice thing to do, not sure what else would work
 	}, [order])
@@ -52,7 +54,9 @@ export default function Summary() {
 					<span>{order.email}</span>
 					<span className="font-semibold mt-4">{translator.translate('delivery_address')}</span>
 					<span>{order.delivery_fullname}</span>
-					<span>{order.delivery_street},{order.delivery_city}</span>
+					<span>
+						{order.delivery_street},{order.delivery_city}
+					</span>
 					<span>{order.delivery_zip}</span>
 					<span>{order.delivery_phone}</span>
 				</div>

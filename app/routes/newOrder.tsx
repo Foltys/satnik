@@ -123,8 +123,6 @@ export default function NewOrder() {
 			</div>
 
 			{order.persons && order.persons.length ? (
-				//hele sem potřebuju narvat h1 "přidat další osobu", něco jako
-				//{return (<></>)}
 				order.persons.map((item, key) => {
 					return (
 						<PersonOnOrder key={key} details={item} editItem={() => setEditingPerson(key)} translator={translator} />
