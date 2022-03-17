@@ -115,6 +115,7 @@ export default function PersonToOrder({
 						<textarea
 							id="requirements"
 							name="requirements"
+							minLength={5}
 							required
 							placeholder="5 ks trika, 2 ks kalhoty"
 							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
@@ -149,7 +150,6 @@ export default function PersonToOrder({
 							</label>
 							<input
 								required
-								minLength={5}
 								type="text"
 								id="shoe_size"
 								name="shoe_size"

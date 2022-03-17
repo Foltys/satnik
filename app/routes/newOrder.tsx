@@ -39,19 +39,19 @@ export default function NewOrder() {
 
 	const pickGender =
 		(gender: Gender): MouseEventHandler =>
-			(e) => {
-				e.preventDefault()
-				selectGender(gender)
-				// newPersonInfo["gender"] = gender;
-				if (gender == 'kid') {
-					newPersonInfo.adult = false
-					newPersonInfo.sex = 'man'
-				} else {
-					newPersonInfo.adult = true
-					newPersonInfo.sex = gender
-				}
-				setNewPersonInfo(newPersonInfo)
+		(e) => {
+			e.preventDefault()
+			selectGender(gender)
+			// newPersonInfo["gender"] = gender;
+			if (gender == 'kid') {
+				newPersonInfo.adult = false
+				newPersonInfo.sex = 'man'
+			} else {
+				newPersonInfo.adult = true
+				newPersonInfo.sex = gender
 			}
+			setNewPersonInfo(newPersonInfo)
+		}
 	const navigate = useNavigate()
 
 	const nextForm = () => {
@@ -81,6 +81,20 @@ export default function NewOrder() {
 		console.log(editingPerson)
 	}, [editingPerson])
 
+	function checkAddForm(): boolean {
+		if (
+			newPersonInfo.sex &&
+			newPersonInfo.age &&
+			newPersonInfo.clothing_size &&
+			newPersonInfo.fullname &&
+			newPersonInfo.requirements &&
+			newPersonInfo.shoe_size
+		) {
+			return false
+		}
+		return true
+	}
+
 	return (
 		<div className="flex flex-col">
 			<div className="w-full mx-auto">
@@ -101,11 +115,11 @@ export default function NewOrder() {
 			{order.persons && order.persons.length ? (
 				//hele sem potřebuju narvat h1 "přidat další osobu", něco jako
 				//{return (<></>)}
-				(order.persons.map((item, key) => {
+				order.persons.map((item, key) => {
 					return (
 						<PersonOnOrder key={key} details={item} editItem={() => setEditingPerson(key)} translator={translator} />
 					)
-				}))
+				})
 			) : (
 				<div className="text-[#0A9DBF] font-medium my-5">{translator.translate('who_is_wearing')}</div>
 			)}
@@ -123,7 +137,8 @@ export default function NewOrder() {
 					<div className="py-2 my-10 w-full flex flex-wrap gap-8 justify-center">
 						<button
 							onClick={addNextPerson}
-							className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-[#eb2f06] text-[#F8EBDB] outline-[#eb2f06] hover:text-[#eb2f06] hover:bg-[#F8EBDB]"
+							disabled={checkAddForm()}
+							className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-[#eb2f06] text-[#F8EBDB] outline-[#eb2f06] hover:text-[#eb2f06] hover:bg-[#F8EBDB] disabled:opacity-20"
 						>
 							{translator.translate('add_person')}
 						</button>
@@ -134,11 +149,8 @@ export default function NewOrder() {
 							{translator.translate('continue')}
 						</button>
 					</div>
-					
-				
 				</>
 			)}
-
 		</div>
 	)
 }
