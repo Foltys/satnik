@@ -25,7 +25,7 @@ export default function NewOrder() {
 		} else {
 			newPersonInfo[e.target.name] = e.target.value
 		}
-		setNewPersonInfo(newPersonInfo)
+		setNewPersonInfo({...newPersonInfo}) //mutuju to aby se mi ta hodnota hned přepsala (kvůli valiaci) - připadá mi že to ničemu nevadí @foly
 	}
 
 	const savePerson = (details: Person, id?: number) => {
@@ -140,7 +140,7 @@ export default function NewOrder() {
 							disabled={checkAddForm()}
 							className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-[#eb2f06] text-[#F8EBDB] outline-[#eb2f06] hover:text-[#eb2f06] hover:bg-[#F8EBDB] disabled:opacity-20"
 						>
-							{translator.translate('add_person')}
+							{translator.translate('add_person') + ' ' + newPersonInfo.fullname} 
 						</button>
 						<button
 							onClick={nextForm}
