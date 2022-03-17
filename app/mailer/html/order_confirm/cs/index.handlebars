@@ -336,26 +336,17 @@
 																align='left'
 															>
 
-																<div style='line-height: 140%; text-align: left; word-wrap: break-word;'>
-																	<p style='font-size: 14px; line-height: 140%;'><span
-																			style='color: #0a9dbf; font-size: 14px; line-height: 19.6px;'
-																		><strong><span style='font-size: 16px; line-height: 22.4px;'>Doručovac&iacute;
-																					adresa /</span></strong></span><br /><span
-																			style='color: #0a9dbf; font-size: 14px; line-height: 19.6px;'
-																		><strong><span style='font-size: 16px; line-height: 22.4px;'>
-																					{{#if order.isDeliveryPickup}}Osobn&iacute; vyzvednut&iacute;{{/if}}
-																					{{#if order.isDeliveryDelivery}}Poslat na adresu{{/if}}
-																					:</span></strong></span><br />
-																		<strong><span
-																				style='font-size: 16px; line-height: 22.4px; color: #1a1f26;'
-																			>{{order.delivery_fullname}}</span></strong><br /><span
-																			style='font-size: 16px; line-height: 22.4px; color: #1a1f26;'
-																		>{{order.delivery_street}}</span><br /><span
-																			style='font-size: 16px; line-height: 22.4px; color: #1a1f26;'
-																		>{{order.delivery_city}} {{order.delivery_zip}}</span><br /><span
-																			style='font-size: 16px; line-height: 22.4px; color: #1a1f26;'
-																		>{{order.delivery_phone}}</span></p>
-																</div>
+                                                                {{#if order.isDeliveryDelivery}}
+                                                                    <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
+                                                                        <p style="font-size: 14px; line-height: 140%;"><span
+                                                                                style="color: #0a9dbf; font-size: 14px; line-height: 19.6px;"><strong><span
+                                                                                style="font-size: 16px; line-height: 22.4px;">Doručovac&iacute; adresa:</span></strong></span><br/>
+                                                                            <strong><span style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_fullname}}</span></strong><br/><span
+                                                                                    style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_street}}</span><br/><span
+                                                                                    style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_city}} {{order.delivery_zip}}</span><br/><span
+                                                                                    style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_phone}}</span></p>
+                                                                    </div>
+                                                                {{/if}}
 
 															</td>
 														</tr>
