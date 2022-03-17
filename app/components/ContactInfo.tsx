@@ -11,14 +11,14 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 	return (
 		<div className="w-full mx-auto">
 			<div className="flex flex-col md:mb-12">
-				<h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-900 ml-1">
+				<h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-800 ml-1">
 					{translator.translate('contact')}
 				</h1>
 			</div>
 			<div className="flex flex-wrap -m-2 text-gray-800">
 				<div className="p-2 w-full">
 					<div className="relative my-2 mx-1">
-						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-600">
+						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-800">
 							{translator.translate('name_and_surname')}
 						</label>
 						<input
@@ -35,7 +35,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 				</div>
 				<div className="p-2 w-full">
 					<div className="relative my-2 mx-1">
-						<label htmlFor="phone" className="leading-7 font-semibold text-base text-gray-600">
+						<label htmlFor="phone" className="leading-7 font-semibold text-base text-gray-800">
 							{translator.translate('phone')}
 						</label>
 						<input
@@ -63,7 +63,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 				<div className="p-2 w-full">
 					<div className="relative my-2 mx-1">
 						<div className="flex">
-							<label htmlFor="email" className="leading-7 grow font-semibold text-base text-gray-600">
+							<label htmlFor="email" className="leading-7 grow font-semibold text-base text-gray-800">
 								{translator.translate('email')}
 							</label>
 							<span className="text-[#957D5E] font-bold text-sm">{translator.translate('optional')}</span>

@@ -52,7 +52,7 @@ export default function PersonToOrder({ translator, selectedGender, handleInputC
 			<div className="flex">
 				<div className="py-2 w-1/5">
 					<div className="relative my-2 mx-1">
-						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-600">
+						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-800">
 							{translator.translate('age')}
 						</label>
 						<input
@@ -60,7 +60,7 @@ export default function PersonToOrder({ translator, selectedGender, handleInputC
 							id="age"
 							name="age"
 							placeholder="22"
-							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
+							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
               defaultValue={currentPerson.age}
 							onChange={handleInputChange}
 						/>
@@ -68,7 +68,7 @@ export default function PersonToOrder({ translator, selectedGender, handleInputC
 				</div>
 				<div className="py-2 w-4/5">
 					<div className="relative my-2 mx-1">
-						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-600">
+						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-800">
 							{translator.translate('name')}
 						</label>
 						<input
@@ -76,7 +76,7 @@ export default function PersonToOrder({ translator, selectedGender, handleInputC
 							id="name"
 							name="fullname"
 							placeholder="Aa"
-							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
+							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
               defaultValue={currentPerson.fullname}
 							onChange={handleInputChange}
 						/>
@@ -85,7 +85,7 @@ export default function PersonToOrder({ translator, selectedGender, handleInputC
 			</div>
 			<div className="w-full mx-auto">
 				<div className="flex flex-col md:mb-12">
-					<h1 className="sm:text-3xl text-2xl font-bold title-font my-4 text-gray-900 ml-1">
+					<h1 className="sm:text-3xl text-2xl font-bold title-font my-4 text-gray-800 ml-1">
 						{translator.translate('select_clothes')}
 					</h1>
 				</div>
@@ -93,14 +93,14 @@ export default function PersonToOrder({ translator, selectedGender, handleInputC
 			<div className="flex flex-col">
 				<div className="py-2 w-full">
 					<div className="relative my-2 mx-1">
-						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-600">
+						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-800">
 							Jaké oblečení potřebujete?
 						</label>
 						<textarea
 							id="requirements"
 							name="requirements"
 							placeholder="5 ks trika, 2 ks kalhoty"
-							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
+							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
               defaultValue={currentPerson.requirements[0]?.description}
 							onChange={handleInputChange}
 						/>
@@ -109,7 +109,7 @@ export default function PersonToOrder({ translator, selectedGender, handleInputC
 				<div className="flex">
 					<div className="py-2 w-2/5">
 						<div className="relative my-2 mx-1">
-							<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-600">
+							<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-800">
 								{translator.translate('cloth_size')}
 							</label>
 							<input
@@ -117,7 +117,7 @@ export default function PersonToOrder({ translator, selectedGender, handleInputC
 								id="clothing_size"
 								name="clothing_size"
 								placeholder="S"
-								className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
+								className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 defaultValue={currentPerson.clothing_size}
 								onChange={handleInputChange}
 							/>
@@ -125,7 +125,7 @@ export default function PersonToOrder({ translator, selectedGender, handleInputC
 					</div>
 					<div className="py-2 w-2/5">
 						<div className="relative my-2 mx-1">
-							<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-600">
+							<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-800">
 								{translator.translate('shoes_size')}
 							</label>
 							<input
@@ -133,7 +133,7 @@ export default function PersonToOrder({ translator, selectedGender, handleInputC
 								id="shoe_size"
 								name="shoe_size"
 								placeholder="44"
-								className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
+								className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 defaultValue={currentPerson.shoe_size}
                 onChange={handleInputChange}
 							/>

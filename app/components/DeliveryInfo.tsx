@@ -31,7 +31,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 	return (
 		<div className="w-full mx-auto mt-14">
 			<div className="flex flex-col md:mb-12">
-				<h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-900 ml-1">
+				<h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-800 ml-1">
 					{translator.translate('delivery_address')}
 				</h1>
 			</div>
@@ -62,7 +62,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 					<>
 						<div className="p-2 w-full">
 							<div className="relative my-2 mx-1">
-								<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-600">
+								<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-800">
 									{translator.translate('name_and_surname')}
 								</label>
 								<input
@@ -72,7 +72,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									name="delivery_fullname"
 									placeholder="Aa"
 									required
-									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
 									defaultValue={order.delivery_fullname}
 								/>
 							</div>
@@ -94,7 +94,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 						</div>
 						<div className="p-2 w-full">
 							<div className="relative my-2 mx-1">
-								<label htmlFor="street" className="leading-7 font-semibold text-base text-gray-600">
+								<label htmlFor="street" className="leading-7 font-semibold text-base text-gray-800">
 									{translator.translate('street_and_number')}
 								</label>
 								<input
@@ -104,14 +104,14 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									name="delivery_street"
 									required
 									placeholder="Strašnická 12"
-									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
 									defaultValue={order.delivery_street}
 								/>
 							</div>
 						</div>
 						<div className="p-2 w-full">
 							<div className="relative my-2 mx-1">
-								<label htmlFor="city" className="leading-7 font-semibold text-base text-gray-600">
+								<label htmlFor="city" className="leading-7 font-semibold text-base text-gray-800">
 									{translator.translate('city')}
 								</label>
 								<input
@@ -121,14 +121,14 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									name="delivery_city"
 									placeholder="Praha"
 									required
-									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
 									defaultValue={order.delivery_city}
 								/>
 							</div>
 						</div>
 						<div className="p-2 w-1/2">
 							<div className="relative my-2 mx-1">
-								<label htmlFor="city" className="leading-7 font-semibold text-base text-gray-600">
+								<label htmlFor="city" className="leading-7 font-semibold text-base text-gray-800">
 									{translator.translate('zip')}
 								</label>
 								<input
@@ -138,7 +138,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									name="delivery_zip"
 									placeholder="14000"
 									required
-									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
 									defaultValue={order.delivery_zip}
 								/>
 							</div>
@@ -146,7 +146,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 						<div className="p-2 w-full">
 							<div className="relative my-2 mx-1">
 								<div className="flex">
-									<label htmlFor="phone2" className="leading-7 grow font-semibold text-base text-gray-600">
+									<label htmlFor="phone2" className="leading-7 grow font-semibold text-base text-gray-800">
 										{translator.translate('phone')}
 									</label>
 									<span className="text-[#957D5E] font-bold text-sm">{translator.translate('optional')}</span>
@@ -157,7 +157,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									id="phone2"
 									name="delivery_phone"
 									placeholder="+380 111 111 111"
-									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
+									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 placeholder:text-[#C6B49D]"
 									defaultValue={order.delivery_phone}
 								/>
 							</div>

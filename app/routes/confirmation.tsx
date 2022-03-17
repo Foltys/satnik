@@ -5,7 +5,7 @@ import { OutletContext } from '~/root'
 export default function Confirmation() {
 	const { translator, setOrderItem } = useOutletContext<OutletContext>()
 	return (
-		<section className="text-gray-600 body-font relative">
+		<section className="text-gray-800 body-font relative">
 			<div className="container px-5 py-14 md:py-24 mx-auto flex sm:flex-nowrap flex-wrap">
 				<div className="lg:w-2/3 md:w-1/2 rounded-lg overflow-hidden sm:mr-10 flex items-start justify-start relative">
 					<div className="flex flex-col">

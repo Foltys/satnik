@@ -93,13 +93,14 @@ export default function NewOrder() {
 							<path d="m.293 8.293 4-4a1 1 0 1 1 1.414 1.414L3.415 8H15a1 1 0 1 1 0 2H3.415l2.294 2.294a1 1 0 1 1-1.414 1.414l-4-4a.997.997 0 0 1-.002-1.414Z" />
 						</svg>
 					</button>
-					<h1 className="sm:text-3xl text-2xl font-bold title-font text-gray-900 ml-6">
+					<h1 className="sm:text-3xl text-2xl font-bold title-font text-gray-800 ml-6">
 						{translator.translate('order')}
 					</h1>
 				</div>
 			</div>
 			{order.persons && order.persons.length ? (
-				//hele sem potřebuju narvat h1 "přidat další osobu"
+				//hele sem potřebuju narvat h1 "přidat další osobu", něco jako
+				//{return (<></>)}
 				(order.persons.map((item, key) => {
 					return (
 						<PersonOnOrder key={key} details={item} editItem={() => setEditingPerson(key)} translator={translator} />
