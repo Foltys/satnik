@@ -19,7 +19,7 @@ export default function PersonToOrder({
 }: PersonToOrderProps) {
 	const isKid = selectedGender == 'kid'
 	return (
-		<div className="flex flex-col text-gray-800">
+		<div className="flex flex-col text-gray-800 mb-16 md:mb-12">
 			<div className="flex">
 				<div className="rounded-2xl group bg-[#0A9DBF] text-[#F8EBDB] w-full h-80 p-2 border border-[#0A9DBF] flex flex-col hover:bg-[#F8EBDB] items-center">
 					<img src={`${selectedGender}.svg`} alt="man" className="my-4 " />

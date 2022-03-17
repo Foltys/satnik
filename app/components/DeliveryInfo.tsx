@@ -35,7 +35,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 					{translator.translate('delivery_address')}
 				</h1>
 			</div>
-			<div className="flex flex-wrap -m-2">
+			<div className="flex flex-wrap -m-2 mb-16 md:mb-12">
 				<div className="flex mx-3 my-6 items-center font-bold space-x-2 text-[#0A9DBF]">
 					<input
 						className="accent-[#0A9DBF]"
@@ -69,7 +69,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									onChange={handleChange}
 									type="text"
 									id="name"
-									autoComplete='name'
+									autoComplete="name"
 									name="delivery_fullname"
 									placeholder="Aa"
 									required
@@ -104,7 +104,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									id="street"
 									name="delivery_street"
 									required
-									autoComplete='street-address'
+									autoComplete="street-address"
 									placeholder="Strašnická 12"
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF] placeholder:text-[#C6B49D]"
 									defaultValue={order.delivery_street}
@@ -123,7 +123,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									name="delivery_city"
 									placeholder="Praha"
 									required
-									autoComplete='address-level2'
+									autoComplete="address-level2"
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF] placeholder:text-[#C6B49D]"
 									defaultValue={order.delivery_city}
 								/>
@@ -141,7 +141,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									name="delivery_zip"
 									placeholder="14000"
 									required
-									autoComplete='postal-code'
+									autoComplete="postal-code"
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF] placeholder:text-[#C6B49D]"
 									defaultValue={order.delivery_zip}
 								/>
@@ -161,7 +161,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									id="phone2"
 									name="delivery_phone"
 									placeholder="+380 111 111 111"
-									autoComplete='tel'
+									autoComplete="tel"
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF] placeholder:text-[#C6B49D]"
 									defaultValue={order.delivery_phone}
 								/>
@@ -202,11 +202,13 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 						</div>
 					</div>
 				)}
-				<div className="p-2 my-10 mx-2">
+
+			</div>
+			<nav className="p-4 w-full flex flex-wrap gap-8 justify-center md:justify-start fixed bottom-0 inset-x-0 bg-[#F8EBDB]">
 					<button
 						disabled={checkForm()}
 						onClick={nextForm}
-						className="inline-flex items-center w-full  text-[#0A9DBF] border-0 py-4 px-6 focus:outline-none outline  outline-[#0A9DBF] disabled:outline-[#eb2f06] disabled:bg-[#eb2f06] disabled:text-white disabled:opacity-20 rounded-full md:text-xl hover:bg-[#eb2f06] hover:text-white hover:outline-[#eb2f06]"
+						className="inline-flex items-center  text-[#0A9DBF] border-0 py-4 px-6 focus:outline-none outline  outline-[#0A9DBF] disabled:outline-[#eb2f06] disabled:bg-[#eb2f06] disabled:text-white disabled:opacity-20 rounded-full md:text-xl hover:bg-[#eb2f06] hover:text-white hover:outline-[#eb2f06]"
 					>
 						{translator.translate('continue_to_cloth_selection')}
 						<svg
@@ -220,8 +222,8 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 							<path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
 						</svg>
 					</button>
-				</div>
-			</div>
+				</nav>
 		</div>
+		
 	)
 }
