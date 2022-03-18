@@ -10,5 +10,5 @@ export default function translation(locale: string) {
 
 export type Translator = {
 	translate: (string: keyof Translation) => string
-	language: string
+	language: 'cs' | 'ua'
 }

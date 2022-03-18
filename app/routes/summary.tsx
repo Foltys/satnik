@@ -2,8 +2,8 @@ import { FormEventHandler, useEffect, useState } from 'react'
 import { useOutletContext, useNavigate, Link, useSubmit, redirect, Form } from 'remix'
 import { Order, OutletContext } from '~/root'
 import { saveNewOrder, getOrderByID } from '../../prisma/api/Order'
-import { send as send_client } from '~/mailer/html/order_confirm_company/send'
-import { send as send_satnik } from '~/mailer/html/order_confirm/send'
+import { send as send_client } from '~/mailer/html/order_confirm/send'
+import { send as send_satnik } from '~/mailer/html/order_confirm_company/send'
 import PersonOnOrder from '~/components/PersonOnOrder'
 
 export async function action({ request }: { request: Request }) {
@@ -21,7 +21,8 @@ export default function Summary() {
 	const submit = useSubmit()
 	const { translator, order, setEditingPerson } = useOutletContext<OutletContext>()
 
-	const fullOrder = Object.assign({}, { lang: translator.language }, order)
+	const [fullOrder, setFullOrder] = useState<Order>({ ...order, lang: translator.language })
+
 	const submitForm: FormEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault()
 		submit(e.currentTarget)
@@ -33,8 +34,8 @@ export default function Summary() {
 	}
 
 	useEffect(() => {
-		Object.assign(fullOrder, { lang: translator.language })
-	}, [translator.language, fullOrder])
+		setFullOrder({ ...order, lang: translator.language })
+	}, [translator.language])
 
 	useEffect(() => {
 		if (order.persons.length < 1) navigate('/') //not a nice thing to do, not sure what else would work
