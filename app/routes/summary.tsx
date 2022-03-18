@@ -56,8 +56,10 @@ export default function Summary() {
 			<h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-800">
 				{translator.translate('order_check')}
 			</h1>
-			<Link to="/"><span className='underline font-bold text-[#0A9DBF]'>Upravit kontaktní údaje</span></Link>
-			<div className="flex">
+			<Link to="/">
+				<span className="underline font-bold text-[#0A9DBF]">Upravit kontaktní údaje</span>
+			</Link>
+			<div className="flex mb-12">
 				<div className="flex flex-col w-1/2 px-1">
 					<span className="font-semibold mt-4">{translator.translate('orderer')}</span>
 					<span>{order.fullname}</span>
@@ -96,15 +98,14 @@ export default function Summary() {
 				</div>
 			</div>
 
-			<hr className="w-full my-10 border border-[#957D5E] opacity-20" />
-			<div className="py-2 w-full md:w-1/2">
+			<nav className="p-4 w-full flex flex-wrap gap-8 justify-center fixed bottom-0 inset-x-0 bg-[#F8EBDB]">
 				<Form method="post" onSubmit={submitForm}>
 					<input id="formData" type={'hidden'} name="order" value={JSON.stringify(fullOrder)} readOnly></input>
 					<button className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-[#eb2f06] text-[#F8EBDB] outline-[#eb2f06] hover:text-[#eb2f06] hover:bg-[#F8EBDB]">
 						{translator.translate('to_order')}
 					</button>
 				</Form>
-			</div>
+			</nav>
 		</div>
 	)
 }
