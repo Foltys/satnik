@@ -46,6 +46,10 @@ export default function Summary() {
 		}
 	}, [order, navigate])
 
+	window.onbeforeunload = function() {
+		return true;
+	};
+
 	return (
 		<div className="flex flex-col text-gray-800	">
 			{order.persons &&
