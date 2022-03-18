@@ -4,6 +4,7 @@ import PersonOnOrder from '~/components/PersonOnOrder'
 import PersonToOrder from '~/components/PersonToOrder'
 import GenderSelector, { Gender } from '~/components/GenderSelector'
 import { OutletContext, Person } from '~/root'
+import { ContactAndDeliveryHasError, NewPersonHasError } from '~/validators/orderValidation'
 
 /*
 - show already added people
@@ -14,6 +15,9 @@ import { OutletContext, Person } from '~/root'
 
 export default function NewOrder() {
 	const { translator, order, setOrder, setEditingPerson, editingPerson } = useOutletContext<OutletContext>()
+
+	const navigate = useNavigate()
+
 	const [selectedGender, selectGender] = useState<Gender>()
 	const [newPersonInfo, setNewPersonInfo] = useState<Person>({ requirements: [] } as unknown as Person)
 
@@ -29,7 +33,7 @@ export default function NewOrder() {
 
 	function editPerson(key: number) {
 		if (editingPerson) {
-			if (!checkAddForm) {
+			if (!NewPersonHasError(newPersonInfo)) {
 				savePerson(newPersonInfo, editingPerson)
 			}
 			setEditingPerson(key)
@@ -44,7 +48,7 @@ export default function NewOrder() {
 		} else {
 			order.persons.push(details)
 		}
-		setOrder({...order})
+		setOrder({ ...order })
 	}
 
 	const pickGender =
@@ -62,14 +66,13 @@ export default function NewOrder() {
 			}
 			setNewPersonInfo(newPersonInfo)
 		}
-	const navigate = useNavigate()
 
 	const nextForm = () => {
-		if (!checkAddForm()) {
+		if (!NewPersonHasError(newPersonInfo)) {
 			savePerson(newPersonInfo, editingPerson)
 		}
 		order.persons = order.persons.filter((item) => item !== null)
-		setOrder({...order})
+		setOrder({ ...order })
 		navigate('/summary', { replace: true })
 	}
 
@@ -96,22 +99,15 @@ export default function NewOrder() {
 		}
 	}, [editingPerson])
 
-	function checkAddForm(): boolean {
-		if (
-			newPersonInfo.sex &&
-			newPersonInfo.age &&
-			newPersonInfo.clothing_size &&
-			newPersonInfo.fullname &&
-			newPersonInfo.requirements &&
-			newPersonInfo.shoe_size
-		) {
-			return false
+	useEffect(() => {
+		if (ContactAndDeliveryHasError(order)) {
+			navigate('/')
 		}
-		return true
-	}
+	}, [order])
+
 	function checkNextButton(): boolean {
-		const addform: boolean = checkAddForm()
-		if (order.persons.length > 0 || !addform) {
+		const newPersonHasError: boolean = NewPersonHasError(newPersonInfo)
+		if (order.persons.length > 0 || !newPersonHasError) {
 			//sorry, weird logic I know
 			return false
 		}
@@ -163,7 +159,7 @@ export default function NewOrder() {
 				{newPersonInfo?.fullname && (
 					<button
 						onClick={addNextPerson}
-						disabled={checkAddForm()}
+						disabled={NewPersonHasError(newPersonInfo)}
 						className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-[#eb2f06] disabled:bg-[#eb2f06] text-[#F8EBDB] outline-[#eb2f06] hover:text-[#eb2f06] hover:bg-[#F8EBDB] disabled:opacity-20 disabled:text-[#F8EBDB] disabled:outline-[#eb2f06]"
 					>
 						{translator.translate('add_person')}
