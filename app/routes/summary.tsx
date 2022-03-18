@@ -5,6 +5,7 @@ import { saveNewOrder, getOrderByID } from '../../prisma/api/Order'
 import { send as send_client } from '~/mailer/html/order_confirm/send'
 import { send as send_satnik } from '~/mailer/html/order_confirm_company/send'
 import PersonOnOrder from '~/components/PersonOnOrder'
+import { ContactAndDeliveryHasError, NewPersonHasError } from '~/validators/orderValidation'
 
 export async function action({ request }: { request: Request }) {
 	const order = (await request.formData()).get('order')
@@ -38,7 +39,11 @@ export default function Summary() {
 	}, [translator.language])
 
 	useEffect(() => {
-		if (order.persons.length < 1) navigate('/') //not a nice thing to do, not sure what else would work
+		if (ContactAndDeliveryHasError(order)) {
+			navigate('/')
+		} else if (!order.persons || !order.persons.length) {
+			navigate('/newOrder')
+		}
 	}, [order, navigate])
 
 	return (

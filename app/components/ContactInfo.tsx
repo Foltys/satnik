@@ -68,7 +68,6 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							<label htmlFor="email" className="leading-7 grow font-semibold text-base text-gray-800">
 								{translator.translate('email')}
 							</label>
-							<span className="text-[#957D5E] font-bold text-sm">{translator.translate('optional')}</span>
 						</div>
 						<input
 							onChange={handleChange}
