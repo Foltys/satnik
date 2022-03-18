@@ -24,7 +24,7 @@ export default function PersonOnOrder({ translator, details, editItem }: PersonO
 
 				<button
 					onClick={editItem}
-					className="font-semibold hover:text-[#eb2f06] hover:bg-[#F8EBDB] mt-4 border-0 py-2 px-5 outline outline-[#F8EBDB] rounded-full"
+					className=" w-52 font-semibold hover:text-[#eb2f06] hover:bg-[#F8EBDB] mt-4 border-0 py-2 px-5 outline outline-[#F8EBDB] rounded-full"
 				>
 					{translator.translate('edit')}
 				</button>

@@ -48,9 +48,10 @@ export default function Summary() {
 				order.persons.map((item, key) => {
 					return <PersonOnOrder key={key} details={item} editItem={() => editPerson(key)} translator={translator} />
 				})}
-			<h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-800 ml-1">
+			<h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-800">
 				{translator.translate('order_check')}
 			</h1>
+			<Link to="/"><span className='underline font-bold text-[#0A9DBF]'>Upravit kontaktní údaje</span></Link>
 			<div className="flex">
 				<div className="flex flex-col w-1/2 px-1">
 					<span className="font-semibold mt-4">{translator.translate('orderer')}</span>
@@ -91,7 +92,7 @@ export default function Summary() {
 			</div>
 
 			<hr className="w-full my-10 border border-[#957D5E] opacity-20" />
-			<div className="py-2 mx-2 w-full md:w-1/2">
+			<div className="py-2 w-full md:w-1/2">
 				<Form method="post" onSubmit={submitForm}>
 					<input id="formData" type={'hidden'} name="order" value={JSON.stringify(fullOrder)} readOnly></input>
 					<button className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-[#eb2f06] text-[#F8EBDB] outline-[#eb2f06] hover:text-[#eb2f06] hover:bg-[#F8EBDB]">
