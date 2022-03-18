@@ -73,7 +73,7 @@ export default function NewOrder() {
 		}
 		order.persons = order.persons.filter((item) => item !== null)
 		setOrder({ ...order })
-		navigate('/summary', { replace: true })
+		navigate('/summary', { replace: false })
 	}
 
 	const addNextPerson: MouseEventHandler = (event) => {
@@ -165,13 +165,15 @@ export default function NewOrder() {
 						{translator.translate('add_person')}
 					</button>
 				)}
-				<button
-					disabled={checkNextButton()}
-					onClick={nextForm}
-					className="text-[#0A9DBF] disabled:text-[#0A9DBF] border-0 py-2 px-4 focus:outline-none outline  outline-[#0A9DBF] disabled:outline-[#0A9DBF] rounded-full  font-semibold text-lg hover:bg-[#eb2f06] disabled:bg-[#F8EBDB] hover:text-[#F8EBDB] hover:outline-[#eb2f06] disabled:opacity-20"
-				>
-					{translator.translate('to_confirm')}
-				</button>
+				{selectedGender || order.persons?.length > 0 ? (
+					<button
+						disabled={checkNextButton()}
+						onClick={nextForm}
+						className="text-[#0A9DBF] disabled:text-[#0A9DBF] border-0 py-2 px-4 focus:outline-none outline  outline-[#0A9DBF] disabled:outline-[#0A9DBF] rounded-full  font-semibold text-lg hover:bg-[#eb2f06] disabled:bg-[#F8EBDB] hover:text-[#F8EBDB] hover:outline-[#eb2f06] disabled:opacity-20"
+					>
+						{translator.translate('to_confirm')}
+					</button>
+				) : null}
 			</nav>
 		</div>
 	)
