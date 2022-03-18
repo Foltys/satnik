@@ -60,9 +60,9 @@ export default function PersonToOrder({
 					</div>
 				</div>
 			)}
-			<div className="flex">
+			<div className="flex gap-x-5 md:gap-x-7">
 				<div className="py-2 w-1/5">
-					<div className="relative my-2 mx-1">
+					<div className="my-2">
 						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-800">
 							{translator.translate('age')}
 						</label>
@@ -80,7 +80,7 @@ export default function PersonToOrder({
 					</div>
 				</div>
 				<div className="py-2 w-4/5">
-					<div className="relative my-2 mx-1">
+					<div className="my-2">
 						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-800">
 							{translator.translate('name')}
 						</label>
@@ -107,9 +107,9 @@ export default function PersonToOrder({
 			</div>
 			<div className="flex flex-col">
 				<div className="py-2 w-full">
-					<div className="relative my-2 mx-1">
+					<div className="my-2">
 						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-800">
-							{translator.translate("what_do_you_need")}
+							{translator.translate('what_do_you_need')}
 						</label>
 						<textarea
 							id="requirements"
@@ -123,8 +123,46 @@ export default function PersonToOrder({
 						/>
 					</div>
 				</div>
-				<div className="flex">
-					<div className="py-2 w-2/5">
+				<div className="grid grid-cols-2 gap-x-5 md:gap-x-7">
+					<div>
+						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-800 mb-1 ">
+							{translator.translate('cloth_size')}
+						</label>
+					</div>
+					<div>
+						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-800 mb-1">
+							{translator.translate('shoes_size')}
+						</label>
+					</div>
+					<div>
+						<input
+							required
+							type="text"
+							id="clothing_size"
+							name="clothing_size"
+							placeholder="S"
+							autoComplete="text"
+							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF]  placeholder:text-[#C6B49D]"
+							defaultValue={currentPerson.clothing_size}
+							onChange={handleInputChange}
+						/>
+					</div>
+					<div>
+						<input
+							required
+							type="number"
+							id="shoe_size"
+							name="shoe_size"
+							placeholder="44"
+							autoComplete="number"
+							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF]  placeholder:text-[#C6B49D]"
+							defaultValue={currentPerson.shoe_size}
+							onChange={handleInputChange}
+						/>
+					</div>
+				</div>
+				{/* 				<div className="flex ">
+					<div className="py-2  w-5/12">
 						<div className="relative my-2 mx-1">
 							<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-800">
 								{translator.translate('cloth_size')}
@@ -142,7 +180,7 @@ export default function PersonToOrder({
 							/>
 						</div>
 					</div>
-					<div className="py-2 w-2/5">
+					<div className="py-2 w-5/12">
 						<div className="relative my-2 mx-1">
 							<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-800">
 								{translator.translate('shoes_size')}
@@ -160,7 +198,7 @@ export default function PersonToOrder({
 							/>
 						</div>
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</div>
 	)
