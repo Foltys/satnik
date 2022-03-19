@@ -17,7 +17,7 @@ async function getImagesAttachments(path: string) {
 }
 
 
-export default async function (data:any, subject:string, lang:string, templatePath:string, attachmentsPath:string) {
+export default async function (data:any, to:string, subject:string, lang:string, templatePath:string, attachmentsPath:string) {
 	const transporter = nodemailer.createTransport({
 		// setting up gmail sender is best against antispam filters
 		// tutorial for setting up gmail account allowance:
@@ -47,7 +47,7 @@ export default async function (data:any, subject:string, lang:string, templatePa
 	transporter.use('compile', hbs(handlebarOptions))
 	const mailOptions = {
 		from: 'prahasatnik@gmail.com',
-		to: data.email,
+		to,
 		subject: subject,
 		template: 'index',
 		attachments: await getImagesAttachments(attachmentsPath),

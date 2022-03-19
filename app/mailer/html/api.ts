@@ -7,6 +7,8 @@ function normalizePath (dirName: string): string {
 	return path.join(`./app/mailer/html/${dirName}`)
 }
 
+const companyAddress = 'prahasatnik@gmail.com'
+
 const sendOrderConfirm = async function (order: Order) {
 	const translations = {
 		subject: {
@@ -20,6 +22,7 @@ const sendOrderConfirm = async function (order: Order) {
 
 	return sendHTMLEmail(
 		order,
+		order.email,
 		translations.subject[lang],
 		lang,
 		normalizePath('order_confirm'),
@@ -33,6 +36,7 @@ const sendOrderConfirmCompany = async function (order: Order) {
 
 	return sendHTMLEmail(
 		order,
+		companyAddress,
 		'Nova objednavka v satniku',
 		'cs',
 		normalizePath('order_confirm_company'),
@@ -53,6 +57,7 @@ const sendOrderReadyForPickup = async function (order: Order) {
 
 	return sendHTMLEmail(
 		order,
+		order.email,
 		translations.subject[lang],
 		lang,
 		normalizePath('order_ready_for_pickup'),
@@ -73,6 +78,7 @@ const sendOrderReadyToSend = async function (order: Order) {
 
 	return sendHTMLEmail(
 		order,
+		order.email,
 		translations.subject[lang],
 		lang,
 		normalizePath('order_ready_to_send'),
