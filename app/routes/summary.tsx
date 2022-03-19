@@ -2,8 +2,7 @@ import { FormEventHandler, useEffect, useState } from 'react'
 import { useOutletContext, useNavigate, Link, useSubmit, redirect, Form } from 'remix'
 import { Order, OutletContext } from '~/root'
 import { saveNewOrder, getOrderByID } from '../../prisma/api/Order'
-import { send as send_client } from '~/mailer/html/order_confirm/send'
-import { send as send_satnik } from '~/mailer/html/order_confirm_company/send'
+import { sendOrderConfirm, sendOrderConfirmCompany } from '~/mailer/html/api'
 import PersonOnOrder from '~/components/PersonOnOrder'
 import { ContactAndDeliveryHasError, NewPersonHasError } from '~/validators/orderValidation'
 
@@ -11,8 +10,10 @@ export async function action({ request }: { request: Request }) {
 	const order = (await request.formData()).get('order')
 	const { id } = await saveNewOrder(JSON.parse(order as string) as Order)
 	const orderToSend = (await getOrderByID(id)) as any as Order
-	await send_client(orderToSend)
-	await send_satnik(orderToSend)
+	await Promise.all([
+		sendOrderConfirm(orderToSend),
+		sendOrderConfirmCompany(orderToSend),
+	])
 	return redirect('/confirmation')
 }
 

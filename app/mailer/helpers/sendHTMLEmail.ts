@@ -16,20 +16,20 @@ async function getImagesAttachments(path: string) {
 		})
 }
 
-const transporter = nodemailer.createTransport({
-	// setting up gmail sender is best against antispam filters
-	// tutorial for setting up gmail account allowance:
-	// for better security with OAuth2 we need redirect page at our app
-	// https://www.geeksforgeeks.org/how-to-send-email-using-node-js/
-
-	service: 'gmail',
-	auth: {
-		user: 'prahasatnik',
-		pass: 'KwAEer8triU4qgU',
-	},
-})
 
 export default async function (data:any, subject:string, lang:string, templatePath:string, attachmentsPath:string) {
+	const transporter = nodemailer.createTransport({
+		// setting up gmail sender is best against antispam filters
+		// tutorial for setting up gmail account allowance:
+		// for better security with OAuth2 we need redirect page at our app
+		// https://www.geeksforgeeks.org/how-to-send-email-using-node-js/
+
+		service: 'gmail',
+		auth: {
+			user: 'prahasatnik',
+			pass: 'KwAEer8triU4qgU',
+		},
+	})
 	const handlebarOptions: NodemailerExpressHandlebarsOptions = {
 		viewEngine: {
 			partialsDir: [templatePath, lang].join('/'),
