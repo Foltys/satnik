@@ -11,7 +11,7 @@ type LoaderData = {
 	order: Order
 }
 
-const authEnabled = false
+const authEnabled = true
 
 export const loader: LoaderFunction = async ({ request, params }) => {
 	const orderid: number = ~~params.orderId!
