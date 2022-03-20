@@ -33,7 +33,7 @@ const orderSchemaTypeDelivery = {
 		fullname: { type: 'string' },
 		phone: { type: 'string' },
 		email: { type: 'string' },
-		delivery_type: { const: 'delivery' },
+		delivery_type: { enum: ['delivery','pickup'] },
 		delivery_fullname: { type: 'string' },
 		delivery_street: { type: 'string' },
 		delivery_city: { type: 'string' },
