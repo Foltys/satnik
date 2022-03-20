@@ -45,6 +45,17 @@ function translateState(state: string): string {
 	}
 }
 
+function translateDeliveryType(type: string): string {
+	switch (type) {
+		case 'pickup':
+			return 'Osobní odběr'
+		case 'delivery':
+			return 'Dovoz od Šatníku'
+		default:
+			return 'WTF'
+	}
+}
+
 function getStateColor(state: string): string {
 	switch (state) {
 		case 'open':
@@ -83,21 +94,6 @@ export const action: ActionFunction = async ({ request }) => {
 	}
 }
 
-// sem jenom línej
-//fullname: { type: 'string' },
-// phone: { type: 'string' },
-// email: { type: 'string' },
-// delivery_type: { const: 'delivery' },
-// delivery_fullname: { type: 'string' },
-// delivery_street: { type: 'string' },
-// delivery_city: { type: 'string' },
-// delivery_zip: { type: 'string' },
-// delivery_phone: { type: 'string' },
-// persons: { type: 'array', items: personSchema },
-// state: { enum: ['open'] },
-// lang: { enum: ['ua', 'cs'] },
-// created_at: {},
-// updated_at: {},
 export default function OrdersScreen() {
 	const data = useLoaderData<LoaderData>()
 
@@ -123,11 +119,16 @@ export default function OrdersScreen() {
 						</div>
 
 						<div>{order.fullname}</div>
-						<div>
-							{order.delivery_city},{order.delivery_street}
-						</div>
+						{order.delivery_type === 'pickup' ? (
+							<div>Šatník</div>
+						) : (
+							<div>
+								{order.delivery_city},{order.delivery_street}
+							</div>
+						)}
+
 						<div>ASAP</div>
-						<div>{order.delivery_type}</div>
+						<div>{translateDeliveryType(order.delivery_type)}</div>
 						<a href="mailto:{order.email}" className="underline">
 							{order.email}
 						</a>
