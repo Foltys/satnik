@@ -1,4 +1,10 @@
 {
+  "hostname": "http://localhost:3000",
+  "session": {
+    "secrets": [
+      "5Kbrx4jn6G7JGPF"
+    ]
+  },
   "email": {
     "companyAddress": "prahasatnik@gmail.com",
     "provider": {
@@ -6,6 +12,15 @@
       "auth": {
         "user": "prahasatnik",
         "pass": "KwAEer8triU4qgU"
+      }
+    }
+  },
+  "auth": {
+    "strategies": {
+      "google": {
+        "clientID": "814226823998-dvgulsgbjr32424daiks8i3hrc5jlk0a.apps.googleusercontent.com",
+        "clientSecret": "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",
+        "allowedAccounts": []
       }
     }
   }

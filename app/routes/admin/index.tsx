@@ -1,14 +1,20 @@
-import type { LoaderFunction, ActionFunction } from 'remix'
-import { useLoaderData, Link, json, Form, useTransition } from 'remix'
-import { db } from '~/db.server'
 import type { Order } from '@prisma/client'
 import { Fragment } from 'react'
+import type { ActionFunction, LoaderFunction } from 'remix'
+import { Form, json, Link, useLoaderData } from 'remix'
+import { OAuth2Profile } from 'remix-auth-oauth2'
+import { db } from '~/db.server'
+import { authenticator } from '~/server/auth.server'
 
 type LoaderData = {
+	user: OAuth2Profile
 	orderListItems: Array<Order>
 }
 
 export const loader: LoaderFunction = async ({ request }) => {
+	const user = await authenticator.isAuthenticated(request, {
+		failureRedirect: "/login",
+	}) as OAuth2Profile
 	const orderListItems = await db.order.findMany({
 		take: 5,
 		//where: { lang: "ua" },
@@ -16,6 +22,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 	})
 
 	const data: LoaderData = {
+		user,
 		orderListItems,
 	}
 	return json(data)
@@ -100,6 +107,17 @@ export default function OrdersScreen() {
 	return (
 		<>
 			{/* tohle ochcává JIT tailwindu abych ty barvy mohl použít ve funkci */}
+			<ul>
+				<li><strong>displayName:</strong> {data.user.displayName}</li>
+				<li><strong>provider:</strong> {data.user.provider}</li>
+				<li><strong>emails:</strong> {JSON.stringify(data.user.emails)}</li>
+				{data.user.photos && data.user.photos.map((photo: any) => (
+					<li><img src={photo.value} /></li>
+				))}
+			</ul>
+			<Form action="/logout" method="post">
+				<button>Logout</button>
+			</Form>
 			<div className="border border-black hidden"></div>
 			<div className="border border-blue-500 hidden"></div>
 			<div className="border border-red-500 hidden"></div>
