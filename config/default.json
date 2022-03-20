@@ -22,7 +22,8 @@
         "clientSecret": "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",
         "allowedAccounts": [
           "prahasatnik@gmail.com",
-          "michal.palma@gmail.com"
+          "michal.palma@gmail.com", 
+          "adam.sobotka@emplifi.io"
         ]
       }
     }
