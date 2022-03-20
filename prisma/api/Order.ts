@@ -29,11 +29,11 @@ const personSchema = {
 }
 const orderSchemaTypeDelivery = {
 	type: 'object',
-		properties: {
+	properties: {
 		fullname: { type: 'string' },
 		phone: { type: 'string' },
 		email: { type: 'string' },
-		delivery_type: { enum: ['delivery','pickup'] },
+		delivery_type: { const: 'delivery' },
 		delivery_fullname: { type: 'string' },
 		delivery_street: { type: 'string' },
 		delivery_city: { type: 'string' },
@@ -58,7 +58,7 @@ const orderSchemaTypeDelivery = {
 		'persons',
 		'state',
 	],
-		additionalProperties: false,
+	additionalProperties: false,
 }
 const orderSchemaTypePickup = {
 	type: 'object',
@@ -73,26 +73,19 @@ const orderSchemaTypePickup = {
 		created_at: {},
 		updated_at: {},
 	},
-	required: [
-		'fullname',
-		'phone',
-		'email',
-		'delivery_type',
-		'persons',
-		'state',
-	],
+	required: ['fullname', 'phone', 'email', 'delivery_type', 'persons', 'state'],
 	additionalProperties: false,
 }
 const orderSchema = {
 	type: 'object',
-	anyOf: [orderSchemaTypeDelivery, orderSchemaTypePickup]
+	anyOf: [orderSchemaTypeDelivery, orderSchemaTypePickup],
 }
 
 const validateOrder = ajv.compile(orderSchema)
 
 const normaliseOrder = function (order: Order) {
 	order.persons.map((person: Person) => {
-		person.age = person.age+''
+		person.age = person.age + ''
 	})
 }
 const saveNewOrder = async function (order: Order) {

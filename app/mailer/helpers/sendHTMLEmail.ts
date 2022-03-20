@@ -3,6 +3,10 @@ import fsna from 'fs'
 import nodemailer from 'nodemailer'
 const fs = fsna.promises
 
+// please note that app is running from build/index.js
+process.env["NODE_CONFIG_DIR"] = __dirname + "/../config";
+const config = require('config')
+
 async function getImagesAttachments(path: string) {
 	const files = await fs.readdir(path)
 	return files
@@ -18,18 +22,11 @@ async function getImagesAttachments(path: string) {
 
 
 export default async function (data:any, to:string, subject:string, lang:string, templatePath:string, attachmentsPath:string) {
-	const transporter = nodemailer.createTransport({
-		// setting up gmail sender is best against antispam filters
-		// tutorial for setting up gmail account allowance:
-		// for better security with OAuth2 we need redirect page at our app
-		// https://www.geeksforgeeks.org/how-to-send-email-using-node-js/
-
-		service: 'gmail',
-		auth: {
-			user: 'prahasatnik',
-			pass: 'KwAEer8triU4qgU',
-		},
-	})
+	// setting up gmail sender is best against antispam filters
+	// tutorial for setting up gmail account allowance:
+	// for better security with OAuth2 we need redirect page at our app
+	// https://www.geeksforgeeks.org/how-to-send-email-using-node-js/
+	const transporter = nodemailer.createTransport(config.get('email.provider'))
 	const handlebarOptions: NodemailerExpressHandlebarsOptions = {
 		viewEngine: {
 			partialsDir: [templatePath, lang].join('/'),
