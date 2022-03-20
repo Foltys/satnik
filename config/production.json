@@ -1,5 +1,5 @@
 {
-  "hostname": "http://satnik-5459.rostiapp.cz",
+  "hostname": "http://satnik-5459.rostiapp.cz:80",
   "auth": {
     "strategies": {
       "google": {
@@ -8,5 +8,4 @@
       }
     }
   }
-
 }

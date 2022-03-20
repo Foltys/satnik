@@ -1,5 +1,5 @@
-import { MouseEventHandler, ChangeEventHandler } from 'react'
-import { useOutletContext, useNavigate } from 'remix'
+import { ChangeEventHandler, MouseEventHandler } from 'react'
+import { useNavigate, useOutletContext } from 'remix'
 import ContactInfo from '~/components/ContactInfo'
 import DeliveryInfo from '~/components/DeliveryInfo'
 import { OutletContext } from '~/root'
