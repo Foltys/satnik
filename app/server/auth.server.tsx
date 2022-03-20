@@ -49,6 +49,7 @@ if (strategies.google) {
 			const valid = validateAccount(profile, platformStrategies.allowedAccounts)
 
 			if (!valid) {
+				console.log('Invalid user', profile)
 				throw new Error('Invalid user')
 			}
 
