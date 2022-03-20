@@ -20,7 +20,10 @@
       "google": {
         "clientID": "814226823998-dvgulsgbjr32424daiks8i3hrc5jlk0a.apps.googleusercontent.com",
         "clientSecret": "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",
-        "allowedAccounts": []
+        "allowedAccounts": [
+          "prahasatnik@gmail.com",
+          "michal.palma@gmail.com"
+        ]
       }
     }
   }
