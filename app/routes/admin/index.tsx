@@ -11,7 +11,7 @@ type LoaderData = {
 	orderListItems: Array<Order>
 }
 
-const authEnabled = false
+const authEnabled = true
 
 export const loader: LoaderFunction = async ({ request }) => {
 	let user
