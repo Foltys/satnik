@@ -7,9 +7,11 @@ import { db } from '~/db.server'
 import { authenticator } from '~/server/auth.server'
 
 type LoaderData = {
-	user: OAuth2Profile
+	user?: OAuth2Profile
 	order: Order
 }
+
+const authEnabled = false
 
 export const loader: LoaderFunction = async ({ request, params }) => {
 	const orderid: number = ~~params.orderId!
@@ -18,10 +20,13 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 			id: orderid,
 		},
 	})
-	const user = await authenticator.isAuthenticated(request, {
-		failureRedirect: "/login",
-	}) as OAuth2Profile
-	return {user, order}
+	let user
+	if (authEnabled) {
+		user = await authenticator.isAuthenticated(request, {
+			failureRedirect: "/login",
+		}) as OAuth2Profile
+	}
+	return {...(user && {user}), order}
 }
 
 export default function ProductCategory() {
