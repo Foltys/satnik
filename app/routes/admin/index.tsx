@@ -31,6 +31,19 @@ async function updateOrder(orderId: number, state: string) {
 	})
 }
 
+function translateState(state: string): string {
+	switch (state) {
+		case 'open':
+			return 'Čeká na zpracování'
+		case 'process':
+			return 'Zpracovává se'
+		case 'done':
+			return 'Vyřízeno'
+		default:
+			return 'WTF'
+	}
+}
+
 export const action: ActionFunction = async ({ request }) => {
 	const form = await request.formData()
 
@@ -75,7 +88,7 @@ export default function OrdersScreen() {
 	const data = useLoaderData<LoaderData>()
 
 	return (
-		<div className="grid grid-cols-8 gap-4 text-gray-800 container mx-auto pt-6">
+		<div className="grid grid-cols-8 gap-4 text-gray-800 container mx-auto pt-12 justify-center items-center ">
 			<div className="font-semibold pb-12">Číslo obj.</div>
 			<div className="font-semibold pb-12">Jméno</div>
 			<div className="font-semibold pb-12">Místo doručení</div>
@@ -86,7 +99,7 @@ export default function OrdersScreen() {
 			<div className="font-semibold pb-12">Možnosti objednávky</div>
 			{data.orderListItems.map((order) => (
 				<Fragment key={order.id}>
-					<div className="text-[#0A9DBF] font-semibold underline">
+					<div className="text-[#0A9DBF] font-semibold ">
 						<Link to={`${order.id}`}>{order.id}</Link>
 					</div>
 
@@ -96,24 +109,26 @@ export default function OrdersScreen() {
 					</div>
 					<div>ASAP</div>
 					<div>{order.delivery_type}</div>
-					<div>{order.email}</div>
-					<div>{order.state}</div>
+					<a href="mailto:{order.email}" className="underline">
+						{order.email}
+					</a>
+					<div className="border px-4 py-2 border-[#0A9DBF]">{translateState(order.state)}</div>
 					<Form method="post">
-						<div>
+						<>
 							{order.state === 'open' ? (
-								<button name="action" value="process">
+								<button className="text-[#0A9DBF] font-semibold" name="action" value="process">
 									Začít vyřizovat
 								</button>
 							) : order.state != 'done' ? (
-								<button name="action" value="finish">
+								<button className="text-[#0A9DBF] font-semibold" name="action" value="finish">
 									Označit jako vyřízené
 								</button>
 							) : (
-								<button name="action" value="revert">
+								<button className="text-[#0A9DBF] font-semibold" name="action" value="revert">
 									Vrátit zpět
 								</button>
 							)}
-						</div>
+						</>
 						<input type="hidden" name="updateid" value={order.id} />
 					</Form>
 				</Fragment>
