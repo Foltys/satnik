@@ -1,4 +1,5 @@
-const { saveNewOrder } = require('./api/Order')
+import { Order } from '~/root'
+import { saveNewOrder } from '~/../prisma/api/Order'
 
 async function seed() {
 	await Promise.all(getOrders().map((order) => saveNewOrder(order)))
@@ -6,7 +7,7 @@ async function seed() {
 
 seed()
 
-function getOrders() {
+function getOrders(): Order[] {
 	return [
 		{
 			fullname: 'Olena Shevchenko',
@@ -23,7 +24,7 @@ function getOrders() {
 					sex: 'woman',
 					adult: true,
 					fullname: 'Anna Koroljenko',
-					age: 30,
+					age: '30',
 					clothing_size: 'm',
 					shoe_size: '41',
 					requirements: [
@@ -39,7 +40,7 @@ function getOrders() {
 					sex: 'man',
 					adult: false,
 					fullname: 'Pavel Koroljenko',
-					age: 10,
+					age: '10',
 					clothing_size: 's',
 					shoe_size: '30',
 					requirements: [

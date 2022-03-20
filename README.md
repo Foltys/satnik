@@ -21,7 +21,7 @@ $ npx prisma generate
 $ npx prisma db push
 
 # create sample order
-$ node prisma/seed.js
+$ npx ts-node prisma/seed.ts
 
 # open db browser client
 # there is also sqlite support for vscode or idea
