@@ -52,6 +52,7 @@ if (strategies.google) {
 				console.log('Invalid user', profile)
 				throw new Error('Invalid user')
 			}
+			console.log('valid user', profile)
 
 			return profile;
 
