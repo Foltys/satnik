@@ -5,6 +5,7 @@ import { Form, json, Link, useLoaderData } from 'remix'
 import { OAuth2Profile } from 'remix-auth-oauth2'
 import { db } from '~/db.server'
 import { authenticator } from '~/server/auth.server'
+import { sendOrderConfirm } from '~/mailer/html/api'
 
 type LoaderData = {
 	user?: OAuth2Profile
@@ -16,9 +17,9 @@ const authEnabled = true
 export const loader: LoaderFunction = async ({ request }) => {
 	let user
 	if (authEnabled) {
-		user = await authenticator.isAuthenticated(request, {
-			failureRedirect: "/login",
-		}) as OAuth2Profile
+		user = (await authenticator.isAuthenticated(request, {
+			failureRedirect: '/login',
+		})) as OAuth2Profile
 	}
 	const orderListItems = await db.order.findMany({
 		take: 5,
@@ -27,7 +28,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 	})
 
 	const data: LoaderData = {
-		...(user && {user}),
+		...(user && { user }),
 		orderListItems,
 	}
 	return json(data)
@@ -81,6 +82,13 @@ function getStateColor(state: string): string {
 	}
 }
 
+async function sendOrderConfirmById(id: number) {
+	const order = await db.order.findUnique({
+		where: { id: id },
+	})
+	//sendOrderConfirm(order as Order) fuck, some schema is fucked
+}
+
 export const action: ActionFunction = async ({ request }) => {
 	const form = await request.formData()
 
@@ -89,7 +97,7 @@ export const action: ActionFunction = async ({ request }) => {
 	let action = form.get('action')
 	switch (action) {
 		case 'finish': {
-			updateOrder(orderId, 'done')
+			await Promise.all([sendOrderConfirmById(orderId), updateOrder(orderId, 'done')])
 			return null
 		}
 		case 'process': {
@@ -115,18 +123,27 @@ export default function OrdersScreen() {
 			{data.user ? (
 				<>
 					<ul>
-						<li><strong>displayName:</strong> {data.user.displayName}</li>
-						<li><strong>provider:</strong> {data.user.provider}</li>
-						<li><strong>emails:</strong> {JSON.stringify(data.user.emails)}</li>
-						{data.user.photos && data.user.photos.map((photo: any) => (
-							<li><img src={photo.value} /></li>
-						))}
+						<li>
+							<strong>displayName:</strong> {data.user.displayName}
+						</li>
+						<li>
+							<strong>provider:</strong> {data.user.provider}
+						</li>
+						<li>
+							<strong>emails:</strong> {JSON.stringify(data.user.emails)}
+						</li>
+						{data.user.photos &&
+							data.user.photos.map((photo: any) => (
+								<li>
+									<img src={photo.value} />
+								</li>
+							))}
 					</ul>
 					<Form action="/logout" method="post">
 						<button>Logout</button>
 					</Form>
 				</>
-			) : undefined }
+			) : undefined}
 			<div className="border border-black hidden"></div>
 			<div className="border border-blue-500 hidden"></div>
 			<div className="border border-red-500 hidden"></div>
