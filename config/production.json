@@ -1,5 +1,10 @@
 {
   "hostname": "http://satnik-5459.rostiapp.cz",
+  "session": {
+    "secrets": [
+      "5Kbrx4jn6G7JGPF",
+    ]
+  },
   "auth": {
     "strategies": {
       "google": {
