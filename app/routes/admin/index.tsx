@@ -22,7 +22,8 @@ export const loader: LoaderFunction = async ({ request }) => {
 	return json(data)
 }
 
-// fullname: { type: 'string' },
+// sem jenom línej
+//fullname: { type: 'string' },
 // phone: { type: 'string' },
 // email: { type: 'string' },
 // delivery_type: { const: 'delivery' },
@@ -40,18 +41,18 @@ export default function OrdersScreen() {
 	const data = useLoaderData<LoaderData>()
 
 	return (
-		<div className="grid grid-cols-8">
-			<div>Číslo obj.</div>
-			<div>Jméno</div>
-			<div>Místo doručení</div>
-			<div>Termín doručení</div>
-			<div>Způsob dopravy</div>
-			<div>Kontakt na objednávajícího</div>
-			<div>Stav objednávky</div>
-			<div>Možnosti objednávky</div>
+		<div className="grid grid-cols-8 gap-4 text-gray-800 container mx-auto pt-6">
+			<div className="font-semibold pb-12">Číslo obj.</div>
+			<div className="font-semibold pb-12">Jméno</div>
+			<div className="font-semibold pb-12">Místo doručení</div>
+			<div className="font-semibold pb-12">Termín doručení</div>
+			<div className="font-semibold pb-12">Způsob dopravy</div>
+			<div className="font-semibold pb-12">Kontakt na objednávajícího</div>
+			<div className="font-semibold pb-12">Stav objednávky</div>
+			<div className="font-semibold pb-12">Možnosti objednávky</div>
 			{data.orderListItems.map((order) => (
 				<Fragment key={order.id}>
-					<div>
+					<div className='text-[#0A9DBF] font-semibold underline'>
 						<Link to={`${order.id}`}>{order.id}</Link>
 					</div>
 
@@ -62,7 +63,7 @@ export default function OrdersScreen() {
 					<div>ASAP</div>
 					<div>{order.delivery_type}</div>
 					<div>{order.email}</div>
-					<div>Nová</div>
+					<div>{order.state}</div>
 					<div>
 						<button>Zpracovat</button>
 					</div>
