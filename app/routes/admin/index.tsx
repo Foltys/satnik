@@ -25,10 +25,17 @@ export const action: ActionFunction = async ({ request }) => {
 	const form = await request.formData()
 	const orderId: number = Number(form.get('process'))
 	//console.log(id)
-	const orderToUpdate = await db.order.findUnique({
+	const updateOrder = await db.order.update({
 		where: { id: orderId },
-	})
-	console.log(orderToUpdate)
+		data: {
+		  state: 'processed',
+		},
+	  })
+	//const orderToUpdate = await db.order.findUnique({
+	//	where: { id: orderId },
+	//})
+	//console.log(orderToUpdate)
+
 	return null
 }
 
