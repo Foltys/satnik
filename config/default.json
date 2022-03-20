@@ -1,0 +1,12 @@
+{
+  "email": {
+    "companyAddress": "prahasatnik@gmail.com",
+    "provider": {
+      "service": "gmail",
+      "auth": {
+        "user": "prahasatnik",
+        "pass": "KwAEer8triU4qgU"
+      }
+    }
+  }
+}
