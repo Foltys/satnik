@@ -22,7 +22,7 @@ export default function PersonToOrder({
 		<div className="flex flex-col text-gray-800 mb-16 md:mb-12">
 			<div className="flex">
 				<div className="rounded-2xl group bg-[#0A9DBF] text-[#F8EBDB] w-full h-80 p-2 border border-[#0A9DBF] flex flex-col hover:bg-[#F8EBDB] items-center">
-					<img src={`${selectedGender}.svg`} alt="man" className="my-4 " />
+					<img src={`/${selectedGender}.svg`} alt="man" className="my-4 " />
 					<span className="text-2xl font-bold group-hover:text-[#0A9DBF]">{translator.translate(selectedGender)}</span>
 					<button
 						onClick={discardPerson}
@@ -161,44 +161,6 @@ export default function PersonToOrder({
 						/>
 					</div>
 				</div>
-				{/* 				<div className="flex ">
-					<div className="py-2  w-5/12">
-						<div className="relative my-2 mx-1">
-							<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-800">
-								{translator.translate('cloth_size')}
-							</label>
-							<input
-								required
-								type="text"
-								id="clothing_size"
-								name="clothing_size"
-								placeholder="S"
-								autoComplete="text"
-								className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF]  placeholder:text-[#C6B49D]"
-								defaultValue={currentPerson.clothing_size}
-								onChange={handleInputChange}
-							/>
-						</div>
-					</div>
-					<div className="py-2 w-5/12">
-						<div className="relative my-2 mx-1">
-							<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-800">
-								{translator.translate('shoes_size')}
-							</label>
-							<input
-								required
-								type="number"
-								id="shoe_size"
-								name="shoe_size"
-								placeholder="44"
-								autoComplete="number"
-								className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none text-gray-800 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF]  placeholder:text-[#C6B49D]"
-								defaultValue={currentPerson.shoe_size}
-								onChange={handleInputChange}
-							/>
-						</div>
-					</div>
-				</div> */}
 			</div>
 		</div>
 	)

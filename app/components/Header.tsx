@@ -12,7 +12,7 @@ export default function Header({ translator, switchLanguage }: HeaderParams) {
 		<header className="text-gray-800 body-font  bg-[#F8EBDB] pb-2">
 			<div className="container mx-auto flex flex-wrap flex-row items-center">
 				<Link className="flex title-font font-medium items-center text-gray-800 ml-5 md:ml-0" to="/">
-					<img src="red.svg" className="w-16 h-16 md:w-32 md:h-32" alt="Šatník Praha" />
+					<img src="/red.svg" className="w-16 h-16 md:w-32 md:h-32" alt="Šatník Praha" />
 					<span className="ml-3 text-xl hidden">Šatník</span>
 				</Link>
 				<nav className="ml-auto flex flex-wrap items-center text-base justify-center">

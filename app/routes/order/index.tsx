@@ -18,7 +18,7 @@ export default function Index() {
 
 	const nextForm: MouseEventHandler = (e) => {
 		e.preventDefault()
-		navigate('/newOrder', { replace: false })
+		navigate('/order/newOrder', { replace: false })
 	}
 
 	return (

@@ -73,7 +73,7 @@ export default function NewOrder() {
 		}
 		order.persons = order.persons.filter((item) => item !== null)
 		setOrder({ ...order })
-		navigate('/summary', { replace: false })
+		navigate('/order/summary', { replace: false })
 	}
 
 	const addNextPerson: MouseEventHandler = (event) => {
