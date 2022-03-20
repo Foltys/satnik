@@ -2,23 +2,19 @@ import type { Order } from '@prisma/client'
 import { Fragment } from 'react'
 import type { ActionFunction, LoaderFunction } from 'remix'
 import { Form, json, Link, useLoaderData } from 'remix'
+import { OAuth2Profile } from 'remix-auth-oauth2'
 import { db } from '~/db.server'
+import { authenticator } from '~/server/auth.server'
 
 type LoaderData = {
-	// user: OAuth2Profile
+	user: OAuth2Profile
 	orderListItems: Array<Order>
 }
 
 export const loader: LoaderFunction = async ({ request }) => {
-	// const user = await authenticator.isAuthenticated(request, {
-	// 	failureRedirect: "/login",
-	// }) as OAuth2Profile
-
-	process.env["NODE_CONFIG_DIR"] = __dirname + "/../config";
-	const config = require('config')
-
-	console.log(JSON.stringify(config))
-
+	const user = await authenticator.isAuthenticated(request, {
+		failureRedirect: "/login",
+	}) as OAuth2Profile
 	const orderListItems = await db.order.findMany({
 		take: 5,
 		//where: { lang: "ua" },
@@ -26,7 +22,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 	})
 
 	const data: LoaderData = {
-		// user,
+		user,
 		orderListItems,
 	}
 	return json(data)
@@ -112,12 +108,12 @@ export default function OrdersScreen() {
 		<>
 			{/* tohle ochcává JIT tailwindu abych ty barvy mohl použít ve funkci */}
 			<ul>
-				{/*<li><strong>displayName:</strong> {data.user.displayName}</li>*/}
-				{/*<li><strong>provider:</strong> {data.user.provider}</li>*/}
-				{/*<li><strong>emails:</strong> {JSON.stringify(data.user.emails)}</li>*/}
-				{/*{data.user.photos && data.user.photos.map((photo: any) => (*/}
-				{/*	<li><img src={photo.value} /></li>*/}
-				{/*))}*/}
+				<li><strong>displayName:</strong> {data.user.displayName}</li>
+				<li><strong>provider:</strong> {data.user.provider}</li>
+				<li><strong>emails:</strong> {JSON.stringify(data.user.emails)}</li>
+				{data.user.photos && data.user.photos.map((photo: any) => (
+					<li><img src={photo.value} /></li>
+				))}
 			</ul>
 			<Form action="/logout" method="post">
 				<button>Logout</button>
