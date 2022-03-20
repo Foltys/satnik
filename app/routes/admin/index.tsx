@@ -31,6 +31,7 @@ async function updateOrder(orderId: number, state: string) {
 	})
 }
 
+// tady musíme časem udělat fakt překlad
 function translateState(state: string): string {
 	switch (state) {
 		case 'open':
@@ -41,6 +42,19 @@ function translateState(state: string): string {
 			return 'Vyřízeno'
 		default:
 			return 'WTF'
+	}
+}
+
+function getStateColor(state: string): string {
+	switch (state) {
+		case 'open':
+			return 'black'
+		case 'process':
+			return 'blue-500'
+		case 'done':
+			return 'red-500'
+		default:
+			return ''
 	}
 }
 
@@ -88,51 +102,57 @@ export default function OrdersScreen() {
 	const data = useLoaderData<LoaderData>()
 
 	return (
-		<div className="grid grid-cols-8 gap-4 text-gray-800 container mx-auto pt-12 justify-center items-center ">
-			<div className="font-semibold pb-12">Číslo obj.</div>
-			<div className="font-semibold pb-12">Jméno</div>
-			<div className="font-semibold pb-12">Místo doručení</div>
-			<div className="font-semibold pb-12">Termín doručení</div>
-			<div className="font-semibold pb-12">Způsob dopravy</div>
-			<div className="font-semibold pb-12">Kontakt na objednávajícího</div>
-			<div className="font-semibold pb-12">Stav objednávky</div>
-			<div className="font-semibold pb-12">Možnosti objednávky</div>
-			{data.orderListItems.map((order) => (
-				<Fragment key={order.id}>
-					<div className="text-[#0A9DBF] font-semibold ">
-						<Link to={`${order.id}`}>{order.id}</Link>
-					</div>
+		<>
+			{/* tohle ochcává JIT tailwindu abych ty barvy mohl použít ve funkci */}
+			<div className="border border-black hidden"></div>
+			<div className="border border-blue-500 hidden"></div>
+			<div className="border border-red-500 hidden"></div>
+			<div className="grid grid-cols-8 gap-4 text-gray-800 container mx-auto pt-12 justify-center items-center ">
+				<div className="font-semibold pb-12">Číslo obj.</div>
+				<div className="font-semibold pb-12">Jméno</div>
+				<div className="font-semibold pb-12">Místo doručení</div>
+				<div className="font-semibold pb-12">Termín doručení</div>
+				<div className="font-semibold pb-12">Způsob dopravy</div>
+				<div className="font-semibold pb-12">Kontakt na objednávajícího</div>
+				<div className="font-semibold pb-12">Stav objednávky</div>
+				<div className="font-semibold pb-12">Možnosti objednávky</div>
+				{data.orderListItems.map((order) => (
+					<Fragment key={order.id}>
+						<div className="text-[#0A9DBF] font-semibold ">
+							<Link to={`${order.id}`}>{order.id}</Link>
+						</div>
 
-					<div>{order.fullname}</div>
-					<div>
-						{order.delivery_city},{order.delivery_street}
-					</div>
-					<div>ASAP</div>
-					<div>{order.delivery_type}</div>
-					<a href="mailto:{order.email}" className="underline">
-						{order.email}
-					</a>
-					<div className="border px-4 py-2 border-[#0A9DBF]">{translateState(order.state)}</div>
-					<Form method="post">
-						<>
-							{order.state === 'open' ? (
-								<button className="text-[#0A9DBF] font-semibold" name="action" value="process">
-									Začít vyřizovat
-								</button>
-							) : order.state != 'done' ? (
-								<button className="text-[#0A9DBF] font-semibold" name="action" value="finish">
-									Označit jako vyřízené
-								</button>
-							) : (
-								<button className="text-[#0A9DBF] font-semibold" name="action" value="revert">
-									Vrátit zpět
-								</button>
-							)}
-						</>
-						<input type="hidden" name="updateid" value={order.id} />
-					</Form>
-				</Fragment>
-			))}
-		</div>
+						<div>{order.fullname}</div>
+						<div>
+							{order.delivery_city},{order.delivery_street}
+						</div>
+						<div>ASAP</div>
+						<div>{order.delivery_type}</div>
+						<a href="mailto:{order.email}" className="underline">
+							{order.email}
+						</a>
+						<div className={`border px-4 py-2 border-${getStateColor(order.state)}`}>{translateState(order.state)}</div>
+						<Form method="post">
+							<>
+								{order.state === 'open' ? (
+									<button className="text-[#0A9DBF] font-semibold" name="action" value="process">
+										Začít vyřizovat
+									</button>
+								) : order.state != 'done' ? (
+									<button className="text-[#0A9DBF] font-semibold" name="action" value="finish">
+										Označit jako vyřízené
+									</button>
+								) : (
+									<button className="text-[#0A9DBF] font-semibold" name="action" value="revert">
+										Vrátit zpět
+									</button>
+								)}
+							</>
+							<input type="hidden" name="updateid" value={order.id} />
+						</Form>
+					</Fragment>
+				))}
+			</div>
+		</>
 	)
 }
