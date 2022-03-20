@@ -1,10 +1,5 @@
 {
   "hostname": "http://localhost:3000",
-  "session": {
-    "secrets": [
-      "5Kbrx4jn6G7JGPF"
-    ]
-  },
   "email": {
     "companyAddress": "prahasatnik@gmail.com",
     "provider": {
@@ -22,7 +17,7 @@
         "clientSecret": "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",
         "allowedAccounts": [
           "prahasatnik@gmail.com",
-          "michal.palma@gmail.com", 
+          "michal.palma@gmail.com",
           "adam.sobotka@emplifi.io"
         ]
       }
