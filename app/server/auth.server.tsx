@@ -44,8 +44,6 @@ if (strategies.google) {
 		settings,
 		async ({ profile }) => {
 
-			// here you would find or create a user in your database
-			//TODO validate user by some allowed emails list
 			const valid = validateAccount(profile, platformStrategies.allowedAccounts)
 
 			if (!valid) {
