@@ -6,11 +6,11 @@ const config = require('config')
 
 export const sessionStorage = createCookieSessionStorage({
 	cookie: {
-		name: "_session", // use any name you want here
-		sameSite: "lax", // this helps with CSRF
-		path: "/", // remember to add this so the cookie will work in all routes
-		httpOnly: true, // for security reasons, make this cookie http only
-		secrets: config.get('session.secrets'), // replace this with an actual secret
+		name: "_session",
+		sameSite: "lax",
+		path: "/",
+		httpOnly: true,
+		secrets: config.get('session.secrets'),
 		secure: false
 	},
 });

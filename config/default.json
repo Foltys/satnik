@@ -10,8 +10,12 @@
     "provider": {
       "service": "gmail",
       "auth": {
+        "type": "OAuth2",
         "user": "prahasatnik",
-        "pass": "KwAEer8triU4qgU"
+        "pass": "KwAEer8triU4qgU",
+        "clientId": "814226823998-giu19666jqjt52m8mn6337dnja07jht3.apps.googleusercontent.com",
+        "clientSecret": "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",
+        "refreshToken": "1//04ktAQgUl7tRfCgYIARAAGAQSNwF-L9Ir9J_JOFqjL9XuB-UFzinanYl9sg3gz22kuRy5F86SNFkOXyq-XWpfxDf7nPd6uI-vBmc"
       }
     }
   },
