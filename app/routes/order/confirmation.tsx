@@ -4,7 +4,7 @@ import { Order, OutletContext } from '~/root'
 
 export default function Confirmation() {
 	const { translator, setOrder } = useOutletContext<OutletContext>()
-	useEffect(() => setOrder({ persons: [] }), [])
+	useEffect(() => setOrder({ persons: [], delivery_type:"pickup" }), [])
 	return (
 		<section className="text-gray-800 body-font relative">
 			<div className="flex flex-col w-full">
