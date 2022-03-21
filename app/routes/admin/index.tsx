@@ -148,7 +148,7 @@ export default function OrdersScreen() {
 				{data.orderListItems.map((order) => (
 					<Fragment key={order.id}>
 						<div className="text-[#0A9DBF] font-semibold ">
-							<Link to={`${order.id}`}>{order.id}</Link>
+							{order.id}
 						</div>
 
 						<div>{order.fullname}</div>
