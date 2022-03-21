@@ -1,11 +1,11 @@
 import { MouseEventHandler } from 'react'
 import { Translator } from '~/locale/translation'
-import { Order } from '~/root'
+import { Order, OrderInProgress } from '~/root'
 import { ContactAndDeliveryHasError } from '~/validators/orderValidation'
 
 type DeliveryInfoParams = {
 	translator: Translator
-	order: Order
+	order: OrderInProgress | Order
 	handleChange: React.ChangeEventHandler
 	nextForm: MouseEventHandler
 }

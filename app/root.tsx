@@ -9,13 +9,15 @@ import styles from './tailwind.css'
 export interface OutletContext {
 	translator: Translator
 	setOrderItem: any
-	order: Order
+	order: OrderInProgress | Order
 	submitOrder: any
-	setOrder: (order: Order) => void
+	setOrder: (order: OrderInProgress) => void
 	editingPerson: number
 	setEditingPerson: (key?: number) => void
 	switchLanguage: (currentLanguage: string) => MouseEventHandler
 }
+
+export type OrderInProgress = Partial<Order> & { persons: Person[] }
 
 export interface Order {
 	[key: string]: any
