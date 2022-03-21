@@ -1,4 +1,5 @@
-import type { Order } from '@prisma/client'
+//import type { Order } from '@prisma/client'
+import { Order } from '~/root'
 import { Fragment } from 'react'
 import type { ActionFunction, LoaderFunction } from 'remix'
 import { Form, json, Link, useLoaderData } from 'remix'
@@ -6,6 +7,7 @@ import { OAuth2Profile } from 'remix-auth-oauth2'
 import { db } from '~/db.server'
 import { authenticator } from '~/server/auth.server'
 import { sendOrderConfirm } from '~/mailer/html/api'
+import { findMany, getOrderByID, updateUnique } from '../../../prisma/api/Order'
 
 type LoaderData = {
 	user?: OAuth2Profile
@@ -21,7 +23,8 @@ export const loader: LoaderFunction = async ({ request }) => {
 			failureRedirect: '/login',
 		})) as OAuth2Profile
 	}
-	const orderListItems = await db.order.findMany({
+	//const orderListItems = await getOrderByID()
+	const orderListItems = await findMany({
 		take: 5,
 		//where: { lang: "ua" },
 		orderBy: { created_at: 'desc' },
@@ -36,12 +39,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 async function updateOrder(orderId: number, state: string) {
 	//console.log('updateOrder', orderId, state)
-	await db.order.update({
-		where: { id: orderId },
-		data: {
-			state: state,
-		},
-	})
+	await updateUnique({ where: { id: orderId } }, { data: { state: state } })
 }
 
 // tady musíme časem udělat fakt překlad
@@ -83,9 +81,7 @@ function getStateColor(state: string): string {
 }
 
 async function sendOrderConfirmById(id: number) {
-	const order = await db.order.findUnique({
-		where: { id: id },
-	})
+	const order = await getOrderByID(id)
 	//sendOrderConfirm(order as Order) fuck, some schema is fucked
 }
 

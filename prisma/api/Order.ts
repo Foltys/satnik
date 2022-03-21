@@ -123,6 +123,31 @@ const findUniqueOrder = async function (query: any) {
  * @param query
  * @returns {Promise<*>}
  */
+ const findMany = async function (query: any) {
+	return (await getOrderModel()).findMany({
+		where: query,
+		include: getIncludes(),
+	})
+}
+
+/**
+ * for query read https://www.prisma.io/docs/concepts/components/prisma-client/crud#read
+ * @param query 
+ * @param data
+ * @returns {Promise<*>}
+ */
+ const updateUnique = async function (query: any, data: any) {
+	return (await getOrderModel()).update({
+		where: query,
+		data: data
+	})
+}
+
+/**
+ * for query read https://www.prisma.io/docs/concepts/components/prisma-client/crud#read
+ * @param query
+ * @returns {Promise<*>}
+ */
 const findFirst = async function (query: any) {
 	return (await getOrderModel()).findFirst({
 		where: query,
@@ -147,4 +172,4 @@ const getOrderModel = async function () {
 	return (await getDB()).order
 }
 
-export { getOrderModel, saveNewOrder, findUniqueOrder, findFirst, getOrderByID }
+export { getOrderModel, saveNewOrder, findUniqueOrder, findFirst, findMany, getOrderByID, updateUnique }
