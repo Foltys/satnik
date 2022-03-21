@@ -151,7 +151,7 @@ export default function OrdersScreen() {
 			<div className=" text-[#0A9DBF] hidden"></div>
 			<div className=" text-[#EB2F06] hidden"></div>
 			<div className=" text-[#957D5E] hidden"></div>
-			<div className="grid grid-cols-8 gap-x-4 gap-y-8 text-gray-800 container mx-auto pt-12 justify-center items-start">
+			<div className="grid grid-cols-8 grid-rows-1 gap-x-4 gap-y-8 text-gray-800 container mx-auto pt-12 justify-center items-start bg-white p-12 rounded-3xl">
 				<div className="text-[#957D5E] pb-12">Číslo obj.</div>
 				<div className="text-[#957D5E] pb-12">Jméno</div>
 				<div className="text-[#957D5E] pb-12">Místo doručení</div>
