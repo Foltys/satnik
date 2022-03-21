@@ -63,11 +63,11 @@ function translateDeliveryType(type: string): string {
 function getStateColor(state: string): string {
 	switch (state) {
 		case 'open':
-			return 'black'
+			return '[#EB2F06]'
 		case 'process':
-			return 'blue-500'
+			return '[#0A9DBF]'
 		case 'done':
-			return 'red-500'
+			return '[#957D5E]'
 		default:
 			return ''
 	}
@@ -148,18 +148,18 @@ export default function OrdersScreen() {
 				</header>
 			)}
 			{/* tohle ochcává JIT tailwindu abych ty barvy mohl použít ve funkci */}
-			<div className="border border-black hidden"></div>
-			<div className="border border-blue-500 hidden"></div>
-			<div className="border border-red-500 hidden"></div>
-			<div className="grid grid-cols-8 gap-4 text-gray-800 container mx-auto pt-12 justify-center items-center ">
-				<div className="font-semibold pb-12">Číslo obj.</div>
-				<div className="font-semibold pb-12">Jméno</div>
-				<div className="font-semibold pb-12">Místo doručení</div>
-				<div className="font-semibold pb-12">Termín doručení</div>
-				<div className="font-semibold pb-12">Způsob dopravy</div>
-				<div className="font-semibold pb-12">Kontakt na objednávajícího</div>
-				<div className="font-semibold pb-12">Stav objednávky</div>
-				<div className="font-semibold pb-12">Možnosti objednávky</div>
+			<div className=" text-[#0A9DBF] hidden"></div>
+			<div className=" text-[#EB2F06] hidden"></div>
+			<div className=" text-[#957D5E] hidden"></div>
+			<div className="grid grid-cols-8 gap-x-4 gap-y-8 text-gray-800 container mx-auto pt-12 justify-center items-start">
+				<div className="text-[#957D5E] pb-12">Číslo obj.</div>
+				<div className="text-[#957D5E] pb-12">Jméno</div>
+				<div className="text-[#957D5E] pb-12">Místo doručení</div>
+				<div className="text-[#957D5E] pb-12">Termín doručení</div>
+				<div className="text-[#957D5E] pb-12">Způsob dopravy</div>
+				<div className="text-[#957D5E] pb-12">Kontakt na objednávajícího</div>
+				<div className="text-[#957D5E] pb-12">Stav objednávky</div>
+				<div className="text-[#957D5E] pb-12">Možnosti objednávky</div>
 				{data.orderListItems.map((order) => (
 					<Fragment key={order.id}>
 						<div className="text-[#0A9DBF] font-semibold ">{order.id}</div>
@@ -178,7 +178,7 @@ export default function OrdersScreen() {
 						<a href="mailto:{order.email}" className="underline">
 							{order.email}
 						</a>
-						<div className={`border px-4 py-2 border-${getStateColor(order.state)}`}>{translateState(order.state)}</div>
+						<div className={`font-semibold text-${getStateColor(order.state)}`}>{translateState(order.state)}</div>
 						<Form method="post">
 							<>
 								{order.state === 'open' ? (
