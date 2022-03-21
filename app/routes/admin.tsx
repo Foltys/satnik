@@ -151,10 +151,10 @@ export default function Admin() {
 			<div className=" text-[#0A9DBF] hidden"></div>
 			<div className=" text-[#EB2F06] hidden"></div>
 			<div className=" text-[#957D5E] hidden"></div>
-			<div id="layout" className="flex flex-row">
+			<div id="layout" className="flex flex-row gap-12 mx-8">
 				<div
 					id="list"
-					className="grid grid-cols-5 grid-rows-1 gap-x-4 gap-y-8 text-gray-800 mx-auto pt-12 justify-center items-start bg-white p-12 rounded-3xl"
+					className="grid grid-cols-5 grid-rows-1 gap-x-4 gap-y-8 text-gray-800 mx-auto pt-12 justify-center items-start bg-white p-12 rounded-3xl basis-2/3"
 				>
 					<div className="text-[#957D5E] pb-12">Číslo obj.</div>
 					<div className="text-[#957D5E] pb-12">Jméno</div>
@@ -168,7 +168,9 @@ export default function Admin() {
 							<div>{order.fullname}</div>
 							{order.delivery_type === 'pickup' ? <div>Šatník img</div> : <div>dovoz img</div>}
 
-							<div className={`font-semibold mr-8 text-${getStateColor(order.state)}`}>{translateState(order.state)}</div>
+							<div className={`font-semibold mr-8 text-${getStateColor(order.state)}`}>
+								{translateState(order.state)}
+							</div>
 							<Form method="post">
 								<>
 									{order.state === 'open' ? (
@@ -190,7 +192,10 @@ export default function Admin() {
 						</Fragment>
 					))}
 				</div>
-				<div id="detail">
+				<div
+					id="detail"
+					className="basis-1/3 text-gray-800 mx-auto pt-12 justify-center items-start bg-white p-12 rounded-3xl"
+				>
 					<Outlet />
 				</div>
 			</div>
