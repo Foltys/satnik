@@ -1,12 +1,9 @@
-//import type { Order } from '@prisma/client'
 import { Order } from '~/root'
 import { Fragment } from 'react'
 import type { ActionFunction, LoaderFunction } from 'remix'
 import { Form, json, Link, useLoaderData } from 'remix'
 import { OAuth2Profile } from 'remix-auth-oauth2'
-import { db } from '~/db.server'
 import { authenticator } from '~/server/auth.server'
-import { sendOrderConfirm } from '~/mailer/html/api'
 import { findMany, getOrderByID, updateUnique } from '../../../prisma/api/Order'
 
 type LoaderData = {
@@ -24,11 +21,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 		})) as OAuth2Profile
 	}
 	//const orderListItems = await getOrderByID()
-	const orderListItems = await findMany({
-		take: 5,
-		//where: { lang: "ua" },
-		orderBy: { created_at: 'desc' },
-	})
+	const orderListItems = await findMany({}, { created_at: 'desc' }, 5)
 
 	const data: LoaderData = {
 		...(user && { user }),
@@ -116,7 +109,7 @@ export default function OrdersScreen() {
 	return (
 		<>
 			{/* tohle ochcává JIT tailwindu abych ty barvy mohl použít ve funkci */}
-			{data.user ? (
+			{data.user && (
 				<>
 					<ul>
 						<li>
@@ -139,7 +132,7 @@ export default function OrdersScreen() {
 						<button>Logout</button>
 					</Form>
 				</>
-			) : undefined}
+			)}
 			<div className="border border-black hidden"></div>
 			<div className="border border-blue-500 hidden"></div>
 			<div className="border border-red-500 hidden"></div>

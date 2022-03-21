@@ -120,19 +120,20 @@ const findUniqueOrder = async function (query: any) {
 
 /**
  * for query read https://www.prisma.io/docs/concepts/components/prisma-client/crud#read
- * @param query
- * @returns {Promise<*>}
  */
- const findMany = async function (query: any) {
-	return (await getOrderModel()).findMany({
-		where: query,
-		include: getIncludes(),
-	})
+ const findMany = async function (where: any, orderBy?: any, limit?: number): Promise<Order[]> {
+	 const args = {
+		 where,
+		 include: getIncludes(),
+		 ...(orderBy && {orderBy}),
+		 ...(limit && {take: limit}),
+	 }
+	return (await getOrderModel()).findMany(args) as any as Promise<Order[]>
 }
 
 /**
  * for query read https://www.prisma.io/docs/concepts/components/prisma-client/crud#read
- * @param query 
+ * @param query
  * @param data
  * @returns {Promise<*>}
  */
