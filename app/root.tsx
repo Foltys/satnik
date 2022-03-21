@@ -23,11 +23,11 @@ export interface Order {
 	phone: string
 	email: string
 	delivery_type: 'delivery' | 'pickup'
-	delivery_fullname: string
-	delivery_street: string
-	delivery_city: string
-	delivery_zip: string
-	delivery_phone: string
+	delivery_fullname?: string
+	delivery_street?: string
+	delivery_city?: string
+	delivery_zip?: string
+	delivery_phone?: string
 	persons: Person[]
 	state: 'open'
 	lang: 'ua' | 'cs'
@@ -135,7 +135,7 @@ export default function App() {
 			}
 
 	const [editingPerson, setEditingPerson] = useState<number>()
-  
+
 
 	return (
 		<html lang="en">
@@ -162,7 +162,7 @@ export default function App() {
                     setEditingPerson
 									}}
 								/>
-	
+
 					</section>
 				</>
 				<ScrollRestoration />
