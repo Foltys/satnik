@@ -32,7 +32,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 async function updateOrder(orderId: number, state: string) {
 	//console.log('updateOrder', orderId, state)
-	await updateUnique({ where: { id: orderId } }, { data: { state: state } })
+	await updateUnique({ id: orderId }, { state: state })
 }
 
 // tady musíme časem udělat fakt překlad
@@ -123,8 +123,8 @@ export default function OrdersScreen() {
 						</li>
 						{data.user.photos &&
 							data.user.photos.map((photo: any) => (
-								<li>
-									<img src={photo.value} />
+								<li key={data.user?.id}>
+									<img src={photo.value} alt="profile" />
 								</li>
 							))}
 					</ul>

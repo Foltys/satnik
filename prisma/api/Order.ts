@@ -137,9 +137,9 @@ const findUniqueOrder = async function (query: any) {
  * @param data
  * @returns {Promise<*>}
  */
- const updateUnique = async function (query: any, data: any) {
+ const updateUnique = async function (where: any, data: any) {
 	return (await getOrderModel()).update({
-		where: query,
+		where,
 		data: data
 	})
 }
