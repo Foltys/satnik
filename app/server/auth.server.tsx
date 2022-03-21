@@ -7,10 +7,7 @@ import { sessionStorage } from '~/services/session.server'
 process.env["NODE_CONFIG_DIR"] = __dirname + "/../config";
 const config = require('config')
 
-// Create an instance of the authenticator
 export let authenticator = new Authenticator(sessionStorage, { sessionKey: '_session' });
-// You may specify a <User> type which the strategies will return (this will be stored in the session)
-// export let authenticator = new Authenticator<User>(sessionStorage, { sessionKey: '_session' });
 
 const hostname = config.get('hostname')
 const strategies = config.get('auth.strategies')
@@ -33,7 +30,6 @@ function validateAccount(profile: OAuth2Profile, allowedAccounts: string[]): boo
 	return false
 }
 
-// https://www.npmjs.com/package/remix-auth-socials
 if (strategies.google) {
 	const platformStrategies = strategies.google
 	const settings = {
