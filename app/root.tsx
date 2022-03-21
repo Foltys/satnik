@@ -3,7 +3,6 @@ import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderD
 import { MouseEventHandler, useEffect, useState } from 'react'
 
 import translation, { Translator } from './locale/translation'
-import Header from './components/Header'
 
 import styles from './tailwind.css'
 
@@ -13,8 +12,9 @@ export interface OutletContext {
 	order: Order
 	submitOrder: any
 	setOrder: (order: Order) => void
-  editingPerson: number
-  setEditingPerson: (key?: number) => void
+	editingPerson: number
+	setEditingPerson: (key?: number) => void
+	switchLanguage: (currentLanguage: string) => MouseEventHandler
 }
 
 export interface Order {
@@ -126,16 +126,15 @@ export default function App() {
 
 	const switchLanguage =
 		(currentLanguage: string): MouseEventHandler =>
-			(e) => {
-				const newLanguage = currentLanguage == 'cs' ? 'ua' : 'cs'
-				setTranslator({
-					translate: translation(newLanguage),
-					language: newLanguage,
-				})
-			}
+		(e) => {
+			const newLanguage = currentLanguage == 'cs' ? 'ua' : 'cs'
+			setTranslator({
+				translate: translation(newLanguage),
+				language: newLanguage,
+			})
+		}
 
 	const [editingPerson, setEditingPerson] = useState<number>()
-
 
 	return (
 		<html lang="en">
@@ -148,23 +147,20 @@ export default function App() {
 				<script async src="/ga.js"></script>
 			</head>
 			<body className="bg-[#F8EBDB]">
-				<>
-					<Header translator={translator} switchLanguage={switchLanguage(translator.language)} />
-					<section className="text-[#C6B49D] body-font relative">
+				<section className="text-[#C6B49D] body-font relative">
+					<Outlet
+						context={{
+							translator,
+							setOrderItem,
+							order,
+							setOrder,
+							editingPerson,
+							setEditingPerson,
+							switchLanguage
+						}}
+					/>
+				</section>
 
-								<Outlet
-									context={{
-										translator,
-										setOrderItem,
-										order,
-										setOrder,
-                    editingPerson,
-                    setEditingPerson
-									}}
-								/>
-
-					</section>
-				</>
 				<ScrollRestoration />
 				<Scripts />
 				<LiveReload />
