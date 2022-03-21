@@ -1,7 +1,7 @@
 import { Order } from '~/root'
 import { Fragment } from 'react'
 import type { ActionFunction, LoaderFunction } from 'remix'
-import { Form, json, useLoaderData, Outlet } from 'remix'
+import { Form, json, useLoaderData, Outlet, Link } from 'remix'
 import { OAuth2Profile } from 'remix-auth-oauth2'
 import { authenticator } from '~/server/auth.server'
 import { findMany, getOrderByID, updateUnique } from '../../prisma/api/Order'
@@ -117,7 +117,7 @@ export default function Admin() {
 									<img
 										key={data.user?.id}
 										src={photo.value}
-										alt={JSON.stringify(data?.user?.emails) || 'profile'}
+										alt={'profile'}
 										className="w-10 h-10 text-white border-[#0A9DBF] rounded-full"
 									/>
 								))}
@@ -163,10 +163,35 @@ export default function Admin() {
 					<div className="text-[#957D5E] pb-12"></div>
 					{data.orderListItems.map((order) => (
 						<Fragment key={order.id}>
-							<div className="text-[#0A9DBF] font-semibold ">{order.id}</div>
+							<Link to={`${order.id}`} prefetch="intent">
+								<div className="text-[#0A9DBF] font-semibold ">{order.id}</div>
+							</Link>
 
 							<div>{order.fullname}</div>
-							{order.delivery_type === 'pickup' ? <div>Šatník img</div> : <div>dovoz img</div>}
+							{order.delivery_type === 'pickup' ? (
+								<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="#000" viewBox="0 0 24 24">
+									<path
+										transform="translate(-6.29 -6) scale(.06452)"
+										d="M378.9 360.9H188l76.6-69.3-15.6-17.2-99 89.5 7.8 20.2h251.3l7.8-20.2-149.5-139 17-18.2 26 24.3 15.8-16.9-42.9-40.2-48.7 51.9z"
+									/>
+								</svg>
+							) : (
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									className="h-6 w-6"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+									strokeWidth={2}
+								>
+									<path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"
+									/>
+								</svg>
+							)}
 
 							<div className={`font-semibold mr-8 text-${getStateColor(order.state)}`}>
 								{translateState(order.state)}
