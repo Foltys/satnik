@@ -1,9 +1,10 @@
 import { Order } from '@prisma/client'
-import type { LoaderFunction } from 'remix'
-import { useLoaderData, json } from 'remix'
+import type { LoaderFunction, ActionFunction } from 'remix'
+import { useLoaderData, Form } from 'remix'
 import { OAuth2Profile } from 'remix-auth-oauth2'
 import { getOrderByID, updateUnique } from '~/../prisma/api/Order'
 import { authenticator } from '~/server/auth.server'
+import { sendOrderConfirm } from '~/mailer/html/api'
 
 type LoaderData = {
 	user?: OAuth2Profile
@@ -15,6 +16,11 @@ const authEnabled = true
 async function updateOrder(orderId: number, state: string) {
 	//console.log('updateOrder', orderId, state)
 	await updateUnique({ id: orderId }, { state: state })
+}
+
+async function sendOrderConfirmById(id: number) {
+	const order = await getOrderByID(id)
+	sendOrderConfirm(order as Order) 
 }
 
 export const loader: LoaderFunction = async ({ request, params }) => {
@@ -29,7 +35,32 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 	return { ...(user && { user }), order }
 }
 
-export default function ProductCategory() {
+export const action: ActionFunction = async ({ request }) => {
+	const form = await request.formData()
+
+	const orderId: number = Number(form.get('updateid'))
+	//console.log(id)
+	let action = form.get('action')
+	switch (action) {
+		case 'finish': {
+			await Promise.all([sendOrderConfirmById(orderId), updateOrder(orderId, 'done')])
+			return null
+		}
+		case 'process': {
+			updateOrder(orderId, 'process')
+			return null
+		}
+		case 'revert': {
+			updateOrder(orderId, 'open')
+			return null
+		}
+		default: {
+			throw new Error('Unexpected action')
+		}
+	}
+}
+
+export default function OrderDetail() {
 	const { user, order } = useLoaderData()
 	return (
 		<div className="flex flex-col">
@@ -67,7 +98,7 @@ export default function ProductCategory() {
 						<span>{order.phone}</span>
 						<a href={`mailto:${order.email}`}>{order.email}</a>
 					</div>
-					<div className='w-1 border-l border-l-[#C6B49D] h-36'></div>
+					<div className="w-1 border-l border-l-[#C6B49D] h-36"></div>
 					<div className="flex gap-y-1 flex-col text-sm text-gray-800">
 						{order.delivery_type === 'delivery' ? (
 							<>
@@ -91,7 +122,25 @@ export default function ProductCategory() {
 						)}
 					</div>
 				</div>
-				<div></div>
+
+				<Form method="post">
+					<>
+						{order.state === 'open' ? (
+							<button className="text-[#0A9DBF] font-semibold" name="action" value="process">
+								Začít vyřizovat
+							</button>
+						) : order.state != 'done' ? (
+							<button className="text-[#0A9DBF] font-semibold" name="action" value="finish">
+								Označit jako vyřízené
+							</button>
+						) : (
+							<button className="text-[#0A9DBF] font-semibold" name="action" value="revert">
+								Vrátit zpět
+							</button>
+						)}
+					</>
+					<input type="hidden" name="updateid" value={order.id} />
+				</Form>
 			</div>
 		</div>
 	)

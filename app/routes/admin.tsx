@@ -1,10 +1,10 @@
 import { Order } from '~/root'
 import { Fragment } from 'react'
-import type { ActionFunction, LoaderFunction } from 'remix'
+import type { LoaderFunction } from 'remix'
 import { Form, json, useLoaderData, Outlet, Link } from 'remix'
 import { OAuth2Profile } from 'remix-auth-oauth2'
 import { authenticator } from '~/server/auth.server'
-import { findMany, getOrderByID, updateUnique } from '../../prisma/api/Order'
+import { findMany, getOrderByID } from '../../prisma/api/Order'
 
 type LoaderData = {
 	user?: OAuth2Profile
@@ -30,10 +30,10 @@ export const loader: LoaderFunction = async ({ request }) => {
 	return json(data)
 }
 
-async function updateOrder(orderId: number, state: string) {
-	//console.log('updateOrder', orderId, state)
-	await updateUnique({ id: orderId }, { state: state })
-}
+// async function updateOrder(orderId: number, state: string) {
+// 	//console.log('updateOrder', orderId, state)
+// 	await updateUnique({ id: orderId }, { state: state })
+// }
 
 // tady musíme časem udělat fakt překlad
 function translateState(state: string): string {
@@ -73,35 +73,7 @@ function getStateColor(state: string): string {
 	}
 }
 
-async function sendOrderConfirmById(id: number) {
-	const order = await getOrderByID(id)
-	//sendOrderConfirm(order as Order) fuck, some schema is fucked
-}
 
-export const action: ActionFunction = async ({ request }) => {
-	const form = await request.formData()
-
-	const orderId: number = Number(form.get('updateid'))
-	//console.log(id)
-	let action = form.get('action')
-	switch (action) {
-		case 'finish': {
-			await Promise.all([sendOrderConfirmById(orderId), updateOrder(orderId, 'done')])
-			return null
-		}
-		case 'process': {
-			updateOrder(orderId, 'process')
-			return null
-		}
-		case 'revert': {
-			updateOrder(orderId, 'open')
-			return null
-		}
-		default: {
-			throw new Error('Unexpected action')
-		}
-	}
-}
 
 export default function Admin() {
 	const data = useLoaderData<LoaderData>()
@@ -151,7 +123,7 @@ export default function Admin() {
 			<div className=" text-[#0A9DBF] hidden"></div>
 			<div className=" text-[#EB2F06] hidden"></div>
 			<div className=" text-[#957D5E] hidden"></div>
-			<div id="layout" className="flex flex-row gap-12 mx-8">
+			<div id="layout" className="flex flex-row gap-12 mx-auto container">
 				<div
 					id="list"
 					className="grid grid-cols-5 grid-rows-1 gap-x-4 gap-y-8 text-gray-800 mx-auto pt-12 justify-center items-start bg-white p-12 rounded-3xl basis-2/3"
@@ -196,24 +168,6 @@ export default function Admin() {
 							<div className={`font-semibold mr-8 text-${getStateColor(order.state)}`}>
 								{translateState(order.state)}
 							</div>
-							<Form method="post">
-								<>
-									{order.state === 'open' ? (
-										<button className="text-[#0A9DBF] font-semibold" name="action" value="process">
-											Začít vyřizovat
-										</button>
-									) : order.state != 'done' ? (
-										<button className="text-[#0A9DBF] font-semibold" name="action" value="finish">
-											Označit jako vyřízené
-										</button>
-									) : (
-										<button className="text-[#0A9DBF] font-semibold" name="action" value="revert">
-											Vrátit zpět
-										</button>
-									)}
-								</>
-								<input type="hidden" name="updateid" value={order.id} />
-							</Form>
 						</Fragment>
 					))}
 				</div>
