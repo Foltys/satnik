@@ -123,10 +123,10 @@ export default function Admin() {
 			<div className=" text-[#0A9DBF] hidden"></div>
 			<div className=" text-[#EB2F06] hidden"></div>
 			<div className=" text-[#957D5E] hidden"></div>
-			<div id="layout" className="flex flex-row gap-12 mx-auto container">
+			<div id="layout" className="flex flex-row gap-12 mx-auto container items-start">
 				<div
 					id="list"
-					className="grid grid-cols-4 grid-rows-1 gap-x-4 gap-y-8 text-gray-800 mx-auto pt-12 justify-center items-start bg-white p-12 rounded-3xl basis-2/3"
+					className="grid grid-cols-4 grid-rows-1 gap-x-4 gap-y-8 text-gray-800 mx-auto pt-12  bg-white p-12 rounded-3xl basis-2/3"
 				>
 					<div className="text-[#957D5E] pb-12">Číslo obj.</div>
 					<div className="text-[#957D5E] pb-12">Objednávající</div>
