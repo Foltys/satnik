@@ -57,11 +57,12 @@ export const action: ActionFunction = async ({ request }) => {
 }
 
 export default function OrderDetail() {
-	const { user, order } = useLoaderData()
+	const { order } = useLoaderData()
+	const order_created = new Date(order.created_at).toLocaleDateString('cs-CZ',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
 	return (
 		<div className="flex flex-col">
 			<p className="text-3xl font-bold">{order.id}</p>
-			<p className="text-sm font-bold text-brown-500 py-2">Vytvořeno: {order.created_at}</p>
+			<p className="text-sm font-bold text-brown-500 py-2">Vytvořeno: {order_created}</p>
 			<div className="flex flex-col">
 				{order.persons.map((person: any) => (
 					<div key={person.id}>

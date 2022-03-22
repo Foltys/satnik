@@ -50,16 +50,16 @@ function translateState(state: string): string {
 	}
 }
 
-function translateDeliveryType(type: string): string {
-	switch (type) {
-		case 'pickup':
-			return 'Osobní odběr'
-		case 'delivery':
-			return 'Dovoz od Šatníku'
-		default:
-			return 'WTF'
-	}
-}
+// function translateDeliveryType(type: string): string {
+// 	switch (type) {
+// 		case 'pickup':
+// 			return 'Osobní odběr'
+// 		case 'delivery':
+// 			return 'Dovoz od Šatníku'
+// 		default:
+// 			return 'WTF'
+// 	}
+// }
 
 function getStateColor(state: string): string {
 	switch (state) {
@@ -101,7 +101,7 @@ export default function Admin() {
 						</nav>
 						<Form action="/logout" method="post">
 							<button className="inline-flex items-center  font-medium border-0 py-1 px-3 focus:outline-none hover:text-gray-900 rounded text-base mt-4 md:mt-0">
-								Logout
+								Odhlásit
 								<svg
 									fill="none"
 									stroke="currentColor"
