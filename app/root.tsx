@@ -1,4 +1,4 @@
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from 'remix'
+import { ActionFunction, Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from 'remix'
 
 import { MouseEventHandler, useEffect, useState } from 'react'
 
@@ -113,6 +113,11 @@ export const loader = async ({ request }: { request: Request }) => {
 		return getFromSupported(request.headers.get('accept-language') as string)
 	}
 	return 'cs'
+}
+
+export const action: ActionFunction = async ({request}) => {
+	const formData = await request.formData();
+	console.log("testing");
 }
 
 export default function App() {

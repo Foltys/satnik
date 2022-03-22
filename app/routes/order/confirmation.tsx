@@ -1,10 +1,51 @@
-import { useEffect } from 'react'
-import { useOutletContext } from 'remix'
+import { getOrderByID, saveNewOrder } from '../../../prisma/api/Order'
+import { ActionFunction, json, useOutletContext } from 'remix'
+import { sendOrderConfirm, sendOrderConfirmCompany } from '~/mailer/html/api'
 import { Order, OutletContext } from '~/root'
+import { commitSession, getSession } from '~/sessions'
+import { PersonToOrderType } from '~/components/PersonToOrder'
+
+export const action: ActionFunction = async ({ request }) => {
+	const formData = await request.formData()
+	const { lang } = Object.fromEntries(formData)
+	const session = await getSession(request.headers.get('Cookie'))
+	const contact = session.get('contact')
+	const people = session.get('people')
+	// prepare order
+	const order = {
+		...contact,
+		persons: people.map((person: PersonToOrderType) => {
+			return {
+				sex: person.gender != 'kid' ? person.gender : person.sex,
+				adult: person.gender != 'kid',
+				fullname: person.fullname,
+				age: person.age,
+				clothing_size: person.clothing_size,
+				shoe_size: person.shoe_size,
+				requirements: [{ description: person.requirements }],
+			}
+		}),
+		lang,
+	} as Order
+	// const preparedOrder = {} as Order
+	const { id } = await saveNewOrder(order)
+	const orderToSend = (await getOrderByID(id)) as any as Order
+	await Promise.all([sendOrderConfirm(orderToSend), sendOrderConfirmCompany(orderToSend)])
+	session.unset('contact')
+	session.unset('people')
+	return json(
+		{},
+		{
+			headers: {
+				'Set-Cookie': await commitSession(session),
+			},
+		},
+	)
+}
 
 export default function Confirmation() {
-	const { translator, setOrder } = useOutletContext<OutletContext>()
-	useEffect(() => setOrder({ persons: [], delivery_type:"pickup" }), [])
+	const { translator } = useOutletContext<OutletContext>()
+
 	return (
 		<section className="text-gray-900 body-font relative">
 			<div className="flex flex-col w-full">

@@ -1,35 +1,35 @@
-import { ChangeEventHandler, MouseEventHandler } from 'react'
-import { useNavigate, useOutletContext } from 'remix'
+import { useState } from 'react'
+import { Form, useNavigate, useOutletContext, useLoaderData, LoaderFunction } from 'remix'
 import ContactInfo from '~/components/ContactInfo'
 import DeliveryInfo from '~/components/DeliveryInfo'
-import { OutletContext } from '~/root'
+import { OrderInProgress, OutletContext } from '~/root'
+import { getSession } from '~/sessions'
 
-export function action ({request}: {request: Request}) {
+export const loader: LoaderFunction = async ({ request }) => {
+	const session = await getSession(request.headers.get('Cookie'))
+	if (session.has('contact')) {
+		return session.get('contact')
+	}
+	return null
 }
 
 export default function Index() {
-	const { translator, setOrderItem, order } = useOutletContext<OutletContext>()
-	const navigate = useNavigate()
+	const { translator } = useOutletContext<OutletContext>()
 
-	const handleFormInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-		console.log(event.target.name, event.target.value)
-		setOrderItem(event.target.name, event.target.value)
-	}
-
-	const nextForm: MouseEventHandler = (e) => {
-		e.preventDefault()
-		navigate('/order/newOrder', { replace: false })
+	const contactData = useLoaderData<{ [k: string]: string }>()
+	const getDefaultValue = (key: keyof OrderInProgress) => {
+		if (contactData && contactData[key]) {
+			return contactData[key]
+		}
+		return ''
 	}
 
 	return (
 		<div className="flex flex-col">
-			<ContactInfo translator={translator} order={order} handleChange={handleFormInputChange} />
-			<DeliveryInfo
-				translator={translator}
-				handleChange={handleFormInputChange}
-				order={order}
-				nextForm={nextForm}
-			/>
+			<Form action="/order/newOrder" method="post" name="contact">
+				<ContactInfo translator={translator} getDefaultValue={getDefaultValue} />
+				<DeliveryInfo translator={translator} getDefaultValue={getDefaultValue} />
+			</Form>
 		</div>
 	)
 }

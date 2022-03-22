@@ -3,11 +3,10 @@ import { Order, OrderInProgress } from '~/root'
 
 type ContactInfoParams = {
 	translator: Translator
-	handleChange: React.ChangeEventHandler
-	order: OrderInProgress | Order
+	getDefaultValue: (key: string) => string
 }
 
-export default function ContactInfo({ translator, handleChange, order }: ContactInfoParams) {
+export default function ContactInfo({ translator, getDefaultValue }: ContactInfoParams) {
 	return (
 		<div className="w-full mx-auto">
 			<div className="flex flex-col md:mb-12">
@@ -22,7 +21,6 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							{translator.translate('name_and_surname')}
 						</label>
 						<input
-							onChange={handleChange}
 							type="text"
 							id="name"
 							name="fullname"
@@ -30,7 +28,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							required
 							autoComplete='name'
 							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none placeholder:text-brown-500 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue"
-							defaultValue={order.fullname}
+							defaultValue={getDefaultValue('fullname')}
 						/>
 					</div>
 				</div>
@@ -40,15 +38,14 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							{translator.translate('phone')}
 						</label>
 						<input
-							onChange={handleChange}
 							type="tel"
 							id="phone"
 							name="phone"
 							required
-							autoComplete='tel'
+							autoComplete="tel"
 							placeholder="+380 111 111 111"
 							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none placeholder:text-brown-500 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue "
-							defaultValue={order.phone}
+							defaultValue={getDefaultValue('phone')}
 						/>
 					</div>
 					<div className="text-sm flex  text-brown-600">
@@ -70,7 +67,6 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							</label>
 						</div>
 						<input
-							onChange={handleChange}
 							type="email"
 							id="email"
 							name="email"
@@ -78,7 +74,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							autoComplete='email'
               required
 							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none placeholder:text-brown-500 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue"
-							defaultValue={order.email}
+							defaultValue={getDefaultValue('email')}
 						/>
 					</div>
 				</div>

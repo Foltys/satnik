@@ -1,19 +1,14 @@
-import { MouseEventHandler } from 'react'
+import { useState } from 'react'
 import { Translator } from '~/locale/translation'
-import { Order, OrderInProgress } from '~/root'
-import { ContactAndDeliveryHasError } from '~/validators/orderValidation'
 
 type DeliveryInfoParams = {
 	translator: Translator
-	order: OrderInProgress | Order
-	handleChange: React.ChangeEventHandler
-	nextForm: MouseEventHandler
+	getDefaultValue: (key: string) => string
 }
 
-export default function DeliveryInfo({ translator, order, handleChange, nextForm }: DeliveryInfoParams) {
+export default function DeliveryInfo({ translator, getDefaultValue }: DeliveryInfoParams) {
+	const [delivery, setDelivery] = useState(['', 'delivery'].includes(getDefaultValue('delivery_type')))
 	//console.log('DeliveryInfo', order)
-	
-
 	return (
 		<div className="w-full mx-auto mt-14">
 			<div className="flex flex-col md:mb-12">
@@ -29,8 +24,10 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 						id="radiodelivery"
 						name="delivery_type"
 						value="delivery"
-						defaultChecked={order.delivery_type == 'delivery'}
-						onChange={handleChange}
+						defaultChecked={delivery}
+						onChange={(e) => {
+							setDelivery(e.currentTarget.checked)
+						}}
 					/>
 					<label htmlFor="radiodelivery">{translator.translate('deliver_to_adress')}</label>
 					<input
@@ -39,12 +36,14 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 						id="radiopickup"
 						name="delivery_type"
 						value="pickup"
-						defaultChecked={order.delivery_type == 'pickup'}
-						onChange={handleChange}
+						defaultChecked={!delivery}
+						onChange={(e) => {
+							setDelivery(!e.currentTarget.checked)
+						}}
 					/>
 					<label htmlFor="radiopickup">{translator.translate('pickup')}</label>
 				</div>
-				{order.delivery_type == 'delivery' ? (
+				{delivery ? (
 					<>
 						<div className="p-2 w-full">
 							<div className="relative my-2 mx-1">
@@ -52,7 +51,6 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									{translator.translate('name_and_surname')}
 								</label>
 								<input
-									onChange={handleChange}
 									type="text"
 									id="name"
 									autoComplete="name"
@@ -60,7 +58,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									placeholder="Aa"
 									required
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none text-gray-900 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue placeholder:text-brown-500"
-									defaultValue={order.delivery_fullname}
+									defaultValue={getDefaultValue('delivery_fullname')}
 								/>
 							</div>
 							<div className="text-sm flex  text-brown-600">
@@ -85,7 +83,6 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									{translator.translate('street_and_number')}
 								</label>
 								<input
-									onChange={handleChange}
 									type="text"
 									id="street"
 									name="delivery_street"
@@ -93,7 +90,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									autoComplete="street-address"
 									placeholder="Strašnická 12"
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none text-gray-900 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue placeholder:text-brown-500"
-									defaultValue={order.delivery_street}
+									defaultValue={getDefaultValue('delivery_street')}
 								/>
 							</div>
 						</div>
@@ -103,7 +100,6 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									{translator.translate('city')}
 								</label>
 								<input
-									onChange={handleChange}
 									type="text"
 									id="city"
 									name="delivery_city"
@@ -111,7 +107,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									required
 									autoComplete="address-level2"
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none text-gray-900 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue placeholder:text-brown-500"
-									defaultValue={order.delivery_city}
+									defaultValue={getDefaultValue('delivery_city')}
 								/>
 							</div>
 						</div>
@@ -121,7 +117,6 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									{translator.translate('zip')}
 								</label>
 								<input
-									onChange={handleChange}
 									type="text"
 									id="psc"
 									name="delivery_zip"
@@ -129,7 +124,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									required
 									autoComplete="postal-code"
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none text-gray-900 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue placeholder:text-brown-500"
-									defaultValue={order.delivery_zip}
+									defaultValue={getDefaultValue('delivery_zip')}
 								/>
 							</div>
 						</div>
@@ -142,14 +137,13 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 									<span className="text-brown-600 font-bold text-sm">{translator.translate('optional')}</span>
 								</div>
 								<input
-									onChange={handleChange}
 									type="tel"
 									id="phone2"
 									name="delivery_phone"
 									placeholder="+380 111 111 111"
 									autoComplete="tel"
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none text-gray-900 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue placeholder:text-brown-500"
-									defaultValue={order.delivery_phone}
+									defaultValue={getDefaultValue('delivery_phone')}
 								/>
 							</div>
 							<div className="text-sm flex  text-brown-600">
@@ -188,28 +182,27 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 						</div>
 					</div>
 				)}
-
 			</div>
 			<nav className="p-4 w-full flex flex-wrap gap-8 justify-center fixed  bottom-0 inset-x-0 bg-light">
-					<button
-						disabled={ContactAndDeliveryHasError(order)}
-						onClick={nextForm}
-						className="inline-flex items-center text-blue border-0 py-4 px-6 focus:outline-none outline  outline-blue disabled:outline-red disabled:bg-red disabled:text-white disabled:opacity-20 rounded-full md:text-xl hover:bg-red hover:text-white hover:outline-red"
+				<button
+					type={'submit'}
+					name={'_action'}
+					value={'submit_contact'}
+					className="inline-flex items-center text-blue border-0 py-4 px-6 focus:outline-none outline  outline-blue disabled:outline-red disabled:bg-red disabled:text-white disabled:opacity-20 rounded-full md:text-xl hover:bg-red hover:text-white hover:outline-red"
+				>
+					{translator.translate('continue_to_cloth_selection')}
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						className="h-6 w-6 ml-2"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+						strokeWidth={2}
 					>
-						{translator.translate('continue_to_cloth_selection')}
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							className="h-6 w-6 ml-2"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-							strokeWidth={2}
-						>
-							<path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-						</svg>
-					</button>
-				</nav>
+						<path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+					</svg>
+				</button>
+			</nav>
 		</div>
-		
 	)
 }
