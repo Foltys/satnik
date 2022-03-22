@@ -9,7 +9,7 @@
 	},
 	"scripts": {
 		"postinstall": "remix setup node",
-		"build": "cross-env NODE_ENV=production npm run build:css && remix build",
+		"build": "cross-env npm run build:css && remix build",
 		"build:css": "npm run generate:css -- --minify",
 		"dev": "cross-env NODE_ENV=development remix build && run-p dev:*",
 		"dev:node": "cross-env NODE_ENV=development nodemon ./build/index.js --watch ./build/index.js",
