@@ -1,4 +1,4 @@
-import { Order } from '@prisma/client'
+import { Order } from '~/root'
 import type { LoaderFunction, ActionFunction } from 'remix'
 import { useLoaderData, Form } from 'remix'
 import { OAuth2Profile } from 'remix-auth-oauth2'
@@ -20,7 +20,7 @@ async function updateOrder(orderId: number, state: string) {
 
 async function sendOrderConfirmById(id: number) {
 	const order = await getOrderByID(id)
-	sendOrderConfirm(order as Order) 
+	sendOrderConfirm(order as Order)
 }
 
 export const loader: LoaderFunction = async ({ request, params }) => {

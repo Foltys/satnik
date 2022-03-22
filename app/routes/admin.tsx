@@ -126,13 +126,12 @@ export default function Admin() {
 			<div id="layout" className="flex flex-row gap-12 mx-auto container">
 				<div
 					id="list"
-					className="grid grid-cols-5 grid-rows-1 gap-x-4 gap-y-8 text-gray-800 mx-auto pt-12 justify-center items-start bg-white p-12 rounded-3xl basis-2/3"
+					className="grid grid-cols-4 grid-rows-1 gap-x-4 gap-y-8 text-gray-800 mx-auto pt-12 justify-center items-start bg-white p-12 rounded-3xl basis-2/3"
 				>
 					<div className="text-[#957D5E] pb-12">Číslo obj.</div>
 					<div className="text-[#957D5E] pb-12">Objednávající</div>
 					<div className="text-[#957D5E] pb-12"></div>
 					<div className="text-[#957D5E] pb-12">Stav objednávky</div>
-					<div className="text-[#957D5E] pb-12"></div>
 					{data.orderListItems.map((order) => (
 						<Fragment key={order.id}>
 							<Link to={`${order.id}`} prefetch="intent">
