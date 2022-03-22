@@ -1,9 +1,8 @@
 import { Order } from '@prisma/client'
 import type { LoaderFunction } from 'remix'
-import { useLoaderData } from 'remix'
+import { useLoaderData, json } from 'remix'
 import { OAuth2Profile } from 'remix-auth-oauth2'
 import { getOrderByID, updateUnique } from '~/../prisma/api/Order'
-import { db } from '~/db.server'
 import { authenticator } from '~/server/auth.server'
 
 type LoaderData = {
@@ -39,22 +38,60 @@ export default function ProductCategory() {
 			<div className="flex flex-col">
 				{order.persons.map((person: any) => (
 					<div key={person.id}>
-						<div className="flex flex-row gap-6">
-							<div className="flex flex-col">
+						<div className="flex flex-row items-center place-content-between">
+							<div className="flex flex-col grow">
 								<p className="font-semibold text-lg text-[#0A9DBF]">{person.fullname}</p>
 								<p>
 									{person.sex}, {person.age}
 								</p>
 							</div>
-							<div className='flex justify-center align-center'>
-								<div className=" p-4 rounded-xl bg-[#C6B49D]">{person.clothing_size}</div>
+							<div className="flex justify-center align-center p-4 m-4 rounded-xl bg-[#F8EBDB]">
+								<img src="/cloth.svg" alt="" className="mr-2" />
+								<div className="">{person.clothing_size}</div>
 							</div>
-							<div className='flex justify-center align-center'>
-								<div className=" p-4 rounded-xl bg-[#C6B49D]">{person.shoe_size}</div>
+							<div className="flex justify-center align-center p-4  m-4 rounded-xl bg-[#F8EBDB]">
+								<img src="/shoe.svg" alt="" className="mr-2" />
+								<div className=" ">{person.shoe_size}</div>
 							</div>
 						</div>
+
+						<div className="text-sm">Oblečení</div>
+						<div className=" text-lg font-bold">{person.requirements[0].description}</div>
+						{order.persons.length > 1 && <hr className="border border-[#C6B49D]" />}
 					</div>
 				))}
+				<div className="flex flex-row justify-between mt-6">
+					<div className="flex gap-y-1 flex-col text-sm text-gray-800">
+						<span className=" text-[#C6B49D] mb-2">Objednává:</span>
+						<span>{order.fullname}</span>
+						<span>{order.phone}</span>
+						<a href={`mailto:${order.email}`}>{order.email}</a>
+					</div>
+					<div className='w-1 border-l border-l-[#C6B49D] h-36'></div>
+					<div className="flex gap-y-1 flex-col text-sm text-gray-800">
+						{order.delivery_type === 'delivery' ? (
+							<>
+								<span className=" text-[#C6B49D] mb-2">Doručovací adresa:</span>
+								<span>{order.delivery_fullname}</span>
+								<span>{order.delivery_city}</span>
+								<span>{order.delivery_street}</span>
+								<span>{order.delivery_zip}</span>
+								<a href={`tel:${order.delivery_phone}`}>{order.delivery_phone}</a>
+								<a href={`mailto:${order.email}`}>{order.email}</a>
+							</>
+						) : (
+							<>
+								<span className="text-[#C6B49D] mb-2">Místo vyzvednutí:</span>
+								<span>Hala 13 v Pražské tržnici</span>
+								<span>Bubenské nábřeží 306</span>
+								<span>170 00 Praha 7</span>
+								<a href={`tel:+420737597070`}>+420 737 59 70 70</a>
+								<a href={`mailto:info@satnikpraha.cz`}>info@satnikpraha.cz</a>
+							</>
+						)}
+					</div>
+				</div>
+				<div></div>
 			</div>
 		</div>
 	)
