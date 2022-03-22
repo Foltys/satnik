@@ -73,8 +73,6 @@ function getStateColor(state: string): string {
 	}
 }
 
-
-
 export default function Admin() {
 	const data = useLoaderData<LoaderData>()
 
@@ -135,10 +133,12 @@ export default function Admin() {
 					{data.orderListItems.map((order) => (
 						<Fragment key={order.id}>
 							<Link to={`${order.id}`} prefetch="intent">
-								<div className="text-[#0A9DBF] font-semibold ">{order.id}</div>
+								{order.id}
 							</Link>
 
-							<div>{order.fullname}</div>
+							<Link to={`${order.id}`} prefetch="intent">
+								<div className="text-[#0A9DBF] font-semibold">{order.fullname}</div>
+							</Link>
 							{order.delivery_type === 'pickup' ? (
 								<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="#000" viewBox="0 0 24 24">
 									<path

@@ -123,7 +123,7 @@ export default function OrderDetail() {
 					</div>
 				</div>
 
-				<Form method="post">
+				<Form method="post" className="mt-6">
 					<>
 						{order.state === 'open' ? (
 							<button className="text-[#0A9DBF] font-semibold" name="action" value="process">
