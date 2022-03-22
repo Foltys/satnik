@@ -1,3 +1,5 @@
+const config = require('config')
+
 /**
  * @type {import('@remix-run/dev').AppConfig}
  */
@@ -8,6 +10,6 @@ module.exports = {
   // appDirectory: "app",
   // assetsBuildDirectory: "public/build",
   // serverBuildPath: "functions/[[path]].js",
-  publicPath: "/objednavka/build/",
+  publicPath: config.get('publicPath'),
   // devServerPort: 8002
 };

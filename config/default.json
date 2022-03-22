@@ -1,5 +1,6 @@
 {
   "hostname": "http://localhost:3000",
+  "publicPath": "/build/",
   "session": {
     "secrets": [
       "5Kbrx4jn6G7JGPF"
