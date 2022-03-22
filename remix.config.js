@@ -8,6 +8,6 @@ module.exports = {
   // appDirectory: "app",
   // assetsBuildDirectory: "public/build",
   // serverBuildPath: "functions/[[path]].js",
-  // publicPath: "/build/",
+  publicPath: "/objednavka/build/",
   // devServerPort: 8002
 };
