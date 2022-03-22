@@ -94,13 +94,13 @@ export default function Admin() {
 								))}
 							<span className="ml-3 text-xl">{data.user.displayName}</span>
 						</div>
-						<nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 	flex flex-wrap items-center text-base justify-center">
+						<nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 flex flex-wrap items-center text-base justify-center">
 							<a className="mr-5 hover:text-gray-900 hidden" href="/">
 								maybe some links
 							</a>
 						</nav>
 						<Form action="/logout" method="post">
-							<button className="inline-flex items-center  border-0 py-1 px-3 focus:outline-none hover:text-gray-900 rounded text-base mt-4 md:mt-0">
+							<button className="inline-flex items-center  font-medium border-0 py-1 px-3 focus:outline-none hover:text-gray-900 rounded text-base mt-4 md:mt-0">
 								Logout
 								<svg
 									fill="none"
@@ -139,7 +139,7 @@ export default function Admin() {
 							</Link>
 
 							<Link to={`${order.id}`} prefetch="intent">
-								<div className="text-blue font-semibold">{order.fullname}</div>
+								<div className="text-blue font-bold">{order.fullname}</div>
 							</Link>
 							{order.delivery_type === 'pickup' ? (
 								<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="#000" viewBox="0 0 24 24">
@@ -166,7 +166,7 @@ export default function Admin() {
 								</svg>
 							)}
 
-							<div className={`font-semibold mr-8 text-${getStateColor(order.state)}`}>
+							<div className={`font-bold mr-8 text-${getStateColor(order.state)}`}>
 								{translateState(order.state)}
 							</div>
 						</Fragment>

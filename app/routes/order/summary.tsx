@@ -68,11 +68,11 @@ export default function Summary() {
 			</Link>
 			<div className="flex mb-12">
 				<div className="flex flex-col w-1/2 px-1">
-					<span className="font-semibold mt-4">{translator.translate('orderer')}</span>
+					<span className="font-bold mt-4">{translator.translate('orderer')}</span>
 					<span>{order.fullname}</span>
 					<span>{order.phone}</span>
 					<span>{order.email}</span>
-					<span className="font-semibold mt-4">{translator.translate('delivery_address')}</span>
+					<span className="font-bold mt-4">{translator.translate('delivery_address')}</span>
 					{order.delivery_type === 'pickup' ? (
 						<>
 							<span>Hala 13 v Pražské tržnici</span>
@@ -93,7 +93,7 @@ export default function Summary() {
 					)}
 				</div>
 				<div className="flex flex-col w-1/2">
-					<span className="font-semibold mt-4">{translator.translate('for_who_and_what')}</span>
+					<span className="font-bold mt-4">{translator.translate('for_who_and_what')}</span>
 					{order.persons.map((person, index) => {
 						return (
 							<div key={index}>
@@ -108,7 +108,7 @@ export default function Summary() {
 			<nav className="p-4 w-full flex flex-wrap gap-8 justify-center fixed bottom-0 inset-x-0 bg-light">
 				<Form method="post" onSubmit={submitForm}>
 					<input id="formData" type={'hidden'} name="order" value={JSON.stringify(fullOrder)} readOnly></input>
-					<button className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-red text-light outline-red hover:text-red hover:bg-light">
+					<button className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-bold text-lg bg-red text-light outline-red hover:text-red hover:bg-light">
 						{translator.translate('to_order')}
 					</button>
 				</Form>

@@ -26,7 +26,7 @@ export default function PersonToOrder({
 					<span className="text-2xl font-bold group-hover:text-blue">{translator.translate(selectedGender)}</span>
 					<button
 						onClick={discardPerson}
-						className="font-semibold group-hover:text-blue mt-4 border-0 py-2 px-5 outline outline-light group-hover:outline-blue rounded-full"
+						className="font-bold group-hover:text-blue mt-4 border-0 py-2 px-5 outline outline-light group-hover:outline-blue rounded-full"
 					>
 						{translator.translate('remove')}
 					</button>
@@ -63,7 +63,7 @@ export default function PersonToOrder({
 			<div className="flex gap-x-5 md:gap-x-7">
 				<div className="py-2 w-1/5">
 					<div className="my-2">
-						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-900">
+						<label htmlFor="name" className="leading-7 font-bold text-base text-gray-900">
 							{translator.translate('age')}
 						</label>
 						<input
@@ -81,7 +81,7 @@ export default function PersonToOrder({
 				</div>
 				<div className="py-2 w-4/5">
 					<div className="my-2">
-						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-900">
+						<label htmlFor="name" className="leading-7 font-bold text-base text-gray-900">
 							{translator.translate('name')}
 						</label>
 						<input
@@ -108,7 +108,7 @@ export default function PersonToOrder({
 			<div className="flex flex-col">
 				<div className="py-2 w-full">
 					<div className="my-2">
-						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-900">
+						<label htmlFor="name" className="leading-7 font-bold text-base text-gray-900">
 							{translator.translate('what_do_you_need')}
 						</label>
 						<textarea
@@ -125,12 +125,12 @@ export default function PersonToOrder({
 				</div>
 				<div className="grid grid-cols-2 gap-x-5 md:gap-x-7">
 					<div>
-						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-900 mb-1 ">
+						<label htmlFor="name" className="leading-7 font-bold text-base text-gray-900 mb-1 ">
 							{translator.translate('cloth_size')}
 						</label>
 					</div>
 					<div>
-						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-900 mb-1">
+						<label htmlFor="name" className="leading-7 font-bold text-base text-gray-900 mb-1">
 							{translator.translate('shoes_size')}
 						</label>
 					</div>

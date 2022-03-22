@@ -16,7 +16,7 @@ export default function Confirmation() {
 							</h1>
 						</div>
 					</div>
-					<div className="w-full mx-auto text-lg font-semibold text-red ml-1 ">
+					<div className="w-full mx-auto text-lg font-bold text-red ml-1 ">
 						{translator.translate('volunteer_info')}
 					</div>
 					<div className="w-full mx-auto text-xl my-12 mb-6 bg-red text-light py-6 px-4 ml-1">

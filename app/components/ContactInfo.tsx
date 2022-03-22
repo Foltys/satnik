@@ -18,7 +18,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 			<div className="flex flex-wrap -m-2 text-gray-900">
 				<div className="p-2 w-full">
 					<div className="relative my-2 mx-1">
-						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-900">
+						<label htmlFor="name" className="leading-7 font-bold text-base text-gray-900">
 							{translator.translate('name_and_surname')}
 						</label>
 						<input
@@ -36,7 +36,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 				</div>
 				<div className="p-2 w-full">
 					<div className="relative my-2 mx-1">
-						<label htmlFor="phone" className="leading-7 font-semibold text-base text-gray-900">
+						<label htmlFor="phone" className="leading-7 font-bold text-base text-gray-900">
 							{translator.translate('phone')}
 						</label>
 						<input
@@ -65,7 +65,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 				<div className="p-2 w-full">
 					<div className="relative my-2 mx-1">
 						<div className="flex">
-							<label htmlFor="email" className="leading-7 grow font-semibold text-base text-gray-900">
+							<label htmlFor="email" className="leading-7 grow font-bold text-base text-gray-900">
 								{translator.translate('email')}
 							</label>
 						</div>

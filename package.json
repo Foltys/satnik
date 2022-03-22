@@ -15,7 +15,7 @@
 		"dev:node": "cross-env NODE_ENV=development nodemon ./build/index.js --watch ./build/index.js",
 		"dev:remix": "cross-env NODE_ENV=development remix watch",
 		"dev:css": "npm run generate:css -- --watch",
-		"generate:css": "npx tailwindcss -o ./app/tailwind.css",
+		"generate:css": "npx tailwindcss -i ./styles/app.css -o ./app/tailwind.css",
 		"start": "cross-env NODE_ENV=production node ./build/index.js",
 		"node": "TS_NODE_FILES=true TZ=UTC node --require ts-node/register"
 	},

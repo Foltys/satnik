@@ -156,7 +156,7 @@ export default function App() {
 				<script async src="https://www.googletagmanager.com/gtag/js?id=G-B82SVEWMJ2"></script>
 				<script async src="/ga.js"></script>
 			</head>
-			<body className="bg-light">
+			<body className="bg-light font-sans text-medium">
 				<section className="text-brown-500 body-font relative">
 					<Outlet
 						context={{

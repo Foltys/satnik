@@ -17,7 +17,7 @@ export default function GenderSelector({ translator, selectGender }: GenderSelec
 			>
 				<img src="/woman.svg" alt="woman" className="my-4 " />
 				<span className="text-2xl font-bold">{translator.translate('woman')}</span>
-				<span className="text-blue font-semibold mt-4">{translator.translate('pick')}</span>
+				<span className="text-blue font-bold mt-4">{translator.translate('pick')}</span>
 			</button>
 			<button
 				onClick={selectGender('man')}
@@ -25,7 +25,7 @@ export default function GenderSelector({ translator, selectGender }: GenderSelec
 			>
 				<img src="/man.svg" alt="man" className="my-4 " />
 				<span className="text-2xl font-bold">{translator.translate('man')}</span>
-				<span className="text-blue font-semibold mt-4">{translator.translate('pick')}</span>
+				<span className="text-blue font-bold mt-4">{translator.translate('pick')}</span>
 			</button>
 			<button
 				onClick={selectGender('kid')}
@@ -33,7 +33,7 @@ export default function GenderSelector({ translator, selectGender }: GenderSelec
 			>
 				<img src="/kid.svg" alt="kid" className="my-4 " />
 				<span className="text-2xl font-bold">{translator.translate('kid')}</span>
-				<span className="text-blue font-semibold mt-4">{translator.translate('pick')}</span>
+				<span className="text-blue font-bold mt-4">{translator.translate('pick')}</span>
 			</button>
 		</div>
 	)

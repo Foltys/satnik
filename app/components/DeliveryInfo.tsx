@@ -48,7 +48,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 					<>
 						<div className="p-2 w-full">
 							<div className="relative my-2 mx-1">
-								<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-900">
+								<label htmlFor="name" className="leading-7 font-bold text-base text-gray-900">
 									{translator.translate('name_and_surname')}
 								</label>
 								<input
@@ -81,7 +81,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 						</div>
 						<div className="p-2 w-full">
 							<div className="relative my-2 mx-1">
-								<label htmlFor="street" className="leading-7 font-semibold text-base text-gray-900">
+								<label htmlFor="street" className="leading-7 font-bold text-base text-gray-900">
 									{translator.translate('street_and_number')}
 								</label>
 								<input
@@ -99,7 +99,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 						</div>
 						<div className="p-2 w-full">
 							<div className="relative my-2 mx-1">
-								<label htmlFor="city" className="leading-7 font-semibold text-base text-gray-900">
+								<label htmlFor="city" className="leading-7 font-bold text-base text-gray-900">
 									{translator.translate('city')}
 								</label>
 								<input
@@ -117,7 +117,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 						</div>
 						<div className="p-2 w-1/2">
 							<div className="relative my-2 mx-1">
-								<label htmlFor="city" className="leading-7 font-semibold text-base text-gray-900">
+								<label htmlFor="city" className="leading-7 font-bold text-base text-gray-900">
 									{translator.translate('zip')}
 								</label>
 								<input
@@ -136,7 +136,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 						<div className="p-2 w-full">
 							<div className="relative my-2 mx-1">
 								<div className="flex">
-									<label htmlFor="phone2" className="leading-7 grow font-semibold text-base text-gray-900">
+									<label htmlFor="phone2" className="leading-7 grow font-bold text-base text-gray-900">
 										{translator.translate('phone')}
 									</label>
 									<span className="text-brown-600 font-bold text-sm">{translator.translate('optional')}</span>
@@ -171,7 +171,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 					</>
 				) : (
 					<div className="p-2 w-full">
-						<div className="relative my-2 mx-1 bg-blue text-xl flex flex-col text-light font-semibold p-5 md:w-2/3 ">
+						<div className="relative my-2 mx-1 bg-blue text-xl flex flex-col text-light font-bold p-5 md:w-2/3 ">
 							<span>Hala 13 v Pražské tržnici</span>
 							<span>Bubenské nábřeží 306</span>
 							<span>170 00 Praha 7</span>
@@ -181,7 +181,7 @@ export default function DeliveryInfo({ translator, order, handleChange, nextForm
 							</a>
 							<a href="mailto:info@satnikpraha.cz">E-mail: info@satnikpraha.cz</a>
 							<a href="https://goo.gl/maps/o6Z8qzkG6pnTRs7P8" target="_blank" rel="noreferrer">
-								<button className="w-44 text-base mt-10 text-light border-0 py-2 px-3 focus:outline-none outline  outline-light rounded-full  hover:text-red hover:bg-light  hover:outline-light font-semibold">
+								<button className="w-44 text-base mt-10 text-light border-0 py-2 px-3 focus:outline-none outline  outline-light rounded-full  hover:text-red hover:bg-light  hover:outline-light font-bold">
 									{translator.translate('show_on_map')}
 								</button>
 							</a>

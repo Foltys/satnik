@@ -61,13 +61,13 @@ export default function OrderDetail() {
 	return (
 		<div className="flex flex-col">
 			<p className="text-3xl font-bold">{order.id}</p>
-			<p className="text-sm font-semibold text-brown-500 py-2">Vytvořeno: {order.created_at}</p>
+			<p className="text-sm font-bold text-brown-500 py-2">Vytvořeno: {order.created_at}</p>
 			<div className="flex flex-col">
 				{order.persons.map((person: any) => (
 					<div key={person.id}>
 						<div className="flex flex-row items-center place-content-between">
 							<div className="flex flex-col grow">
-								<p className="font-semibold text-lg text-blue">{person.fullname}</p>
+								<p className="font-bold text-lg text-blue">{person.fullname}</p>
 								<p>
 									{person.sex}, {person.age}
 								</p>
@@ -122,15 +122,15 @@ export default function OrderDetail() {
 				<Form method="post" className="mt-6">
 					<>
 						{order.state === 'open' ? (
-							<button className="text-blue font-semibold" name="action" value="process">
+							<button className="text-blue font-bold" name="action" value="process">
 								Začít vyřizovat
 							</button>
 						) : order.state != 'done' ? (
-							<button className="text-blue font-semibold" name="action" value="finish">
+							<button className="text-blue font-bold" name="action" value="finish">
 								Označit jako vyřízené
 							</button>
 						) : (
-							<button className="text-blue font-semibold" name="action" value="revert">
+							<button className="text-blue font-bold" name="action" value="revert">
 								Vrátit zpět
 							</button>
 						)}
