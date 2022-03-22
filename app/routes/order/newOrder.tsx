@@ -120,13 +120,13 @@ export default function NewOrder() {
 				<div className="flex items-center mb-6 md:mb-12">
 					<button
 						onClick={() => navigate('/')}
-						className="items-center ml-1 mt-1 text-[#0A9DBF] border-0 py-2 px-4 focus:outline-none outline  outline-[#0A9DBF] rounded-full  font-semibold text-lg hover:bg-[#eb2f06] hover:text-[#F8EBDB] hover:outline-[#eb2f06] fill-[#0A9DBF] hover:fill-[#F8EBDB]"
+						className="items-center ml-1 mt-1 text-blue border-0 py-2 px-4 focus:outline-none outline  outline-blue rounded-full  font-semibold text-lg hover:bg-red hover:text-light hover:outline-red fill-blue hover:fill-light"
 					>
 						<svg width="16" height="18" xmlns="http://www.w3.org/2000/svg">
 							<path d="m.293 8.293 4-4a1 1 0 1 1 1.414 1.414L3.415 8H15a1 1 0 1 1 0 2H3.415l2.294 2.294a1 1 0 1 1-1.414 1.414l-4-4a.997.997 0 0 1-.002-1.414Z" />
 						</svg>
 					</button>
-					<h1 className="sm:text-3xl text-2xl font-bold title-font text-gray-800 ml-6">
+					<h1 className="sm:text-3xl text-2xl font-bold title-font text-gray-900 ml-6">
 						{translator.translate('order')}
 					</h1>
 				</div>
@@ -137,10 +137,10 @@ export default function NewOrder() {
 					return <PersonOnOrder key={key} details={item} editItem={() => editPerson(key)} translator={translator} />
 				})
 			) : (
-				<div className="text-[#0A9DBF] font-medium my-5">{translator.translate('who_is_wearing')}</div>
+				<div className="text-blue font-medium my-5">{translator.translate('who_is_wearing')}</div>
 			)}
 			{order.persons && order.persons.length > 0 && (
-				<h1 className="sm:text-3xl text-2xl font-bold title-font text-gray-800 ml-6 py-6">
+				<h1 className="sm:text-3xl text-2xl font-bold title-font text-gray-900 ml-6 py-6">
 					{translator.translate('add_person_to_order')}
 				</h1>
 			)}
@@ -155,12 +155,12 @@ export default function NewOrder() {
 					discardPerson={cleanPersonForm}
 				/>
 			)}
-			<nav className="p-4 w-full flex flex-wrap gap-8 justify-center fixed bottom-0 inset-x-0 bg-[#F8EBDB]">
+			<nav className="p-4 w-full flex flex-wrap gap-8 justify-center fixed bottom-0 inset-x-0 bg-light">
 				{newPersonInfo?.fullname && (
 					<button
 						onClick={addNextPerson}
 						disabled={NewPersonHasError(newPersonInfo)}
-						className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-[#eb2f06] disabled:bg-[#eb2f06] text-[#F8EBDB] outline-[#eb2f06] hover:text-[#eb2f06] hover:bg-[#F8EBDB] disabled:opacity-20 disabled:text-[#F8EBDB] disabled:outline-[#eb2f06]"
+						className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-red disabled:bg-red text-light outline-red hover:text-red hover:bg-light disabled:opacity-20 disabled:text-light disabled:outline-red"
 					>
 						{translator.translate('add_person')}
 					</button>
@@ -169,7 +169,7 @@ export default function NewOrder() {
 					<button
 						disabled={checkNextButton()}
 						onClick={nextForm}
-						className="text-[#0A9DBF] disabled:text-[#0A9DBF] border-0 py-2 px-4 focus:outline-none outline  outline-[#0A9DBF] disabled:outline-[#0A9DBF] rounded-full  font-semibold text-lg hover:bg-[#eb2f06] disabled:bg-[#F8EBDB] hover:text-[#F8EBDB] hover:outline-[#eb2f06] disabled:opacity-20"
+						className="text-blue disabled:text-blue border-0 py-2 px-4 focus:outline-none outline  outline-blue disabled:outline-blue rounded-full  font-semibold text-lg hover:bg-red disabled:bg-light hover:text-light hover:outline-red disabled:opacity-20"
 					>
 						{translator.translate('to_confirm')}
 					</button>

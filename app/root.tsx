@@ -148,8 +148,8 @@ export default function App() {
 				<script async src="https://www.googletagmanager.com/gtag/js?id=G-B82SVEWMJ2"></script>
 				<script async src="/ga.js"></script>
 			</head>
-			<body className="bg-[#F8EBDB]">
-				<section className="text-[#C6B49D] body-font relative">
+			<body className="bg-light">
+				<section className="text-brown-500 body-font relative">
 					<Outlet
 						context={{
 							translator,

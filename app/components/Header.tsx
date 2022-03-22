@@ -9,20 +9,20 @@ type HeaderParams = {
 
 export default function Header({ translator, switchLanguage }: HeaderParams) {
 	return (
-		<header className="text-gray-800 body-font  bg-[#F8EBDB] pb-2">
+		<header className="text-gray-900 body-font  bg-light pb-2">
 			<div className="container mx-auto flex flex-wrap flex-row items-center">
-				<Link className="flex title-font font-medium items-center text-gray-800 ml-5 md:ml-0" to="/">
+				<Link className="flex title-font font-medium items-center text-gray-900 ml-5 md:ml-0" to="/">
 					<img src="/red.svg" className="w-16 h-16 md:w-32 md:h-32" alt="Šatník Praha" />
 					<span className="ml-3 text-xl hidden">Šatník</span>
 				</Link>
 				<nav className="ml-auto flex flex-wrap items-center text-base justify-center">
-					<a className="mr-5 hover:text-gray-800 hidden" href="/">
+					<a className="mr-5 hover:text-gray-900 hidden" href="/">
 						First Link
 					</a>
 				</nav>
 				<button
 					onClick={switchLanguage}
-					className="justify-center inline-flex items-center text-[#0A9DBF] font-semibold  border-0 py-2 px-5 focus:outline-[#eb2f06] outline outline-offset-2 outline-[#0A9DBF] rounded-full text-base mr-5 hover:outline-[#eb2f06]"
+					className="justify-center inline-flex items-center text-blue font-semibold  border-0 py-2 px-5 focus:outline-red outline outline-offset-2 outline-blue rounded-full text-base mr-5 hover:outline-red"
 				>
 					{translator.language == 'cs' ? (
 						<svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg">

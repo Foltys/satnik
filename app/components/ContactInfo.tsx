@@ -11,14 +11,14 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 	return (
 		<div className="w-full mx-auto">
 			<div className="flex flex-col md:mb-12">
-				<h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-800 ml-1">
+				<h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-900 ml-1">
 					{translator.translate('contact')}
 				</h1>
 			</div>
-			<div className="flex flex-wrap -m-2 text-gray-800">
+			<div className="flex flex-wrap -m-2 text-gray-900">
 				<div className="p-2 w-full">
 					<div className="relative my-2 mx-1">
-						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-800">
+						<label htmlFor="name" className="leading-7 font-semibold text-base text-gray-900">
 							{translator.translate('name_and_surname')}
 						</label>
 						<input
@@ -29,14 +29,14 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							placeholder="Aa"
 							required
 							autoComplete='name'
-							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none placeholder:text-[#C6B49D] py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF]"
+							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none placeholder:text-brown-500 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue"
 							defaultValue={order.fullname}
 						/>
 					</div>
 				</div>
 				<div className="p-2 w-full">
 					<div className="relative my-2 mx-1">
-						<label htmlFor="phone" className="leading-7 font-semibold text-base text-gray-800">
+						<label htmlFor="phone" className="leading-7 font-semibold text-base text-gray-900">
 							{translator.translate('phone')}
 						</label>
 						<input
@@ -47,11 +47,11 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							required
 							autoComplete='tel'
 							placeholder="+380 111 111 111"
-							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none placeholder:text-[#C6B49D] py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF] "
+							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none placeholder:text-brown-500 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue "
 							defaultValue={order.phone}
 						/>
 					</div>
-					<div className="text-sm flex  text-[#957D5E]">
+					<div className="text-sm flex  text-brown-600">
 						<svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mx-1" viewBox="0 0 20 20" fill="currentColor">
 							<path
 								fillRule="evenodd"
@@ -65,7 +65,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 				<div className="p-2 w-full">
 					<div className="relative my-2 mx-1">
 						<div className="flex">
-							<label htmlFor="email" className="leading-7 grow font-semibold text-base text-gray-800">
+							<label htmlFor="email" className="leading-7 grow font-semibold text-base text-gray-900">
 								{translator.translate('email')}
 							</label>
 						</div>
@@ -77,7 +77,7 @@ export default function ContactInfo({ translator, handleChange, order }: Contact
 							placeholder="@"
 							autoComplete='email'
               required
-							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-[#957D5E] focus:border-white focus:bg-white focus:ring-2 focus:ring-[#0A9DBF] text-base outline-none placeholder:text-[#C6B49D] py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-[#0A9DBF]"
+							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none placeholder:text-brown-500 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue"
 							defaultValue={order.email}
 						/>
 					</div>

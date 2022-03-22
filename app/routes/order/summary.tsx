@@ -52,17 +52,17 @@ export default function Summary() {
 	};
 
 	return (
-		<div className="flex flex-col text-gray-800	">
+		<div className="flex flex-col text-gray-900	">
 			{order.persons &&
 				order.persons.length &&
 				order.persons.map((item, key) => {
 					return <PersonOnOrder key={key} details={item} editItem={() => editPerson(key)} translator={translator} />
 				})}
-			<h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-800">
+			<h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-gray-900">
 				{translator.translate('order_check')}
 			</h1>
 			<Link to="/">
-				<span className="underline font-bold text-[#0A9DBF]">Upravit kontaktní údaje</span>
+				<span className="underline font-bold text-blue">Upravit kontaktní údaje</span>
 			</Link>
 			<div className="flex mb-12">
 				<div className="flex flex-col w-1/2 px-1">
@@ -103,10 +103,10 @@ export default function Summary() {
 				</div>
 			</div>
 
-			<nav className="p-4 w-full flex flex-wrap gap-8 justify-center fixed bottom-0 inset-x-0 bg-[#F8EBDB]">
+			<nav className="p-4 w-full flex flex-wrap gap-8 justify-center fixed bottom-0 inset-x-0 bg-light">
 				<Form method="post" onSubmit={submitForm}>
 					<input id="formData" type={'hidden'} name="order" value={JSON.stringify(fullOrder)} readOnly></input>
-					<button className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-[#eb2f06] text-[#F8EBDB] outline-[#eb2f06] hover:text-[#eb2f06] hover:bg-[#F8EBDB]">
+					<button className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-semibold text-lg bg-red text-light outline-red hover:text-red hover:bg-light">
 						{translator.translate('to_order')}
 					</button>
 				</Form>

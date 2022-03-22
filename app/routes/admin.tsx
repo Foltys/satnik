@@ -63,11 +63,11 @@ function translateDeliveryType(type: string): string {
 function getStateColor(state: string): string {
 	switch (state) {
 		case 'open':
-			return '[#EB2F06]'
+			return 'red'
 		case 'process':
-			return '[#0A9DBF]'
+			return 'blue'
 		case 'done':
-			return '[#957D5E]'
+			return 'brown-600'
 		default:
 			return ''
 	}
@@ -88,7 +88,7 @@ export default function Admin() {
 										key={data.user?.id}
 										src={photo.value}
 										alt={'profile'}
-										className="w-10 h-10 text-white border-[#0A9DBF] rounded-full"
+										className="w-10 h-10 text-white border-blue rounded-full"
 									/>
 								))}
 							<span className="ml-3 text-xl">{data.user.displayName}</span>
@@ -99,7 +99,7 @@ export default function Admin() {
 							</a>
 						</nav>
 						<Form action="/logout" method="post">
-							<button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
+							<button className="inline-flex items-center  border-0 py-1 px-3 focus:outline-none hover:text-gray-900 rounded text-base mt-4 md:mt-0">
 								Logout
 								<svg
 									fill="none"
@@ -118,18 +118,19 @@ export default function Admin() {
 				</header>
 			)}
 			{/* tohle ochcává JIT tailwindu abych ty barvy mohl použít ve funkci */}
-			<div className=" text-[#0A9DBF] hidden"></div>
-			<div className=" text-[#EB2F06] hidden"></div>
-			<div className=" text-[#957D5E] hidden"></div>
+			<div className=" text-blue hidden"></div>
+			<div className=" text-red hidden"></div>
+			<div className=" text-brown-600 hidden"></div>
 			<div id="layout" className="flex flex-row gap-12 mx-auto container items-start">
+                <div id='lists flex flex-col'>
 				<div
-					id="list"
-					className="grid grid-cols-4 grid-rows-1 gap-x-4 gap-y-8 text-gray-800 mx-auto pt-12  bg-white p-12 rounded-3xl basis-2/3"
+					id="new_list"
+					className="grid grid-cols-4 grid-rows-1 gap-x-4 gap-y-8 text-gray-900 mx-auto pt-12  bg-white p-12 rounded-3xl basis-2/3"
 				>
-					<div className="text-[#957D5E] pb-12">Číslo obj.</div>
-					<div className="text-[#957D5E] pb-12">Objednávající</div>
-					<div className="text-[#957D5E] pb-12"></div>
-					<div className="text-[#957D5E] pb-12">Stav objednávky</div>
+					<div className="text-brown-600 pb-12">Číslo obj.</div>
+					<div className="text-brown-600 pb-12">Objednávající</div>
+					<div className="text-brown-600 pb-12"></div>
+					<div className="text-brown-600 pb-12">Stav objednávky</div>
 					{data.orderListItems.map((order) => (
 						<Fragment key={order.id}>
 							<Link to={`${order.id}`} prefetch="intent">
@@ -137,7 +138,7 @@ export default function Admin() {
 							</Link>
 
 							<Link to={`${order.id}`} prefetch="intent">
-								<div className="text-[#0A9DBF] font-semibold">{order.fullname}</div>
+								<div className="text-blue font-semibold">{order.fullname}</div>
 							</Link>
 							{order.delivery_type === 'pickup' ? (
 								<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="#000" viewBox="0 0 24 24">
@@ -170,9 +171,14 @@ export default function Admin() {
 						</Fragment>
 					))}
 				</div>
+                {/* in case there will be archive list */}
+                <div id='archive'>
+                    
+                </div>
+                </div>
 				<div
 					id="detail"
-					className="basis-1/3 text-gray-800 mx-auto pt-12 justify-center items-start bg-white p-12 rounded-3xl"
+					className="basis-1/3 text-gray-900 mx-auto pt-12 justify-center items-start bg-white p-12 rounded-3xl"
 				>
 					<Outlet />
 				</div>

@@ -65,22 +65,22 @@ export default function OrderDetail() {
 	return (
 		<div className="flex flex-col">
 			<p className="text-3xl font-bold">{order.id}</p>
-			<p className="text-sm font-semibold text-[#C6B49D] py-2">Vytvořeno: {order.created_at}</p>
+			<p className="text-sm font-semibold text-brown-500 py-2">Vytvořeno: {order.created_at}</p>
 			<div className="flex flex-col">
 				{order.persons.map((person: any) => (
 					<div key={person.id}>
 						<div className="flex flex-row items-center place-content-between">
 							<div className="flex flex-col grow">
-								<p className="font-semibold text-lg text-[#0A9DBF]">{person.fullname}</p>
+								<p className="font-semibold text-lg text-blue">{person.fullname}</p>
 								<p>
 									{person.sex}, {person.age}
 								</p>
 							</div>
-							<div className="flex justify-center align-center p-4 m-4 rounded-xl bg-[#F8EBDB]">
+							<div className="flex justify-center align-center p-4 m-4 rounded-xl bg-light">
 								<img src="/cloth.svg" alt="" className="mr-2" />
 								<div className="">{person.clothing_size}</div>
 							</div>
-							<div className="flex justify-center align-center p-4  m-4 rounded-xl bg-[#F8EBDB]">
+							<div className="flex justify-center align-center p-4  m-4 rounded-xl bg-light">
 								<img src="/shoe.svg" alt="" className="mr-2" />
 								<div className=" ">{person.shoe_size}</div>
 							</div>
@@ -88,21 +88,21 @@ export default function OrderDetail() {
 
 						<div className="text-sm">Oblečení</div>
 						<div className=" text-lg font-bold">{person.requirements[0].description}</div>
-						{order.persons.length > 1 && <hr className="border border-[#C6B49D]" />}
+						{order.persons.length > 1 && <hr className="border border-brown-500" />}
 					</div>
 				))}
 				<div className="flex flex-row justify-between mt-6">
-					<div className="flex gap-y-1 flex-col text-sm text-gray-800">
-						<span className=" text-[#C6B49D] mb-2">Objednává:</span>
+					<div className="flex gap-y-1 flex-col text-sm text-gray-900">
+						<span className=" text-brown-500 mb-2">Objednává:</span>
 						<span>{order.fullname}</span>
 						<span>{order.phone}</span>
 						<a href={`mailto:${order.email}`}>{order.email}</a>
 					</div>
-					<div className="w-1 border-l border-l-[#C6B49D] h-36"></div>
-					<div className="flex gap-y-1 flex-col text-sm text-gray-800">
+					<div className="w-1 border-l border-l-brown-500 h-36"></div>
+					<div className="flex gap-y-1 flex-col text-sm text-gray-900">
 						{order.delivery_type === 'delivery' ? (
 							<>
-								<span className=" text-[#C6B49D] mb-2">Doručovací adresa:</span>
+								<span className=" text-brown-500 mb-2">Doručovací adresa:</span>
 								<span>{order.delivery_fullname}</span>
 								<span>{order.delivery_city}</span>
 								<span>{order.delivery_street}</span>
@@ -112,7 +112,7 @@ export default function OrderDetail() {
 							</>
 						) : (
 							<>
-								<span className="text-[#C6B49D] mb-2">Místo vyzvednutí:</span>
+								<span className="text-brown-500 mb-2">Místo vyzvednutí:</span>
 								<span>Hala 13 v Pražské tržnici</span>
 								<span>Bubenské nábřeží 306</span>
 								<span>170 00 Praha 7</span>
@@ -126,15 +126,15 @@ export default function OrderDetail() {
 				<Form method="post" className="mt-6">
 					<>
 						{order.state === 'open' ? (
-							<button className="text-[#0A9DBF] font-semibold" name="action" value="process">
+							<button className="text-blue font-semibold" name="action" value="process">
 								Začít vyřizovat
 							</button>
 						) : order.state != 'done' ? (
-							<button className="text-[#0A9DBF] font-semibold" name="action" value="finish">
+							<button className="text-blue font-semibold" name="action" value="finish">
 								Označit jako vyřízené
 							</button>
 						) : (
-							<button className="text-[#0A9DBF] font-semibold" name="action" value="revert">
+							<button className="text-blue font-semibold" name="action" value="revert">
 								Vrátit zpět
 							</button>
 						)}

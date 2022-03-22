@@ -10,7 +10,7 @@ type PersonOnOrderParams = {
 
 export default function PersonOnOrder({ translator, details, editItem }: PersonOnOrderParams) {
 	return (
-		<div className="flex rounded-2xl group bg-[#eb2f06] text-[#F8EBDB] w-full h-72 p-2 border border-[#eb2f06] mb-6">
+		<div className="flex rounded-2xl group bg-red text-light w-full h-72 p-2 border border-red mb-6">
 			<img src={!details.adult ? '/kid.svg' : `/${details.sex}.svg`} alt="gender" className="my-4 mx-2" />
 			<div className=" flex flex-col justify-center mx-4">
 				<span className="text-2xl font-bold">{details.fullname}</span>
@@ -24,7 +24,7 @@ export default function PersonOnOrder({ translator, details, editItem }: PersonO
 
 				<button
 					onClick={editItem}
-					className=" w-52 font-semibold hover:text-[#eb2f06] hover:bg-[#F8EBDB] mt-4 border-0 py-2 px-5 outline outline-[#F8EBDB] rounded-full"
+					className=" w-52 font-semibold hover:text-red hover:bg-light mt-4 border-0 py-2 px-5 outline outline-light rounded-full"
 				>
 					{translator.translate('edit')}
 				</button>

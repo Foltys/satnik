@@ -6,30 +6,30 @@ export default function Confirmation() {
 	const { translator, setOrder } = useOutletContext<OutletContext>()
 	useEffect(() => setOrder({ persons: [], delivery_type:"pickup" }), [])
 	return (
-		<section className="text-gray-800 body-font relative">
+		<section className="text-gray-900 body-font relative">
 			<div className="flex flex-col w-full">
 				<div className="w-full md:w-2/3 mx-auto">
 					<div className="w-full mx-auto">
 						<div className="flex flex-col md:mb-12">
-							<h1 className="text-3xl md:text-5xl font-bold title-font my-12 text-[#eb2f06] ml-1">
+							<h1 className="text-3xl md:text-5xl font-bold title-font my-12 text-red ml-1">
 								{translator.translate('order_success')}
 							</h1>
 						</div>
 					</div>
-					<div className="w-full mx-auto text-lg font-semibold text-[#eb2f06] ml-1 ">
+					<div className="w-full mx-auto text-lg font-semibold text-red ml-1 ">
 						{translator.translate('volunteer_info')}
 					</div>
-					<div className="w-full mx-auto text-xl my-12 mb-6 bg-[#eb2f06] text-[#F8EBDB] py-6 px-4 ml-1">
+					<div className="w-full mx-auto text-xl my-12 mb-6 bg-red text-light py-6 px-4 ml-1">
 						{translator.translate('wait_for_email')}
 					</div>
 
-					<h1 className="text-2xl md:text-3xl font-bold title-font my-2 pt-6 text-[#0A9DBF] ml-1">
+					<h1 className="text-2xl md:text-3xl font-bold title-font my-2 pt-6 text-blue ml-1">
 						{translator.translate('share')}
 					</h1>
 
 					<span className="inline-flex mt-8 justify-center space-x-8 md:space-x-12">
 						<a
-							className="text-[#eb2f06]"
+							className="text-red"
 							href="http://www.facebook.com/share.php?u=https://app.satnikpraha.cz"
 							target="_blank"
 							rel="noreferrer"
@@ -46,7 +46,7 @@ export default function Confirmation() {
 							</svg>
 						</a>
 						<a
-							className="ml-3 text-[#eb2f06]"
+							className="ml-3 text-red"
 							href="https://twitter.com/intent/tweet?ref_src=twsrc%5Etfw&quot%3B%20class=&quot%3Btwitter-share-button=&quot%3B%20data-show-count=&quot%3Bfalse=&quot=&url=https://app.satnikpraha.cz"
 							target="_blank"
 							rel="noreferrer"
@@ -63,7 +63,7 @@ export default function Confirmation() {
 							</svg>
 						</a>
 						<a
-							className="ml-3 text-[#eb2f06]"
+							className="ml-3 text-red"
 							href="https://t.me/share/url?url=https://app.satnikpraha.cz&text='Satnik Praha - App for Ukraine'"
 							target="_blank"
 							rel="noreferrer"
