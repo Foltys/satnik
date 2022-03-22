@@ -1,17 +1,14 @@
 import { Authenticator } from 'remix-auth'
 import { OAuth2Profile } from 'remix-auth-oauth2'
 import { GoogleStrategy, SocialsProvider } from 'remix-auth-socials'
+import { AuthStrategies } from '~/root'
 import { sessionStorage } from '~/services/session.server'
 import config from 'config'
 
 export let authenticator = new Authenticator(sessionStorage, { sessionKey: '_session' });
 
-const hostname = config.get('hostname')
-const strategies = config.get('auth.strategies')
-
-type ValueNode = {
-	value: any
-}
+const hostname: string = config.get('hostname')
+const strategies: AuthStrategies = config.get('auth.strategies')
 
 function validateAccount(profile: OAuth2Profile, allowedAccounts: string[]): boolean {
 	if (!profile.emails) {

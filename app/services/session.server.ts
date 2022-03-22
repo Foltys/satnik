@@ -7,9 +7,9 @@ export const sessionStorage = createCookieSessionStorage({
 		sameSite: "lax",
 		path: "/",
 		httpOnly: true,
-		secrets: config.get('session.secrets'),
+		secrets: config.get('session.secrets') as string[],
 		secure: false
 	},
 });
 
-export const { getSession, commitSession, destroySession } = sessionStorage;
+export const { getSession } = sessionStorage;

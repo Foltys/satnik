@@ -35,7 +35,7 @@ const sendOrderConfirmCompany = async function (order: Order) {
 
 	return sendHTMLEmail(
 		order,
-		config.get('email.companyAddress'),
+		config.get('email.companyAddress') as string,
 		'Nova objednavka v satniku',
 		'cs',
 		normalizePath('order_confirm_company'),

@@ -23,7 +23,7 @@ export default async function (data:any, to:string, subject:string, lang:string,
 	// tutorial for setting up gmail account allowance:
 	// for better security with OAuth2 we need redirect page at our app
 	// https://www.geeksforgeeks.org/how-to-send-email-using-node-js/
-	const transporter = nodemailer.createTransport(config.get('email.provider'))
+	const transporter = nodemailer.createTransport(config.get('email.provider') as string)
 	const handlebarOptions: NodemailerExpressHandlebarsOptions = {
 		viewEngine: {
 			partialsDir: [templatePath, lang].join('/'),
