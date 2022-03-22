@@ -20,6 +20,7 @@
     }
   },
   "auth": {
+    "enabled": true,
     "strategies": {
       "google": {
         "clientID": "814226823998-dvgulsgbjr32424daiks8i3hrc5jlk0a.apps.googleusercontent.com",

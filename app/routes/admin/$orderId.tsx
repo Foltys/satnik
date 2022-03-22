@@ -6,13 +6,6 @@ import { getOrderByID, updateUnique } from '~/../prisma/api/Order'
 import { authenticator } from '~/server/auth.server'
 import { sendOrderConfirm } from '~/mailer/html/api'
 
-type LoaderData = {
-	user?: OAuth2Profile
-	order: Order
-}
-
-const authEnabled = true
-
 async function updateOrder(orderId: number, state: string) {
 	//console.log('updateOrder', orderId, state)
 	await updateUnique({ id: orderId }, { state: state })
@@ -24,14 +17,17 @@ async function sendOrderConfirmById(id: number) {
 }
 
 export const loader: LoaderFunction = async ({ request, params }) => {
-	const orderid: number = ~~params.orderId!
-	const order = await getOrderByID(orderid)
+	const config = require('config')
+	const authEnabled = config.get('auth.enabled')
+
 	let user
 	if (authEnabled) {
 		user = (await authenticator.isAuthenticated(request, {
 			failureRedirect: '/login',
 		})) as OAuth2Profile
 	}
+	const orderid: number = ~~params.orderId!
+	const order = await getOrderByID(orderid)
 	return { ...(user && { user }), order }
 }
 
