@@ -2,10 +2,7 @@ import { Authenticator } from 'remix-auth'
 import { OAuth2Profile } from 'remix-auth-oauth2'
 import { GoogleStrategy, SocialsProvider } from 'remix-auth-socials'
 import { sessionStorage } from '~/services/session.server'
-
-// please note that app is running from build/index.js
-process.env["NODE_CONFIG_DIR"] = __dirname + "/../config";
-const config = require('config')
+import config from 'config'
 
 export let authenticator = new Authenticator(sessionStorage, { sessionKey: '_session' });
 

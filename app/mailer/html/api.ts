@@ -2,10 +2,7 @@ import path from 'path'
 import { Order } from '~/root'
 import sendHTMLEmail from '../helpers/sendHTMLEmail'
 import normalizeOrder from '../helpers/normalizeOrder'
-
-// please note that app is running from build/index.js
-process.env["NODE_CONFIG_DIR"] = __dirname + "/../config";
-const config = require('config')
+import config from 'config'
 
 function normalizePath (dirName: string): string {
 	return path.join(`./app/mailer/html/${dirName}`)

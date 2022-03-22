@@ -1,11 +1,8 @@
 import hbs, { NodemailerExpressHandlebarsOptions } from 'nodemailer-express-handlebars'
 import fsna from 'fs'
 import nodemailer from 'nodemailer'
+import config from 'config'
 const fs = fsna.promises
-
-// please note that app is running from build/index.js
-process.env["NODE_CONFIG_DIR"] = __dirname + "/../config";
-const config = require('config')
 
 async function getImagesAttachments(path: string) {
 	const files = await fs.readdir(path)

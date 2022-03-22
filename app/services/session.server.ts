@@ -1,8 +1,5 @@
 import { createCookieSessionStorage } from 'remix'
-
-// please note that app is running from build/index.js
-process.env["NODE_CONFIG_DIR"] = __dirname + "/../config";
-const config = require('config')
+import config from 'config'
 
 export const sessionStorage = createCookieSessionStorage({
 	cookie: {
