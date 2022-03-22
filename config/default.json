@@ -1,5 +1,6 @@
 {
   "hostname": "http://localhost:3000",
+  "publicPath": "/build/",
   "session": {
     "secrets": [
       "5Kbrx4jn6G7JGPF"
@@ -20,6 +21,7 @@
     }
   },
   "auth": {
+    "enabled": true,
     "strategies": {
       "google": {
         "clientID": "814226823998-dvgulsgbjr32424daiks8i3hrc5jlk0a.apps.googleusercontent.com",

@@ -17,6 +17,14 @@ export interface OutletContext {
 	switchLanguage: (currentLanguage: string) => MouseEventHandler
 }
 
+export type AuthStrategies = {
+	google?: {
+		clientID: string,
+		clientSecret: string,
+		allowedAccounts: string[]
+	}
+}
+
 export type OrderInProgress = Partial<Order> & { persons: Person[] }
 
 export interface Order {

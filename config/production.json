@@ -1,5 +1,6 @@
 {
   "hostname": "http://satnik-5459.rostiapp.cz",
+  "publicPath": "/objednavka/build/",
   "auth": {
     "strategies": {
       "google": {

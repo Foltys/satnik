@@ -4,16 +4,17 @@ import type { LoaderFunction } from 'remix'
 import { Form, json, useLoaderData, Outlet, Link } from 'remix'
 import { OAuth2Profile } from 'remix-auth-oauth2'
 import { authenticator } from '~/server/auth.server'
-import { findMany, getOrderByID } from '../../prisma/api/Order'
+import { findMany } from '../../prisma/api/Order'
 
 type LoaderData = {
 	user?: OAuth2Profile
 	orderListItems: Array<Order>
 }
 
-const authEnabled = true
-
 export const loader: LoaderFunction = async ({ request }) => {
+	const config = require('config')
+	const authEnabled = config.get('auth.enabled')
+
 	let user
 	if (authEnabled) {
 		user = (await authenticator.isAuthenticated(request, {
