@@ -21,7 +21,7 @@ export default function Summary() {
 	const navigate = useNavigate()
 	// const [editingPerson, setEditingPerson] = useState<number>()
 	const submit = useSubmit()
-	const { translator, order, setEditingPerson } = useOutletContext<OutletContext>()
+	const { translator, order, setEditingPerson } = useOutletContext<OutletContext & {order: Order}>()
 
 	const [fullOrder, setFullOrder] = useState<Order>({ ...order, lang: translator.language })
 

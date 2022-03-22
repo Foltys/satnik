@@ -1,10 +1,10 @@
 import { Translator } from '~/locale/translation'
-import { Order } from '~/root'
+import { Order, OrderInProgress } from '~/root'
 
 type ContactInfoParams = {
 	translator: Translator
 	handleChange: React.ChangeEventHandler
-	order: Order
+	order: OrderInProgress | Order
 }
 
 export default function ContactInfo({ translator, handleChange, order }: ContactInfoParams) {

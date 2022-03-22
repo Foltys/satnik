@@ -1,6 +1,6 @@
-import { Order, Person } from '~/root'
+import { OrderInProgress, Person } from '~/root'
 
-export function ContactAndDeliveryHasError(order: Order): boolean {
+export function ContactAndDeliveryHasError(order: OrderInProgress): boolean {
 	if (
 		order.delivery_type === 'delivery' &&
 		order.fullname &&
