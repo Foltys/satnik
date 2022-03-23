@@ -12,6 +12,7 @@ module.exports = {
 	// appDirectory: "app",
 	// assetsBuildDirectory: "public/build",
 	// serverBuildPath: "functions/[[path]].js",
-	publicPath: config.get('publicPath'),
+	//publicPath: config.get('publicPath'),
 	// devServerPort: 8002
+	serverBuildTarget: "node-cjs",
 }
