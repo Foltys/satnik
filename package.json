@@ -20,7 +20,8 @@
 		"node": "TS_NODE_FILES=true TZ=UTC node --require ts-node/register"
 	},
 	"dependencies": {
-		"@prisma/client": "^3.11.0",
+		"@prisma/client": "^3.6.0",
+		"prisma": "^3.6.0",
 		"@remix-run/express": "^1.2.3",
 		"@remix-run/react": "^1.2.3",
 		"@types/react": "^17.0.40",
@@ -54,7 +55,6 @@
 		"nodemon": "^2.0.15",
 		"npm-run-all": "^4.1.5",
 		"postcss": "^8.4.7",
-		"prisma": "^3.11.0",
 		"tailwindcss": "^3.0.23",
 		"ts-node": "^10.7.0",
 		"typescript": "^4.6.2"
