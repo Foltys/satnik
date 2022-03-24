@@ -1,6 +1,5 @@
 require('dotenv').config({ override: true })
 const config = require('config')
-console.log(process.env)
 
 /**
  * @type {import('@remix-run/dev').AppConfig}

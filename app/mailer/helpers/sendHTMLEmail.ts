@@ -36,7 +36,6 @@ export default async function (data:any, to:string, subject:string, lang:string,
 		},
 		viewPath: [templatePath, lang].join('/'),
 	}
-	console.log(handlebarOptions)
 
 	transporter.use('compile', hbs(handlebarOptions))
 	const mailOptions = {

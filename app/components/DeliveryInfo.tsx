@@ -8,7 +8,6 @@ type DeliveryInfoParams = {
 
 export default function DeliveryInfo({ translator, getDefaultValue }: DeliveryInfoParams) {
 	const [delivery, setDelivery] = useState(['', 'delivery'].includes(getDefaultValue('delivery_type')))
-	//console.log('DeliveryInfo', order)
 	return (
 		<div className="w-full mx-auto mt-14">
 			<div className="flex flex-col md:mb-12">

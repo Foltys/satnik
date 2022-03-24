@@ -31,7 +31,6 @@ export const action: ActionFunction = async ({ request }) => {
 	const session = await getSession(request.headers.get('Cookie'))
 	const formData = await request.formData()
 	let { _action, ...values } = Object.fromEntries(formData) as FormWithAction
-	console.log(_action)
 
 	if (_action == 'submit_contact') {
 		session.set('contact', values)

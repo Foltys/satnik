@@ -115,11 +115,6 @@ export const loader = async ({ request }: { request: Request }) => {
 	return 'cs'
 }
 
-export const action: ActionFunction = async ({request}) => {
-	const formData = await request.formData();
-	console.log("testing");
-}
-
 export default function App() {
 	const locale = useLoaderData()
 	const [order, setOrder] = useState({
