@@ -9,9 +9,11 @@ export const loader: LoaderFunction = async ({ request }) => {
 	const contact = session.get('contact')
 	const people = session.get('people')
 	if (!contact) {
+		console.log('no contact', contact)
 		return redirect('/order')
 	}
 	if (!people) {
+		console.log('no people', people)
 		return redirect('/order/newOrder')
 	}
 	return json({
