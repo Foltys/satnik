@@ -81,7 +81,7 @@ export default function PersonToOrder({ translator, selectedGender, editingPerso
 								name="fullname"
 								placeholder="Aa"
 								autoComplete="name"
-								defaultValue={editingPerson?.fullname}
+								defaultValue={decodeURIComponent(editingPerson?.fullname || '')}
 								className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none text-gray-900 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue  placeholder:text-brown-500"
 							/>
 						</div>
@@ -106,7 +106,7 @@ export default function PersonToOrder({ translator, selectedGender, editingPerso
 								minLength={5}
 								required
 								placeholder="5 ks trika, 2 ks kalhoty"
-								defaultValue={editingPerson?.requirements}
+								defaultValue={decodeURIComponent(editingPerson?.requirements || '')}
 								className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none text-gray-900 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue  placeholder:text-brown-500"
 							/>
 						</div>

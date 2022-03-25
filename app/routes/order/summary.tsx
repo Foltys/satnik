@@ -38,7 +38,7 @@ export default function Summary() {
 			<div className="flex mb-12">
 				<div className="flex flex-col w-1/2 px-1">
 					<span className="font-bold mt-4">{translator.translate('orderer')}</span>
-					<span>{contact.fullname}</span>
+					<span>{decodeURIComponent(contact.fullname)}</span>
 					<span>{contact.phone}</span>
 					<span>{contact.email}</span>
 					<span className="font-bold mt-4">{translator.translate('delivery_address')}</span>
@@ -52,9 +52,9 @@ export default function Summary() {
 						</>
 					) : (
 						<>
-							<span>{contact.delivery_fullname}</span>
+							<span>{decodeURIComponent(contact.delivery_fullname)}</span>
 							<span>
-								{contact.delivery_street},{contact.delivery_city}
+								{decodeURIComponent(contact.delivery_street)},{decodeURIComponent(contact.delivery_city)}
 							</span>
 							<span>{contact.delivery_zip}</span>
 							<span>{contact.delivery_phone}</span>
@@ -66,8 +66,8 @@ export default function Summary() {
 					{people.map((person: PersonToOrderType, index: number) => {
 						return (
 							<div key={index}>
-								<div>{person.fullname}</div>
-								<div>{person.requirements}</div>
+								<div>{decodeURIComponent(person.fullname)}</div>
+								<div>{decodeURIComponent(person.requirements)}</div>
 							</div>
 						)
 					})}

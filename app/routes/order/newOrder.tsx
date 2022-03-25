@@ -29,6 +29,7 @@ export type FormWithAction = { _action: Action; [k: string]: any }
 
 export const action: ActionFunction = async ({ request }) => {
 	const session = await getSession(request.headers.get('Cookie'))
+	//console.log(decodeURIComponent(session.get('testofencoding')))
 	const formData = await request.formData()
 	let { _action, ...values } = Object.fromEntries(formData) as FormWithAction
 
@@ -42,13 +43,15 @@ export const action: ActionFunction = async ({ request }) => {
 		const people = session.get('people') || ([] as PersonToOrderType[])
 		people.push({
 			age: values.age,
-			fullname: values.fullname,
+			fullname: encodeURIComponent(values.fullname),
 			clothing_size: values.clothing_size,
-			requirements: values.requirements,
+			requirements: encodeURIComponent(values.requirements),
 			shoe_size: values.shoe_size,
 			gender: values.gender,
 		})
+		//console.log(values.fullname)
 		session.set('people', people)
+		//session.set('testofencoding', encodeURIComponent('Růžovej kůň'))
 	} else if (_action == 'edit_person') {
 		const people = session.get('people') as PersonToOrderType[]
 		const person = people[parseInt(values['id'])]
@@ -60,9 +63,9 @@ export const action: ActionFunction = async ({ request }) => {
 			const people = session.get('people') || ([] as PersonToOrderType[])
 			people.push({
 				age: values.age,
-				fullname: values.fullname,
+				fullname: encodeURIComponent(values.fullname),
 				clothing_size: values.clothing_size,
-				requirements: values.requirements,
+				requirements: encodeURIComponent(values.requirements),
 				shoe_size: values.shoe_size,
 				gender: values.gender,
 			})

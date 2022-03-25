@@ -139,7 +139,7 @@ export default function Admin() {
 							</Link>
 
 							<Link to={`${order.id}`} prefetch="intent">
-								<div className="text-blue font-bold">{order.fullname}</div>
+								<div className="text-blue font-bold">{decodeURIComponent(order.fullname)}</div>
 							</Link>
 							{order.delivery_type === 'pickup' ? (
 								<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="#000" viewBox="0 0 24 24">

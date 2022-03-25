@@ -68,7 +68,7 @@ export default function OrderDetail() {
 					<div key={person.id}>
 						<div className="flex flex-row items-center place-content-between">
 							<div className="flex flex-col grow">
-								<p className="font-bold text-lg text-blue">{person.fullname}</p>
+								<p className="font-bold text-lg text-blue">{decodeURIComponent(person.fullname)}</p>
 								<p>
 									{person.sex}, {person.age}
 								</p>
@@ -84,14 +84,14 @@ export default function OrderDetail() {
 						</div>
 
 						<div className="text-sm">Oblečení</div>
-						<div className=" text-lg font-bold">{person.requirements[0].description}</div>
+						<div className=" text-lg font-bold">{decodeURIComponent(person.requirements[0].description)}</div>
 						{order.persons.length > 1 && <hr className="border border-brown-500" />}
 					</div>
 				))}
 				<div className="flex flex-row justify-between mt-6">
 					<div className="flex gap-y-1 flex-col text-sm text-gray-900">
 						<span className=" text-brown-500 mb-2">Objednává:</span>
-						<span>{order.fullname}</span>
+						<span>{decodeURIComponent(order.fullname)}</span>
 						<span>{order.phone}</span>
 						<a href={`mailto:${order.email}`}>{order.email}</a>
 					</div>
@@ -100,9 +100,9 @@ export default function OrderDetail() {
 						{order.delivery_type === 'delivery' ? (
 							<>
 								<span className=" text-brown-500 mb-2">Doručovací adresa:</span>
-								<span>{order.delivery_fullname}</span>
-								<span>{order.delivery_city}</span>
-								<span>{order.delivery_street}</span>
+								<span>{decodeURIComponent(order.delivery_fullname)}</span>
+								<span>{decodeURIComponent(order.delivery_city)}</span>
+								<span>{decodeURIComponent(order.delivery_street)}</span>
 								<span>{order.delivery_zip}</span>
 								<a href={`tel:${order.delivery_phone}`}>{order.delivery_phone}</a>
 								<a href={`mailto:${order.email}`}>{order.email}</a>

@@ -26,9 +26,9 @@ export default function ContactInfo({ translator, getDefaultValue }: ContactInfo
 							name="fullname"
 							placeholder="Aa"
 							required
-							autoComplete='name'
+							autoComplete="name"
 							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none placeholder:text-brown-500 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue"
-							defaultValue={getDefaultValue('fullname')}
+							defaultValue={decodeURIComponent(getDefaultValue('fullname'))}
 						/>
 					</div>
 				</div>
@@ -71,8 +71,8 @@ export default function ContactInfo({ translator, getDefaultValue }: ContactInfo
 							id="email"
 							name="email"
 							placeholder="@"
-							autoComplete='email'
-              required
+							autoComplete="email"
+							required
 							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none placeholder:text-brown-500 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue"
 							defaultValue={getDefaultValue('email')}
 						/>
