@@ -235,12 +235,12 @@ a[x-apple-data-detectors='true'] {
                           <p style="font-size: 14px; line-height: 140%;"><span
                                   style="color: #eb2f06; font-size: 14px; line-height: 19.6px;"><strong><span
                                   style="font-size: 16px; line-height: 22.4px;">Особа {{inc @index}}:</span></strong></span><br/><span
-                                  style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{this.fullname}}</span><br/><span
+                                  style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{decodeURI this.fullname}}</span><br/><span
                                   style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">
                                     {{#if this.isMan}}чоловік{{/if}}{{#if this.isWoman}}жінка{{/if}},
                                     {{this.age}} рік</span><br/><span
                                 style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">Одяг:
-                              {{#each this.requirements}}<strong>{{this.description}}</strong>{{#unless @last}}, {{/unless}}{{/each}}
+                              {{#each this.requirements}}<strong>{{decodeURI this.description}}</strong>{{#unless @last}}, {{/unless}}{{/each}}
                               </span><br/><span
                                       style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">Розмір одягу: {{this.clothing_size}}</span><br/><span
                                       style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">Розмір взуття: {{this.shoe_size}}</span></p>
@@ -281,7 +281,7 @@ a[x-apple-data-detectors='true'] {
   <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
       <p style="font-size: 14px; line-height: 140%;"><strong><span
               style="font-size: 16px; line-height: 22.4px; color: #0a9dbf;">Замовлення:</span></strong><br/><strong><span
-              style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.fullname}}</span></strong><br/><span
+              style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{decodeURI order.fullname}}</span></strong><br/><span
               style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.phone}}</span><br/><span
               style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.email}}</span></p>
   </div>
@@ -310,9 +310,9 @@ a[x-apple-data-detectors='true'] {
       <p style="font-size: 14px; line-height: 140%;"><span
               style="color: #0a9dbf; font-size: 14px; line-height: 19.6px;"><strong><span
               style="font-size: 16px; line-height: 22.4px;">Адреса доставки:</span></strong></span><br/>
-          <strong><span style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_fullname}}</span></strong><br/><span
-                  style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_street}}</span><br/><span
-                  style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_city}} {{order.delivery_zip}}</span><br/><span
+          <strong><span style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{decodeURI order.delivery_fullname}}</span></strong><br/><span
+                  style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{decodeURI order.delivery_street}}</span><br/><span
+                  style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{decodeURI order.delivery_city}} {{order.delivery_zip}}</span><br/><span
                   style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_phone}}</span></p>
   </div>
   {{/if}}

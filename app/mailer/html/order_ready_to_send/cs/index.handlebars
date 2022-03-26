@@ -257,9 +257,9 @@
 
                                                 <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
                                                     <p style="font-size: 14px; line-height: 140%;"><span
-                                                            style="font-size: 18px; line-height: 25.2px; color: #ffffff;">{{order.delivery_fullname}}</span><br/><span
-                                                            style="font-size: 18px; line-height: 25.2px; color: #ffffff;">{{order.delivery_street}}</span><br/><span
-                                                            style="font-size: 18px; line-height: 25.2px; color: #ffffff;">{{order.delivery_city}}</span><br/><span
+                                                            style="font-size: 18px; line-height: 25.2px; color: #ffffff;">{{decodeURI order.delivery_fullname}}</span><br/><span
+                                                            style="font-size: 18px; line-height: 25.2px; color: #ffffff;">{{decodeURI order.delivery_street}}</span><br/><span
+                                                            style="font-size: 18px; line-height: 25.2px; color: #ffffff;">{{decodeURI order.delivery_city}}</span><br/><span
                                                             style="font-size: 18px; line-height: 25.2px; color: #ffffff;">{{order.delivery_zip}}</span>
                                                     </p>
                                                     <p style="font-size: 14px; line-height: 140%;">&nbsp;</p>
@@ -339,12 +339,12 @@
                                                     <p style="font-size: 14px; line-height: 140%;"><span
                                                             style="color: #eb2f06; font-size: 14px; line-height: 19.6px;"><strong><span
                                                             style="font-size: 16px; line-height: 22.4px;">Osoba {{inc @index}}:</span></strong></span><br/><span
-                                                            style="font-size: 16px; line-height: 22.4px;">{{this.fullname}}</span><br/><span
+                                                            style="font-size: 16px; line-height: 22.4px;">{{decodeURI this.fullname}}</span><br/><span
                                                             style="font-size: 16px; line-height: 22.4px;">
                                                             {{#if this.isMan}}muž{{/if}}{{#if this.isWoman}}žena{{/if}},
                                                             Věk {{this.age}}</span><br/><span
                                                             style="font-size: 16px; line-height: 22.4px;">Oblečeni:
-                                                {{#each this.requirements}}<strong>{{this.description}}</strong>{{#unless @last}}, {{/unless}}{{/each}}
+                                                {{#each this.requirements}}<strong>{{decodeURI this.description}}</strong>{{#unless @last}}, {{/unless}}{{/each}}
                                                             </span><br/><span
                                                             style="font-size: 16px; line-height: 22.4px;">Velikost oblečen&iacute;: {{this.clothing_size}}</span><br/><span
                                                             style="font-size: 16px; line-height: 22.4px;">Velikost bot: {{this.shoe_size}}</span>
@@ -400,7 +400,7 @@
                                                     <p style="font-size: 14px; line-height: 140%;"><span
                                                             style="color: #0a9dbf; font-size: 14px; line-height: 19.6px;"><strong><span
                                                             style="font-size: 16px; line-height: 22.4px;">Objedn&aacute;v&aacute;:</span></strong></span><br/><strong><span
-                                                            style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.fullname}}</span></strong><br/><span
+                                                            style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{decodeURI order.fullname}}</span></strong><br/><span
                                                             style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.phone}}</span><br/><span
                                                             style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.email}}</span></p>
                                                     </p>

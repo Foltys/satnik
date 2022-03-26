@@ -482,7 +482,7 @@
                                                             {{this.age}} рік</span><br/><span
                                                                 style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">Одяг:
                                                             {{#each this.requirements}}
-                                                                <strong>{{this.description}}</strong>{{#unless @last}}
+                                                                <strong>{{decodeURI this.description}}</strong>{{#unless @last}}
                                                                 , {{/unless}}{{/each}}
                                                         </span><br/><span
                                                                 style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">Розмір одягу: {{this.clothing_size}}</span><br/><span
@@ -540,7 +540,7 @@
                                                     <p style="font-size: 14px; line-height: 140%;"><span
                                                             style="color: #0a9dbf; font-size: 14px; line-height: 19.6px;"><strong><span
                                                             style="font-size: 16px; line-height: 22.4px;">Замовлення:</span></strong></span><br/><strong><span
-                                                            style="font-size: 16px; line-height: 22.4px; color: #2c2e32;">{{order.fullname}}</span></strong><br/><span
+                                                            style="font-size: 16px; line-height: 22.4px; color: #2c2e32;">{{decodeURI order.fullname}}</span></strong><br/><span
                                                             style="font-size: 16px; line-height: 22.4px; color: #2c2e32;">{{order.phone}}</span><br/><span
                                                             style="font-size: 16px; line-height: 22.4px; color: #2c2e32;">{{order.email}}</span>
                                                     </p>

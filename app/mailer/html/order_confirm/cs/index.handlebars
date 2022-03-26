@@ -219,14 +219,14 @@
 																			><strong><span style='font-size: 16px; line-height: 22.4px;'>Osoba
 																						{{inc @index}}:</span></strong></span><br /><span
 																				style='font-size: 16px; line-height: 22.4px; color: #1a1f26;'
-																			>{{this.fullname}}</span><br /><span
+																			>{{decodeURI this.fullname}}</span><br /><span
 																				style='font-size: 16px; line-height: 22.4px; color: #1a1f26;'
 																			>
 																				{{#if this.isMan}}muž{{/if}}{{#if this.isWoman}}žena{{/if}}, Věk
 																				{{this.age}}</span><br /><span
 																				style='font-size: 16px; line-height: 22.4px; color: #1a1f26;'
 																			>Oblečeni:
-																				{{#each this.requirements}}<strong>{{this.description}}</strong>{{#unless
+																				{{#each this.requirements}}<strong>{{decodeURI this.description}}</strong>{{#unless
 																						@last
 																					}}, {{/unless}}{{/each}}
 																			</span><br /><span
@@ -293,7 +293,7 @@
 																					style='font-size: 16px; line-height: 22.4px;'
 																				>Objedn&aacute;v&aacute;:</span></strong></span><br /><strong><span
 																				style='font-size: 16px; line-height: 22.4px; color: #1a1f26;'
-																			>{{order.fullname}}</span></strong><br /><span
+																			>{{decodeURI order.fullname}}</span></strong><br /><span
 																			style='font-size: 16px; line-height: 22.4px; color: #1a1f26;'
 																		>{{order.phone}}</span><br /><span
 																			style='font-size: 16px; line-height: 22.4px; color: #1a1f26;'
@@ -341,9 +341,9 @@
                                                                         <p style="font-size: 14px; line-height: 140%;"><span
                                                                                 style="color: #0a9dbf; font-size: 14px; line-height: 19.6px;"><strong><span
                                                                                 style="font-size: 16px; line-height: 22.4px;">Doručovac&iacute; adresa:</span></strong></span><br/>
-                                                                            <strong><span style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_fullname}}</span></strong><br/><span
-                                                                                    style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_street}}</span><br/><span
-                                                                                    style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_city}} {{order.delivery_zip}}</span><br/><span
+                                                                            <strong><span style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{decodeURI order.delivery_fullname}}</span></strong><br/><span
+                                                                                    style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{decodeURI order.delivery_street}}</span><br/><span
+                                                                                    style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{decodeURI order.delivery_city}} {{order.delivery_zip}}</span><br/><span
                                                                                     style="font-size: 16px; line-height: 22.4px; color: #1a1f26;">{{order.delivery_phone}}</span></p>
                                                                     </div>
                                                                 {{/if}}

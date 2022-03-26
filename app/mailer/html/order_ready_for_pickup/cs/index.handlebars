@@ -493,7 +493,7 @@
 																			><strong><span style='font-size: 16px; line-height: 22.4px;'>Osoba
 																						{{inc @index}}:</span></strong></span><br /><span
 																				style='font-size: 16px; line-height: 22.4px;'
-																			>{{this.fullname}}</span><br /><span
+																			>{{decodeURI this.fullname}}</span><br /><span
 																				style='font-size: 16px; line-height: 22.4px;'
 																			>
 																				{{#if this.isMan}}muž{{/if}}{{#if this.isWoman}}žena{{/if}}, Věk
@@ -501,7 +501,7 @@
 																				style='font-size: 16px; line-height: 22.4px;'
 																			>Oblečeni:
 																				{{#each this.requirements}}
-																					<strong>{{this.description}}</strong>{{#unless @last}}
+																					<strong>{{decodeURI this.description}}</strong>{{#unless @last}}
 																						,
 																					{{/unless}}{{/each}}
 																			</span><br /><span style='font-size: 16px; line-height: 22.4px;'>Velikost
@@ -579,7 +579,7 @@
 																					style='font-size: 16px; line-height: 22.4px;'
 																				>Objedn&aacute;v&aacute;:</span></strong></span><br /><strong><span
 																				style='font-size: 16px; line-height: 22.4px; color: #2c2e32;'
-																			>{{order.fullname}}</span></strong><br /><span
+																			>{{decodeURI order.fullname}}</span></strong><br /><span
 																			style='font-size: 16px; line-height: 22.4px; color: #2c2e32;'
 																		>{{order.phone}}</span><br /><span
 																			style='font-size: 16px; line-height: 22.4px; color: #2c2e32;'
