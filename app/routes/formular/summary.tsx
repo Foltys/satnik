@@ -9,12 +9,12 @@ export const loader: LoaderFunction = async ({ request }) => {
 	const contact = session.get('contact')
 	const people = session.get('people')
 	if (!contact) {
-		console.log('no contact', contact)
-		return redirect('/order')
+		console.error('no contact', contact)
+		return redirect('/formular')
 	}
 	if (!people) {
-		console.log('no people', people)
-		return redirect('/order/newOrder')
+		console.error('no people', people)
+		return redirect('/formular/newOrder')
 	}
 	return json({
 		contact,
@@ -77,7 +77,7 @@ export default function Summary() {
 			</div>
 
 			<nav className="p-4 w-full flex flex-wrap gap-8 justify-center fixed bottom-0 inset-x-0 bg-light">
-				<Form method="post" action="/order/confirmation">
+				<Form method="post" action="/formular/confirmation">
 					<input type="hidden" name="lang" value={translator.language} />
 					<button className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-bold text-lg bg-red text-light outline-red hover:text-red hover:bg-light">
 						{translator.translate('to_order')}

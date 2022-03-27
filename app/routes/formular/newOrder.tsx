@@ -71,7 +71,7 @@ export const action: ActionFunction = async ({ request }) => {
 			})
 			session.set('people', people)
 		}
-		return redirect('/order/summary', {
+		return redirect('/formular/summary', {
 			headers: {
 				'Set-Cookie': await commitSession(session),
 			},

@@ -12,7 +12,7 @@ type PersonOnOrderParams = {
 
 export default function PersonOnOrder({ id, translator, details }: PersonOnOrderParams) {
 	return (
-		<Form method="post" action="/order/newOrder">
+		<Form method="post" action="/fomrular/newOrder">
 			<input type="hidden" name="id" value={id} />
 			<div className="flex rounded-2xl group bg-red text-light w-full h-72 p-2 border border-red mb-6">
 				<img src={`/${details.gender}.svg`} alt="gender" className="my-4 mx-2" />

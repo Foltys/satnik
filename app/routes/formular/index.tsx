@@ -26,7 +26,7 @@ export default function Index() {
 
 	return (
 		<div className="flex flex-col">
-			<Form action="/order/newOrder" method="post" name="contact">
+			<Form action="/formular/newOrder" method="post" name="contact">
 				<ContactInfo translator={translator} getDefaultValue={getDefaultValue} />
 				<DeliveryInfo translator={translator} getDefaultValue={getDefaultValue} />
 			</Form>
