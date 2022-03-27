@@ -6,6 +6,7 @@ const fs = fsna.promises
 
 async function getImagesAttachments(path: string) {
 	const files = await fs.readdir(path)
+
 	return files
 		.filter((f) => !['.', '..'].includes(f))
 		.map((f) => {
@@ -17,8 +18,14 @@ async function getImagesAttachments(path: string) {
 		})
 }
 
-
-export default async function (data:any, to:string, subject:string, lang:string, templatePath:string, attachmentsPath:string) {
+export default async function (
+	data: any,
+	to: string,
+	subject: string,
+	lang: string,
+	templatePath: string,
+	attachmentsPath: string,
+) {
 	// setting up gmail sender is best against antispam filters
 	// tutorial for setting up gmail account allowance:
 	// for better security with OAuth2 we need redirect page at our app
@@ -29,8 +36,11 @@ export default async function (data:any, to:string, subject:string, lang:string,
 			partialsDir: [templatePath, lang].join('/'),
 			defaultLayout: false,
 			helpers: {
-				inc: function (value:any, options:any) {
+				inc: function (value: any, options: any) {
 					return parseInt(value) + 1
+				},
+				decodeURI: function (value: any, options: any) {
+					return decodeURIComponent(value)
 				},
 			},
 		},
