@@ -28,7 +28,7 @@ export default function PersonToOrder({ translator, selectedGender, editingPerso
 			<input type="hidden" name="gender" value={selectedGender} />
 			<div className="flex flex-col text-gray-900 mb-16 md:mb-12">
 				<div className="flex">
-					<div className="rounded-2xl group bg-blue text-light w-full h-80 p-2 border border-blue flex flex-col hover:bg-light items-center">
+					<div className="rounded-2xl group bg-blue text-light w-full h-80 p-2 border border-blue flex flex-col md:hover:bg-light items-center transition-colors duration-200 ease-in-out">
 						<img src={`/${selectedGender}.svg`} alt="man" className="my-4 " />
 						<span className="text-2xl font-bold group-hover:text-blue">{translator.translate(selectedGender)}</span>
 						<button

@@ -16,32 +16,37 @@ export default function DeliveryInfo({ translator, getDefaultValue }: DeliveryIn
 				</h1>
 			</div>
 			<div className="flex flex-wrap -m-2 mb-16 md:mb-12">
-				<div className="flex mx-3 my-6 items-center font-bold space-x-2 text-blue">
-					<input
-						className="accent-blue"
-						type="radio"
-						id="radiodelivery"
-						name="delivery_type"
-						value="delivery"
-						defaultChecked={delivery}
-						onChange={(e) => {
-							setDelivery(e.currentTarget.checked)
-						}}
-					/>
-					<label htmlFor="radiodelivery">{translator.translate('deliver_to_adress')}</label>
-					<input
-						className="accent-blue"
-						type="radio"
-						id="radiopickup"
-						name="delivery_type"
-						value="pickup"
-						defaultChecked={!delivery}
-						onChange={(e) => {
-							setDelivery(!e.currentTarget.checked)
-						}}
-					/>
-					<label htmlFor="radiopickup">{translator.translate('pickup')}</label>
+				<div className="grid grid-cols-2 gap-x-3 mt-4 md:gap-x-7 items-center justify-center w-full md:w-auto pl-3 font-bold text-sm text-blue">
+					<div>
+						<input
+							className="accent-blue mr-1"
+							type="radio"
+							id="radiodelivery"
+							name="delivery_type"
+							value="delivery"
+							defaultChecked={delivery}
+							onChange={(e) => {
+								setDelivery(e.currentTarget.checked)
+							}}
+						/>
+						<label htmlFor="radiodelivery">{translator.translate('deliver_to_adress')}</label>
+					</div>
+					<div>
+						<input
+							className="accent-blue mr-1"
+							type="radio"
+							id="radiopickup"
+							name="delivery_type"
+							value="pickup"
+							defaultChecked={!delivery}
+							onChange={(e) => {
+								setDelivery(!e.currentTarget.checked)
+							}}
+						/>
+						<label htmlFor="radiopickup">{translator.translate('pickup')}</label>
+					</div>
 				</div>
+				<div className="flex mx-3 my-6 items-center font-bold space-x-2 text-blue"></div>
 				{delivery ? (
 					<>
 						<div className="p-2 w-full">
