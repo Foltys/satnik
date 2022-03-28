@@ -22,7 +22,7 @@ export default function Header({ translator, switchLanguage }: HeaderParams) {
 				</nav>
 				<button
 					onClick={switchLanguage}
-					className="justify-center inline-flex items-center text-blue font-bold  border-0 py-2 px-5 focus:outline-red outline outline-offset-2 outline-blue rounded-full text-base mr-5 hover:outline-red"
+					className="justify-center inline-flex items-center text-blue font-bold  border-0 py-2 px-5 focus:outline-red outline outline-offset-2 outline-blue rounded-full text-base mr-5 hover:outline-red transition-colors duration-200 ease-in-out"
 				>
 					{translator.language == 'cs' ? (
 						<svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg">

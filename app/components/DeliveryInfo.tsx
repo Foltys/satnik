@@ -179,7 +179,7 @@ export default function DeliveryInfo({ translator, getDefaultValue }: DeliveryIn
 							</a>
 							<a href="mailto:info@satnikpraha.cz">E-mail: info@satnikpraha.cz</a>
 							<a href="https://goo.gl/maps/o6Z8qzkG6pnTRs7P8" target="_blank" rel="noreferrer">
-								<button className="w-44 text-base mt-10 text-light border-0 py-2 px-3 focus:outline-none outline  outline-light rounded-full  hover:text-red hover:bg-light  hover:outline-light font-bold">
+								<button className="w-44 text-base mt-10 text-light border-0 py-2 px-3 focus:outline-none outline  outline-light rounded-full  hover:text-red hover:bg-light  hover:outline-light font-bold transition-colors duration-200 ease-in-out">
 									{translator.translate('show_on_map')}
 								</button>
 							</a>
@@ -192,7 +192,7 @@ export default function DeliveryInfo({ translator, getDefaultValue }: DeliveryIn
 					type={'submit'}
 					name={'_action'}
 					value={'submit_contact'}
-					className="inline-flex items-center text-blue border-0 py-4 px-6 focus:outline-none outline  outline-blue disabled:outline-red disabled:bg-red disabled:text-white disabled:opacity-20 rounded-full md:text-xl hover:bg-red hover:text-white hover:outline-red"
+					className="inline-flex items-center text-blue border-0 py-4 px-6 focus:outline-none outline  outline-blue disabled:outline-red disabled:bg-red disabled:text-white disabled:opacity-20 rounded-full md:text-xl hover:bg-red hover:text-white hover:outline-red transition-colors duration-200 ease-in-out"
 				>
 					{translator.translate('continue_to_cloth_selection')}
 					<svg

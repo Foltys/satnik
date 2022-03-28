@@ -79,7 +79,7 @@ export default function Summary() {
 			<nav className="p-4 w-full flex flex-wrap gap-8 justify-center fixed bottom-0 inset-x-0 bg-light">
 				<Form method="post" action="/formular/confirmation">
 					<input type="hidden" name="lang" value={translator.language} />
-					<button className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-bold text-lg bg-red text-light outline-red hover:text-red hover:bg-light">
+					<button className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-bold text-lg bg-red text-light outline-red hover:text-red hover:bg-light transition-colors duration-200 ease-in-out">
 						{translator.translate('to_order')}
 					</button>
 				</Form>

@@ -100,7 +100,7 @@ export default function Admin() {
 							</a>
 						</nav>
 						<Form action="/logout" method="post">
-							<button className="inline-flex items-center  font-medium border-0 py-1 px-3 focus:outline-none hover:text-gray-900 rounded text-base mt-4 md:mt-0">
+							<button className="inline-flex items-center  font-medium border-0 py-1 px-3 focus:outline-none hover:text-gray-900 rounded text-base mt-4 md:mt-0 transition-colors duration-200 ease-in-out">
 								Odhlásit
 								<svg
 									fill="none"

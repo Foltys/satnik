@@ -35,7 +35,7 @@ export default function PersonToOrder({ translator, selectedGender, editingPerso
 							formNoValidate
 							name="_action"
 							value="remove_person"
-							className="font-bold group-hover:text-blue mt-4 border-0 py-2 px-5 outline outline-light group-hover:outline-blue rounded-full"
+							className="font-bold group-hover:text-blue mt-4 border-0 py-2 px-5 outline outline-light group-hover:outline-blue rounded-full transition-colors duration-200 ease-in-out"
 						>
 							{translator.translate('remove')}
 						</button>

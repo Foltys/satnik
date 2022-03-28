@@ -107,7 +107,7 @@ export default function NewOrder() {
 			<div className="w-full mx-auto">
 				<a href="/" className="flex items-center mb-6 md:mb-12">
 					<button
-						className="items-center ml-1 mt-1 text-blue border-0 py-2 px-4 focus:outline-none outline  outline-blue rounded-full  font-bold text-lg hover:bg-red hover:text-light hover:outline-none fill-blue hover:fill-light"
+						className="items-center ml-1 mt-1 text-blue border-0 py-2 px-4 focus:outline-none outline  outline-blue rounded-full  font-bold text-lg hover:bg-red hover:text-light hover:outline-none fill-blue hover:fill-light transition-colors duration-200 ease-in-out"
 					>
 						<svg width="16" height="18" xmlns="http://www.w3.org/2000/svg">
 							<path d="m.293 8.293 4-4a1 1 0 1 1 1.414 1.414L3.415 8H15a1 1 0 1 1 0 2H3.415l2.294 2.294a1 1 0 1 1-1.414 1.414l-4-4a.997.997 0 0 1-.002-1.414Z" />
@@ -144,7 +144,7 @@ export default function NewOrder() {
 						form="person_to_order"
 						name="_action"
 						value="add_person"
-						className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-bold text-lg bg-red disabled:bg-red text-light outline-red hover:text-red hover:bg-light disabled:opacity-20 disabled:text-light disabled:outline-red"
+						className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-bold text-lg bg-red disabled:bg-red text-light outline-red hover:text-red hover:bg-light disabled:opacity-20 disabled:text-light disabled:outline-red transition-colors duration-200 ease-in-out"
 					>
 						{translator.translate('add_person')}
 					</button>
@@ -155,7 +155,7 @@ export default function NewOrder() {
 						form="person_to_order"
 						name="_action"
 						value="confirm_order"
-						className="text-blue disabled:text-blue border-0 py-2 px-4 focus:outline-none outline  outline-blue disabled:outline-blue rounded-full  font-bold text-lg hover:bg-red disabled:bg-light hover:text-light hover:outline-red disabled:opacity-20"
+						className="text-blue disabled:text-blue border-0 py-2 px-4 focus:outline-none outline  outline-blue disabled:outline-blue rounded-full  font-bold text-lg hover:bg-red disabled:bg-light hover:text-light hover:outline-red disabled:opacity-20 transition-colors duration-200 ease-in-out"
 					>
 						{translator.translate('to_confirm')}
 					</button>
