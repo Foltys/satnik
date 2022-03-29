@@ -15,9 +15,9 @@ export default function DeliveryInfo({ translator, getDefaultValue }: DeliveryIn
 					{translator.translate('delivery_address')}
 				</h1>
 			</div>
-			<div className="flex flex-wrap -m-2 mb-16 md:mb-12">
-				<div className="grid grid-cols-2 gap-x-3 mt-4 md:gap-x-7 items-center justify-center w-full md:w-auto pl-3 font-bold text-sm text-blue">
-					<div>
+			<div className="flex flex-wrap mb-16 md:mb-12">
+				<div className="flex flex-col md:flex-row text-blue p-2 leading-7 font-bold text-base">
+					<div className="relative mb-2 ml-1 mr-2">
 						<input
 							className="accent-blue mr-1"
 							type="radio"
@@ -31,7 +31,7 @@ export default function DeliveryInfo({ translator, getDefaultValue }: DeliveryIn
 						/>
 						<label htmlFor="radiodelivery">{translator.translate('deliver_to_adress')}</label>
 					</div>
-					<div>
+					<div className="relative mb-2 ml-1 mr-2">
 						<input
 							className="accent-blue mr-1"
 							type="radio"
@@ -46,7 +46,6 @@ export default function DeliveryInfo({ translator, getDefaultValue }: DeliveryIn
 						<label htmlFor="radiopickup">{translator.translate('pickup')}</label>
 					</div>
 				</div>
-				<div className="flex mx-3 my-6 items-center font-bold space-x-2 text-blue"></div>
 				{delivery ? (
 					<>
 						<div className="p-2 w-full">
