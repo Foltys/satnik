@@ -1,5 +1,5 @@
 {
-  "hostname": "http://satnikjobs.miniserver.cz:8010",
+  "hostname": "https://objednavka.satnikpraha.cz",
   "publicPath": "/objednavka/build/",
   "auth": {
     "strategies": {
