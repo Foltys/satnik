@@ -1,4 +1,4 @@
-import { useOutletContext, Link, redirect, Form, LoaderFunction, json, useLoaderData } from 'remix'
+import { useOutletContext, Link, redirect, Form, LoaderFunction, json, useLoaderData, useTransition } from 'remix'
 import { Order, OutletContext } from '~/root'
 import PersonOnOrder from '~/components/PersonOnOrder'
 import { getSession } from '~/sessions'
@@ -25,6 +25,14 @@ export const loader: LoaderFunction = async ({ request }) => {
 export default function Summary() {
 	const { contact, people } = useLoaderData()
 	const { translator } = useOutletContext<OutletContext & { order: Order }>()
+	const transition = useTransition()
+
+	const text =
+		transition.state === 'idle'
+			? translator.translate('to_order')
+			: transition.state === 'submitting'
+			? translator.translate('saving')
+			: '...'
 
 	return (
 		<div className="flex flex-col text-gray-900	">
@@ -80,7 +88,7 @@ export default function Summary() {
 				<Form method="post" action="/formular/confirmation">
 					<input type="hidden" name="lang" value={translator.language} />
 					<button className="items-center border-0 py-2 px-4 focus:outline-none outline  rounded-full  font-bold text-lg bg-red text-light outline-red hover:text-red hover:bg-light transition-colors duration-200 ease-in-out">
-						{translator.translate('to_order')}
+						{text}
 					</button>
 				</Form>
 			</nav>
