@@ -5,6 +5,8 @@ import { Form, json, useLoaderData, Outlet, Link } from 'remix'
 import { OAuth2Profile } from 'remix-auth-oauth2'
 import { authenticator } from '~/server/auth.server'
 import { findMany } from '../../prisma/api/Order'
+import { translateState } from '../utils/translateState'
+import { getStateColor } from '../utils/getStateColor'
 
 type LoaderData = {
 	user?: OAuth2Profile
@@ -29,49 +31,6 @@ export const loader: LoaderFunction = async ({ request }) => {
 		orderListItems,
 	}
 	return json(data)
-}
-
-// async function updateOrder(orderId: number, state: string) {
-// 	//console.log('updateOrder', orderId, state)
-// 	await updateUnique({ id: orderId }, { state: state })
-// }
-
-// tady musíme časem udělat fakt překlad
-function translateState(state: string): string {
-	switch (state) {
-		case 'open':
-			return 'Čeká na zpracování'
-		case 'process':
-			return 'Zpracovává se'
-		case 'done':
-			return 'Vyřízeno'
-		default:
-			return 'WTF'
-	}
-}
-
-// function translateDeliveryType(type: string): string {
-// 	switch (type) {
-// 		case 'pickup':
-// 			return 'Osobní odběr'
-// 		case 'delivery':
-// 			return 'Dovoz od Šatníku'
-// 		default:
-// 			return 'WTF'
-// 	}
-// }
-
-function getStateColor(state: string): string {
-	switch (state) {
-		case 'open':
-			return 'red'
-		case 'process':
-			return 'blue'
-		case 'done':
-			return 'brown-600'
-		default:
-			return ''
-	}
 }
 
 export default function Admin() {
