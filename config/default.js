@@ -1,10 +1,10 @@
-import dotenv from 'dotenv'
+const dotenv = require('dotenv')
 dotenv.config()
 
-export default {
+module.exports = {
 	'hostname': 'http://localhost:3000',
 	'session': {
-		'secrets': (process.env.SESSION_SECRETS as string).split(',').map(s => s.trim()),
+		'secrets': process.env.SESSION_SECRETS.split(',').map(s => s.trim()),
 	},
 	'email': {
 		'companyAddress': 'prahasatnik@gmail.com',
@@ -12,7 +12,7 @@ export default {
 			'service': 'gmail',
 			'auth': {
 				'user': 'prahasatnik',
-				'pass': process.env.EMAIL_PROVIDER_AUTH_PASSWORD as string,
+				'pass': process.env.EMAIL_PROVIDER_AUTH_PASSWORD,
 			},
 		},
 	},
@@ -20,8 +20,8 @@ export default {
 		'enabled': true,
 		'strategies': {
 			'google': {
-				'clientID': process.env.AUTH_GOOGLE_CLIENTID as string,
-				'clientSecret': process.env.AUTH_GOOGLE_CLIENTSECRET as string,
+				'clientID': process.env.AUTH_GOOGLE_CLIENTID,
+				'clientSecret': process.env.AUTH_GOOGLE_CLIENTSECRET,
 				'allowedAccounts': [
 					'prahasatnik@gmail.com',
 					'michal.palma@gmail.com',
