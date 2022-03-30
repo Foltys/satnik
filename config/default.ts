@@ -3,7 +3,6 @@ dotenv.config()
 
 export default {
 	'hostname': 'http://localhost:3000',
-	'publicPath': '/build/',
 	'session': {
 		'secrets': (process.env.SESSION_SECRETS as string).split(',').map(s => s.trim()),
 	},

@@ -1,4 +1,3 @@
 {
-  "hostname": "https://objednavka.satnikpraha.cz",
-  "publicPath": "/objednavka/build/"
+  "hostname": "https://objednavka.satnikpraha.cz"
 }
