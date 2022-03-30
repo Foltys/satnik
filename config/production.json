@@ -1,12 +1,4 @@
 {
   "hostname": "https://objednavka.satnikpraha.cz",
-  "publicPath": "/objednavka/build/",
-  "auth": {
-    "strategies": {
-      "google": {
-        "clientID": "814226823998-44j3jfgb4o3s2crgq2q6levmg0hdjmhu.apps.googleusercontent.com",
-        "clientSecret": "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"
-      }
-    }
-  }
+  "publicPath": "/objednavka/build/"
 }

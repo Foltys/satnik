@@ -1,11 +1,3 @@
 {
-  "hostname": "http://satnik-5459.rostiapp.cz",
-  "auth": {
-    "strategies": {
-      "google": {
-        "clientID": "814226823998-rnat72kcd7ds8u7knlqrc6e49ubqdsfj.apps.googleusercontent.com",
-        "clientSecret": "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"
-      }
-    }
-  }
+  "hostname": "http://satnik-5459.rostiapp.cz"
 }
