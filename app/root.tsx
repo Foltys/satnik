@@ -150,7 +150,7 @@ export default function App() {
 		<html lang="en">
 			<head>
 				<meta charSet="utf-8" />
-				<meta name="viewport" content="width=device-width,initial-scale=1" />
+				<meta name="viewport" content="width=device-width,initial-scale=0.86" />
 				<Meta />
 				<Links />
 				<script async src="https://www.googletagmanager.com/gtag/js?id=G-B82SVEWMJ2"></script>
