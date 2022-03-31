@@ -19,7 +19,7 @@ export default function Index() {
 	const contactData = useLoaderData<{ [k: string]: string }>()
 	const getDefaultValue = (key: keyof OrderInProgress) => {
 		if (contactData && contactData[key]) {
-			return contactData[key]
+			return decodeURIComponent(contactData[key])
 		}
 		return ''
 	}

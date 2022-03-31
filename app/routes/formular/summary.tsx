@@ -1,5 +1,5 @@
 import { useOutletContext, Link, redirect, Form, LoaderFunction, json, useLoaderData, useTransition } from 'remix'
-import { Order, OutletContext } from '~/root'
+import { Order, OutletContext, Person } from '~/root'
 import PersonOnOrder from '~/components/PersonOnOrder'
 import { getSession } from '~/sessions'
 import { PersonToOrderType } from '~/components/PersonToOrder'
@@ -17,8 +17,18 @@ export const loader: LoaderFunction = async ({ request }) => {
 		return redirect('/formular/newOrder')
 	}
 	return json({
-		contact,
-		people,
+		contact: Object.fromEntries(
+			Object.keys(contact).map((key) => {
+				return [[key], decodeURIComponent(contact[key])]
+			}),
+		),
+		people: people.map((person: Person) => {
+			return Object.fromEntries(
+				Object.keys(person).map((key) => {
+					return [[key], decodeURIComponent(person[key])]
+				}),
+			)
+		}),
 	})
 }
 
@@ -48,7 +58,7 @@ export default function Summary() {
 			<div className="flex mb-12">
 				<div className="flex flex-col w-1/2 px-1">
 					<span className="font-bold mt-4">{translator.translate('orderer')}</span>
-					<span>{decodeURIComponent(contact.fullname)}</span>
+					<span>{contact.fullname}</span>
 					<span>{contact.phone}</span>
 					<span>{contact.email}</span>
 					<span className="font-bold mt-4">{translator.translate('delivery_address')}</span>
@@ -62,9 +72,9 @@ export default function Summary() {
 						</>
 					) : (
 						<>
-							<span>{decodeURIComponent(contact.delivery_fullname)}</span>
+							<span>{contact.delivery_fullname}</span>
 							<span>
-								{decodeURIComponent(contact.delivery_street)},{decodeURIComponent(contact.delivery_city)}
+								{contact.delivery_street},{contact.delivery_city}
 							</span>
 							<span>{contact.delivery_zip}</span>
 							<span>{contact.delivery_phone}</span>
@@ -76,8 +86,8 @@ export default function Summary() {
 					{people.map((person: PersonToOrderType, index: number) => {
 						return (
 							<div key={index}>
-								<div>{decodeURIComponent(person.fullname)}</div>
-								<div>{decodeURIComponent(person.requirements)}</div>
+								<div>{person.fullname}</div>
+								<div>{person.requirements}</div>
 							</div>
 						)
 					})}

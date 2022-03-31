@@ -1,7 +1,7 @@
 import { getOrderByID, saveNewOrder } from '../../../prisma/api/Order'
 import { ActionFunction, json, useOutletContext } from 'remix'
 import { sendOrderConfirm, sendOrderConfirmCompany } from '~/mailer/html/api'
-import { Order, OutletContext } from '~/root'
+import { Order, OutletContext, Person } from '~/root'
 import { commitSession, getSession } from '~/sessions'
 import { PersonToOrderType } from '~/components/PersonToOrder'
 
@@ -9,8 +9,18 @@ export const action: ActionFunction = async ({ request }) => {
 	const formData = await request.formData()
 	const { lang } = Object.fromEntries(formData)
 	const session = await getSession(request.headers.get('Cookie'))
-	const contact = session.get('contact')
-	const people = session.get('people')
+	let contact = session.get('contact')
+	for (let key in contact) {
+		contact[key] = decodeURIComponent(contact[key])
+	}
+	let people = session.get('people')
+	people = people.map((person: Person) => {
+		return Object.fromEntries(
+			Object.keys(person).map((key) => {
+				return [[key], decodeURIComponent(person[key])]
+			}),
+		)
+	})
 	// prepare order
 	const order = {
 		...contact,

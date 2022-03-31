@@ -34,6 +34,11 @@ export const action: ActionFunction = async ({ request }) => {
 	let { _action, ...values } = Object.fromEntries(formData) as FormWithAction
 
 	if (_action == 'submit_contact') {
+		for (let val in values) {
+			if (values[val]) {
+				values[val] = encodeURIComponent(values[val])
+			}
+		}
 		session.set('contact', values)
 	} else if (_action == 'remove_person' && values['id']) {
 		const people = session.get('people') as any[]

@@ -44,9 +44,9 @@ export default function PersonToOrder({ translator, selectedGender, editingPerso
 				{isKid && (
 					<div className="flex">
 						<div className="flex mx-3 my-6 font-bold space-x-2 text-blue items-center">
-							<input required className="accent-blue" type="radio" id="boy" name="sex" value="man" defaultChecked />
+							<input required className="accent-blue" type="radio" id="boy" name="sex" value="man" defaultChecked={editingPerson?.sex == 'man' || true} />
 							<label htmlFor="boy">{translator.translate('boy')}</label>
-							<input required className="accent-blue" type="radio" id="girl" name="sex" value="woman" />
+							<input required className="accent-blue" type="radio" id="girl" name="sex" value="woman" defaultChecked={editingPerson?.sex == 'woman' || false} />
 							<label htmlFor="girl">{translator.translate('girl')}</label>
 						</div>
 					</div>

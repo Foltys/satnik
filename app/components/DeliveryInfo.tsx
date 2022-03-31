@@ -61,7 +61,7 @@ export default function DeliveryInfo({ translator, getDefaultValue }: DeliveryIn
 									placeholder="Aa"
 									required
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none text-gray-900 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue placeholder:text-brown-500"
-									defaultValue={decodeURIComponent(getDefaultValue('delivery_fullname'))}
+									defaultValue={getDefaultValue('delivery_fullname')}
 								/>
 							</div>
 							<div className="text-sm flex  text-brown-600">
@@ -93,7 +93,7 @@ export default function DeliveryInfo({ translator, getDefaultValue }: DeliveryIn
 									autoComplete="street-address"
 									placeholder="Strašnická 12"
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none text-gray-900 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue placeholder:text-brown-500"
-									defaultValue={decodeURIComponent(getDefaultValue('delivery_street'))}
+									defaultValue={getDefaultValue('delivery_street')}
 								/>
 							</div>
 						</div>
@@ -110,7 +110,7 @@ export default function DeliveryInfo({ translator, getDefaultValue }: DeliveryIn
 									required
 									autoComplete="address-level2"
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none text-gray-900 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue placeholder:text-brown-500"
-									defaultValue={decodeURIComponent(getDefaultValue('delivery_city'))}
+									defaultValue={getDefaultValue('delivery_city')}
 								/>
 							</div>
 						</div>
