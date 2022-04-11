@@ -1,9 +1,14 @@
 import { getOrderByID, saveNewOrder } from '../../../prisma/api/Order'
-import { ActionFunction, json, useOutletContext } from 'remix'
+import { ActionFunction, json, LoaderFunction, useLoaderData, useOutletContext } from 'remix'
 import { sendOrderConfirm, sendOrderConfirmCompany } from '~/mailer/html/api'
 import { Order, OutletContext, Person } from '~/root'
 import { commitSession, getSession } from '~/sessions'
 import { PersonToOrderType } from '~/components/PersonToOrder'
+
+export const loader: LoaderFunction = () => {
+	const meta = require('config').get('meta')
+	return { meta }
+}
 
 export const action: ActionFunction = async ({ request }) => {
 	const formData = await request.formData()
@@ -55,6 +60,7 @@ export const action: ActionFunction = async ({ request }) => {
 
 export default function Confirmation() {
 	const { translator } = useOutletContext<OutletContext>()
+	const { meta } = useLoaderData()
 
 	return (
 		<section className="text-gray-900 body-font relative">
@@ -81,7 +87,7 @@ export default function Confirmation() {
 					<span className="inline-flex mt-8 justify-center space-x-8 md:space-x-12">
 						<a
 							className="text-red"
-							href="http://www.facebook.com/share.php?u=https://app.satnikpraha.cz"
+							href={`http://www.facebook.com/share.php?u=${meta.baseURL}`}
 							target="_blank"
 							rel="noreferrer"
 						>
@@ -98,7 +104,7 @@ export default function Confirmation() {
 						</a>
 						<a
 							className="ml-3 text-red"
-							href="https://twitter.com/intent/tweet?ref_src=twsrc%5Etfw&quot%3B%20class=&quot%3Btwitter-share-button=&quot%3B%20data-show-count=&quot%3Bfalse=&quot=&url=https://app.satnikpraha.cz"
+							href={`https://twitter.com/intent/tweet?ref_src=twsrc%5Etfw&quot%3B%20class=&quot%3Btwitter-share-button=&quot%3B%20data-show-count=&quot%3Bfalse=&quot=&url=${meta.baseURL}`}
 							target="_blank"
 							rel="noreferrer"
 						>
@@ -115,7 +121,7 @@ export default function Confirmation() {
 						</a>
 						<a
 							className="ml-3 text-red"
-							href="https://t.me/share/url?url=https://app.satnikpraha.cz&text='Satnik Praha - App for Ukraine'"
+							href={`https://t.me/share/url?url=${meta.baseURL}&text='${meta.title}'`}
 							target="_blank"
 							rel="noreferrer"
 						>

@@ -1,4 +1,14 @@
-import { ActionFunction, Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from 'remix'
+import {
+	ActionFunction,
+	Links,
+	LiveReload,
+	Meta,
+	MetaFunction,
+	Outlet,
+	Scripts,
+	ScrollRestoration,
+	useLoaderData,
+} from 'remix'
 
 import { MouseEventHandler, useEffect, useState } from 'react'
 
@@ -19,8 +29,8 @@ export interface OutletContext {
 
 export type AuthStrategies = {
 	google?: {
-		clientID: string,
-		clientSecret: string,
+		clientID: string
+		clientSecret: string
 		allowedAccounts: string[]
 	}
 }
@@ -67,21 +77,21 @@ export function links() {
 	]
 }
 
-export function meta() {
-	const description = `Šatník Praha - Pomoc Ukrajině`
+export const meta: MetaFunction = ({ data }) => {
+	const { title, description, keywords, image, baseURL } = data.meta
 	return {
 		description,
-		keywords: 'ukraine,help,ukrajina,válka',
-		name: 'Šatník - Pomoc Ukrajině',
-		'twitter:image': 'https://app.satnikpraha.cz/og_share.png',
+		keywords,
+		name: title,
+		'twitter:image': image,
 		'twitter:card': 'summary_large_image',
 		'twitter:title': description,
-		'twitter:description': 'Pomáháme Ukrajině s Šatníkem Praha',
-		'og:url': 'https://app.satnikpraha.cz/',
+		'twitter:description': description,
+		'og:url': baseURL,
 		'og:type': 'website',
-		'og:title': 'Šatník - Pomoc Ukrajině',
-		'og:description': 'Šatník Praha - Pomoc Ukrajině',
-		'og:image': 'https://app.satnikpraha.cz/og_share.png',
+		'og:title': title,
+		'og:description': description,
+		'og:image': image,
 	}
 }
 
@@ -91,8 +101,9 @@ function getFromSupported(language: string) {
 
 export const loader = async ({ request }: { request: Request }) => {
 	let url = new URL(request.url)
+	const meta = require('config').get('meta')
 	if (url.searchParams.has('lng')) {
-		return getFromSupported(url.searchParams.get('lng') as string)
+		return { meta, locale: getFromSupported(url.searchParams.get('lng') as string) }
 	}
 
 	// then we use the cookie, using this cookie we can store the user preference with a form
@@ -104,19 +115,19 @@ export const loader = async ({ request }: { request: Request }) => {
 	)
 
 	if (cookie.i18next) {
-		return getFromSupported(cookie.i18next)
+		return { meta, locale: getFromSupported(cookie.i18next) }
 	}
 
 	// and then we check the Accept-Language header and use that, this will have the value
 	// of the language the user use for their OS
 	if (request.headers.has('accept-language')) {
-		return getFromSupported(request.headers.get('accept-language') as string)
+		return { meta, locale: getFromSupported(request.headers.get('accept-language') as string) }
 	}
-	return 'cs'
+	return { locale: 'cs', meta }
 }
 
 export default function App() {
-	const locale = useLoaderData()
+	const { locale } = useLoaderData()
 	const [order, setOrder] = useState({
 		delivery_type: 'delivery',
 		persons: [],
@@ -166,7 +177,7 @@ export default function App() {
 							setOrder,
 							editingPerson,
 							setEditingPerson,
-							switchLanguage
+							switchLanguage,
 						}}
 					/>
 				</section>
