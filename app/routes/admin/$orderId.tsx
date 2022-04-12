@@ -58,7 +58,12 @@ export const action: ActionFunction = async ({ request }) => {
 
 export default function OrderDetail() {
 	const { order } = useLoaderData()
-	const order_created = new Date(order.created_at).toLocaleDateString('cs-CZ',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
+	const order_created = new Date(order.created_at).toLocaleDateString('cs-CZ', {
+		weekday: 'long',
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+	})
 	return (
 		<div className="flex flex-col">
 			<p className="text-3xl font-bold">{order.id}</p>
@@ -84,28 +89,34 @@ export default function OrderDetail() {
 						</div>
 
 						<div className="text-sm">Oblečení</div>
-						<div className=" text-lg font-bold">{decodeURIComponent(person.requirements[0].description)}</div>
+						<div className="text-ellipsis overflow-hidden text-lg font-bold">
+							{decodeURIComponent(person.requirements[0].description)}
+						</div>
 						{order.persons.length > 1 && <hr className="border border-brown-500" />}
 					</div>
 				))}
-				<div className="flex flex-row justify-between mt-6">
-					<div className="flex gap-y-1 flex-col text-sm text-gray-900">
+				<div className="flex flex-row justify-between mt-6 overflow-hidden">
+					<div className="flex gap-y-1 flex-col text-sm text-gray-900 overflow-hidden">
 						<span className=" text-brown-500 mb-2">Objednává:</span>
-						<span>{decodeURIComponent(order.fullname)}</span>
-						<span>{order.phone}</span>
-						<a href={`mailto:${order.email}`}>{order.email}</a>
+						<span className="overflow-hidden text-ellipsis">{decodeURIComponent(order.fullname)}</span>
+						<span className="overflow-hidden text-ellipsis">{order.phone}</span>
+						<a href={`mailto:${order.email}`} className="overflow-hidden text-ellipsis">
+							{order.email}
+						</a>
 					</div>
-					<div className="w-1 border-l border-l-brown-500 h-36"></div>
-					<div className="flex gap-y-1 flex-col text-sm text-gray-900">
+					<div className="w-1 border-l border-l-brown-500 h-36 mx-6"></div>
+					<div className="flex gap-y-1 flex-col text-sm text-gray-900 overflow-hidden">
 						{order.delivery_type === 'delivery' ? (
 							<>
 								<span className=" text-brown-500 mb-2">Doručovací adresa:</span>
-								<span>{decodeURIComponent(order.delivery_fullname)}</span>
-								<span>{decodeURIComponent(order.delivery_city)}</span>
-								<span>{decodeURIComponent(order.delivery_street)}</span>
+								<span className="overflow-hidden text-ellipsis">{decodeURIComponent(order.delivery_fullname)}</span>
+								<span className="overflow-hidden text-ellipsis">{decodeURIComponent(order.delivery_city)}</span>
+								<span className="overflow-hidden text-ellipsis">{decodeURIComponent(order.delivery_street)}</span>
 								<span>{order.delivery_zip}</span>
 								<a href={`tel:${order.delivery_phone}`}>{order.delivery_phone}</a>
-								<a href={`mailto:${order.email}`}>{order.email}</a>
+								<a href={`mailto:${order.email}`} className="overflow-hidden text-ellipsis">
+									{order.email}
+								</a>
 							</>
 						) : (
 							<>
