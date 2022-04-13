@@ -177,7 +177,7 @@ export default function DeliveryInfo({ translator, getDefaultValue }: DeliveryIn
 								Mobil: 737 59 70 70
 							</a>
 							<a href="mailto:info@satnikpraha.cz">E-mail: info@satnikpraha.cz</a>
-							<a href="https://goo.gl/maps/o6Z8qzkG6pnTRs7P8" target="_blank" rel="noreferrer">
+							<a href="https://goo.gl/maps/jr5McbR8Ga5vqHj59" target="_blank" rel="noreferrer">
 								<div className="w-44 text-base mt-10 text-light border-0 py-2 px-3 focus:outline-none outline  outline-light rounded-full  hover:text-red hover:bg-light  hover:outline-light font-bold transition-colors duration-200 ease-in-out">
 									{translator.translate('show_on_map')}
 								</div>
