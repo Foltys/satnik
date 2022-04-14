@@ -4,7 +4,7 @@ import { useLoaderData, Form } from 'remix'
 import { OAuth2Profile } from 'remix-auth-oauth2'
 import { getOrderByID, updateUnique } from '~/../prisma/api/Order'
 import { authenticator } from '~/server/auth.server'
-import { sendOrderConfirm } from '~/mailer/html/api'
+import { sendOrderReadyForPickup, sendOrderReadyToSend } from '~/mailer/html/api'
 
 async function updateOrder(orderId: number, state: string) {
 	//console.log('updateOrder', orderId, state)
@@ -13,7 +13,9 @@ async function updateOrder(orderId: number, state: string) {
 
 async function sendOrderConfirmById(id: number) {
 	const order = await getOrderByID(id)
-	sendOrderConfirm(order as Order)
+	if (!order) return
+	if (order.delivery_type === 'delivery') sendOrderReadyToSend(order as Order)
+	else sendOrderReadyForPickup(order as Order)
 }
 
 export const loader: LoaderFunction = async ({ request, params }) => {
