@@ -75,7 +75,7 @@ export default function OrderDetail() {
 							<div className="flex flex-col grow">
 								<p className="font-bold text-lg text-blue">{decodeURIComponent(person.fullname)}</p>
 								<p>
-									{person.sex}, {person.age}
+									{person.sex === 'man' ? 'muž' : 'žena'}, {person.age}
 								</p>
 							</div>
 							<div className="flex justify-center align-center p-4 m-4 rounded-xl bg-light">
