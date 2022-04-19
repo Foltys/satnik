@@ -1,5 +1,5 @@
 import { Order } from '~/root'
-import type { LoaderFunction, ActionFunction } from 'remix'
+import { LoaderFunction, ActionFunction, useSearchParams } from 'remix'
 import { useLoaderData, Form } from 'remix'
 import { OAuth2Profile } from 'remix-auth-oauth2'
 import { getOrderByID, updateUnique } from '~/../prisma/api/Order'
@@ -60,6 +60,7 @@ export const action: ActionFunction = async ({ request }) => {
 
 export default function OrderDetail() {
 	const { order } = useLoaderData()
+	const [params] = useSearchParams()
 	const order_created = new Date(order.created_at).toLocaleDateString('cs-CZ', {
 		weekday: 'long',
 		year: 'numeric',
@@ -133,7 +134,7 @@ export default function OrderDetail() {
 					</div>
 				</div>
 
-				<Form method="post" className="mt-6">
+				<Form method="post" action={`?${params.toString()}`} className="mt-6">
 					<>
 						{order.state === 'open' ? (
 							<button className="text-blue font-bold" name="action" value="process">

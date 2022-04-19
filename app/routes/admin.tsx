@@ -100,11 +100,11 @@ export default function Admin() {
 							<div className="text-brown-600 pb-12">Stav objednávky</div>
 							{data.orderListItems.map((order) => (
 								<Fragment key={order.id}>
-									<Link to={`${order.id}`} prefetch="intent">
+									<Link to={{ pathname: order.id.toString(), search: `?page=${data.page}` }} prefetch="intent">
 										{order.id}
 									</Link>
 
-									<Link to={`${order.id}`} prefetch="intent">
+									<Link to={{ pathname: order.id.toString(), search: `?page=${data.page}` }} prefetch="intent">
 										<div className="text-blue text-ellipsis overflow-hidden whitespace-nowrap font-bold">
 											{decodeURIComponent(order.fullname)}
 										</div>
