@@ -58,5 +58,13 @@
 	"think_of_you": "Myslíme na vás",
 	"regards": "S pozdravem",
 	"share": "Dej o Šatníku vědět",
-	"saving": "Ukládám"
+	"saving": "Ukládám",
+	"validation_contact_name": "Uveďte vaše jméno",
+	"validation_contact_phone": "Uveďte kontaktní telefon",
+	"validation_contact_street_number": "Uveďtě ulici a číslo domu",
+	"validation_contact_city": "Uveďte město",
+	"validation_contact_zip": "Uveďte PSČ",
+	"validation_person_age": "Uveďte věk osoby",
+	"validation_person_name": "Uveďte jméno osoby",
+	"validation_person_clothes": "Uveďte, jaké oblečení a věci poptáváte"
 }

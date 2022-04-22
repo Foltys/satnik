@@ -60,6 +60,9 @@ export default function DeliveryInfo({ translator, getDefaultValue }: DeliveryIn
 									name="delivery_fullname"
 									placeholder="Aa"
 									required
+									onInvalid={(e) => {
+										e.currentTarget.setCustomValidity(translator.translate('validation_person_name'))
+									}}
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none text-gray-900 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue placeholder:text-brown-500"
 									defaultValue={getDefaultValue('delivery_fullname')}
 								/>
@@ -90,6 +93,9 @@ export default function DeliveryInfo({ translator, getDefaultValue }: DeliveryIn
 									id="street"
 									name="delivery_street"
 									required
+									onInvalid={(e) => {
+										e.currentTarget.setCustomValidity(translator.translate('validation_contact_street_number'))
+									}}
 									autoComplete="street-address"
 									placeholder="Strašnická 12"
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none text-gray-900 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue placeholder:text-brown-500"
@@ -108,6 +114,9 @@ export default function DeliveryInfo({ translator, getDefaultValue }: DeliveryIn
 									name="delivery_city"
 									placeholder="Praha"
 									required
+									onInvalid={(e) => {
+										e.currentTarget.setCustomValidity(translator.translate('validation_contact_city'))
+									}}
 									autoComplete="address-level2"
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none text-gray-900 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue placeholder:text-brown-500"
 									defaultValue={getDefaultValue('delivery_city')}
@@ -125,6 +134,9 @@ export default function DeliveryInfo({ translator, getDefaultValue }: DeliveryIn
 									name="delivery_zip"
 									placeholder="14000"
 									required
+									onInvalid={(e) => {
+										e.currentTarget.setCustomValidity(translator.translate('validation_contact_zip'))
+									}}
 									autoComplete="postal-code"
 									className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none text-gray-900 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue placeholder:text-brown-500"
 									defaultValue={getDefaultValue('delivery_zip')}

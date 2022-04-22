@@ -26,6 +26,9 @@ export default function ContactInfo({ translator, getDefaultValue }: ContactInfo
 							name="fullname"
 							placeholder="Aa"
 							required
+							onInvalid={(e) => {
+								e.currentTarget.setCustomValidity(translator.translate('validation_contact_name'))
+							}}
 							autoComplete="name"
 							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none placeholder:text-brown-500 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue"
 							defaultValue={getDefaultValue('fullname')}
@@ -42,6 +45,9 @@ export default function ContactInfo({ translator, getDefaultValue }: ContactInfo
 							id="phone"
 							name="phone"
 							required
+							onInvalid={(e) => {
+								e.currentTarget.setCustomValidity(translator.translate('validation_contact_phone'))
+							}}
 							autoComplete="tel"
 							placeholder="+380 111 111 111"
 							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none placeholder:text-brown-500 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue "
@@ -73,6 +79,9 @@ export default function ContactInfo({ translator, getDefaultValue }: ContactInfo
 							placeholder="@"
 							autoComplete="email"
 							required
+							// onInvalid={(e) => {
+							// 	e.currentTarget.setCustomValidity(translator.translate('validation_contact_email'))
+							// }}
 							className="w-full mt-1 bg-white bg-opacity-80 rounded-xl border border-brown-600 focus:border-white focus:bg-white focus:ring-2 focus:ring-blue text-base outline-none placeholder:text-brown-500 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500  valid:border-blue"
 							defaultValue={getDefaultValue('email')}
 						/>

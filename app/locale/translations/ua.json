@@ -59,5 +59,13 @@
 	"shoes_size": "розмір взуття",
 	"cloth_size": "розмір одягу",
 	"share": "поділитися заявкою",
-	"saving": "Збереження"
+	"saving": "Збереження",
+	"validation_contact_name": "Вкажіть своє ім'я",
+	"validation_contact_phone": "Вкажіть контактний номер телефону",
+	"validation_contact_street_number": "Вкажіть назву вулиці та номер будинку",
+	"validation_contact_city": "Вкажіть назву міста",
+	"validation_contact_zip": "Вкажіть поштовий індекс",
+	"validation_person_age": "Вкажіть вік людини",
+	"validation_person_name": "Вкажіть ім'я людини",
+	"validation_person_clothes": "Вкажіть які речі чи одяг вас цикавіть"
 }
