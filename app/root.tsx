@@ -1,14 +1,4 @@
-import {
-	ActionFunction,
-	Links,
-	LiveReload,
-	Meta,
-	MetaFunction,
-	Outlet,
-	Scripts,
-	ScrollRestoration,
-	useLoaderData,
-} from 'remix'
+import { Links, LiveReload, Meta, MetaFunction, Outlet, Scripts, ScrollRestoration, useLoaderData } from 'remix'
 
 import { MouseEventHandler, useEffect, useState } from 'react'
 
@@ -31,7 +21,7 @@ export type AuthStrategies = {
 	google?: {
 		clientID: string
 		clientSecret: string
-		allowedAccounts: string[]
+		// allowedAccounts: string[]
 	}
 }
 
@@ -49,7 +39,8 @@ export interface Order {
 	delivery_zip?: string
 	delivery_phone?: string
 	persons: Person[]
-	state: 'open'
+	assigneeId: number
+	state: 'open' | 'in_progress' | 'ready' | 'done'
 	lang: 'ua' | 'cs'
 	created_at: {}
 	updated_at: {}
@@ -94,6 +85,8 @@ export const meta: MetaFunction = ({ data }) => {
 		'og:image': image,
 	}
 }
+
+export function scripts() {}
 
 function getFromSupported(language: string) {
 	return ['ua', 'cs'].includes(language) ? language : 'cs'
@@ -182,9 +175,10 @@ export default function App() {
 					/>
 				</section>
 
+				<LiveReload />
+				<script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
 				<ScrollRestoration />
 				<Scripts />
-				<LiveReload />
 			</body>
 		</html>
 	)

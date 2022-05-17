@@ -2,6 +2,7 @@ import { getDB } from '~/../prisma/getDB'
 import { Order, Person } from '~/root'
 import { prepareOrderForPrismaInsert } from '~/../prisma/helpers'
 import Ajv from 'ajv'
+import { OAuth2Profile } from 'remix-auth-oauth2'
 // const { getDB } = require('../getDB')
 const ajv = new Ajv()
 
@@ -174,6 +175,50 @@ function getIncludes() {
 	}
 }
 
+async function createUserIfNotExists(user: { id?: string; email: string; name?: string }) {
+	const userTable = await (await getDB()).user
+	if (user.id) {
+		const userInDb = await userTable.findFirst({ where: { id: user.id } })
+		if (!userInDb) {
+			return await userTable.create({
+				data: {
+					admin: false,
+					email: '',
+					password: 'google_auth',
+					id: user.id,
+				},
+			})
+		}
+		return userInDb
+	} else if (user.email) {
+		const userIdDb = await userTable.findFirst({ where: { email: user.email } })
+		if (!userIdDb) {
+			return await userTable.create({
+				data: {
+					admin: false,
+					email: user.email,
+					password: '',
+				},
+			})
+		}
+		return userIdDb
+	}
+	return false
+}
+
+async function assignUserToOrder(userId: string, orderId: number) {
+	return (await getOrderModel()).update({ where: { id: orderId }, data: { userId, state: 'in_progress' } })
+}
+async function unassignUserFromOrder(orderId: number) {
+	return (await getOrderModel()).update({ where: { id: orderId }, data: { state: 'open', userId: null } })
+}
+async function sendOrder(orderId: number) {
+	return (await getOrderModel()).update({ where: { id: orderId }, data: { state: 'done' } })
+}
+async function packOrder(orderId: number) {
+	return (await getOrderModel()).update({ where: { id: orderId }, data: { state: 'ready' } })
+}
+
 /**
  * for model usage read https://www.prisma.io/docs/concepts/components/prisma-client/crud#read
  */
@@ -181,4 +226,18 @@ const getOrderModel = async function () {
 	return (await getDB()).order
 }
 
-export { getOrderModel, saveNewOrder, findUniqueOrder, findFirst, findMany, count, getOrderByID, updateUnique }
+export {
+	getOrderModel,
+	saveNewOrder,
+	findUniqueOrder,
+	findFirst,
+	findMany,
+	count,
+	getOrderByID,
+	updateUnique,
+	assignUserToOrder,
+	unassignUserFromOrder,
+	sendOrder,
+	packOrder,
+	createUserIfNotExists,
+}

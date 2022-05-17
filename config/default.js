@@ -22,12 +22,13 @@ module.exports = {
 			google: {
 				clientID: process.env.AUTH_GOOGLE_CLIENTID,
 				clientSecret: process.env.AUTH_GOOGLE_CLIENTSECRET,
-				allowedAccounts: [
-					'prahasatnik@gmail.com',
-					'michal.palma@gmail.com',
-					'adam.sobotka@emplifi.io',
-					'folejtar.jakub@gmail.com',
-				],
+				// allowedAccounts: [
+				// 	'prahasatnik@gmail.com',
+				// 	'michal.palma@gmail.com',
+				// 	'adam.sobotka@emplifi.io',
+				// 	'folejtar.jakub@gmail.com',
+				// 	'jakub.folejtar@emplifi.io',
+				// ],
 			},
 		},
 	},

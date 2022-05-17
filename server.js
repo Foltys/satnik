@@ -8,7 +8,7 @@ import * as serverBuild from '@remix-run/dev/server-build'
 dotenv.config()
 
 // normalization of config dir
-process.env["NODE_CONFIG_DIR"] = __dirname + "/config";
+process.env['NODE_CONFIG_DIR'] = __dirname + '/config'
 
 const app = express()
 

@@ -1,5 +1,5 @@
 generator client {
-  provider        = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -8,39 +8,57 @@ datasource db {
 }
 
 model Requirement {
-    id              Int             @id @default(autoincrement())
-    person          Person          @relation(fields: [person_id], references: [id])
-    person_id       Int
-    description     String
+  id          Int    @id @default(autoincrement())
+  person      Person @relation(fields: [person_id], references: [id])
+  person_id   Int
+  description String
 }
 
 model Person {
-    id              Int             @id @default(autoincrement())
-    order           Order           @relation(fields: [order_id], references: [id])
-    order_id        Int
-    requirements    Requirement[]
-    sex             String
-    adult           Boolean
-    fullname        String
-    age             String
-    clothing_size   String
-    shoe_size       String
+  id            Int           @id @default(autoincrement())
+  order         Order         @relation(fields: [order_id], references: [id])
+  order_id      Int
+  requirements  Requirement[]
+  sex           String
+  adult         Boolean
+  fullname      String
+  age           String
+  clothing_size String
+  shoe_size     String
 }
 
 model Order {
-    id                      Int         @id @default(autoincrement())
-    persons                 Person[]
-    fullname                String
-    phone                   String
-    email                   String
-    delivery_type           String
-    delivery_fullname       String?
-    delivery_street         String?
-    delivery_city           String?
-    delivery_zip            String?
-    delivery_phone          String?
-    state                   String
-    lang                    String
-    created_at              DateTime  @default(now())
-    updated_at              DateTime  @updatedAt
+  id                Int      @id @default(autoincrement())
+  persons           Person[]
+  fullname          String
+  phone             String
+  email             String
+  delivery_type     String
+  delivery_fullname String?
+  delivery_street   String?
+  delivery_city     String?
+  delivery_zip      String?
+  delivery_phone    String?
+  state             String
+  lang              String
+  created_at        DateTime @default(now())
+  updated_at        DateTime @updatedAt
+  asignee           User?    @relation(fields: [userId], references: [id])
+  userId            String?
+}
+
+model User {
+  id       String  @id @default(uuid())
+  gmailId  String?
+  name     String?
+  email    String
+  password String?
+  phone    String?
+  admin    Boolean
+  Order    Order[]
+}
+
+model PendingInvites {
+  id    Int    @id @default(autoincrement())
+  email String
 }

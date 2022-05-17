@@ -1,7 +1,12 @@
-export default function AdminDetail() {
-	return (
-		<div id="emptystate" className=" text-3xl font-bold">
-			Klikněte na číslo objednávky v seznamu
-		</div>
-	)
+import { User } from '@prisma/client'
+import { useEffect } from 'react'
+import { useNavigate, useOutletContext } from 'remix'
+
+export default function Admin() {
+	const navigate = useNavigate()
+	const { user } = useOutletContext<{ user: User }>()
+	useEffect(() => {
+		navigate(user.admin ? 'table' : 'list', { replace: true })
+	}, [user])
+	return null
 }
