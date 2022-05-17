@@ -78,6 +78,9 @@ export default function PersonToOrder({ translator, selectedGender, editingPerso
 								onInvalid={(e) => {
 									e.currentTarget.setCustomValidity(translator.translate('validation_person_age'))
 								}}
+								onChange={(e) => {
+									e.currentTarget.setCustomValidity('')
+								}}
 								type="number"
 								id="age"
 								name="age"
@@ -97,6 +100,9 @@ export default function PersonToOrder({ translator, selectedGender, editingPerso
 								required
 								onInvalid={(e) => {
 									e.currentTarget.setCustomValidity(translator.translate('validation_person_name'))
+								}}
+								onChange={(e) => {
+									e.currentTarget.setCustomValidity('')
 								}}
 								type="text"
 								id="fullname"
@@ -129,6 +135,9 @@ export default function PersonToOrder({ translator, selectedGender, editingPerso
 								required
 								onInvalid={(e) => {
 									e.currentTarget.setCustomValidity(translator.translate('validation_person_clothes'))
+								}}
+								onChange={(e) => {
+									e.currentTarget.setCustomValidity('')
 								}}
 								placeholder="5 ks trika, 2 ks kalhoty"
 								defaultValue={decodeURIComponent(editingPerson?.requirements || '')}
