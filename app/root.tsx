@@ -29,6 +29,7 @@ export type OrderInProgress = Partial<Order> & { persons: Person[] }
 
 export interface Order {
 	[key: string]: any
+	id: number
 	fullname: string
 	phone: string
 	email: string
@@ -151,17 +152,17 @@ export default function App() {
 	const [editingPerson, setEditingPerson] = useState<number>()
 
 	return (
-		<html lang="en">
+		<html lang="en" className="overflow-hidden">
 			<head>
 				<meta charSet="utf-8" />
-				<meta name="viewport" content="width=device-width,initial-scale=0.86" />
+				<meta name="viewport" content="width=device-width,initial-scale=1" />
 				<Meta />
 				<Links />
 				<script async src="https://www.googletagmanager.com/gtag/js?id=G-B82SVEWMJ2"></script>
 				<script async src="/ga.js"></script>
 			</head>
-			<body className="bg-light font-sans text-medium">
-				<section className="text-brown-500 body-font relative">
+			<body className="bg-light font-sans text-medium overflow-hidden">
+				<section className="text-brown-500 body-font relative overflow-auto h-[100vh]">
 					<Outlet
 						context={{
 							translator,

@@ -16,6 +16,8 @@ import {
 import { Order } from '~/root'
 
 import { authenticator } from '~/server/auth.server'
+import OrderPreview from '~/components/admin/OrderPreview'
+import ReactDOM from 'react-dom'
 
 type LoaderData = {
 	orderListItems: Array<Order>
@@ -25,6 +27,7 @@ type LoaderData = {
 type ParsedData = {
 	currentProcessingOrders: Array<Order>
 	restOfTheOrders: Array<Order>
+	ordersById: Record<number, Order>
 }
 
 export const action: ActionFunction = async ({ request }) => {
@@ -80,6 +83,7 @@ export default function List() {
 	const { orderListItems, readyOnlyChecked } = useLoaderData<LoaderData>()
 	const { user } = useOutletContext<{ user: OAuth2Profile | undefined }>()
 
+	const [previewId, setPreviewId] = useState(null)
 	const [data, setData] = useState(parseData(orderListItems))
 
 	function parseData(newData: Order[]): ParsedData {
@@ -92,7 +96,11 @@ export default function List() {
 				}
 				return acc
 			},
-			{ currentProcessingOrders: [], restOfTheOrders: [] } as ParsedData,
+			{
+				currentProcessingOrders: [],
+				restOfTheOrders: [],
+				ordersById: Object.fromEntries(newData.map((order) => [order.id, order])),
+			} as ParsedData,
 		)
 	}
 
@@ -113,6 +121,7 @@ export default function List() {
 			setData(parseData(fetcher.data.orderListItems))
 		}
 	}, [fetcher.data])
+
 	return (
 		<>
 			{data.currentProcessingOrders && data.currentProcessingOrders.length > 0 ? (
@@ -121,7 +130,9 @@ export default function List() {
 						<div className="text-2xl my-auto font-bold">Vyřizuji</div>
 						<div className="text-sm my-auto">Moje úkoly</div>
 					</div>
-					{data.currentProcessingOrders.map(OrderOnList)}
+					{data.currentProcessingOrders.map((order) => (
+						<OrderOnList key={order.id} order={order} onClick={setPreviewId} />
+					))}
 				</div>
 			) : null}
 
@@ -144,14 +155,23 @@ export default function List() {
 			</div>
 
 			<div id="layout" className="flex flex-col gap-1 mt-5 px-3 container items-start">
-				{data.restOfTheOrders.map(OrderOnList)}
+				{data.restOfTheOrders.map((order) => (
+					<OrderOnList order={order} onClick={setPreviewId} key={order.id} />
+				))}
 			</div>
 			<Outlet />
+			{previewId !== null &&
+				ReactDOM.createPortal(
+					<div className="fixed left-0 top-0 w-[100vw] h-[100vh] bg-white">
+						<OrderPreview onClose={() => setPreviewId(null)} order={data.ordersById[previewId]} />
+					</div>,
+					document.body,
+				)}
 		</>
 	)
 }
 
-function OrderOnList(order: Order) {
+function OrderOnList({ order, onClick }) {
 	return (
 		<div
 			className={`rounded-xl border-2 flex-col w-full p-3 ${
@@ -160,9 +180,16 @@ function OrderOnList(order: Order) {
 			key={order.id}
 		>
 			<div className="flex flex-row justify-between text-base mb-3">
-				<Link to={`${order.id}`} className="text-blue">
+				<a
+					href="#"
+					onClick={(e) => {
+						e.preventDefault()
+						onClick(order.id)
+					}}
+					className="text-blue"
+				>
 					{order.id}
-				</Link>
+				</a>
 				<span>{order.fullname}</span>
 			</div>
 			<div className="flex flex-row justify-between text-sm" style={{ marginBottom: 2 }}>
